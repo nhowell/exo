@@ -15,7 +15,7 @@ function GameStatus() {
   const { status, data, error } = useGameStatus();
 
   return status === "loading" ? (
-    <span>"Loading..."</span>
+    <span>Loading...</span>
   ) : status === "error" ? (
     <span>
       <strong>Error:</strong> {error?.status}
@@ -32,7 +32,7 @@ interface IGameStatusResponse {
 }
 
 function useGameStatus() {
-  return useQuery<{}, IGameStatusResponse, IGameStatusResponse>(
+  return useQuery<IGameStatusResponse, IGameStatusResponse>(
     "game-status",
     async () => {
       const response = await fetch("https://api.spacetraders.io/game/status");
