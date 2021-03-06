@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
+import { GameStatus } from "../GameStatus";
 import { IAuthStorage } from "../hooks/useAuth";
 
 export interface ILoginForm extends IAuthStorage {
@@ -25,44 +26,76 @@ export function Login(props: IOwnProps) {
 	};
 
 	return (
-		<div>
-			<h1>Login</h1>
+		<>
+			<header>
+				<h1>SpaceTraders</h1>
 
-			<Formik<ILoginForm> initialValues={initialValues} onSubmit={handleLogin}>
-				{({ isSubmitting }) => (
-					<Form>
-						<Field
-							type="text"
-							name="username"
-							validate={(value: string) => {
-								if (!value) {
-									return "Username is required.";
-								}
-							}}
-						/>
+				<GameStatus />
+			</header>
 
-						<ErrorMessage name="username" component="div" />
+			<main>
+				<h1>Login</h1>
 
-						<Field
-							type="password"
-							name="token"
-							validate={(value: string) => {
-								if (!value) {
-									return "Token is required.";
-								}
-							}}
-						/>
+				<Formik<ILoginForm>
+					initialValues={initialValues}
+					onSubmit={handleLogin}
+				>
+					{({ isSubmitting }) => (
+						<Form>
+							<div>
+								<label htmlFor="username">Username</label>
+								<br />
+								<Field
+									type="text"
+									id="username"
+									name="username"
+									validate={(value: string) => {
+										if (!value) {
+											return "Username is required.";
+										}
+									}}
+								/>
+								<ErrorMessage name="username" component="div" />
+							</div>
 
-						<ErrorMessage name="token" component="div" />
+							<div>
+								<label htmlFor="token">Token</label>
+								<br />
+								<Field
+									type="password"
+									id="token"
+									name="token"
+									validate={(value: string) => {
+										if (!value) {
+											return "Token is required.";
+										}
+									}}
+								/>
+								<ErrorMessage name="token" component="div" />
+							</div>
 
-						<Field type="checkbox" name="rememberMe" />
+							<div>
+								<label>
+									<Field type="checkbox" name="rememberMe" />
+									Remember Me
+								</label>
+							</div>
 
-						<button type="submit" disabled={isSubmitting}>
-							Login
-						</button>
-					</Form>
-				)}
-			</Formik>
-		</div>
+							<div>
+								<button type="submit" disabled={isSubmitting}>
+									Login
+								</button>
+							</div>
+						</Form>
+					)}
+				</Formik>
+
+				<p>
+					Your token is only used to communicate with the SpaceTraders API. If
+					you choose "Remember Me", your username and token will be stored in
+					LocalStorage.
+				</p>
+			</main>
+		</>
 	);
 }
