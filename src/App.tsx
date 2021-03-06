@@ -1,4 +1,5 @@
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { useGameStatus } from "./spacetraders-api/game";
 
 const queryClient = new QueryClient();
 
@@ -12,32 +13,18 @@ function App() {
 }
 
 function GameStatus() {
-  const { status, data, error } = useGameStatus();
+  const { isLoading, isError, data } = useGameStatus();
 
-  return status === "loading" ? (
+  return isLoading ? (
     <span>Loading...</span>
-  ) : status === "error" ? (
+  ) : isError ? (
     <span>
-      <strong>Error:</strong> {error?.status}
+      <strong>Error:</strong>
     </span>
   ) : (
     <span>
       <strong>Status:</strong> {data?.status}
     </span>
-  );
-}
-
-interface IGameStatusResponse {
-  status: string;
-}
-
-function useGameStatus() {
-  return useQuery<IGameStatusResponse, IGameStatusResponse>(
-    "game-status",
-    async () => {
-      const response = await fetch("https://api.spacetraders.io/game/status");
-      return await response.json();
-    }
   );
 }
 
