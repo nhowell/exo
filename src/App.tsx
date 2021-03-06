@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { useGameStatus } from "./spacetraders-api/game";
+import { useGameStatus } from "./spacetraders-api/game/useGameStatus";
 
 const queryClient = new QueryClient();
 
