@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { ILoginForm } from "../auth/Login";
+import { useCallback, useLayoutEffect, useState } from "react";
+import { queryClient } from "../App";
+import { ILoginForm } from "../layout/login/LoginForm";
 import {
 	removeAuthorizationHeader,
 	setAuthorizationHeader,
@@ -21,7 +22,7 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 
 	const [auth, setAuth] = useState<IAuthStorage | undefined>(localStorageAuth);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (localStorageAuth === undefined) {
 			return;
 		}
@@ -48,6 +49,7 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 	const handleLogout = useCallback(() => {
 		setAuth(undefined);
 		removeAuthorizationHeader();
+		queryClient.invalidateQueries();
 
 		if (localStorageAuth !== undefined) {
 			setLocalStorageAuth(undefined);

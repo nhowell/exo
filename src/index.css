@@ -1,14 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Play&display=swap");
+
+:root {
+	--primary-text-color: #f5efed;
+	--primary-color: #2292a4;
+	--secondary-color: #bdbf09;
+	--tertiary-color: #d96c06;
+	--primary-bg-color: #0f0a0a;
+	--secondary-bg-color: #575267;
+}
+
+html {
+	font-size: 10px;
+}
+
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+	font-family: "Play", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: #282c34;
-	color: white;
+	background-color: var(--primary-bg-color);
+	color: var(--primary-text-color);
 	padding: 20px;
-	text-align: center;
+	font-size: 1.3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Orbitron", "Play", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	font-weight: normal;
+	color: var(--primary-color);
 }
 
 code {

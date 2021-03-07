@@ -11,3 +11,8 @@ export function setAuthorizationHeader(token: string) {
 export function removeAuthorizationHeader() {
 	spaceTradersApi.defaults.headers.common["Authorization"] = undefined;
 }
+
+export interface IError {
+	code?: number;
+	message: string;
+}

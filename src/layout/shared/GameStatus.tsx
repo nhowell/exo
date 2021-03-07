@@ -1,13 +1,13 @@
-import { useGameStatus } from "./spacetraders-api/game/useGameStatus";
+import { useGameStatus } from "../../spacetraders-api/game/useGameStatus";
 
 export function GameStatus() {
 	const { isLoading, isError, data } = useGameStatus();
 
-	const serverStatus = () => {
+	const gameStatus = () => {
 		if (isLoading) {
 			return "...";
 		} else if (isError) {
-			return "Could not connect to server or server is offline.";
+			return "Could not connect to game server or server is offline.";
 		} else {
 			return data?.status ?? "Unknown";
 		}
@@ -15,7 +15,7 @@ export function GameStatus() {
 
 	return (
 		<p>
-			<strong>Server Status:</strong> {serverStatus()}
+			<strong>Game Status:</strong> {gameStatus()}
 		</p>
 	);
 }

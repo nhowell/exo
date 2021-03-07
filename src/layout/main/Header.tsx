@@ -1,5 +1,6 @@
-import { GameStatus } from "../GameStatus";
-import { Logout } from "../auth/Logout";
+import { GameStatus } from "../shared/GameStatus";
+import { Logo } from "../shared/Logo";
+import { Logout } from "./Logout";
 
 interface IOwnProps {
 	onLogout(): void;
@@ -8,7 +9,7 @@ interface IOwnProps {
 export function Header(props: IOwnProps) {
 	return (
 		<header>
-			<h1>SpaceTraders</h1>
+			<Logo size="normal" />
 
 			<GameStatus />
 

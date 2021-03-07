@@ -11,7 +11,7 @@ export function UserInfo() {
 			{isLoading ? (
 				"Loading..."
 			) : isError ? (
-				error?.error.message ?? "Failed to fetch user info."
+				error?.message ?? "Failed to fetch user info."
 			) : (
 				<>
 					<strong>Username:</strong> {data?.user.username}
