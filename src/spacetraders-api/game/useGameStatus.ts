@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import { GAME_QUERY_KEY } from ".";
 import { spaceTradersApi } from "..";
-import { useInterval } from "../../hooks/useInterval";
 
 export function useGameStatus() {
 	const query = useQuery<ISuccessResponse>(
@@ -9,10 +8,9 @@ export function useGameStatus() {
 		getGameStatus,
 		{
 			staleTime: 15_000,
+			refetchInterval: 15_000,
 		},
 	);
-
-	useInterval(query.refetch, document.hasFocus() ? 15_000 : null);
 
 	return query;
 }
