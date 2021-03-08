@@ -17,36 +17,60 @@ export interface IAuthStorage {
 type Login = (values: ILoginForm) => Promise<string | undefined>;
 type Logout = () => void;
 
-export function useAuth(): [Login, IUser | undefined, Logout] {
+export function useAuth(): [boolean, Login, IUser | undefined, Logout] {
 	const [localStorageAuth, setLocalStorageAuth] = useLocalStorage<
 		IAuthStorage | undefined
 	>(LocalStorageKey.Auth, undefined);
 
+	const [isAutoLoginLoading, setIsAutoLoginLoading] = useState<boolean>(
+		localStorageAuth !== undefined,
+	);
+
 	const [userInfo, setUserInfo] = useState<IUser>();
 
-	useLayoutEffect(() => {
-		if (localStorageAuth === undefined) {
-			return;
-		}
-
-		// Set the Authorization header from local storage when the first opens the app.
-		setAuthorizationHeader(localStorageAuth.token);
-	}, [localStorageAuth]);
-
-	const login = useCallback(
-		async (values: ILoginForm) => {
+	const setAuthorizationHeaderAndGetUserInfo = useCallback(
+		async (auth: IAuthStorage) => {
 			// We need to set the Authorization header before attempting to get the user info.
-			setAuthorizationHeader(values.token);
+			setAuthorizationHeader(auth.token);
 
 			try {
 				// If we can successfully get user info, it means the username and token are valid.
-				const userInfoResponse = await getUserInfo(values.username);
+				const userInfoResponse = await getUserInfo(auth.username);
 
 				setUserInfo(userInfoResponse.user);
 			} catch (error) {
 				// Since the username or token are invalid, we should remove the Authorization header.
 				removeAuthorizationHeader();
 
+				throw error;
+			}
+		},
+		[],
+	);
+
+	useLayoutEffect(() => {
+		async function asyncTask() {
+			if (localStorageAuth === undefined) {
+				return;
+			}
+
+			try {
+				await setAuthorizationHeaderAndGetUserInfo(localStorageAuth);
+			} catch {
+				// Don't do anything and let the app go to the login page.
+			}
+
+			setIsAutoLoginLoading(false);
+		}
+
+		asyncTask();
+	}, [localStorageAuth, setAuthorizationHeaderAndGetUserInfo]);
+
+	const login = useCallback(
+		async (values: ILoginForm): Promise<string | undefined> => {
+			try {
+				await setAuthorizationHeaderAndGetUserInfo(values);
+			} catch (error) {
 				// Return the error message to be displayed on the login form.
 				return error.message;
 			}
@@ -61,7 +85,7 @@ export function useAuth(): [Login, IUser | undefined, Logout] {
 				});
 			}
 		},
-		[setLocalStorageAuth],
+		[setAuthorizationHeaderAndGetUserInfo, setLocalStorageAuth],
 	);
 
 	const logout = useCallback(() => {
@@ -77,5 +101,5 @@ export function useAuth(): [Login, IUser | undefined, Logout] {
 		window.localStorage.clear();
 	}, [localStorageAuth, setLocalStorageAuth]);
 
-	return [login, userInfo, logout];
+	return [isAutoLoginLoading, login, userInfo, logout];
 }
