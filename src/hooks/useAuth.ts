@@ -33,6 +33,9 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 
 	const login = useCallback(
 		(values: ILoginForm) => {
+			// Ensure we start with a clean local storage when logging in.
+			window.localStorage.clear();
+
 			setAuth(values);
 			setAuthorizationHeader(values.token);
 
@@ -54,6 +57,9 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 		if (localStorageAuth !== undefined) {
 			setLocalStorageAuth(undefined);
 		}
+
+		// Clear any other items out of local storage.
+		window.localStorage.clear();
 	}, [localStorageAuth, setLocalStorageAuth]);
 
 	return [auth, login, logout];
