@@ -1,5 +1,10 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { IAuthStorage } from "../../hooks/useAuth";
+import {
+	removeAuthorizationHeader,
+	setAuthorizationHeader,
+} from "../../spacetraders-api";
+import { getUserInfo } from "../../spacetraders-api/users/useUserInfo";
 
 export interface ILoginForm extends IAuthStorage {
 	rememberMe: boolean;
@@ -16,11 +21,26 @@ interface IOwnProps {
 }
 
 export function LoginForm(props: IOwnProps) {
-	const handleLogin = (
+	const handleLogin = async (
 		values: ILoginForm,
-		{ setSubmitting }: FormikHelpers<ILoginForm>,
+		{ setStatus, setSubmitting }: FormikHelpers<ILoginForm>,
 	) => {
-		props.onLogin(values);
+		// Clear the status of any previous error message.
+		setStatus();
+
+		setAuthorizationHeader(values.token);
+		try {
+			// If we can successfully get user info, it means the username and token are valid.
+			await getUserInfo(values.username);
+
+			props.onLogin(values);
+		} catch (error) {
+			// The username or token are invalid.
+			removeAuthorizationHeader();
+
+			setStatus(error.message);
+		}
+
 		setSubmitting(false);
 	};
 
@@ -29,7 +49,7 @@ export function LoginForm(props: IOwnProps) {
 			<h1>Login</h1>
 
 			<Formik<ILoginForm> initialValues={initialValues} onSubmit={handleLogin}>
-				{({ isSubmitting }) => (
+				{({ isSubmitting, status }) => (
 					<Form>
 						<div>
 							<label htmlFor="username">Username</label>
@@ -69,6 +89,8 @@ export function LoginForm(props: IOwnProps) {
 								Remember Me
 							</label>
 						</div>
+
+						{status ? <div>{status}</div> : undefined}
 
 						<div>
 							<button type="submit" disabled={isSubmitting}>

@@ -9,7 +9,7 @@ export function useUserInfo(username: string) {
 	);
 }
 
-async function getUserInfo(username: string) {
+export async function getUserInfo(username: string) {
 	try {
 		const response = await spaceTradersApi.get<ISuccessResponse>(
 			`/users/${username}`,

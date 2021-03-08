@@ -31,7 +31,7 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 		setAuthorizationHeader(localStorageAuth.token);
 	}, [localStorageAuth]);
 
-	const handleLogin = useCallback(
+	const login = useCallback(
 		(values: ILoginForm) => {
 			setAuth(values);
 			setAuthorizationHeader(values.token);
@@ -46,7 +46,7 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 		[setLocalStorageAuth],
 	);
 
-	const handleLogout = useCallback(() => {
+	const logout = useCallback(() => {
 		setAuth(undefined);
 		removeAuthorizationHeader();
 		queryClient.invalidateQueries();
@@ -56,5 +56,5 @@ export function useAuth(): [IAuthStorage | undefined, Login, Logout] {
 		}
 	}, [localStorageAuth, setLocalStorageAuth]);
 
-	return [auth, handleLogin, handleLogout];
+	return [auth, login, logout];
 }
