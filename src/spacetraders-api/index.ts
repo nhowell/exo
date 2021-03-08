@@ -1,7 +1,13 @@
 import axios from "axios";
 
+const BASE_URL = "https://api.spacetraders.io";
+
+export const unauthenticatedSpaceTradersApi = axios.create({
+	baseURL: BASE_URL,
+});
+
 export const spaceTradersApi = axios.create({
-	baseURL: "https://api.spacetraders.io",
+	baseURL: BASE_URL,
 });
 
 export function setAuthorizationHeader(token: string) {

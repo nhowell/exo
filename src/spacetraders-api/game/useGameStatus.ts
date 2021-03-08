@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import { GAME_QUERY_KEY } from ".";
-import { spaceTradersApi } from "..";
+import { unauthenticatedSpaceTradersApi } from "..";
 
 export function useGameStatus() {
 	const query = useQuery<ISuccessResponse>(
@@ -16,7 +16,9 @@ export function useGameStatus() {
 }
 
 async function getGameStatus() {
-	const response = await spaceTradersApi.get<ISuccessResponse>("/game/status");
+	const response = await unauthenticatedSpaceTradersApi.get<ISuccessResponse>(
+		"/game/status",
+	);
 	return response.data;
 }
 

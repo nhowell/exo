@@ -1,12 +1,12 @@
 import { useMutation } from "react-query";
-import { spaceTradersApi } from "..";
+import { unauthenticatedSpaceTradersApi } from "..";
 
 export function useClaimUsernameAndGetToken() {
 	return useMutation(claimUsernameAndGetToken);
 }
 
 async function claimUsernameAndGetToken(username: string) {
-	const response = await spaceTradersApi.post<ISuccessResponse>(
+	const response = await unauthenticatedSpaceTradersApi.post<ISuccessResponse>(
 		`/users/${username}/token`,
 	);
 	return response.data;
