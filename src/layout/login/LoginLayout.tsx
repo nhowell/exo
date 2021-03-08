@@ -3,7 +3,7 @@ import { Logo } from "../shared/Logo";
 import { LoginForm, ILoginForm } from "./LoginForm";
 
 interface IOwnProps {
-	onLogin(values: ILoginForm): void;
+	onLogin(values: ILoginForm): Promise<string | undefined>;
 }
 
 export function LoginLayout(props: IOwnProps) {

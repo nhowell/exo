@@ -8,14 +8,14 @@ import { MainLayout } from "./layout/main/MainLayout";
 export const queryClient = new QueryClient();
 
 export function App() {
-	const [auth, login, logout] = useAuth();
+	const [login, userInfo, logout] = useAuth();
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			{auth === undefined ? (
+			{userInfo === undefined ? (
 				<LoginLayout onLogin={login} />
 			) : (
-				<CurrentUserProvider auth={auth}>
+				<CurrentUserProvider initialUserInfo={userInfo}>
 					<MainLayout onLogout={logout} />
 				</CurrentUserProvider>
 			)}

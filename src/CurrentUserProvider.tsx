@@ -1,26 +1,21 @@
-import React, { ReactNode, useMemo } from "react";
-import { IAuthStorage } from "./hooks/useAuth";
+import React, { ReactNode } from "react";
+import { IUser } from "./spacetraders-api/users/types";
 
 interface IOwnProps {
-	auth: IAuthStorage;
+	initialUserInfo: IUser;
 	children: ReactNode;
 }
 
-interface ICurrentUserContext {
-	username: string;
-}
-
-export const CurrentUserContext = React.createContext<ICurrentUserContext>({
+export const CurrentUserContext = React.createContext<IUser>({
 	username: "",
+	credits: 0,
+	loans: [],
+	ships: [],
 });
 
 export function CurrentUserProvider(props: IOwnProps) {
-	const currentUser: ICurrentUserContext = useMemo(() => {
-		return { username: props.auth.username };
-	}, [props.auth.username]);
-
 	return (
-		<CurrentUserContext.Provider value={currentUser}>
+		<CurrentUserContext.Provider value={props.initialUserInfo}>
 			{props.children}
 		</CurrentUserContext.Provider>
 	);
