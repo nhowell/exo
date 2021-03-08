@@ -12,9 +12,14 @@ export function useUserInfo(username: string) {
 }
 
 export async function getUserInfo(username: string) {
+	// Normally axios encodes things for us, but in the edge case that the
+	// username has a space at the end, axios trims off the space instead of
+	// encoding it. When we manually encode it we can avoid this.
+	const encodedUsername = encodeURIComponent(username);
+
 	try {
 		const response = await spaceTradersApi.get<ISuccessResponse>(
-			`/users/${username}`,
+			`/users/${encodedUsername}`,
 		);
 
 		return response.data;

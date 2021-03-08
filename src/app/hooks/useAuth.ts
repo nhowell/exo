@@ -4,9 +4,9 @@ import { ILoginForm } from "../layout/login/LoginForm";
 import {
 	removeAuthorizationHeader,
 	setAuthorizationHeader,
-} from "../spacetraders-api";
-import { IUser } from "../spacetraders-api/users/types";
-import { getUserInfo } from "../spacetraders-api/users/useUserInfo";
+} from "../../spacetraders-api";
+import { IUser } from "../../spacetraders-api/users/types";
+import { getUserInfo } from "../../spacetraders-api/users/useUserInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 
 export interface IAuthStorage {

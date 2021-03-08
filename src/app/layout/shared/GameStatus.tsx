@@ -1,4 +1,4 @@
-import { useGameStatus } from "../../spacetraders-api/game/useGameStatus";
+import { useGameStatus } from "../../../spacetraders-api/game/useGameStatus";
 
 export function GameStatus() {
 	const { isLoading, isError, data } = useGameStatus();
