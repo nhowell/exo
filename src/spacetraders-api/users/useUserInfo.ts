@@ -2,6 +2,8 @@ import { useQuery } from "react-query";
 import { USERS_QUERY_KEY } from ".";
 import { IError, spaceTradersApi } from "..";
 import { isAxiosError } from "../../utilities/isAxiosError";
+import { IFailureResponse } from "../types";
+import { IUser } from "./types";
 
 export function useUserInfo(username: string) {
 	return useQuery<ISuccessResponse, IError>([USERS_QUERY_KEY, "info"], () =>
@@ -33,21 +35,5 @@ export async function getUserInfo(username: string) {
 }
 
 interface ISuccessResponse {
-	user: ISuccessUserResponse;
-}
-
-interface ISuccessUserResponse {
-	username: string;
-	credits: number;
-	ships: unknown[];
-	loans: unknown[];
-}
-
-interface IFailureResponse {
-	error: IFailureErrorResponse;
-}
-
-interface IFailureErrorResponse {
-	code: number;
-	message: string;
+	user: IUser;
 }
