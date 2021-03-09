@@ -1,16 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Play&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Play:wght@400;700&display=swap");
 
 :root {
-	--primary-text-color: #f5efed;
-	--primary-color: #2292a4;
-	--secondary-color: #bdbf09;
-	--tertiary-color: #d96c06;
-	--primary-bg-color: #0f0a0a;
-	--secondary-bg-color: #575267;
+	--primary-text-color: #e7e7e7;
+	--muted-text-color: #aaa;
+	--primary-color: #007acc;
+	--secondary-color: #16825d;
+	--tertiary-color: #333;
+	--primary-bg-color: #1e1e1e;
+	--secondary-bg-color: #252526;
+	--tertiary-bg-color: #333;
 }
 
 html {
+	box-sizing: border-box;
 	font-size: 10px;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 body {
@@ -37,9 +46,64 @@ h6 {
 		"Helvetica Neue", sans-serif;
 	font-weight: normal;
 	color: var(--primary-color);
+	text-shadow: 1px 1px #000;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child,
+p:first-child {
+	margin-top: 0;
+}
+
+p:last-child {
+	margin-bottom: 0;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
+	background-color: rgba(0, 0, 0, 0.25);
+	border-radius: 3px;
+	padding: 1px 4px;
+}
+
+button {
+	background-color: var(--primary-color);
+	border: 0;
+	border-radius: 3px;
+	box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+	color: var(--primary-text-color);
+	padding: 6px 10px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+	background-color: #3c3c3c;
+	border: 1px solid #3c3c3c;
+	color: var(--primary-text-color);
+	padding: 4px;
+	border-radius: 3px;
+	width: 100%;
+	margin: 3px 0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+	border-color: var(--primary-color);
+	outline: 0;
+}
+
+input[type="checkbox"] {
+	margin: 3px 3px 13px 0;
+}
+
+label {
+	display: block;
+	margin-top: 10px;
 }

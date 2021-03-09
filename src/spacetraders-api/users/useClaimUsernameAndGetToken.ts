@@ -1,15 +1,25 @@
 import { useMutation } from "react-query";
 import { unauthenticatedSpaceTradersApi } from "..";
+import { isAxiosError } from "../../utilities/isAxiosError";
 
 export function useClaimUsernameAndGetToken() {
-	return useMutation(claimUsernameAndGetToken);
+	return useMutation<ISuccessResponse, string, string>(
+		claimUsernameAndGetToken,
+	);
 }
 
 async function claimUsernameAndGetToken(username: string) {
-	const response = await unauthenticatedSpaceTradersApi.post<ISuccessResponse>(
-		`/users/${username}/token`,
-	);
-	return response.data;
+	try {
+		const response = await unauthenticatedSpaceTradersApi.post<ISuccessResponse>(
+			`/users/${username}/token`,
+		);
+		return response.data;
+	} catch (error) {
+		if (isAxiosError<string>(error) && error.response?.data) {
+			return Promise.reject(error.response.data);
+		}
+		return Promise.reject("Something went wrong.");
+	}
 }
 
 interface ISuccessResponse {

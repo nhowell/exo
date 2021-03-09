@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { IAuthStorage } from "../../hooks/useAuth";
+import styles from "./LoginForm.module.css";
 
 export interface ILoginForm extends IAuthStorage {
 	rememberMe: boolean;
@@ -35,7 +36,6 @@ export function LoginForm(props: IOwnProps) {
 					<Form>
 						<div>
 							<label htmlFor="username">Username</label>
-							<br />
 							<Field
 								type="text"
 								id="username"
@@ -51,7 +51,6 @@ export function LoginForm(props: IOwnProps) {
 
 						<div>
 							<label htmlFor="token">Token</label>
-							<br />
 							<Field
 								type="password"
 								id="token"
@@ -83,7 +82,7 @@ export function LoginForm(props: IOwnProps) {
 				)}
 			</Formik>
 
-			<p>
+			<p className={styles.info}>
 				Your token is only used to communicate with the SpaceTraders API. If you
 				choose "Remember Me", your username and token will be stored in
 				LocalStorage.

@@ -1,8 +1,10 @@
 .logo {
 	font-size: 3rem;
+	line-height: 3rem;
 	margin: 0;
 }
 
 .large {
 	font-size: 4rem;
+	line-height: 4rem;
 }
