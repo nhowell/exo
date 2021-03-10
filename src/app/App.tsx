@@ -4,6 +4,7 @@ import { LoginLayout } from "./layout/login/LoginLayout";
 import { CurrentUserProvider } from "./CurrentUserProvider";
 import { useAuth } from "./hooks/useAuth";
 import { MainLayout } from "./layout/main/MainLayout";
+import { GameLoading } from "./common/loading/GameLoading";
 
 export const queryClient = new QueryClient();
 
@@ -13,7 +14,7 @@ export function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			{isAutoLoginLoading ? (
-				"Loading..."
+				<GameLoading />
 			) : userInfo === undefined ? (
 				<LoginLayout onLogin={login} />
 			) : (

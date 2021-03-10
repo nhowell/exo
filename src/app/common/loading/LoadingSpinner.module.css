@@ -1,0 +1,8 @@
+.loader {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.loader path {
+	fill: var(--primary-text-color);
+}
