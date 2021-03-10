@@ -13,7 +13,7 @@
 
 html {
 	box-sizing: border-box;
-	font-size: 10px;
+	font-size: 62.5%;
 }
 
 *,
@@ -31,8 +31,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background-color: var(--primary-bg-color);
 	color: var(--primary-text-color);
-	padding: 20px;
-	font-size: 1.3rem;
+	padding: 2rem;
+	font-size: 1.6rem;
 }
 
 h1,
@@ -46,7 +46,7 @@ h6 {
 		"Helvetica Neue", sans-serif;
 	font-weight: normal;
 	color: var(--primary-color);
-	text-shadow: 1px 1px #000;
+	text-shadow: 0.1rem 0.1rem #000;
 }
 
 h1:first-child,
@@ -67,43 +67,56 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 	background-color: rgba(0, 0, 0, 0.25);
-	border-radius: 3px;
-	padding: 1px 4px;
+	border-radius: 0.3rem;
+	padding: 0.1rem 0.4rem;
 }
 
 button {
 	background-color: var(--primary-color);
 	border: 0;
-	border-radius: 3px;
-	box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+	border-radius: 0.3rem;
+	box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
 	color: var(--primary-text-color);
-	padding: 6px 10px;
+	padding: 0.6rem 1rem;
 	cursor: pointer;
-	margin-top: 10px;
+	margin-top: 1rem;
+	font-size: 1.6rem;
+	line-height: 2.4rem;
 }
 
+input[type="number"],
+input[type="password"],
+input[type="search"],
 input[type="text"],
-input[type="password"] {
+textarea {
+	font-size: 1.6rem;
 	background-color: #3c3c3c;
-	border: 1px solid #3c3c3c;
+	border: 0.1rem solid #3c3c3c;
 	color: var(--primary-text-color);
-	padding: 4px;
-	border-radius: 3px;
+	border-radius: 0.3rem;
 	width: 100%;
-	margin: 3px 0;
+	margin: 0.3rem 0;
+	padding: 0.6rem 0.6rem;
 }
 
+select:focus {
+	font-size: 1.6rem;
+}
+
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
 input[type="text"]:focus,
-input[type="password"]:focus {
+textarea {
 	border-color: var(--primary-color);
 	outline: 0;
 }
 
 input[type="checkbox"] {
-	margin: 3px 3px 13px 0;
+	margin: 0.3rem 0.3rem 1.3rem 0;
 }
 
 label {
 	display: block;
-	margin-top: 10px;
+	margin-top: 1rem;
 }

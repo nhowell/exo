@@ -2,13 +2,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	max-width: 800px;
+	max-width: 72rem;
 	margin: 0 auto;
 }
 
 .container header {
 	text-align: center;
-	margin-bottom: 10px;
+	margin-bottom: 1rem;
 }
 
 .container main {
@@ -20,9 +20,9 @@
 
 .tile {
 	background-color: var(--secondary-bg-color);
-	margin: 10px;
-	padding: 10px 15px 15px;
-	width: 380px;
-	border-radius: 5px;
-	box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
+	margin: 1rem;
+	padding: 1rem 1.5rem 1.5rem;
+	width: 34rem;
+	border-radius: 0.5rem;
+	box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
 }
