@@ -35,9 +35,9 @@ export function useAuth(): [boolean, Login, IUser | undefined, Logout] {
 
 			try {
 				// If we can successfully get user info, it means the username and token are valid.
-				const userInfoResponse = await getUserInfo(auth.username);
+				const userInfo = await getUserInfo(auth.username);
 
-				setUserInfo(userInfoResponse.user);
+				setUserInfo(userInfo);
 			} catch (error) {
 				// Since the username or token are invalid, we should remove the Authorization header.
 				removeAuthorizationHeader();

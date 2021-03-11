@@ -10,7 +10,7 @@ export function GameStatus() {
 		} else if (isError) {
 			return "Could not connect to game server or server is offline.";
 		} else {
-			return data?.status ?? "Unknown";
+			return data ?? "Unknown";
 		}
 	};
 

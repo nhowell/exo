@@ -22,7 +22,7 @@ export function CurrentUserProvider(props: IOwnProps) {
 
 	return (
 		<CurrentUserContext.Provider
-			value={userInfoResult.data?.user ?? props.initialUserInfo}
+			value={userInfoResult.data ?? props.initialUserInfo}
 		>
 			{props.children}
 		</CurrentUserContext.Provider>

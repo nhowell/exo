@@ -1,14 +1,14 @@
 import { useQuery } from "react-query";
 import { USERS_QUERY_KEY } from ".";
-import { IError, spaceTradersApi } from "..";
+import { spaceTradersApi } from "..";
 import { IUser } from "./types";
 
 export function useUserInfo(username: string, initialData?: IUser) {
-	return useQuery<ISuccessResponse, IError>(
+	return useQuery<IUser, string>(
 		[USERS_QUERY_KEY, "info"],
 		() => getUserInfo(username),
 		{
-			initialData: initialData ? { user: initialData } : undefined,
+			initialData: initialData,
 			refetchOnMount: initialData === undefined,
 		},
 	);
@@ -24,7 +24,7 @@ export async function getUserInfo(username: string) {
 		`/users/${encodedUsername}`,
 	);
 
-	return response.data;
+	return response.data.user;
 }
 
 interface ISuccessResponse {

@@ -3,7 +3,7 @@ import { GAME_QUERY_KEY } from ".";
 import { unauthenticatedSpaceTradersApi } from "..";
 
 export function useGameStatus() {
-	const query = useQuery<ISuccessResponse>(
+	const query = useQuery<string, string>(
 		[GAME_QUERY_KEY, "status"],
 		getGameStatus,
 		{
@@ -19,7 +19,7 @@ async function getGameStatus() {
 	const response = await unauthenticatedSpaceTradersApi.get<ISuccessResponse>(
 		"/game/status",
 	);
-	return response.data;
+	return response.data.status;
 }
 
 interface ISuccessResponse {
