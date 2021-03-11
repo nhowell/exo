@@ -1,6 +1,6 @@
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { UserInfo } from "../../UserInfo";
+import { Home } from "../../home/Home";
 
 interface IOwnProps {
 	onLogout(): void;
@@ -12,7 +12,7 @@ export function MainLayout(props: IOwnProps) {
 			<Header onLogout={props.onLogout} />
 
 			<Content>
-				<UserInfo />
+				<Home />
 			</Content>
 		</>
 	);

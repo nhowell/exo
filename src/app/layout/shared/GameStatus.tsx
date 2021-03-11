@@ -2,7 +2,7 @@ import { useGameStatus } from "../../../spacetraders-api/game/getGameStatus";
 import { LoadingSpinner } from "../../common/loading/LoadingSpinner";
 
 export function GameStatus() {
-	const { isLoading, isError, data } = useGameStatus();
+	const { isLoading, isError, data: status } = useGameStatus();
 
 	const gameStatus = () => {
 		if (isLoading) {
@@ -10,7 +10,7 @@ export function GameStatus() {
 		} else if (isError) {
 			return "Could not connect to game server or server is offline.";
 		} else {
-			return data ?? "Unknown";
+			return status ?? "Unknown";
 		}
 	};
 
