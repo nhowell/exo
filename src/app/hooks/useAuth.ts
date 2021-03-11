@@ -6,7 +6,7 @@ import {
 	setAuthorizationHeader,
 } from "../../spacetraders-api";
 import { IUser } from "../../spacetraders-api/users/types";
-import { getUserInfo } from "../../spacetraders-api/users/useUserInfo";
+import { getUserInfo } from "../../spacetraders-api/users/getUserInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 
 export interface IAuthStorage {

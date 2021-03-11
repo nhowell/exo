@@ -1,4 +1,4 @@
-import { useGameStatus } from "../../../spacetraders-api/game/useGameStatus";
+import { useGameStatus } from "../../../spacetraders-api/game/getGameStatus";
 import { LoadingSpinner } from "../../common/loading/LoadingSpinner";
 
 export function GameStatus() {

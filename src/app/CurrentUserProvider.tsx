@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { IUser } from "../spacetraders-api/users/types";
-import { useUserInfo } from "../spacetraders-api/users/useUserInfo";
+import { useUserInfo } from "../spacetraders-api/users/getUserInfo";
 
 interface IOwnProps {
 	initialUserInfo: IUser;

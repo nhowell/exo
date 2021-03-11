@@ -1,6 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
-import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/users/useClaimUsernameAndGetToken";
+import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/users/claimUsernameAndGetToken";
 import { IAuthStorage } from "../../hooks/useAuth";
 import styles from "./RegisterForm.module.css";
 
