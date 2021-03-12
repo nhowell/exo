@@ -1,3 +1,4 @@
+import { numberFormat } from "../../helpers/numberFormat";
 import { IAvailableLoan } from "../../spacetraders-api/loans/types";
 import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
 import styles from "./AvailableLoan.module.css";
@@ -18,7 +19,7 @@ export function AvailableLoan(props: IOwnProps) {
 			<p>
 				<strong>Type:</strong> {props.loan.type}
 				<br />
-				<strong>Amount:</strong> {props.loan.amount}
+				<strong>Amount:</strong> {numberFormat(props.loan.amount)} Credits
 				<br />
 				<strong>Rate:</strong> {props.loan.rate}%
 				<br />
@@ -35,7 +36,7 @@ export function AvailableLoan(props: IOwnProps) {
 				onClick={handleClick}
 				disabled={acceptLoan.isLoading}
 			>
-				Accept Loan
+				Accept loan
 			</button>
 		</div>
 	);

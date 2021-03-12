@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { numberFormat } from "../helpers/numberFormat";
 import { CurrentUserContext } from "./CurrentUserProvider";
 
 export function UserInfo() {
@@ -10,9 +11,7 @@ export function UserInfo() {
 			<p>
 				<strong>Username:</strong> {currentUser.username}
 				<br />
-				<strong>Credits:</strong> {currentUser.credits}
-				<br />
-				<strong>Loans:</strong> {currentUser.loans.length}
+				<strong>Credits:</strong> {numberFormat(currentUser.credits)}
 				<br />
 				<strong>Ships:</strong> {currentUser.ships.length}
 			</p>
