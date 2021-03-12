@@ -3,8 +3,10 @@ import { LOANS_QUERY_KEY } from ".";
 import { spaceTradersApi } from "..";
 import { IAvailableLoan } from "./types";
 
+export const getAvailableLoansQueryKey = LOANS_QUERY_KEY;
+
 export function useAvailableLoans() {
-	return useQuery<IAvailableLoan[], string>([LOANS_QUERY_KEY], () =>
+	return useQuery<IAvailableLoan[], string>(getAvailableLoansQueryKey, () =>
 		getAvailableLoans(),
 	);
 }

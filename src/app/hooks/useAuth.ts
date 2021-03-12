@@ -9,7 +9,7 @@ import { IUser } from "../../spacetraders-api/users/types";
 import { getUserInfo } from "../../spacetraders-api/users/getUserInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 
-export interface IAuthStorage {
+export interface IAuth {
 	username: string;
 	token: string;
 }
@@ -19,7 +19,7 @@ type Logout = () => void;
 
 export function useAuth(): [boolean, Login, IUser | undefined, Logout] {
 	const [localStorageAuth, setLocalStorageAuth] = useLocalStorage<
-		IAuthStorage | undefined
+		IAuth | undefined
 	>(LocalStorageKey.Auth, undefined);
 
 	const [isAutoLoginLoading, setIsAutoLoginLoading] = useState<boolean>(
@@ -29,13 +29,13 @@ export function useAuth(): [boolean, Login, IUser | undefined, Logout] {
 	const [userInfo, setUserInfo] = useState<IUser>();
 
 	const setAuthorizationHeaderAndGetUserInfo = useCallback(
-		async (auth: IAuthStorage) => {
+		async (auth: IAuth) => {
 			// We need to set the Authorization header before attempting to get the user info.
-			setAuthorizationHeader(auth.token);
+			setAuthorizationHeader(auth);
 
 			try {
 				// If we can successfully get user info, it means the username and token are valid.
-				const userInfo = await getUserInfo(auth.username);
+				const userInfo = await getUserInfo();
 
 				setUserInfo(userInfo);
 			} catch (error) {
@@ -91,7 +91,7 @@ export function useAuth(): [boolean, Login, IUser | undefined, Logout] {
 	const logout = useCallback(() => {
 		setUserInfo(undefined);
 		removeAuthorizationHeader();
-		queryClient.invalidateQueries();
+		queryClient.clear();
 
 		if (localStorageAuth !== undefined) {
 			setLocalStorageAuth(undefined);

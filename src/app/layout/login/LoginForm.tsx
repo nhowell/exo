@@ -1,8 +1,8 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { IAuthStorage } from "../../hooks/useAuth";
+import { IAuth } from "../../hooks/useAuth";
 import styles from "./LoginForm.module.css";
 
-export interface ILoginForm extends IAuthStorage {
+export interface ILoginForm extends IAuth {
 	rememberMe: boolean;
 }
 

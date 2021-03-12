@@ -1,10 +1,11 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/users/claimUsernameAndGetToken";
-import { IAuthStorage } from "../../hooks/useAuth";
+import { IAuth } from "../../hooks/useAuth";
+import { ILoginForm } from "./LoginForm";
 import styles from "./RegisterForm.module.css";
 
-export interface IRegisterForm extends Pick<IAuthStorage, "username"> {}
+export interface IRegisterForm extends Pick<ILoginForm, "username"> {}
 
 const initialValues: IRegisterForm = {
 	username: "",
@@ -13,18 +14,15 @@ const initialValues: IRegisterForm = {
 export function RegisterForm() {
 	const register = useClaimUsernameAndGetToken();
 
-	const [auth, setAuth] = useState<IAuthStorage>();
+	const [auth, setAuth] = useState<IAuth>();
 
 	const handleRegister = async (
 		values: IRegisterForm,
-		{ setStatus, setSubmitting }: FormikHelpers<IRegisterForm>,
+		{ setSubmitting }: FormikHelpers<IRegisterForm>,
 	) => {
 		register.mutate(values.username, {
 			onSuccess: (data) => {
 				setAuth({ username: values.username, token: data.token });
-			},
-			onError: (error) => {
-				setStatus(error);
 			},
 			onSettled: () => {
 				setSubmitting(false);
@@ -54,7 +52,7 @@ export function RegisterForm() {
 					initialValues={initialValues}
 					onSubmit={handleRegister}
 				>
-					{({ status, isSubmitting }) => (
+					{({ isSubmitting }) => (
 						<Form>
 							<div>
 								<label htmlFor="username">Username</label>
@@ -71,7 +69,7 @@ export function RegisterForm() {
 								<ErrorMessage name="username" component="div" />
 							</div>
 
-							{status ? <div>{status}</div> : undefined}
+							{register.error ? <div>{register.error}</div> : undefined}
 
 							<div>
 								<button type="submit" disabled={isSubmitting}>

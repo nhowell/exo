@@ -1,4 +1,5 @@
 import { useAvailableLoans } from "../../spacetraders-api/loans/getAvailableLoans";
+import { AvailableLoan } from "./AvailableLoan";
 
 export function AvailableLoans() {
 	const {
@@ -13,25 +14,12 @@ export function AvailableLoans() {
 			<h1>Available Loans</h1>
 			{isLoading ? (
 				<p>Loading...</p>
-			) : isError ? (
-				<p>{error}</p>
+			) : isError || availableLoans === undefined ? (
+				<p>{error ?? "Something went wrong."}</p>
 			) : (
-				availableLoans?.map((availableLoan, i) => {
-					return (
-						<p key={i}>
-							<strong>Type:</strong> {availableLoan.type}
-							<br />
-							<strong>Amount:</strong> {availableLoan.amount}
-							<br />
-							<strong>Rate:</strong> {availableLoan.rate}
-							<br />
-							<strong>Term:</strong> {availableLoan.termInDays} days
-							<br />
-							<strong>Collateral Required:</strong>{" "}
-							{availableLoan.collateralRequired ? "Yes" : "No"}
-						</p>
-					);
-				})
+				availableLoans.map((loan) => (
+					<AvailableLoan key={loan.type} loan={loan} />
+				))
 			)}
 		</>
 	);

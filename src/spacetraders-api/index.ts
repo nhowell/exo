@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IAuth } from "../app/hooks/useAuth";
 import { isAxiosError } from "../utilities/isAxiosError";
 import { IFailureResponse } from "./types";
 
@@ -16,6 +17,8 @@ unauthenticatedSpaceTradersApi.interceptors.response.use(
 export const spaceTradersApi = axios.create({
 	baseURL: BASE_URL,
 });
+
+export let spaceTradersApiUsername = "";
 
 spaceTradersApi.interceptors.response.use(undefined, errorInterceptor);
 
@@ -41,11 +44,18 @@ function isStandardFailureResponse(
 	);
 }
 
-export function setAuthorizationHeader(token: string) {
-	spaceTradersApi.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+export function setAuthorizationHeader(auth: IAuth) {
+	// Ideally, the endpoints should not require the username as the token
+	// should be enough to identify the user...
+	spaceTradersApiUsername = auth.username;
+
+	spaceTradersApi.defaults.headers.common[
+		"Authorization"
+	] = `Bearer ${auth.token}`;
 }
 
 export function removeAuthorizationHeader() {
+	spaceTradersApiUsername = "";
 	spaceTradersApi.defaults.headers.common["Authorization"] = undefined;
 }
 

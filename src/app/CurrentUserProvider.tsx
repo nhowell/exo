@@ -15,10 +15,7 @@ export const CurrentUserContext = React.createContext<IUser>({
 });
 
 export function CurrentUserProvider(props: IOwnProps) {
-	const userInfoResult = useUserInfo(
-		props.initialUserInfo.username,
-		props.initialUserInfo,
-	);
+	const userInfoResult = useUserInfo(props.initialUserInfo);
 
 	return (
 		<CurrentUserContext.Provider

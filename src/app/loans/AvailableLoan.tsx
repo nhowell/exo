@@ -1,0 +1,42 @@
+import { IAvailableLoan } from "../../spacetraders-api/loans/types";
+import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
+import styles from "./AvailableLoan.module.css";
+
+interface IOwnProps {
+	loan: IAvailableLoan;
+}
+
+export function AvailableLoan(props: IOwnProps) {
+	const acceptLoan = useAcceptLoan();
+
+	const handleClick = () => {
+		acceptLoan.mutate(props.loan.type);
+	};
+
+	return (
+		<div className={styles.availableLoan}>
+			<p>
+				<strong>Type:</strong> {props.loan.type}
+				<br />
+				<strong>Amount:</strong> {props.loan.amount}
+				<br />
+				<strong>Rate:</strong> {props.loan.rate}%
+				<br />
+				<strong>Term:</strong> {props.loan.termInDays} days
+				<br />
+				<strong>Collateral Required:</strong>{" "}
+				{props.loan.collateralRequired ? "Yes" : "No"}
+			</p>
+
+			{acceptLoan.error ? <p>{acceptLoan.error}</p> : undefined}
+
+			<button
+				type="button"
+				onClick={handleClick}
+				disabled={acceptLoan.isLoading}
+			>
+				Accept Loan
+			</button>
+		</div>
+	);
+}
