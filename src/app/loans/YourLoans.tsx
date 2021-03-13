@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { useUserInfo } from "../../spacetraders-api/users/getUserInfo";
+import { CurrentUserContext } from "../CurrentUserProvider";
 import { YourLoan } from "./YourLoan";
 
 export function YourLoans() {
-	const { isLoading, isError, error, data: userInfo } = useUserInfo();
+	const currentUser = useContext(CurrentUserContext);
+	const { isLoading, isError, error, data: userInfo } = useUserInfo(
+		currentUser.username,
+	);
 
 	return (
 		<>

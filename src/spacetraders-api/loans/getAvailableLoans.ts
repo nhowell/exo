@@ -3,7 +3,7 @@ import { LOANS_QUERY_KEY } from ".";
 import { spaceTradersApi } from "..";
 import { IAvailableLoan } from "./types";
 
-export const getAvailableLoansQueryKey = LOANS_QUERY_KEY;
+const getAvailableLoansQueryKey = LOANS_QUERY_KEY;
 
 export function useAvailableLoans() {
 	return useQuery<IAvailableLoan[], string>(getAvailableLoansQueryKey, () =>

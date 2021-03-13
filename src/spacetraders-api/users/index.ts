@@ -1,7 +1,5 @@
-import { spaceTradersApiUsername } from "..";
-
 export const USERS_QUERY_KEY = "users";
 
-export function currentUserPath() {
-	return `/users/${spaceTradersApiUsername}`;
+export function currentUserPath(username: string) {
+	return `/users/${username}`;
 }

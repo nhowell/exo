@@ -1,15 +1,11 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { IAuth } from "../../hooks/useAuth";
-import styles from "./LoginForm.module.css";
 
-export interface ILoginForm extends IAuth {
-	rememberMe: boolean;
-}
+export interface ILoginForm extends IAuth {}
 
 const initialValues: ILoginForm = {
 	username: "",
 	token: "",
-	rememberMe: false,
 };
 
 interface IOwnProps {
@@ -64,13 +60,6 @@ export function LoginForm(props: IOwnProps) {
 							<ErrorMessage name="token" component="div" />
 						</div>
 
-						<div>
-							<label>
-								<Field type="checkbox" name="rememberMe" />
-								Remember Me
-							</label>
-						</div>
-
 						{status ? <div>{status}</div> : undefined}
 
 						<div>
@@ -81,12 +70,6 @@ export function LoginForm(props: IOwnProps) {
 					</Form>
 				)}
 			</Formik>
-
-			<p className={styles.info}>
-				Your token is only used to communicate with the SpaceTraders API. If you
-				choose "Remember Me", your username and token will be stored in
-				LocalStorage.
-			</p>
 		</>
 	);
 }

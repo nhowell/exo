@@ -1,26 +1,19 @@
 import React, { ReactNode } from "react";
-import { IUser } from "../spacetraders-api/users/types";
-import { useUserInfo } from "../spacetraders-api/users/getUserInfo";
+import { ICurrentUser } from "./hooks/useAuth";
 
 interface IOwnProps {
-	initialUserInfo: IUser;
+	currentUser: ICurrentUser;
 	children: ReactNode;
 }
 
-export const CurrentUserContext = React.createContext<IUser>({
+export const CurrentUserContext = React.createContext<ICurrentUser>({
 	username: "",
-	credits: 0,
-	loans: [],
-	ships: [],
+	otherUsernames: [],
 });
 
 export function CurrentUserProvider(props: IOwnProps) {
-	const userInfoResult = useUserInfo(props.initialUserInfo);
-
 	return (
-		<CurrentUserContext.Provider
-			value={userInfoResult.data ?? props.initialUserInfo}
-		>
+		<CurrentUserContext.Provider value={props.currentUser}>
 			{props.children}
 		</CurrentUserContext.Provider>
 	);

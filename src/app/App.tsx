@@ -1,24 +1,23 @@
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { LoginLayout } from "./layout/login/LoginLayout";
 import { CurrentUserProvider } from "./CurrentUserProvider";
 import { useAuth } from "./hooks/useAuth";
 import { MainLayout } from "./layout/main/MainLayout";
 import { GameLoading } from "./common/loading/GameLoading";
-
-export const queryClient = new QueryClient();
+import { spaceTradersQueryClient } from "../spacetraders-api";
 
 export function App() {
-	const [isAutoLoginLoading, login, userInfo, logout] = useAuth();
+	const [isAutoLoginLoading, login, currentUser, logout] = useAuth();
 
 	return (
-		<QueryClientProvider client={queryClient}>
+		<QueryClientProvider client={spaceTradersQueryClient}>
 			{isAutoLoginLoading ? (
 				<GameLoading />
-			) : userInfo === undefined ? (
+			) : currentUser === undefined ? (
 				<LoginLayout onLogin={login} />
 			) : (
-				<CurrentUserProvider initialUserInfo={userInfo}>
+				<CurrentUserProvider currentUser={currentUser}>
 					<MainLayout onLogout={logout} />
 				</CurrentUserProvider>
 			)}
