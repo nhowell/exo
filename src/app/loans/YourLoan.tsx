@@ -1,5 +1,6 @@
 import { numberFormat } from "../../helpers/numberFormat";
 import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
+import { LoanStatus } from "../../spacetraders-api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/users/types";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import styles from "./AvailableLoan.module.css";
@@ -34,13 +35,15 @@ export function YourLoan(props: IOwnProps) {
 
 			{payOffLoan.error ? <p>{payOffLoan.error}</p> : undefined}
 
-			<button
-				type="button"
-				onClick={handleClick}
-				disabled={payOffLoan.isLoading}
-			>
-				Pay off loan
-			</button>
+			{props.loan.status === LoanStatus.Paid ? undefined : (
+				<button
+					type="button"
+					onClick={handleClick}
+					disabled={payOffLoan.isLoading}
+				>
+					Pay off loan
+				</button>
+			)}
 		</div>
 	);
 }

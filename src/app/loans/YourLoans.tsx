@@ -14,7 +14,7 @@ export function YourLoans() {
 			) : userInfo.loans.length === 0 ? (
 				<p>You don't have any loans yet.</p>
 			) : (
-				userInfo.loans.map((loan) => <YourLoan key={loan.type} loan={loan} />)
+				userInfo.loans.map((loan) => <YourLoan key={loan.id} loan={loan} />)
 			)}
 		</>
 	);
