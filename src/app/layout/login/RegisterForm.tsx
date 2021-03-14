@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/users/claimUsernameAndGetToken";
-import { IAuth } from "../../hooks/useAuth";
+import { IUserCredentials } from "../../hooks/useProvideAuth";
 import { ILoginForm } from "./LoginForm";
 import styles from "./RegisterForm.module.css";
 
@@ -14,7 +14,7 @@ const initialValues: IRegisterForm = {
 export function RegisterForm() {
 	const register = useClaimUsernameAndGetToken();
 
-	const [auth, setAuth] = useState<IAuth>();
+	const [auth, setAuth] = useState<IUserCredentials>();
 
 	const handleRegister = async (
 		values: IRegisterForm,

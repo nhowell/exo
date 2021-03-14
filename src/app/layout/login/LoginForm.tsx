@@ -1,24 +1,23 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
-import { IAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
+import { IUserCredentials } from "../../hooks/useProvideAuth";
 
-export interface ILoginForm extends IAuth {}
+export interface ILoginForm extends IUserCredentials {}
 
 const initialValues: ILoginForm = {
 	username: "",
 	token: "",
 };
 
-interface IOwnProps {
-	onLogin(values: ILoginForm): Promise<string | undefined>;
-}
+export function LoginForm() {
+	const auth = useAuth();
 
-export function LoginForm(props: IOwnProps) {
 	const handleLogin = async (
 		values: ILoginForm,
 		{ setStatus, setSubmitting }: FormikHelpers<ILoginForm>,
 	) => {
 		setStatus(undefined);
-		const errorMessage = await props.onLogin(values);
+		const errorMessage = await auth.login(values);
 		setStatus(errorMessage);
 		setSubmitting(false);
 	};

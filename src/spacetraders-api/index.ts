@@ -1,6 +1,6 @@
 import axios from "axios";
 import { QueryClient } from "react-query";
-import { IAuth } from "../app/hooks/useAuth";
+import { IUserCredentials } from "../app/hooks/useProvideAuth";
 import { isAxiosError } from "../utilities/isAxiosError";
 import { IFailureResponse } from "./types";
 
@@ -45,7 +45,7 @@ function isStandardFailureResponse(
 	);
 }
 
-export function setAuthorizationHeader(auth: IAuth) {
+export function setAuthorizationHeader(auth: IUserCredentials) {
 	spaceTradersApi.defaults.headers.common[
 		"Authorization"
 	] = `Bearer ${auth.token}`;

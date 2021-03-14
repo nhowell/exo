@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { useUserInfo } from "../../spacetraders-api/users/getUserInfo";
-import { CurrentUserContext } from "../CurrentUserProvider";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 import { YourLoan } from "./YourLoan";
 
 export function YourLoans() {
-	const currentUser = useContext(CurrentUserContext);
+	const currentUser = useCurrentUser();
 	const { isLoading, isError, error, data: userInfo } = useUserInfo(
 		currentUser.username,
 	);

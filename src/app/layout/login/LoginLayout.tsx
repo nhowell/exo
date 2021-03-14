@@ -1,14 +1,10 @@
 import { GameStatus } from "../shared/GameStatus";
 import { Logo } from "../shared/Logo";
-import { LoginForm, ILoginForm } from "./LoginForm";
+import { LoginForm } from "./LoginForm";
 import styles from "./LoginLayout.module.css";
 import { RegisterForm } from "./RegisterForm";
 
-interface IOwnProps {
-	onLogin(values: ILoginForm): Promise<string | undefined>;
-}
-
-export function LoginLayout(props: IOwnProps) {
+export function LoginLayout() {
 	return (
 		<div className={styles.container}>
 			<header>
@@ -19,7 +15,7 @@ export function LoginLayout(props: IOwnProps) {
 
 			<main>
 				<div className={styles.tile}>
-					<LoginForm onLogin={props.onLogin} />
+					<LoginForm />
 				</div>
 				<div className={styles.tile}>
 					<RegisterForm />

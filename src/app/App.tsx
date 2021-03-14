@@ -1,26 +1,40 @@
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { LoginLayout } from "./layout/login/LoginLayout";
-import { CurrentUserProvider } from "./CurrentUserProvider";
-import { useAuth } from "./hooks/useAuth";
 import { MainLayout } from "./layout/main/MainLayout";
-import { GameLoading } from "./common/loading/GameLoading";
 import { spaceTradersQueryClient } from "../spacetraders-api";
+import { AuthProvider } from "./AuthProvider";
+import { loginPath, routes } from "./routes";
+import { PrivateRoute } from "./PrivateRoute";
+import { NotFound } from "./NotFound";
 
 export function App() {
-	const [isAutoLoginLoading, login, currentUser, logout] = useAuth();
-
 	return (
 		<QueryClientProvider client={spaceTradersQueryClient}>
-			{isAutoLoginLoading ? (
-				<GameLoading />
-			) : currentUser === undefined ? (
-				<LoginLayout onLogin={login} />
-			) : (
-				<CurrentUserProvider currentUser={currentUser}>
-					<MainLayout onLogout={logout} />
-				</CurrentUserProvider>
-			)}
+			<BrowserRouter>
+				<AuthProvider>
+					<Switch>
+						<Route exact path={loginPath}>
+							<LoginLayout />
+						</Route>
+						<PrivateRoute path="*">
+							<MainLayout>
+								<Switch>
+									{routes.map((route) => (
+										<Route key={route.path} path={route.path} exact>
+											<route.component />
+										</Route>
+									))}
+									<Route path="*">
+										<NotFound />
+									</Route>
+								</Switch>
+							</MainLayout>
+						</PrivateRoute>
+					</Switch>
+				</AuthProvider>
+			</BrowserRouter>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
 	);

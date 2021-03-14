@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { numberFormat } from "../../helpers/numberFormat";
 import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
 import { IUserLoan } from "../../spacetraders-api/users/types";
-import { CurrentUserContext } from "../CurrentUserProvider";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 import styles from "./AvailableLoan.module.css";
 
 interface IOwnProps {
@@ -10,7 +9,7 @@ interface IOwnProps {
 }
 
 export function YourLoan(props: IOwnProps) {
-	const currentUser = useContext(CurrentUserContext);
+	const currentUser = useCurrentUser();
 	const payOffLoan = usePayOffLoan();
 
 	const handleClick = () => {

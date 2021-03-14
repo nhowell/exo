@@ -1,19 +1,17 @@
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { Home } from "../../home/Home";
+import { ReactNode } from "react";
 
 interface IOwnProps {
-	onLogout(): void;
+	children: ReactNode;
 }
 
 export function MainLayout(props: IOwnProps) {
 	return (
 		<>
-			<Header onLogout={props.onLogout} />
+			<Header />
 
-			<Content>
-				<Home />
-			</Content>
+			<Content>{props.children}</Content>
 		</>
 	);
 }
