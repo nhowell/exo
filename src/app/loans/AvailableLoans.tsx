@@ -2,6 +2,7 @@ import { useAvailableLoans } from "../../spacetraders-api/loans/getAvailableLoan
 import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableLoan } from "./AvailableLoan";
 import { Tile } from "../common/tiles/Tile";
+import { t } from "../../helpers/translate";
 
 export function AvailableLoans() {
 	const {
@@ -13,11 +14,13 @@ export function AvailableLoans() {
 
 	return (
 		<>
-			<h1>Available Loans</h1>
+			<h1>{t("Available Loans")}</h1>
 			{isLoading ? (
-				<p>Loading...</p>
+				<p>{t("Loading...")}</p>
 			) : isError || availableLoans === undefined ? (
-				<p>{error ?? "Something went wrong."}</p>
+				<p>{t(error ?? "Something went wrong.")}</p>
+			) : availableLoans.length === 0 ? (
+				<p>{t("There are no available loans.")}</p>
 			) : (
 				<TileContainer>
 					{availableLoans.map((loan) => (

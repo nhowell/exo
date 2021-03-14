@@ -6,6 +6,7 @@ import { LoanStatus } from "../../spacetraders-api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/users/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
+import { t } from "../../helpers/translate";
 
 export function YourLoans() {
 	const { isLoading, isError, error, data: userInfo } = useCurrentUserInfo();
@@ -20,13 +21,13 @@ export function YourLoans() {
 
 	return (
 		<>
-			<h1>Your Loans</h1>
+			<h1>{t("Your Loans")}</h1>
 			{isLoading ? (
-				<p>Loading...</p>
+				<p>{t("Loading...")}</p>
 			) : isError || loans === undefined ? (
-				<p>{error ?? "Something went wrong."}</p>
+				<p>{t(error ?? "Something went wrong.")}</p>
 			) : loans.length === 0 ? (
-				<p>You don't have any loans yet.</p>
+				<p>{t("You don't have any loans yet.")}</p>
 			) : (
 				<TileContainer>
 					{loans.map((loan) => (

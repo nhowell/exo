@@ -1,4 +1,7 @@
 import { creditFormat } from "../../helpers/creditFormat";
+import { numberFormat } from "../../helpers/numberFormat";
+import { pluralize } from "../../helpers/pluralize";
+import { t } from "../../helpers/translate";
 import { IAvailableLoan } from "../../spacetraders-api/loans/types";
 import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
 import { useCurrentUser } from "../hooks/useCurrentUser";
@@ -21,16 +24,17 @@ export function AvailableLoan(props: IOwnProps) {
 	return (
 		<>
 			<p>
-				<strong>Type:</strong> {props.loan.type}
+				<strong>{t("Type")}:</strong> {t(props.loan.type)}
 				<br />
-				<strong>Amount:</strong> {creditFormat(props.loan.amount)}
+				<strong>{t("Amount")}:</strong> {creditFormat(props.loan.amount)}
 				<br />
-				<strong>Rate:</strong> {props.loan.rate}%
+				<strong>{t("Rate")}:</strong> {loanRateFormat(props.loan.rate / 100)}
 				<br />
-				<strong>Term:</strong> {props.loan.termInDays} days
+				<strong>{t("Term")}:</strong>{" "}
+				{pluralize(props.loan.termInDays, t("day"), t("days"))}
 				<br />
-				<strong>Collateral Required:</strong>{" "}
-				{props.loan.collateralRequired ? "Yes" : "No"}
+				<strong>{t("Collateral Required")}:</strong>{" "}
+				{props.loan.collateralRequired ? t("Yes") : t("No")}
 			</p>
 
 			{acceptLoan.error ? <p>{acceptLoan.error}</p> : undefined}
@@ -40,8 +44,10 @@ export function AvailableLoan(props: IOwnProps) {
 				onClick={handleClick}
 				disabled={acceptLoan.isLoading}
 			>
-				Accept loan
+				{t("Accept loan")}
 			</button>
 		</>
 	);
 }
+
+const loanRateFormat = numberFormat({ style: "percent" });

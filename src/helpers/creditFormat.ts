@@ -1,7 +1,6 @@
-import { numberFormat } from "./numberFormat";
-
-const format = numberFormat();
+import { pluralize } from "./pluralize";
+import { t } from "./translate";
 
 export function creditFormat(credits: number) {
-	return `${format(credits)} ${credits === 1 ? "Credit" : "Credits"}`;
+	return pluralize(credits, t("Credit"), t("Credits"));
 }

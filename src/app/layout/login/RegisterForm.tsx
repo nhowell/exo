@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
+import { t } from "../../../helpers/translate";
 import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/users/claimUsernameAndGetToken";
 import { IUserCredentials } from "../../hooks/useProvideAuth";
 import { ILoginForm } from "./LoginForm";
@@ -32,19 +33,20 @@ export function RegisterForm() {
 
 	return (
 		<>
-			<h1>Register</h1>
+			<h1>{t("Register")}</h1>
 
 			{auth ? (
 				<>
 					<p>
-						Welcome to SpaceTraders, <code>{auth.username}</code>.
+						{t("Welcome to SpaceTraders,")} <code>{auth.username}</code>.
 					</p>
 					<p>
-						<strong>Your Token:</strong> <code>{auth.token}</code>
+						<strong>{t("Your Token")}:</strong> <code>{auth.token}</code>
 					</p>
 					<p className={styles.info}>
-						Remember to save your token someplace safe! Once you've saved your
-						token, login and start playing!
+						{t(
+							"Remember to save your token someplace safe! Once you've saved your token, login and start playing!",
+						)}
 					</p>
 				</>
 			) : (
@@ -55,25 +57,25 @@ export function RegisterForm() {
 					{({ isSubmitting }) => (
 						<Form>
 							<div>
-								<label htmlFor="newUsername">Username</label>
+								<label htmlFor="newUsername">{t("Username")}</label>
 								<Field
 									type="text"
 									id="newUsername"
 									name="username"
 									validate={(value: string) => {
 										if (!value) {
-											return "Username is required.";
+											return t("Username is required.");
 										}
 									}}
 								/>
 								<ErrorMessage name="username" component="div" />
 							</div>
 
-							{register.error ? <div>{register.error}</div> : undefined}
+							{register.error ? <div>{t(register.error)}</div> : undefined}
 
 							<div>
 								<button type="submit" disabled={isSubmitting}>
-									Claim username and get token
+									{t("Claim username and get token")}
 								</button>
 							</div>
 						</Form>

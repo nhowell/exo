@@ -5,6 +5,7 @@ import { Logo } from "../shared/Logo";
 import { LoginForm } from "./LoginForm";
 import styles from "./LoginLayout.module.css";
 import { RegisterForm } from "./RegisterForm";
+import { t } from "../../../helpers/translate";
 
 export function LoginLayout() {
 	return (
@@ -32,7 +33,7 @@ export function LoginLayout() {
 
 			<footer>
 				<p>
-					Server Status: <GameStatus />
+					{t("Server Status")}: <GameStatus />
 				</p>
 			</footer>
 		</div>

@@ -1,3 +1,4 @@
+import { t } from "../../../../helpers/translate";
 import { useAuth } from "../../../hooks/useAuth";
 
 export function Logout() {
@@ -5,7 +6,7 @@ export function Logout() {
 
 	return (
 		<button type="submit" onClick={auth.logout}>
-			Logout
+			{t("Logout")}
 		</button>
 	);
 }

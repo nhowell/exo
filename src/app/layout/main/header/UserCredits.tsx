@@ -1,4 +1,5 @@
 import { creditFormat } from "../../../../helpers/creditFormat";
+import { t } from "../../../../helpers/translate";
 import { useCurrentUserInfo } from "../../../hooks/useCurrentUserInfo";
 import styles from "./UserCredits.module.css";
 
@@ -8,9 +9,9 @@ export function UserCredits() {
 	return (
 		<div className={styles.credits}>
 			{isLoading ? (
-				<>Loading...</>
+				<>{t("Loading...")}</>
 			) : isError || userInfo === undefined ? (
-				<>{error ?? "N/A"}</>
+				<>{t(error ?? "N/A")}</>
 			) : (
 				<>{creditFormat(userInfo.credits)}</>
 			)}

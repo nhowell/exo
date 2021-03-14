@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useMemo } from "react";
+import { t } from "../../../helpers/translate";
 import { useGameStatus } from "../../../spacetraders-api/game/getGameStatus";
 import styles from "./GameStatus.module.css";
 
@@ -31,7 +32,7 @@ export function GameStatus() {
 				gameStatus.code === "ONLINE" && styles.online,
 				gameStatus.code === "OFFLINE" && styles.offline,
 			)}
-			title={gameStatus.message}
+			title={t(gameStatus.message)}
 		></span>
 	);
 }

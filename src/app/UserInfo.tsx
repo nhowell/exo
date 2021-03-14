@@ -1,3 +1,4 @@
+import { t } from "../helpers/translate";
 import { useCurrentUserInfo } from "./hooks/useCurrentUserInfo";
 
 export function UserInfo() {
@@ -5,14 +6,14 @@ export function UserInfo() {
 
 	return (
 		<>
-			<h1>User Info</h1>
+			<h1>{t("User Info")}</h1>
 			{isLoading ? (
-				<p>Loading...</p>
+				<p>{t("Loading...")}</p>
 			) : isError || userInfo === undefined ? (
-				<p>{error ?? "Something went wrong."}</p>
+				<p>{t(error ?? "Something went wrong.")}</p>
 			) : (
 				<p>
-					<strong>Ships:</strong> {userInfo.ships.length}
+					<strong>{t("Ships")}:</strong> {userInfo.ships.length}
 				</p>
 			)}
 		</>

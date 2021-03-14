@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
+import { t } from "../../../helpers/translate";
 import { useAuth } from "../../hooks/useAuth";
 import { IUserCredentials } from "../../hooks/useProvideAuth";
 
@@ -29,20 +30,20 @@ export function LoginForm() {
 
 	return (
 		<>
-			<h1>Login</h1>
+			<h1>{t("Login")}</h1>
 
 			<Formik<ILoginForm> initialValues={initialValues} onSubmit={handleLogin}>
 				{({ status, isSubmitting }) => (
 					<Form>
 						<div>
-							<label htmlFor="username">Username</label>
+							<label htmlFor="username">{t("Username")}</label>
 							<Field
 								type="text"
 								id="username"
 								name="username"
 								validate={(value: string) => {
 									if (!value) {
-										return "Username is required.";
+										return t("Username is required.");
 									}
 								}}
 							/>
@@ -50,25 +51,25 @@ export function LoginForm() {
 						</div>
 
 						<div>
-							<label htmlFor="token">Token</label>
+							<label htmlFor="token">{t("Token")}</label>
 							<Field
 								type="password"
 								id="token"
 								name="token"
 								validate={(value: string) => {
 									if (!value) {
-										return "Token is required.";
+										return t("Token is required.");
 									}
 								}}
 							/>
 							<ErrorMessage name="token" component="div" />
 						</div>
 
-						{status ? <div>{status}</div> : undefined}
+						{status ? <div>{t(status)}</div> : undefined}
 
 						<div>
 							<button type="submit" disabled={isSubmitting}>
-								Login
+								{t("Login")}
 							</button>
 						</div>
 					</Form>

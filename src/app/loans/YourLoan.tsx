@@ -1,4 +1,5 @@
 import { creditFormat } from "../../helpers/creditFormat";
+import { t } from "../../helpers/translate";
 import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
 import { LoanStatus } from "../../spacetraders-api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/users/types";
@@ -22,14 +23,14 @@ export function YourLoan(props: IOwnProps) {
 	return (
 		<>
 			<p>
-				<strong>Type:</strong> {props.loan.type}
+				<strong>{t("Type")}:</strong> {t(props.loan.type)}
 				<br />
-				<strong>Status:</strong> {props.loan.status}
+				<strong>{t("Status")}:</strong> {t(props.loan.status)}
 				<br />
-				<strong>Repayment Amount:</strong>{" "}
+				<strong>{t("Repayment Amount")}:</strong>{" "}
 				{creditFormat(props.loan.repaymentAmount)}
 				<br />
-				<strong>Due:</strong> {props.loan.due}
+				<strong>{t("Due")}:</strong> {props.loan.due}
 			</p>
 
 			{payOffLoan.error ? <p>{payOffLoan.error}</p> : undefined}
@@ -40,7 +41,7 @@ export function YourLoan(props: IOwnProps) {
 					onClick={handleClick}
 					disabled={payOffLoan.isLoading}
 				>
-					Pay off loan
+					{t("Pay off loan")}
 				</button>
 			)}
 		</>
