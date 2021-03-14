@@ -1,11 +1,7 @@
-import { useUserInfo } from "../spacetraders-api/users/getUserInfo";
-import { useCurrentUser } from "./hooks/useCurrentUser";
+import { useCurrentUserInfo } from "./hooks/useCurrentUserInfo";
 
 export function UserInfo() {
-	const currentUser = useCurrentUser();
-	const { isLoading, isError, error, data: userInfo } = useUserInfo(
-		currentUser.username,
-	);
+	const { isLoading, isError, error, data: userInfo } = useCurrentUserInfo();
 
 	return (
 		<>

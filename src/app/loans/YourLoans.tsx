@@ -1,12 +1,8 @@
-import { useUserInfo } from "../../spacetraders-api/users/getUserInfo";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import { useCurrentUserInfo } from "../hooks/useCurrentUserInfo";
 import { YourLoan } from "./YourLoan";
 
 export function YourLoans() {
-	const currentUser = useCurrentUser();
-	const { isLoading, isError, error, data: userInfo } = useUserInfo(
-		currentUser.username,
-	);
+	const { isLoading, isError, error, data: userInfo } = useCurrentUserInfo();
 
 	return (
 		<>
