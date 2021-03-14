@@ -1,12 +1,11 @@
-import { useAuth } from "../../../hooks/useAuth";
 import { GameStatus } from "../../shared/GameStatus";
 import { Logo } from "../../shared/Logo";
+import { Username } from "./Username";
+import { UserCredits } from "./UserCredits";
 import { Logout } from "./Logout";
 import styles from "./Header.module.css";
 
 export function Header() {
-	const auth = useAuth();
-
 	return (
 		<header className={styles.header}>
 			<div className={styles.section}>
@@ -15,7 +14,9 @@ export function Header() {
 			</div>
 
 			<div className={styles.section}>
-				<Logout onLogout={auth.logout} />
+				<Username />
+				<UserCredits />
+				<Logout />
 			</div>
 		</header>
 	);

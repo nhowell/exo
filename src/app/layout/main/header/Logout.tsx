@@ -1,10 +1,10 @@
-interface IOwnProps {
-	onLogout(): void;
-}
+import { useAuth } from "../../../hooks/useAuth";
 
-export function Logout(props: IOwnProps) {
+export function Logout() {
+	const auth = useAuth();
+
 	return (
-		<button type="submit" onClick={props.onLogout}>
+		<button type="submit" onClick={auth.logout}>
 			Logout
 		</button>
 	);
