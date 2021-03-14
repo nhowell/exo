@@ -1,4 +1,4 @@
-import { numberFormat } from "../../helpers/numberFormat";
+import { creditFormat } from "../../helpers/creditFormat";
 import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
 import { LoanStatus } from "../../spacetraders-api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/users/types";
@@ -27,7 +27,7 @@ export function YourLoan(props: IOwnProps) {
 				<strong>Status:</strong> {props.loan.status}
 				<br />
 				<strong>Repayment Amount:</strong>{" "}
-				{numberFormat(props.loan.repaymentAmount)} Credits
+				{creditFormat(props.loan.repaymentAmount)}
 				<br />
 				<strong>Due:</strong> {props.loan.due}
 			</p>

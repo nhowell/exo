@@ -1,4 +1,4 @@
-import { numberFormat } from "../../../../helpers/numberFormat";
+import { creditFormat } from "../../../../helpers/creditFormat";
 import { useCurrentUserInfo } from "../../../hooks/useCurrentUserInfo";
 import styles from "./UserCredits.module.css";
 
@@ -12,7 +12,7 @@ export function UserCredits() {
 			) : isError || userInfo === undefined ? (
 				<>{error ?? "N/A"}</>
 			) : (
-				<>{numberFormat(userInfo.credits)} Credits</>
+				<>{creditFormat(userInfo.credits)}</>
 			)}
 		</div>
 	);

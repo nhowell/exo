@@ -1,4 +1,4 @@
-import { numberFormat } from "../../helpers/numberFormat";
+import { creditFormat } from "../../helpers/creditFormat";
 import { IAvailableLoan } from "../../spacetraders-api/loans/types";
 import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
 import { useCurrentUser } from "../hooks/useCurrentUser";
@@ -23,7 +23,7 @@ export function AvailableLoan(props: IOwnProps) {
 			<p>
 				<strong>Type:</strong> {props.loan.type}
 				<br />
-				<strong>Amount:</strong> {numberFormat(props.loan.amount)} Credits
+				<strong>Amount:</strong> {creditFormat(props.loan.amount)}
 				<br />
 				<strong>Rate:</strong> {props.loan.rate}%
 				<br />
