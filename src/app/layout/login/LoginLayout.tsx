@@ -9,8 +9,12 @@ export function LoginLayout() {
 		<div className={styles.container}>
 			<header>
 				<Logo size="large" />
-
-				<GameStatus />
+				<p>
+					<a href="https://spacetraders.io/">SpaceTraders</a> is an MMO backed
+					entirely by a <a href="https://api.spacetraders.io/">RESTful API</a>.
+					Manage a fleet of ships, automate trade routes, discover hidden
+					secrets in the universe and more. Play/Build now!
+				</p>
 			</header>
 
 			<main>
@@ -21,6 +25,12 @@ export function LoginLayout() {
 					<RegisterForm />
 				</div>
 			</main>
+
+			<footer>
+				<p>
+					Server Status: <GameStatus />
+				</p>
+			</footer>
 		</div>
 	);
 }

@@ -1,22 +1,37 @@
+import classNames from "classnames";
+import { useMemo } from "react";
 import { useGameStatus } from "../../../spacetraders-api/game/getGameStatus";
-import { LoadingSpinner } from "../../common/loading/LoadingSpinner";
+import styles from "./GameStatus.module.css";
+
+interface IGameStatus {
+	code: "ONLINE" | "OFFLINE" | "LOADING";
+	message: string;
+}
 
 export function GameStatus() {
 	const { isLoading, isError, data: status } = useGameStatus();
 
-	const gameStatus = () => {
+	const gameStatus: IGameStatus = useMemo(() => {
 		if (isLoading) {
-			return <LoadingSpinner size="small" />;
+			return { code: "LOADING", message: "Checking server status..." };
 		} else if (isError) {
-			return "Could not connect to game server or server is offline.";
+			return {
+				code: "OFFLINE",
+				message: "Could not connect to game server or server is offline",
+			};
 		} else {
-			return status ?? "Unknown";
+			return { code: "ONLINE", message: status ?? "Online" };
 		}
-	};
+	}, [isError, isLoading, status]);
 
 	return (
-		<p>
-			<strong>Game Status:</strong> {gameStatus()}
-		</p>
+		<div
+			className={classNames(
+				styles.gameStatus,
+				gameStatus.code === "ONLINE" && styles.online,
+				gameStatus.code === "OFFLINE" && styles.offline,
+			)}
+			title={gameStatus.message}
+		></div>
 	);
 }

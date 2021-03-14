@@ -31,7 +31,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	background-color: var(--primary-bg-color);
 	color: var(--primary-text-color);
-	padding: 2rem;
 	font-size: 1.6rem;
 }
 
@@ -119,4 +118,8 @@ input[type="checkbox"] {
 label {
 	display: block;
 	margin-top: 1rem;
+}
+
+a {
+	color: var(--primary-color);
 }

@@ -1,0 +1,16 @@
+.gameStatus {
+	display: inline-block;
+	background-color: #5d5d5d;
+	height: 0;
+	width: 0;
+	padding: 0.5rem;
+	border-radius: 1rem;
+}
+
+.online {
+	background-color: #0fb87e;
+}
+
+.offline {
+	background-color: rgb(217, 0, 0);
+}
