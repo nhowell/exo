@@ -32,6 +32,7 @@ body {
 	background-color: var(--primary-bg-color);
 	color: var(--primary-text-color);
 	font-size: 1.6rem;
+	text-shadow: 0.1rem 0.1rem #000;
 }
 
 h1,
@@ -45,7 +46,6 @@ h6 {
 		"Helvetica Neue", sans-serif;
 	font-weight: normal;
 	color: var(--primary-color);
-	text-shadow: 0.1rem 0.1rem #000;
 }
 
 h1:first-child,
@@ -81,6 +81,7 @@ button {
 	margin-top: 1rem;
 	font-size: 1.6rem;
 	line-height: 2.4rem;
+	text-shadow: 0.1rem 0.1rem #000;
 }
 
 input[type="number"],
