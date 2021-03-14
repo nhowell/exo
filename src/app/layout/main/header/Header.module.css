@@ -1,6 +1,6 @@
 .header {
 	background-color: var(--tertiary-bg-color);
-	box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
+	box-shadow: var(--normal-box-shadow);
 	height: 5rem;
 	position: sticky;
 	top: 0;
@@ -15,6 +15,16 @@
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
+}
+
+@media (max-width: 50rem) {
+	.header {
+		justify-content: flex-end;
+	}
+
+	.hideLogoIfNeeded {
+		display: none;
+	}
 }
 
 .header button {

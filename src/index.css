@@ -9,6 +9,9 @@
 	--primary-bg-color: #1e1e1e;
 	--secondary-bg-color: #252526;
 	--tertiary-bg-color: #333;
+	--normal-border-radius: 0.5rem;
+	--small-border-radius: 0.3rem;
+	--normal-box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
 }
 
 html {
@@ -66,15 +69,15 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 	background-color: rgba(0, 0, 0, 0.25);
-	border-radius: 0.3rem;
+	border-radius: var(--small-border-radius);
 	padding: 0.1rem 0.4rem;
 }
 
 button {
 	background-color: var(--primary-color);
 	border: 0;
-	border-radius: 0.3rem;
-	box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
+	border-radius: var(--small-border-radius);
+	box-shadow: var(--normal-box-shadow);
 	color: var(--primary-text-color);
 	padding: 0.6rem 1rem;
 	cursor: pointer;
@@ -93,7 +96,7 @@ textarea {
 	background-color: #3c3c3c;
 	border: 0.1rem solid #3c3c3c;
 	color: var(--primary-text-color);
-	border-radius: 0.3rem;
+	border-radius: var(--small-border-radius);
 	width: 100%;
 	margin: 0.3rem 0;
 	padding: 0.6rem 0.6rem;

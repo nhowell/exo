@@ -25,13 +25,13 @@ export function GameStatus() {
 	}, [isError, isLoading, status]);
 
 	return (
-		<div
+		<span
 			className={classNames(
 				styles.gameStatus,
 				gameStatus.code === "ONLINE" && styles.online,
 				gameStatus.code === "OFFLINE" && styles.offline,
 			)}
 			title={gameStatus.message}
-		></div>
+		></span>
 	);
 }

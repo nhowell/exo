@@ -18,8 +18,13 @@ export function LoginForm() {
 	) => {
 		setStatus(undefined);
 		const errorMessage = await auth.login(values);
-		setStatus(errorMessage);
-		setSubmitting(false);
+
+		// Login redirects if it was successful, so it's illegal to perform
+		// state updates to unmounted components.
+		if (errorMessage !== undefined) {
+			setStatus(errorMessage);
+			setSubmitting(false);
+		}
 	};
 
 	return (

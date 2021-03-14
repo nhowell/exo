@@ -2,7 +2,6 @@ import { numberFormat } from "../../helpers/numberFormat";
 import { IAvailableLoan } from "../../spacetraders-api/loans/types";
 import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import styles from "./AvailableLoan.module.css";
 
 interface IOwnProps {
 	loan: IAvailableLoan;
@@ -20,7 +19,7 @@ export function AvailableLoan(props: IOwnProps) {
 	};
 
 	return (
-		<div className={styles.availableLoan}>
+		<>
 			<p>
 				<strong>Type:</strong> {props.loan.type}
 				<br />
@@ -43,6 +42,6 @@ export function AvailableLoan(props: IOwnProps) {
 			>
 				Accept loan
 			</button>
-		</div>
+		</>
 	);
 }

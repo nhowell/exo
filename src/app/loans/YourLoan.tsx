@@ -3,7 +3,6 @@ import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
 import { LoanStatus } from "../../spacetraders-api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/users/types";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import styles from "./AvailableLoan.module.css";
 
 interface IOwnProps {
 	loan: IUserLoan;
@@ -21,7 +20,7 @@ export function YourLoan(props: IOwnProps) {
 	};
 
 	return (
-		<div className={styles.availableLoan}>
+		<>
 			<p>
 				<strong>Type:</strong> {props.loan.type}
 				<br />
@@ -44,6 +43,6 @@ export function YourLoan(props: IOwnProps) {
 					Pay off loan
 				</button>
 			)}
-		</div>
+		</>
 	);
 }

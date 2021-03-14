@@ -1,5 +1,7 @@
 import { useAvailableLoans } from "../../spacetraders-api/loans/getAvailableLoans";
+import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableLoan } from "./AvailableLoan";
+import { Tile } from "../common/tiles/Tile";
 
 export function AvailableLoans() {
 	const {
@@ -17,9 +19,13 @@ export function AvailableLoans() {
 			) : isError || availableLoans === undefined ? (
 				<p>{error ?? "Something went wrong."}</p>
 			) : (
-				availableLoans.map((loan) => (
-					<AvailableLoan key={loan.type} loan={loan} />
-				))
+				<TileContainer>
+					{availableLoans.map((loan) => (
+						<Tile key={loan.type}>
+							<AvailableLoan loan={loan} />
+						</Tile>
+					))}
+				</TileContainer>
 			)}
 		</>
 	);

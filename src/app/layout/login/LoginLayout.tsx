@@ -1,3 +1,5 @@
+import { TileContainer } from "../../common/tiles/TileContainer";
+import { Tile } from "../../common/tiles/Tile";
 import { GameStatus } from "../shared/GameStatus";
 import { Logo } from "../shared/Logo";
 import { LoginForm } from "./LoginForm";
@@ -18,12 +20,14 @@ export function LoginLayout() {
 			</header>
 
 			<main>
-				<div className={styles.tile}>
-					<LoginForm />
-				</div>
-				<div className={styles.tile}>
-					<RegisterForm />
-				</div>
+				<TileContainer center>
+					<Tile width="34rem">
+						<LoginForm />
+					</Tile>
+					<Tile width="34rem">
+						<RegisterForm />
+					</Tile>
+				</TileContainer>
 			</main>
 
 			<footer>

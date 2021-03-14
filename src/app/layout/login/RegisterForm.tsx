@@ -55,10 +55,10 @@ export function RegisterForm() {
 					{({ isSubmitting }) => (
 						<Form>
 							<div>
-								<label htmlFor="username">Username</label>
+								<label htmlFor="newUsername">Username</label>
 								<Field
 									type="text"
-									id="username"
+									id="newUsername"
 									name="username"
 									validate={(value: string) => {
 										if (!value) {
