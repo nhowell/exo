@@ -13,18 +13,20 @@ export interface IUserShip {
 	class: string;
 	type: string;
 	cargo: IShipCargo[];
-	location: string;
 	manufacturer: string;
 	maxCargo: number;
 	plating: number;
 	spaceAvailable: number;
 	speed: number;
 	weapons: number;
+	location?: string;
+	flightPlanId?: string;
 }
 
 interface IShipCargo {
 	good: string;
 	quantity: number;
+	totalVolume: number;
 }
 
 export interface IUserLoan {

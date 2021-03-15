@@ -1,5 +1,5 @@
 import { creditFormat } from "../../helpers/creditFormat";
-import { numberFormat } from "../../helpers/numberFormat";
+import { percentFormat } from "../../helpers/numberFormat";
 import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
 import { IAvailableLoan } from "../../spacetraders-api/loans/types";
@@ -28,7 +28,7 @@ export function AvailableLoan(props: IOwnProps) {
 				<br />
 				<strong>{t("Amount")}:</strong> {creditFormat(props.loan.amount)}
 				<br />
-				<strong>{t("Rate")}:</strong> {loanRateFormat(props.loan.rate / 100)}
+				<strong>{t("Rate")}:</strong> {percentFormat(props.loan.rate / 100)}
 				<br />
 				<strong>{t("Term")}:</strong>{" "}
 				{pluralize(props.loan.termInDays, t("day"), t("days"))}
@@ -49,5 +49,3 @@ export function AvailableLoan(props: IOwnProps) {
 		</>
 	);
 }
-
-const loanRateFormat = numberFormat({ style: "percent" });

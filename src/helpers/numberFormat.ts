@@ -5,7 +5,11 @@ interface INumberFormatOptions {
 	decimalPlaces?: number;
 }
 
-export function numberFormat(options?: INumberFormatOptions) {
+export const numberFormat = createNumberFormatter();
+
+export const percentFormat = createNumberFormatter({ style: "percent" });
+
+export function createNumberFormatter(options?: INumberFormatOptions) {
 	return Intl.NumberFormat(
 		getUserLocales(),
 		options !== undefined

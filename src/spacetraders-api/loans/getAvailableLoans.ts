@@ -6,12 +6,16 @@ import { IAvailableLoan } from "./types";
 const getAvailableLoansQueryKey = LOANS_QUERY_KEY;
 
 export function useAvailableLoans() {
-	return useQuery<IAvailableLoan[], string>(getAvailableLoansQueryKey, () =>
-		getAvailableLoans(),
+	return useQuery<IAvailableLoan[], string>(
+		getAvailableLoansQueryKey,
+		() => getAvailableLoans(),
+		{
+			staleTime: 30_000,
+		},
 	);
 }
 
-export async function getAvailableLoans() {
+async function getAvailableLoans() {
 	const response = await spaceTradersApi.get<ISuccessResponse>("/game/loans");
 
 	return response.data.loans;

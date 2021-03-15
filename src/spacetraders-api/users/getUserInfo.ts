@@ -12,7 +12,7 @@ export function useUserInfo(username: string) {
 		getUserInfoQueryKey(username),
 		() => fetchUserInfo(username),
 		{
-			staleTime: 5_000,
+			staleTime: 60_000,
 		},
 	);
 }
