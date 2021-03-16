@@ -10,7 +10,7 @@ export const spaceTradersQueryClient = new QueryClient({
 			// Default to a long cache and stale time, so this will force caching
 			// by default. When a particular query doesn't want it's data cached,
 			// it should override this.
-			cacheTime: 60_000,
+			cacheTime: 60_000 * 60, // 60 minutes
 			staleTime: Infinity,
 			retry: (failureCount, error) => {
 				if (isStandardError(error) && error.statusCode !== undefined) {
@@ -25,6 +25,7 @@ export const spaceTradersQueryClient = new QueryClient({
 
 				return failureCount < 3;
 			},
+			retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
 		},
 	},
 });
