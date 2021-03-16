@@ -37,7 +37,7 @@ export function AvailableLoan(props: IOwnProps) {
 				{props.loan.collateralRequired ? t("Yes") : t("No")}
 			</p>
 
-			{acceptLoan.error ? <p>{acceptLoan.error}</p> : undefined}
+			{acceptLoan.error ? <p>{t(acceptLoan.error.message)}</p> : undefined}
 
 			<button
 				type="button"

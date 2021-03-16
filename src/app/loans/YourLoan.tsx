@@ -33,7 +33,7 @@ export function YourLoan(props: IOwnProps) {
 				<strong>{t("Due")}:</strong> {props.loan.due}
 			</p>
 
-			{payOffLoan.error ? <p>{payOffLoan.error}</p> : undefined}
+			{payOffLoan.error ? <p>{t(payOffLoan.error.message)}</p> : undefined}
 
 			{props.loan.status === LoanStatus.Paid ? undefined : (
 				<button

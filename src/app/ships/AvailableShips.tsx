@@ -18,7 +18,7 @@ export function AvailableShips() {
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
 			) : isError || availableShips === undefined ? (
-				<p>{t(error ?? "Something went wrong.")}</p>
+				<p>{t(error?.message ?? "Something went wrong.")}</p>
 			) : availableShips.length === 0 ? (
 				<p>{t("There are no available ships.")}</p>
 			) : (

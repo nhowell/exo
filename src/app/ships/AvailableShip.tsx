@@ -95,7 +95,7 @@ export function AvailableShip(props: IOwnProps) {
 						</div>
 
 						{purchaseShip.error ? (
-							<div>{t(purchaseShip.error)}</div>
+							<div>{t(purchaseShip.error.message)}</div>
 						) : undefined}
 
 						<div>

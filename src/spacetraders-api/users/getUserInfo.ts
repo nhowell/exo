@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { USERS_QUERY_KEY } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "..";
+import { IError } from "../types";
 import { IUser } from "./types";
 
 export function getUserInfoQueryKey(username: string) {
@@ -8,12 +9,8 @@ export function getUserInfoQueryKey(username: string) {
 }
 
 export function useUserInfo(username: string) {
-	return useQuery<IUser, string>(
-		getUserInfoQueryKey(username),
-		() => fetchUserInfo(username),
-		{
-			staleTime: 60_000,
-		},
+	return useQuery<IUser, IError>(getUserInfoQueryKey(username), () =>
+		fetchUserInfo(username),
 	);
 }
 
@@ -21,7 +18,6 @@ export async function getUserInfo(username: string) {
 	return await spaceTradersQueryClient.fetchQuery(
 		getUserInfoQueryKey(username),
 		() => fetchUserInfo(username),
-		{ staleTime: 5_000 },
 	);
 }
 

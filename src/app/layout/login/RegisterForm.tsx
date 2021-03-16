@@ -71,7 +71,9 @@ export function RegisterForm() {
 								<ErrorMessage name="username" component="div" />
 							</div>
 
-							{register.error ? <div>{t(register.error)}</div> : undefined}
+							{register.error ? (
+								<div>{t(register.error.message)}</div>
+							) : undefined}
 
 							<div>
 								<button type="submit" disabled={isSubmitting}>

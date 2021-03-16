@@ -10,7 +10,7 @@ export function UserInfo() {
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
 			) : isError || userInfo === undefined ? (
-				<p>{t(error ?? "Something went wrong.")}</p>
+				<p>{t(error?.message ?? "Something went wrong.")}</p>
 			) : (
 				<p>
 					<strong>{t("Ships")}:</strong> {userInfo.ships.length}

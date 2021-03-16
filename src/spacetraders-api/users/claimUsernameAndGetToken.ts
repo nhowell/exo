@@ -1,8 +1,9 @@
 import { useMutation } from "react-query";
 import { unauthenticatedSpaceTradersApi } from "..";
+import { IError } from "../types";
 
 export function useClaimUsernameAndGetToken() {
-	return useMutation<ISuccessResponse, string, string>(
+	return useMutation<ISuccessResponse, IError, string>(
 		claimUsernameAndGetToken,
 	);
 }

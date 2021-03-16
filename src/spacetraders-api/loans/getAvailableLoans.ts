@@ -1,17 +1,14 @@
 import { useQuery } from "react-query";
 import { LOANS_QUERY_KEY } from ".";
 import { spaceTradersApi } from "..";
+import { IError } from "../types";
 import { IAvailableLoan } from "./types";
 
 const getAvailableLoansQueryKey = LOANS_QUERY_KEY;
 
 export function useAvailableLoans() {
-	return useQuery<IAvailableLoan[], string>(
-		getAvailableLoansQueryKey,
-		() => getAvailableLoans(),
-		{
-			staleTime: 30_000,
-		},
+	return useQuery<IAvailableLoan[], IError>(getAvailableLoansQueryKey, () =>
+		getAvailableLoans(),
 	);
 }
 

@@ -4,14 +4,14 @@ import { useCurrentUserInfo } from "../../../hooks/useCurrentUserInfo";
 import styles from "./UserCredits.module.css";
 
 export function UserCredits() {
-	const { isLoading, isError, error, data: userInfo } = useCurrentUserInfo();
+	const { isLoading, isError, data: userInfo } = useCurrentUserInfo();
 
 	return (
 		<div className={styles.credits}>
 			{isLoading ? (
 				<>{t("Loading...")}</>
 			) : isError || userInfo === undefined ? (
-				<>{t(error ?? "N/A")}</>
+				<>{t("N/A")}</>
 			) : (
 				<>{creditFormat(userInfo.credits)}</>
 			)}

@@ -18,7 +18,7 @@ export function AvailableLoans() {
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
 			) : isError || availableLoans === undefined ? (
-				<p>{t(error ?? "Something went wrong.")}</p>
+				<p>{t(error?.message ?? "Something went wrong.")}</p>
 			) : availableLoans.length === 0 ? (
 				<p>{t("There are no available loans.")}</p>
 			) : (

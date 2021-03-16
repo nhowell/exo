@@ -25,7 +25,7 @@ export function YourLoans() {
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
 			) : isError || loans === undefined ? (
-				<p>{t(error ?? "Something went wrong.")}</p>
+				<p>{t(error?.message ?? "Something went wrong.")}</p>
 			) : loans.length === 0 ? (
 				<p>{t("You don't have any loans yet.")}</p>
 			) : (
