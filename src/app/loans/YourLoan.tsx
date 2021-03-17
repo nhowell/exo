@@ -1,8 +1,10 @@
 import { creditFormat } from "../../helpers/creditFormat";
 import { t } from "../../helpers/translate";
 import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
-import { LoanStatus } from "../../spacetraders-api/users/loans/types";
-import { IUserLoan } from "../../spacetraders-api/users/types";
+import {
+	IUserLoan,
+	LoanStatus,
+} from "../../spacetraders-api/users/loans/types";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 
 interface IOwnProps {

@@ -1,5 +1,7 @@
-export const USERS_QUERY_KEY = "users";
+export function userQueryKey(username: string): string[] {
+	return ["users", username];
+}
 
-export function currentUserPath(username: string) {
+export function userPath(username: string) {
 	return `/users/${username}`;
 }

@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import { currentUserPath } from "..";
+import { userShipsPath } from ".";
 import { spaceTradersApi } from "../..";
 import { IError } from "../../types";
 import { IGetUserInfoResponse, setUserInfoQueryData } from "../getUserInfo";
@@ -23,7 +23,7 @@ interface IPurchaseShipRequest {
 
 async function purchaseShip({ username, ...payload }: IPurchaseShipRequest) {
 	const response = await spaceTradersApi.post<IGetUserInfoResponse>(
-		`${currentUserPath(username)}/ships`,
+		userShipsPath(username),
 		payload,
 	);
 	return response.data.user;

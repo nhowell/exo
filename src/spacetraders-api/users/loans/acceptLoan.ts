@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
-import { currentUserPath } from "..";
+import { userLoansPath } from ".";
 import { spaceTradersApi } from "../..";
-import { LoanType } from "../../loans/types";
+import { LoanType } from "../../game/loans/types";
 import { IError } from "../../types";
 import { IGetUserInfoResponse, setUserInfoQueryData } from "../getUserInfo";
 import { IUser } from "../types";
@@ -23,7 +23,7 @@ interface IAcceptLoanRequest {
 
 async function acceptLoan({ username, ...payload }: IAcceptLoanRequest) {
 	const response = await spaceTradersApi.post<IGetUserInfoResponse>(
-		`${currentUserPath(username)}/loans`,
+		userLoansPath(username),
 		payload,
 	);
 	return response.data.user;

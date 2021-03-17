@@ -2,7 +2,7 @@ import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableShip } from "./AvailableShip";
 import { Tile } from "../common/tiles/Tile";
 import { t } from "../../helpers/translate";
-import { useAvailableShips } from "../../spacetraders-api/ships/getAvailableShips";
+import { useAvailableShips } from "../../spacetraders-api/game/ships/getAvailableShips";
 
 export function AvailableShips() {
 	const {

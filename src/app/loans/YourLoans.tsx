@@ -3,7 +3,7 @@ import { sortBy } from "lodash";
 import { useCurrentUserInfo } from "../hooks/useCurrentUserInfo";
 import { YourLoan } from "./YourLoan";
 import { LoanStatus } from "../../spacetraders-api/users/loans/types";
-import { IUserLoan } from "../../spacetraders-api/users/types";
+import { IUserLoan } from "../../spacetraders-api/users/loans/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { t } from "../../helpers/translate";

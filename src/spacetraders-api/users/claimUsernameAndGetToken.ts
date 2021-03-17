@@ -1,4 +1,5 @@
 import { useMutation } from "react-query";
+import { userPath } from ".";
 import { unauthenticatedSpaceTradersApi } from "..";
 import { IError } from "../types";
 
@@ -10,7 +11,7 @@ export function useClaimUsernameAndGetToken() {
 
 async function claimUsernameAndGetToken(username: string) {
 	const response = await unauthenticatedSpaceTradersApi.post<ISuccessResponse>(
-		`/users/${username}/token`,
+		`${userPath(username)}/token`,
 	);
 	return response.data;
 }

@@ -1,4 +1,4 @@
-import { useAvailableLoans } from "../../spacetraders-api/loans/getAvailableLoans";
+import { useAvailableLoans } from "../../spacetraders-api/game/loans/getAvailableLoans";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableLoan } from "./AvailableLoan";
 import { Tile } from "../common/tiles/Tile";

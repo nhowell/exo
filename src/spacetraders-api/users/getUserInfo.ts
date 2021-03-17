@@ -1,11 +1,11 @@
 import { useQuery } from "react-query";
-import { USERS_QUERY_KEY } from ".";
+import { userPath, userQueryKey } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "..";
 import { IError } from "../types";
 import { IUser } from "./types";
 
-export function getUserInfoQueryKey(username: string) {
-	return [USERS_QUERY_KEY, username, "info"];
+export function getUserInfoQueryKey(username: string): string[] {
+	return [...userQueryKey(username), "info"];
 }
 
 export function useUserInfo(username: string) {
@@ -28,7 +28,7 @@ async function fetchUserInfo(username: string) {
 	const encodedUsername = encodeURIComponent(username);
 
 	const response = await spaceTradersApi.get<IGetUserInfoResponse>(
-		`/users/${encodedUsername}`,
+		userPath(encodedUsername),
 	);
 
 	return response.data.user;

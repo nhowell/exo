@@ -1,5 +1,5 @@
 import { useMutation } from "react-query";
-import { currentUserPath } from "..";
+import { userLoansPath } from ".";
 import { spaceTradersApi } from "../..";
 import { IError } from "../../types";
 import { IGetUserInfoResponse, setUserInfoQueryData } from "../getUserInfo";
@@ -22,7 +22,7 @@ interface IPayOffLoanRequest {
 
 async function payOffLoan({ username, loanId }: IPayOffLoanRequest) {
 	const response = await spaceTradersApi.put<IGetUserInfoResponse>(
-		`${currentUserPath(username)}/loans/${loanId}`,
+		`${userLoansPath(username)}/${loanId}`,
 	);
 	return response.data.user;
 }

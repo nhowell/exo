@@ -2,7 +2,7 @@ import { creditFormat } from "../../helpers/creditFormat";
 import { percentFormat } from "../../helpers/numberFormat";
 import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
-import { IAvailableLoan } from "../../spacetraders-api/loans/types";
+import { IAvailableLoan } from "../../spacetraders-api/game/loans/types";
 import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 

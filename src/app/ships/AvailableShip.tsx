@@ -2,7 +2,7 @@ import { Formik, Form, FormikHelpers, ErrorMessage, Field } from "formik";
 import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import { t } from "../../helpers/translate";
-import { IAvailableShip } from "../../spacetraders-api/ships/types";
+import { IAvailableShip } from "../../spacetraders-api/game/ships/types";
 import { usePurchaseShip } from "../../spacetraders-api/users/ships/purchaseShip";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 
