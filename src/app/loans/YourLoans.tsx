@@ -1,36 +1,40 @@
 import { useMemo } from "react";
 import { sortBy } from "lodash";
-import { useCurrentUserInfo } from "../hooks/useCurrentUserInfo";
 import { YourLoan } from "./YourLoan";
 import { LoanStatus } from "../../spacetraders-api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/users/loans/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { t } from "../../helpers/translate";
+import { useLoans } from "../../spacetraders-api/users/loans/getLoans";
+import { useCurrentUser } from "../hooks/useCurrentUser";
 
 export function YourLoans() {
-	const { isLoading, isError, error, data: userInfo } = useCurrentUserInfo();
+	const currentUser = useCurrentUser();
+	const { isLoading, isError, error, data: loans } = useLoans(
+		currentUser.username,
+	);
 
-	const loans = useMemo(() => {
-		if (userInfo === undefined) {
+	const sortedLoans = useMemo(() => {
+		if (loans === undefined) {
 			return;
 		}
 
-		return sortLoans(userInfo.loans);
-	}, [userInfo]);
+		return sortLoans(loans);
+	}, [loans]);
 
 	return (
 		<>
 			<h1>{t("Your Loans")}</h1>
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
-			) : isError || loans === undefined ? (
+			) : isError || sortedLoans === undefined ? (
 				<p>{t(error?.message ?? "Something went wrong.")}</p>
-			) : loans.length === 0 ? (
+			) : sortedLoans.length === 0 ? (
 				<p>{t("You don't have any loans yet.")}</p>
 			) : (
 				<TileContainer>
-					{loans.map((loan) => (
+					{sortedLoans.map((loan) => (
 						<Tile key={loan.id}>
 							<YourLoan loan={loan} />
 						</Tile>

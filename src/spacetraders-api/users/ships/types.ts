@@ -9,6 +9,8 @@ export interface IUserShip {
 	spaceAvailable: number;
 	speed: number;
 	weapons: number;
+	x: number;
+	y: number;
 	location?: string;
 	flightPlanId?: string;
 }

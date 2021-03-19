@@ -2,6 +2,8 @@ import { useQuery } from "react-query";
 import { userPath, userQueryKey } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "..";
 import { IError } from "../types";
+import { setLoansQueryData } from "./loans/getLoans";
+import { setShipsQueryData } from "./ships/getShips";
 import { IUser } from "./types";
 
 export function getUserInfoQueryKey(username: string): string[] {
@@ -15,10 +17,14 @@ export function useUserInfo(username: string) {
 }
 
 export async function getUserInfo(username: string) {
-	return await spaceTradersQueryClient.fetchQuery(
+	const userInfo = await spaceTradersQueryClient.fetchQuery(
 		getUserInfoQueryKey(username),
 		() => fetchUserInfo(username),
 	);
+
+	updateRelatedQueryData(userInfo);
+
+	return userInfo;
 }
 
 async function fetchUserInfo(username: string) {
@@ -43,4 +49,13 @@ export function setUserInfoQueryData(userInfo: IUser) {
 		getUserInfoQueryKey(userInfo.username),
 		userInfo,
 	);
+
+	updateRelatedQueryData(userInfo);
+}
+
+// Since the user info endpoint returns the user's loans and ships, we can
+// optimistically update those query's data as well.
+function updateRelatedQueryData(userInfo: IUser) {
+	setLoansQueryData(userInfo.username, userInfo.loans);
+	setShipsQueryData(userInfo.username, userInfo.ships);
 }
