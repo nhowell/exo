@@ -9,9 +9,11 @@ export const spaceTradersQueryClient = new QueryClient({
 		queries: {
 			// Default to a long cache and stale time, so this will force caching
 			// by default. When a particular query doesn't want it's data cached,
-			// it should override this.
+			// it should override this. The stale time is not set to Infinity because
+			// while some endpoints are mostly static, they do sometimes change, like
+			// when a new system, location, or anomaly is discovered.
 			cacheTime: 60_000 * 60, // 60 minutes
-			staleTime: Infinity,
+			staleTime: 5_000 * 60, // 5 minutes.
 			retry: (failureCount, error) => {
 				if (isStandardError(error) && error.statusCode !== undefined) {
 					if (error.statusCode === HttpStatusCode.TooManyRequests) {
