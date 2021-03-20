@@ -23,6 +23,8 @@ interface ISuccessResponse {
 }
 
 export function setShipsQueryData(username: string, ships: IUserShip[]) {
+	let shouldInvalidateUserShips = false;
+
 	spaceTradersQueryClient.setQueryData<IUserShip[]>(
 		userShipsQueryKey(username),
 		(old) => {
@@ -50,12 +52,16 @@ export function setShipsQueryData(username: string, ships: IUserShip[]) {
 					(x) => x.location === undefined && x.flightPlanId === undefined,
 				)
 			) {
-				spaceTradersQueryClient.invalidateQueries(userShipsQueryKey(username), {
-					exact: true,
-				});
+				shouldInvalidateUserShips = true;
 			}
 
 			return ships;
 		},
 	);
+
+	if (shouldInvalidateUserShips) {
+		spaceTradersQueryClient.invalidateQueries(userShipsQueryKey(username), {
+			exact: true,
+		});
+	}
 }
