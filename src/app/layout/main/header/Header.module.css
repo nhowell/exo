@@ -1,10 +1,14 @@
-.header {
+.headerContainer {
+	height: var(--header-height);
 	background-color: var(--tertiary-bg-color);
 	box-shadow: var(--normal-box-shadow);
-	height: 5rem;
 	position: sticky;
 	top: 0;
-	padding: 0 2rem;
+}
+
+.header {
+	height: 100%;
+	padding: 0 1.5rem;
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
