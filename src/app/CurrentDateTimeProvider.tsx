@@ -1,9 +1,9 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactElement, useState } from "react";
 import { DateTime } from "luxon";
 import { useInterval } from "./hooks/useInterval";
 
 interface IOwnProps {
-	children: ReactNode;
+	children: ReactElement;
 }
 
 export const currentDateTimeContext = createContext<DateTime>(DateTime.now());

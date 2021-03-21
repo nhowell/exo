@@ -1,9 +1,9 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactElement } from "react";
 import { IAuth, useProvideAuth } from "./hooks/useProvideAuth";
 import { GameLoading } from "./common/loading/GameLoading";
 
 interface IOwnProps {
-	children: ReactNode;
+	children: ReactElement;
 }
 
 export const authContext = createContext<IAuth>({
