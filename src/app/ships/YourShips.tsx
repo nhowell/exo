@@ -2,7 +2,7 @@ import { Table } from "../../core/table/Table";
 import { ITableColumnHeader } from "../../core/table/types";
 import { t } from "../../helpers/translate";
 import { useShips } from "../../spacetraders-api/users/ships/getShips";
-import { IUserShip } from "../../spacetraders-api/users/ships/types";
+import { Good, IUserShip } from "../../spacetraders-api/users/ships/types";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { ShipStatus } from "./ShipStatus";
 
@@ -14,8 +14,9 @@ const columnDefinitions: ITableColumnHeader<IUserShip>[] = [
 	{
 		keyname: "spaceAvailable",
 		label: "Cargo",
-		customFormat: (item) =>
-			`${item.maxCargo - item.spaceAvailable}/${item.maxCargo}`,
+		align: "right",
+		customFormat: (ship) =>
+			`${ship.maxCargo - ship.spaceAvailable}/${ship.maxCargo}`,
 	},
 	{
 		keyname: "speed",
@@ -23,8 +24,15 @@ const columnDefinitions: ITableColumnHeader<IUserShip>[] = [
 		align: "right",
 	},
 	{
+		keyname: "cargo",
+		label: "Fuel",
+		align: "right",
+		customFormat: (ship) =>
+			ship.cargo.find((x) => x.good === Good.Fuel)?.quantity ?? 0,
+	},
+	{
 		keyname: "location",
-		label: "Status",
+		label: "Current Location",
 		customElementFormat: (ship) => (
 			<ShipStatus location={ship.location} flightPlanId={ship.flightPlanId} />
 		),

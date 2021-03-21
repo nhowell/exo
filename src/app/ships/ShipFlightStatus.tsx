@@ -3,6 +3,7 @@ import { useCurrentUser } from "../hooks/useCurrentUser";
 import { RelativeTimeRemaining } from "../common/RelativeTimeRemaining";
 import { useFlightPlan } from "../../spacetraders-api/users/flight-plans/getFlightPlan";
 import { t } from "../../helpers/translate";
+import commonStyles from "../common/common.module.css";
 
 interface IOwnProps {
 	flightPlanId: string;
@@ -20,10 +21,14 @@ export function ShipFlightStatus(props: IOwnProps): ReactElement {
 	) : isError || flightPlan === undefined ? (
 		<>{t(error?.message ?? "Something went wrong.")}</>
 	) : flightPlan.terminatedAt !== null ? (
-		<>{`${t("Arrived at")} ${flightPlan.destination}`}</>
+		<>
+			{t("Arrived at")}{" "}
+			<span className={commonStyles.noWrap}>{flightPlan.destination}</span>
+		</>
 	) : (
 		<>
-			In transit to {flightPlan.destination} -{" "}
+			In transit to{" "}
+			<span className={commonStyles.noWrap}>{flightPlan.destination}</span> -{" "}
 			<RelativeTimeRemaining endDate={flightPlan.arrivesAt} />
 		</>
 	);

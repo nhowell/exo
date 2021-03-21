@@ -2,6 +2,7 @@ import { ReactElement, useCallback, useMemo, useState } from "react";
 import { Interval, DateTime } from "luxon";
 import { secondsToTimeRemainingFormat } from "../../helpers/secondsToTimeRemainingFormat";
 import { useInterval } from "../hooks/useInterval";
+import commonStyles from "../common/common.module.css";
 
 interface IOwnProps {
 	endDate: string;
@@ -25,5 +26,9 @@ export function RelativeTimeRemaining(props: IOwnProps): ReactElement {
 
 	const totalSeconds = remainingTime.length("seconds");
 
-	return <>{secondsToTimeRemainingFormat(totalSeconds)}</>;
+	return (
+		<span className={commonStyles.noWrap}>
+			{secondsToTimeRemainingFormat(totalSeconds)}
+		</span>
+	);
 }
