@@ -23,7 +23,11 @@ async function getFlightPlan(username: string, flightPlanId: string) {
 		`${userFlightPlansPath(username)}/${flightPlanId}`,
 	);
 
-	return response.data.flightPlan;
+	const flightPlan = response.data.flightPlan;
+
+	refetchFlightPlanWhenItArrives(username, flightPlan);
+
+	return flightPlan;
 }
 
 interface ISuccessResponse {
@@ -38,4 +42,21 @@ export function setFlightPlanQueryData(
 		getUserFlightPlanQueryKey(username, flightPlan.id),
 		flightPlan,
 	);
+
+	refetchFlightPlanWhenItArrives(username, flightPlan);
+}
+
+function refetchFlightPlanWhenItArrives(
+	username: string,
+	flightPlan: IUserFlightPlan,
+) {
+	if (flightPlan.terminatedAt !== null) {
+		return;
+	}
+
+	setTimeout(() => {
+		spaceTradersQueryClient.refetchQueries(
+			getUserFlightPlanQueryKey(username, flightPlan.id),
+		);
+	}, flightPlan.timeRemainingInSeconds * 1000);
 }

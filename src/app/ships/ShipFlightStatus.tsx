@@ -19,6 +19,8 @@ export function ShipFlightStatus(props: IOwnProps): ReactElement {
 		<>{t("Loading...")}</>
 	) : isError || flightPlan === undefined ? (
 		<>{t(error?.message ?? "Something went wrong.")}</>
+	) : flightPlan.terminatedAt !== null ? (
+		<>{`${t("Arrived at")} ${flightPlan.destination}`}</>
 	) : (
 		<>
 			In transit to {flightPlan.destination} -{" "}

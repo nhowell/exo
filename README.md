@@ -14,5 +14,6 @@ Visit https://spacetraders.nickhowell.com/ to see it live.
 - [axios](https://github.com/axios/axios)
 - [react-router-dom](https://reactrouter.com/web)
 - [formik](https://formik.org/)
+- [luxon](https://moment.github.io/luxon/)
 - [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) (For hosting the built web app)
 - Github Actions (Builds the app and deploys it to Azure Static Web Apps)
