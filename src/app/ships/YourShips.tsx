@@ -1,3 +1,4 @@
+import { sum } from "lodash";
 import { Table } from "../../core/table/Table";
 import { ITableColumnHeader } from "../../core/table/types";
 import { t } from "../../helpers/translate";
@@ -14,9 +15,17 @@ const columnDefinitions: ITableColumnHeader<IUserShip>[] = [
 	{
 		keyname: "spaceAvailable",
 		label: "Cargo",
-		align: "right",
-		customFormat: (ship) =>
-			`${ship.maxCargo - ship.spaceAvailable}/${ship.maxCargo}`,
+		customFormat: (ship) => {
+			const volumelessCargoCount = sum(
+				ship.cargo.filter((x) => x.totalVolume === 0).map((x) => x.quantity),
+			);
+			const extraCargo =
+				volumelessCargoCount > 0 ? ` +${volumelessCargoCount}` : "";
+
+			return `${ship.maxCargo - ship.spaceAvailable}/${
+				ship.maxCargo
+			}${extraCargo}`;
+		},
 	},
 	{
 		keyname: "speed",
