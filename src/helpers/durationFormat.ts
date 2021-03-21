@@ -1,9 +1,9 @@
-export function secondsToTimeRemainingFormat(seconds: number): string {
+export function durationFormat(seconds: number): string {
 	if (isNaN(seconds)) {
 		seconds = 0;
 	}
 
-	const totalSeconds = Math.ceil(seconds);
+	const totalSeconds = Math.ceil(Math.abs(seconds));
 	const totalMinutes = Math.floor(totalSeconds / 60);
 	const totalHours = Math.floor(totalMinutes / 60);
 	const totalDays = Math.floor(totalHours / 24);
@@ -27,6 +27,10 @@ export function secondsToTimeRemainingFormat(seconds: number): string {
 	if (timeComponents.length < 2) {
 		const seconds = totalSeconds % 60;
 		timeComponents.push(`${seconds}s`);
+	}
+
+	if (seconds < 0) {
+		timeComponents.push("ago");
 	}
 
 	return timeComponents.join(" ");

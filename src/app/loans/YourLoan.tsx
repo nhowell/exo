@@ -5,6 +5,7 @@ import {
 	IUserLoan,
 	LoanStatus,
 } from "../../spacetraders-api/users/loans/types";
+import { TimeRemaining } from "../common/TimeRemaining";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 
 interface IOwnProps {
@@ -31,8 +32,13 @@ export function YourLoan(props: IOwnProps) {
 				<br />
 				<strong>{t("Repayment Amount")}:</strong>{" "}
 				{creditFormat(props.loan.repaymentAmount)}
-				<br />
-				<strong>{t("Due")}:</strong> {props.loan.due}
+				{props.loan.status === LoanStatus.Paid ? undefined : (
+					<>
+						<br />
+						<strong>{t("Due")}:</strong>{" "}
+						<TimeRemaining until={props.loan.due} />
+					</>
+				)}
 			</p>
 
 			{payOffLoan.error ? <p>{t(payOffLoan.error.message)}</p> : undefined}

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useCurrentUser } from "../hooks/useCurrentUser";
-import { RelativeTimeRemaining } from "../common/RelativeTimeRemaining";
+import { TimeRemaining } from "../common/TimeRemaining";
 import { useFlightPlan } from "../../spacetraders-api/users/flight-plans/getFlightPlan";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
@@ -29,7 +29,7 @@ export function ShipFlightStatus(props: IOwnProps): ReactElement {
 		<>
 			In transit to{" "}
 			<span className={commonStyles.noWrap}>{flightPlan.destination}</span> -{" "}
-			<RelativeTimeRemaining endDate={flightPlan.arrivesAt} />
+			<TimeRemaining until={flightPlan.arrivesAt} />
 		</>
 	);
 }
