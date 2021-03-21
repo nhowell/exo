@@ -8,6 +8,7 @@ import { AuthProvider } from "./AuthProvider";
 import { loginPath, routes } from "./routes";
 import { PrivateRoute } from "./PrivateRoute";
 import { NotFound } from "./NotFound";
+import { CurrentDateTimeProvider } from "./CurrentDateTimeProvider";
 
 export function App() {
 	return (
@@ -20,16 +21,18 @@ export function App() {
 						</Route>
 						<PrivateRoute path="*">
 							<MainLayout>
-								<Switch>
-									{routes.map((route) => (
-										<Route key={route.path} path={route.path} exact>
-											<route.component />
+								<CurrentDateTimeProvider>
+									<Switch>
+										{routes.map((route) => (
+											<Route key={route.path} path={route.path} exact>
+												<route.component />
+											</Route>
+										))}
+										<Route path="*">
+											<NotFound />
 										</Route>
-									))}
-									<Route path="*">
-										<NotFound />
-									</Route>
-								</Switch>
+									</Switch>
+								</CurrentDateTimeProvider>
 							</MainLayout>
 						</PrivateRoute>
 					</Switch>

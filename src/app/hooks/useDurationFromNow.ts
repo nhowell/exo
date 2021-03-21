@@ -1,22 +1,14 @@
 import { DateTime } from "luxon";
-import { useCallback, useMemo, useState } from "react";
-import { useInterval } from "./useInterval";
+import { useMemo } from "react";
+import { useCurrentDateTime } from "./useCurrentDateTime";
 
-export function useDurationFromNow(date: string) {
+export function useDurationFromNow(date: string): number {
+	const currentDateTime = useCurrentDateTime();
 	const endDateTime = useMemo(() => DateTime.fromISO(date), [date]);
 
-	const calculateRemainingSeconds = useCallback(
-		() => Math.floor(endDateTime.diffNow().valueOf() / 1000),
-		[endDateTime],
-	);
-
-	const [remainingSeconds, setRemainingSeconds] = useState(
-		calculateRemainingSeconds,
-	);
-
-	useInterval(() => {
-		setRemainingSeconds(calculateRemainingSeconds());
-	}, 1_000);
+	const remainingSeconds = useMemo(() => {
+		return Math.floor(endDateTime.diff(currentDateTime).valueOf() / 1000);
+	}, [currentDateTime, endDateTime]);
 
 	return remainingSeconds;
 }
