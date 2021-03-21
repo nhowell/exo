@@ -1,3 +1,4 @@
+import { produce } from "immer";
 import { useQuery } from "react-query";
 import { userShipsPath, userShipsQueryKey } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "../..";
@@ -64,4 +65,44 @@ export function setShipsQueryData(username: string, ships: IUserShip[]) {
 			exact: true,
 		});
 	}
+}
+
+export function setShipArrival(
+	username: string,
+	shipId: string,
+	flightPlanId: string,
+	location: string,
+) {
+	const ships = spaceTradersQueryClient.getQueryData<IUserShip[]>(
+		userShipsQueryKey(username),
+	);
+
+	if (ships === undefined) {
+		return;
+	}
+
+	spaceTradersQueryClient.setQueryData<IUserShip[]>(
+		userShipsQueryKey(username),
+		(old) => {
+			if (old === undefined) {
+				return [];
+			}
+
+			// Since we're modifying the original, we must do it immutably.
+			return produce(old, (draft) => {
+				const ship = draft.find(
+					(x) =>
+						x.id === shipId &&
+						(x.flightPlanId === flightPlanId || x.flightPlanId === undefined),
+				);
+
+				if (ship !== undefined) {
+					delete ship.flightPlanId;
+					ship.location = location;
+				}
+
+				return draft;
+			});
+		},
+	);
 }

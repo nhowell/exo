@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { userFlightPlansPath, userFlightPlansQueryKey } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "../..";
 import { IError } from "../../types";
+import { setShipArrival } from "../ships/getShips";
 import { IUserFlightPlan } from "./types";
 
 export function getUserFlightPlanQueryKey(
@@ -57,6 +58,14 @@ function refetchFlightPlanWhenItArrives(
 	setTimeout(() => {
 		spaceTradersQueryClient.refetchQueries(
 			getUserFlightPlanQueryKey(username, flightPlan.id),
+		);
+
+		// Optimistically update the ship's arrival.
+		setShipArrival(
+			username,
+			flightPlan.ship,
+			flightPlan.id,
+			flightPlan.destination,
 		);
 	}, flightPlan.timeRemainingInSeconds * 1000);
 }
