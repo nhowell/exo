@@ -20,8 +20,8 @@ export function App() {
 							<LoginLayout />
 						</Route>
 						<PrivateRoute path="*">
-							<MainLayout>
-								<CurrentDateTimeProvider>
+							<CurrentDateTimeProvider>
+								<MainLayout>
 									<Switch>
 										{routes.map((route) => (
 											<Route key={route.path} path={route.path} exact>
@@ -32,8 +32,8 @@ export function App() {
 											<NotFound />
 										</Route>
 									</Switch>
-								</CurrentDateTimeProvider>
-							</MainLayout>
+								</MainLayout>
+							</CurrentDateTimeProvider>
 						</PrivateRoute>
 					</Switch>
 				</AuthProvider>
