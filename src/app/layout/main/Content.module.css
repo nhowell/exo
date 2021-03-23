@@ -49,9 +49,6 @@
 	background-color: var(--primary-bg-color);
 }
 
-.content {
-}
-
 @media (max-width: 1120px) {
 	.contentContainer {
 		flex-direction: column;
@@ -60,6 +57,10 @@
 	.contentContainer > section {
 		height: auto;
 		width: 100% !important;
+	}
+
+	.contentContainer > section > nav > a {
+		flex-grow: 1;
 	}
 }
 
