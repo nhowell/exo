@@ -1,7 +1,7 @@
 .tile {
 	background-color: var(--secondary-bg-color);
 	margin: 1rem;
-	padding: 1rem 1.5rem 1.5rem;
+	padding: var(--normal-box-padding);
 	border-radius: var(--normal-border-radius);
 	box-shadow: var(--normal-box-shadow);
 }

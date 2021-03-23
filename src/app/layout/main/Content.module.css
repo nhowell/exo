@@ -1,34 +1,74 @@
-.content {
+.contentContainer {
 	display: flex;
+	padding: 0 var(--normal-box-padding);
 }
 
-.content > * {
+.contentContainer > section {
 	height: calc(100vh - var(--header-height));
 	overflow-y: auto;
-	padding: 1.5rem;
+	padding: var(--normal-box-padding);
 }
 
-.content > *:first-child {
+.contentContainer > section:first-child {
 	width: 55rem;
+	background-color: var(--secondary-bg-color);
 }
 
-.content > *:nth-child(2) {
+.contentContainer > section:nth-child(2) {
 	flex: 1;
-	border-left: 0.2rem solid var(--secondary-bg-color);
+	border-right: 0.2rem solid var(--secondary-bg-color);
 }
 
-@media (max-width: 70rem) {
-	.content {
+.contentContainer > section > nav {
+	position: sticky;
+	top: calc(var(--normal-box-padding) - var(--normal-box-padding) * 2);
+	display: flex;
+	flex-wrap: wrap;
+	background-color: var(--secondary-bg-color);
+	margin: calc(var(--normal-box-padding) - var(--normal-box-padding) * 2)
+		calc(var(--normal-box-padding) - var(--normal-box-padding) * 2)
+		var(--normal-box-padding);
+}
+
+.contentContainer > section > nav > a {
+	color: var(--muted-text-color);
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	background-color: var(--quaternary-bg-color);
+	padding: 0.9rem 1.5rem;
+	border-left: 0.1rem solid var(--secondary-bg-color);
+}
+
+.contentContainer > section > nav > a:first-child {
+	border-left: 0;
+}
+
+.contentContainer > section > nav > *.active {
+	color: var(--primary-text-color);
+	background-color: var(--primary-bg-color);
+}
+
+.content {
+}
+
+@media (max-width: 1120px) {
+	.contentContainer {
 		flex-direction: column;
 	}
 
-	.content > * {
+	.contentContainer > section {
 		height: auto;
 		width: 100% !important;
 	}
+}
 
-	.content > *:nth-child(2) {
-		border-left: 0;
-		border-top: 0.2rem solid var(--secondary-bg-color);
+@media (max-width: 1920px) {
+	.contentContainer {
+		padding: 0;
+	}
+
+	.contentContainer > section:nth-child(2) {
+		border-right: 0;
 	}
 }

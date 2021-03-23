@@ -4,11 +4,12 @@
 	box-shadow: var(--normal-box-shadow);
 	position: sticky;
 	top: 0;
+	z-index: 100;
 }
 
 .header {
 	height: 100%;
-	padding: 0 1.5rem;
+	padding: 0 var(--normal-box-padding);
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
@@ -21,7 +22,7 @@
 	align-items: center;
 }
 
-@media (max-width: 50rem) {
+@media (max-width: 800px) {
 	.header {
 		justify-content: flex-end;
 	}

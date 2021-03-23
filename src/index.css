@@ -5,10 +5,12 @@
 	--muted-text-color: #aaa;
 	--primary-color: #007acc;
 	--secondary-color: #16825d;
-	--tertiary-color: #333;
+	--tertiary-color: #3c3c3c;
 	--primary-bg-color: #1e1e1e;
 	--secondary-bg-color: #252526;
 	--tertiary-bg-color: #333;
+	--quaternary-bg-color: #2d2d2d;
+	--normal-box-padding: 1.5rem;
 	--normal-border-radius: 0.5rem;
 	--small-border-radius: 0.3rem;
 	--normal-box-shadow: 0.1rem 0.1rem rgba(0, 0, 0, 0.25);
