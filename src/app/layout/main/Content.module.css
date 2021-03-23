@@ -61,6 +61,7 @@
 
 	.contentContainer > section > nav > a {
 		flex-grow: 1;
+		border-top: 0.1rem solid var(--secondary-bg-color);
 	}
 }
 
