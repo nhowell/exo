@@ -7,8 +7,8 @@ import {
 } from "../../spacetraders-api";
 import { getUserInfo } from "../../spacetraders-api/users/getUserInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
-import { useHistory } from "react-router";
-import { loginPath } from "../routes";
+import { useHistory, useLocation } from "react-router";
+import { homePath, loginPath } from "../routes";
 
 interface IAuthState {
 	activeUsername: string | null;
@@ -42,6 +42,8 @@ export function useProvideAuth(): IAuth {
 	);
 
 	const { replace: replaceHistory } = useHistory();
+
+	const location = useLocation();
 
 	const setAuthorizationHeaderAndGetUserInfo = useCallback(
 		async (auth: IUserCredentials) => {
@@ -85,11 +87,18 @@ export function useProvideAuth(): IAuth {
 
 			setIsAutoLoginLoading(false);
 
-			replaceHistory("/");
+			if (location.pathname === loginPath) {
+				replaceHistory(homePath);
+			}
 		}
 
 		asyncTask();
-	}, [localStorageAuth, replaceHistory, setAuthorizationHeaderAndGetUserInfo]);
+	}, [
+		localStorageAuth,
+		location.pathname,
+		replaceHistory,
+		setAuthorizationHeaderAndGetUserInfo,
+	]);
 
 	const login = useCallback(
 		async (values: ILoginForm): Promise<string | undefined> => {
