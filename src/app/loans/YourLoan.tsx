@@ -32,7 +32,8 @@ export function YourLoan(props: IOwnProps) {
 				<br />
 				<strong>{t("Repayment Amount")}:</strong>{" "}
 				{creditFormat(props.loan.repaymentAmount)}
-				{props.loan.status === LoanStatus.Paid ? undefined : (
+				{props.loan.status === LoanStatus.Paid ||
+				props.loan.status === LoanStatus.PaidLate ? undefined : (
 					<>
 						<br />
 						<strong>{t("Due")}:</strong>{" "}
@@ -43,7 +44,8 @@ export function YourLoan(props: IOwnProps) {
 
 			{payOffLoan.error ? <p>{t(payOffLoan.error.message)}</p> : undefined}
 
-			{props.loan.status === LoanStatus.Paid ? undefined : (
+			{props.loan.status === LoanStatus.Paid ||
+			props.loan.status === LoanStatus.PaidLate ? undefined : (
 				<button
 					type="button"
 					onClick={handleClick}

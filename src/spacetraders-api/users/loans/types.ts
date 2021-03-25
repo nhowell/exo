@@ -3,6 +3,7 @@ import { LoanType } from "../../game/loans/types";
 export enum LoanStatus {
 	Current = "CURRENT",
 	Paid = "PAID",
+	PaidLate = "PAID_LATE",
 }
 
 export interface IUserLoan {
