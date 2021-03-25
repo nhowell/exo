@@ -7,7 +7,7 @@ export function useDurationFromNow(date: string): number {
 	const endDateTime = useMemo(() => DateTime.fromISO(date), [date]);
 
 	const remainingSeconds = useMemo(() => {
-		return Math.floor(endDateTime.diff(currentDateTime).valueOf() / 1000);
+		return Math.ceil(endDateTime.diff(currentDateTime).valueOf() / 1000);
 	}, [currentDateTime, endDateTime]);
 
 	return remainingSeconds;

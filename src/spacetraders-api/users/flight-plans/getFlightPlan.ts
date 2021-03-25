@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { userFlightPlansPath, userFlightPlansQueryKey } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "../..";
 import { IError } from "../../types";
-import { setShipArrival } from "../ships/getShips";
+import { setShipArrival } from "../ships/getShip";
 import { IUserFlightPlan } from "./types";
 
 export function getUserFlightPlanQueryKey(

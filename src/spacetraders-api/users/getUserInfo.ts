@@ -17,14 +17,10 @@ export function useUserInfo(username: string) {
 }
 
 export async function getUserInfo(username: string) {
-	const userInfo = await spaceTradersQueryClient.fetchQuery(
+	return await spaceTradersQueryClient.fetchQuery(
 		getUserInfoQueryKey(username),
 		() => fetchUserInfo(username),
 	);
-
-	updateRelatedQueryData(userInfo);
-
-	return userInfo;
 }
 
 async function fetchUserInfo(username: string) {
@@ -36,6 +32,8 @@ async function fetchUserInfo(username: string) {
 	const response = await spaceTradersApi.get<IGetUserInfoResponse>(
 		userPath(encodedUsername),
 	);
+
+	updateRelatedQueryData(response.data.user);
 
 	return response.data.user;
 }

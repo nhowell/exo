@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { userShipsPath, userShipsQueryKey } from ".";
 import { spaceTradersApi, spaceTradersQueryClient } from "../..";
 import { IError } from "../../types";
+import { setShipQueryDataForAllShips } from "./getShip";
 import { IUserShip } from "./types";
 
 export function useShips(username: string) {
@@ -15,6 +16,8 @@ async function getShips(username: string) {
 	const response = await spaceTradersApi.get<ISuccessResponse>(
 		userShipsPath(username),
 	);
+
+	updateRelatedQueryData(username, response.data.ships);
 
 	return response.data.ships;
 }
@@ -29,14 +32,14 @@ export function setShipsQueryData(username: string, ships: IUserShip[]) {
 	spaceTradersQueryClient.setQueryData<IUserShip[]>(
 		userShipsQueryKey(username),
 		(old) => {
-			return produce(ships, (draft) => {
+			const newShips = produce(ships, (draft) => {
 				if (old !== undefined) {
 					for (const ship of draft) {
 						if (
 							ship.location === undefined &&
 							ship.flightPlanId === undefined
 						) {
-							// The get user info, and other endpoints, return the ships without
+							// The get user info endpoint returns the ships without
 							// their flight plan IDs, so we want to make sure we don't lose the
 							// flight plan IDs if we already have them.
 							const previousShip = old.find((x) => x.id === ship.id);
@@ -60,6 +63,10 @@ export function setShipsQueryData(username: string, ships: IUserShip[]) {
 					shouldInvalidateUserShips = true;
 				}
 			});
+
+			updateRelatedQueryData(username, newShips);
+
+			return newShips;
 		},
 	);
 
@@ -70,40 +77,30 @@ export function setShipsQueryData(username: string, ships: IUserShip[]) {
 	}
 }
 
-export function setShipArrival(
-	username: string,
-	shipId: string,
-	flightPlanId: string,
-	location: string,
-) {
-	const ships = spaceTradersQueryClient.getQueryData<IUserShip[]>(
-		userShipsQueryKey(username),
-	);
+export function setShipInShipsQueryData(username: string, ship: IUserShip) {
+	const ships =
+		spaceTradersQueryClient.getQueryData<IUserShip[]>(
+			userShipsQueryKey(username),
+		) ?? [];
 
-	if (ships === undefined) {
-		return;
-	}
+	const newShips = produce(ships, (draft) => {
+		const index = draft.findIndex((x) => x.id === ship.id);
+
+		if (index === -1) {
+			draft.push(ship);
+		} else {
+			draft[index] = ship;
+		}
+	});
 
 	spaceTradersQueryClient.setQueryData<IUserShip[]>(
 		userShipsQueryKey(username),
-		(old) => {
-			if (old === undefined) {
-				return [];
-			}
-
-			// Since we're modifying the original, we must do it immutably.
-			return produce(old, (draft) => {
-				const ship = draft.find(
-					(x) =>
-						x.id === shipId &&
-						(x.flightPlanId === flightPlanId || x.flightPlanId === undefined),
-				);
-
-				if (ship !== undefined) {
-					delete ship.flightPlanId;
-					ship.location = location;
-				}
-			});
-		},
+		newShips,
 	);
+}
+
+// The list of ships and the individual ship endpoints return the same data,
+// so we want to keep them in sync.
+function updateRelatedQueryData(username: string, ships: IUserShip[]) {
+	setShipQueryDataForAllShips(username, ships);
 }
