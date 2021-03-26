@@ -27,7 +27,8 @@ export function ShipFlightStatus(props: IOwnProps): ReactElement {
 		</>
 	) : (
 		<>
-			In transit to{" "}
+			In transit from{" "}
+			<span className={commonStyles.noWrap}>{flightPlan.departure}</span> to{" "}
 			<span className={commonStyles.noWrap}>{flightPlan.destination}</span> -{" "}
 			<TimeRemaining until={flightPlan.arrivesAt} />
 		</>

@@ -1,0 +1,3 @@
+.shipList {
+	margin: 0 calc(var(--normal-box-padding) - var(--normal-box-padding) * 2);
+}

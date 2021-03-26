@@ -1,0 +1,26 @@
+.shipLink {
+	display: flex;
+	justify-content: space-between;
+	color: var(--muted-text-color);
+	text-decoration: none;
+	padding: calc(var(--normal-box-padding) / 3) var(--normal-box-padding);
+	border-top: 1px solid var(--primary-bg-color);
+}
+
+.shipLink:last-child {
+	border-bottom: 1px solid var(--primary-bg-color);
+}
+
+.shipLink:hover {
+	background-color: var(--tertiary-bg-color);
+}
+
+.shipLink > div:last-child {
+	text-align: right;
+}
+
+.activeShipLink,
+.activeShipLink:hover {
+	background-color: var(--primary-bg-color);
+	color: var(--primary-text-color);
+}

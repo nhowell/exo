@@ -15,7 +15,7 @@ export interface IUserShip {
 	flightPlanId?: string;
 }
 
-interface IShipCargo {
+export interface IShipCargo {
 	good: Good;
 	quantity: number;
 	totalVolume: number;
