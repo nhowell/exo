@@ -1,3 +1,4 @@
+import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
 import { useShips } from "../../spacetraders-api/users/ships/getShips";
 import { useCurrentUser } from "../hooks/useCurrentUser";
@@ -13,7 +14,7 @@ export function YourShips() {
 
 	return (
 		<>
-			<h1>Your Ships</h1>
+			<h1 className={styles.heading}>{t("Your Fleet")}</h1>
 
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
@@ -22,11 +23,15 @@ export function YourShips() {
 			) : ships.length === 0 ? (
 				<p>{t("You don't own any ships.")}</p>
 			) : (
-				<div className={styles.shipList}>
-					{ships.map((ship) => (
-						<YourShip key={ship.id} ship={ship} />
-					))}
-				</div>
+				<>
+					<p>{pluralize(ships.length, t("ship"), t("ships"))}</p>
+
+					<div className={styles.shipList}>
+						{ships.map((ship) => (
+							<YourShip key={ship.id} ship={ship} />
+						))}
+					</div>
+				</>
 			)}
 		</>
 	);

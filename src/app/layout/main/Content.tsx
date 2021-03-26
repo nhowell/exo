@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
+import { t } from "../../../helpers/translate";
 import {
 	homePath,
 	loansPath,
@@ -27,19 +28,19 @@ export function Content(props: IOwnProps) {
 			<section>
 				<nav>
 					<NavLink to={homePath} activeClassName={styles.active} exact>
-						Home
+						{t("Home")}
 					</NavLink>
 					<NavLink to={mapPath} activeClassName={styles.active}>
-						Map
+						{t("Map")}
 					</NavLink>
 					<NavLink to={marketPath} activeClassName={styles.active}>
-						Market
+						{t("Market")}
 					</NavLink>
 					<NavLink to={shipyardPath} activeClassName={styles.active}>
-						Shipyard
+						{t("Shipyard")}
 					</NavLink>
 					<NavLink to={loansPath} activeClassName={styles.active}>
-						Loans
+						{t("Loans")}
 					</NavLink>
 				</nav>
 
