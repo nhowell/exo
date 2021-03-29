@@ -1,26 +1,21 @@
 import { creditFormat } from "../../helpers/creditFormat";
 import { t } from "../../helpers/translate";
-import { usePayOffLoan } from "../../spacetraders-api/users/loans/payOffLoan";
+import { usePayOffLoan } from "../../spacetraders-api/hooks/users/loans/usePayOffLoan";
 import {
 	IUserLoan,
 	LoanStatus,
-} from "../../spacetraders-api/users/loans/types";
+} from "../../spacetraders-api/api/users/loans/types";
 import { TimeRemaining } from "../common/TimeRemaining";
-import { useCurrentUser } from "../hooks/useCurrentUser";
 
 interface IOwnProps {
 	loan: IUserLoan;
 }
 
 export function YourLoan(props: IOwnProps) {
-	const currentUser = useCurrentUser();
 	const payOffLoan = usePayOffLoan();
 
 	const handleClick = () => {
-		payOffLoan.mutate({
-			username: currentUser.username,
-			loanId: props.loan.id,
-		});
+		payOffLoan.mutate(props.loan.id);
 	};
 
 	return (

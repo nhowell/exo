@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useMemo } from "react";
 import { t } from "../../../helpers/translate";
-import { useGameStatus } from "../../../spacetraders-api/game/getGameStatus";
+import { useGameStatus } from "../../../spacetraders-api/hooks/game/useGameStatus";
 import styles from "./GameStatus.module.css";
 
 interface IGameStatus {
@@ -10,7 +10,7 @@ interface IGameStatus {
 }
 
 export function GameStatus() {
-	const { isLoading, isError, data: status } = useGameStatus();
+	const { isLoading, isError, data } = useGameStatus();
 
 	const gameStatus: IGameStatus = useMemo(() => {
 		if (isLoading) {
@@ -21,9 +21,9 @@ export function GameStatus() {
 				message: "Could not connect to game server or server is offline",
 			};
 		} else {
-			return { code: "ONLINE", message: status ?? "Online" };
+			return { code: "ONLINE", message: data?.status ?? "Online" };
 		}
-	}, [isError, isLoading, status]);
+	}, [isError, isLoading, data]);
 
 	return (
 		<span

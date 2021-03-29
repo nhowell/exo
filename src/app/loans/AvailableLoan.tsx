@@ -2,23 +2,18 @@ import { creditFormat } from "../../helpers/creditFormat";
 import { percentFormat } from "../../helpers/numberFormat";
 import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
-import { IAvailableLoan } from "../../spacetraders-api/game/loans/types";
-import { useAcceptLoan } from "../../spacetraders-api/users/loans/acceptLoan";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import { IAvailableLoan } from "../../spacetraders-api/api/game/loans/types";
+import { useAcceptLoan } from "../../spacetraders-api/hooks/users/loans/useAcceptLoan";
 
 interface IOwnProps {
 	loan: IAvailableLoan;
 }
 
 export function AvailableLoan(props: IOwnProps) {
-	const currentUser = useCurrentUser();
 	const acceptLoan = useAcceptLoan();
 
 	const handleClick = () => {
-		acceptLoan.mutate({
-			username: currentUser.username,
-			type: props.loan.type,
-		});
+		acceptLoan.mutate(props.loan.type);
 	};
 
 	return (

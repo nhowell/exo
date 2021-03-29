@@ -1,27 +1,23 @@
 import { useMemo } from "react";
 import { sortBy } from "lodash";
 import { YourLoan } from "./YourLoan";
-import { LoanStatus } from "../../spacetraders-api/users/loans/types";
-import { IUserLoan } from "../../spacetraders-api/users/loans/types";
+import { LoanStatus } from "../../spacetraders-api/api/users/loans/types";
+import { IUserLoan } from "../../spacetraders-api/api/users/loans/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { t } from "../../helpers/translate";
-import { useLoans } from "../../spacetraders-api/users/loans/getLoans";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import { useLoans } from "../../spacetraders-api/hooks/users/loans/useLoans";
 
 export function YourLoans() {
-	const currentUser = useCurrentUser();
-	const { isLoading, isError, error, data: loans } = useLoans(
-		currentUser.username,
-	);
+	const { isLoading, isError, error, data } = useLoans();
 
 	const sortedLoans = useMemo(() => {
-		if (loans === undefined) {
+		if (data === undefined) {
 			return;
 		}
 
-		return sortLoans(loans);
-	}, [loans]);
+		return sortLoans(data.loans);
+	}, [data]);
 
 	return (
 		<>

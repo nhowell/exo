@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
-import { useCurrentUser } from "../hooks/useCurrentUser";
 import { TimeRemaining } from "../common/TimeRemaining";
-import { useFlightPlan } from "../../spacetraders-api/users/flight-plans/getFlightPlan";
+import { useFlightPlan } from "../../spacetraders-api/hooks/users/flight-plans/useFlightPlan";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
 
@@ -10,27 +9,24 @@ interface IOwnProps {
 }
 
 export function ShipFlightStatus(props: IOwnProps): ReactElement {
-	const currentUser = useCurrentUser();
-	const { isLoading, isError, error, data: flightPlan } = useFlightPlan(
-		currentUser.username,
-		props.flightPlanId,
-	);
+	const { isLoading, isError, error, data } = useFlightPlan(props.flightPlanId);
 
 	return isLoading ? (
 		<>{t("Loading...")}</>
-	) : isError || flightPlan === undefined ? (
+	) : isError || data === undefined ? (
 		<>{t(error?.message ?? "Something went wrong.")}</>
-	) : flightPlan.terminatedAt !== null ? (
+	) : data.flightPlan.terminatedAt !== null ? (
 		<>
 			{t("Arrived at")}{" "}
-			<span className={commonStyles.noWrap}>{flightPlan.destination}</span>
+			<span className={commonStyles.noWrap}>{data.flightPlan.destination}</span>
 		</>
 	) : (
 		<>
-			In transit from{" "}
-			<span className={commonStyles.noWrap}>{flightPlan.departure}</span> to{" "}
-			<span className={commonStyles.noWrap}>{flightPlan.destination}</span> -{" "}
-			<TimeRemaining until={flightPlan.arrivesAt} />
+			{t("In transit from")}{" "}
+			<span className={commonStyles.noWrap}>{data.flightPlan.departure}</span>{" "}
+			{t("to")}{" "}
+			<span className={commonStyles.noWrap}>{data.flightPlan.destination}</span>{" "}
+			- <TimeRemaining until={data.flightPlan.arrivesAt} />
 		</>
 	);
 }

@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 import { t } from "../../../helpers/translate";
-import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/users/claimUsernameAndGetToken";
+import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/hooks/users/useClaimUsernameAndGetToken";
 import { IUserCredentials } from "../../hooks/useProvideAuth";
 import { ILoginForm } from "./LoginForm";
 import styles from "./RegisterForm.module.css";

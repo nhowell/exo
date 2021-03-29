@@ -2,9 +2,8 @@ import { Formik, Form, FormikHelpers, ErrorMessage, Field } from "formik";
 import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import { t } from "../../helpers/translate";
-import { IAvailableShip } from "../../spacetraders-api/game/ships/types";
-import { usePurchaseShip } from "../../spacetraders-api/users/ships/purchaseShip";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import { IAvailableShip } from "../../spacetraders-api/api/game/ships/types";
+import { usePurchaseShip } from "../../spacetraders-api/hooks/users/ships/usePurchaseShip";
 
 interface IOwnProps {
 	ship: IAvailableShip;
@@ -19,7 +18,6 @@ const initialValues: IPurchaseShipForm = {
 };
 
 export function AvailableShip(props: IOwnProps) {
-	const currentUser = useCurrentUser();
 	const purchaseShip = usePurchaseShip();
 
 	const handlePurchase = async (
@@ -33,7 +31,6 @@ export function AvailableShip(props: IOwnProps) {
 
 		purchaseShip.mutate(
 			{
-				username: currentUser.username,
 				location: values.location,
 				type: props.ship.type,
 			},

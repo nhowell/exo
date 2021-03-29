@@ -1,11 +1,7 @@
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { ILoginForm } from "../layout/login/LoginForm";
-import {
-	removeAuthorizationHeader,
-	setAuthorizationHeader,
-	spaceTradersQueryClient,
-} from "../../spacetraders-api";
-import { getUserInfo } from "../../spacetraders-api/users/getUserInfo";
+import { spaceTradersQueryClient } from "../../spacetraders-api/hooks/spaceTradersQueryClient";
+import { checkCredentials } from "../../spacetraders-api/hooks/users/useUserInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 import { useHistory, useLocation } from "react-router";
 import { homePath, loginPath } from "../routes";
@@ -22,6 +18,7 @@ export interface IUserCredentials {
 
 export interface ICurrentUser {
 	username: string;
+	token: string;
 	otherUsernames: string[];
 }
 
@@ -38,35 +35,18 @@ export function useProvideAuth(): IAuth {
 	>(LocalStorageKey.Auth, undefined);
 
 	const [isAutoLoginLoading, setIsAutoLoginLoading] = useState<boolean>(
-		localStorageAuth !== undefined,
+		localStorageAuth !== undefined && localStorageAuth.activeUsername !== null,
 	);
 
 	const { replace: replaceHistory } = useHistory();
 
 	const location = useLocation();
 
-	const setAuthorizationHeaderAndGetUserInfo = useCallback(
-		async (auth: IUserCredentials) => {
-			// We need to set the Authorization header before attempting to get the user info.
-			setAuthorizationHeader(auth);
-
-			try {
-				// If we can successfully get user info, it means the username and token are valid.
-				await getUserInfo(auth.username);
-			} catch (error) {
-				// Since the username or token are invalid, we should remove the Authorization header.
-				removeAuthorizationHeader();
-
-				throw error;
-			}
-		},
-		[],
-	);
-
 	useLayoutEffect(() => {
 		if (
 			localStorageAuth === undefined ||
-			localStorageAuth.activeUsername === null
+			localStorageAuth.activeUsername === null ||
+			!isAutoLoginLoading
 		) {
 			return;
 		}
@@ -80,7 +60,7 @@ export function useProvideAuth(): IAuth {
 			}
 
 			try {
-				await setAuthorizationHeaderAndGetUserInfo(activeUserAuth);
+				await checkCredentials(activeUserAuth.username, activeUserAuth.token);
 			} catch {
 				// Don't do anything and let the app go to the login page.
 			}
@@ -93,17 +73,12 @@ export function useProvideAuth(): IAuth {
 		}
 
 		asyncTask();
-	}, [
-		localStorageAuth,
-		location.pathname,
-		replaceHistory,
-		setAuthorizationHeaderAndGetUserInfo,
-	]);
+	}, [isAutoLoginLoading, localStorageAuth, location.pathname, replaceHistory]);
 
 	const login = useCallback(
 		async (values: ILoginForm): Promise<string | undefined> => {
 			try {
-				await setAuthorizationHeaderAndGetUserInfo(values);
+				await checkCredentials(values.username, values.token);
 			} catch (error) {
 				// Return the error message to be displayed on the login form.
 				return error.message;
@@ -134,16 +109,10 @@ export function useProvideAuth(): IAuth {
 
 			replaceHistory("/");
 		},
-		[
-			localStorageAuth,
-			replaceHistory,
-			setAuthorizationHeaderAndGetUserInfo,
-			setLocalStorageAuth,
-		],
+		[localStorageAuth, replaceHistory, setLocalStorageAuth],
 	);
 
 	const logout = useCallback(() => {
-		removeAuthorizationHeader();
 		spaceTradersQueryClient.clear();
 
 		if (localStorageAuth !== undefined) {
@@ -166,6 +135,7 @@ export function useProvideAuth(): IAuth {
 
 		return {
 			username: localStorageAuth.activeUsername,
+			token: localStorageAuth.accounts[localStorageAuth.activeUsername].token,
 			otherUsernames: Object.keys(localStorageAuth.accounts)
 				.filter((x) => x !== localStorageAuth.activeUsername)
 				.sort(),

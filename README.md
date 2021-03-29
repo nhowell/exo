@@ -12,6 +12,7 @@ Visit https://spacetraders.nickhowell.com/ to see it live.
 - [Typescript](https://www.typescriptlang.org/)
 - [react-query](https://react-query.tanstack.com/)
 - [axios](https://github.com/axios/axios)
+- [bottleneck](https://github.com/SGrondin/bottleneck)
 - [react-router-dom](https://reactrouter.com/web)
 - [formik](https://formik.org/)
 - [luxon](https://moment.github.io/luxon/)

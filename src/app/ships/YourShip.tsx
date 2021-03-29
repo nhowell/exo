@@ -5,7 +5,7 @@ import {
 	Good,
 	IShipCargo,
 	IUserShip,
-} from "../../spacetraders-api/users/ships/types";
+} from "../../spacetraders-api/api/users/ships/types";
 import { generateViewShipPath } from "../routes";
 import styles from "./YourShip.module.css";
 import { ShipStatus } from "./ShipStatus";

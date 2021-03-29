@@ -1,13 +1,12 @@
 import { ReactElement, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { t } from "../../helpers/translate";
-import { useShip } from "../../spacetraders-api/users/ships/getShip";
-import { useCurrentUser } from "../hooks/useCurrentUser";
+import { useShip } from "../../spacetraders-api/hooks/users/ships/useShip";
 import styles from "./ViewShip.module.css";
 import { ShipStatus } from "./ShipStatus";
 import { numberFormat } from "../../helpers/numberFormat";
 import { Table } from "../../core/table/Table";
-import { IShipCargo } from "../../spacetraders-api/users/ships/types";
+import { IShipCargo } from "../../spacetraders-api/api/users/ships/types";
 import { ITableColumnHeader } from "../../core/table/types";
 import { Tile } from "../common/tiles/Tile";
 
@@ -46,12 +45,10 @@ const cargoColumnDefinitions: ITableColumnHeader<ICargoGrid>[] = [
 
 export function ViewShip(): ReactElement {
 	const { shipId } = useParams<IRouteParams>();
-	const currentUser = useCurrentUser();
 
-	const { isLoading, isError, error, data: ship } = useShip(
-		currentUser.username,
-		shipId,
-	);
+	const { isLoading, isError, error, data } = useShip(shipId);
+
+	const ship = data?.ship;
 
 	const cargoGrid = useMemo(
 		() => (ship ? mapCargoToCargoGrid(ship.cargo) : []),
@@ -93,7 +90,7 @@ export function ViewShip(): ReactElement {
 						.
 					</p>
 
-					<h2>Cargo</h2>
+					<h2>{t("Cargo")}</h2>
 					{cargoGrid.length === 0 ? (
 						<p>{t("Cargo hold is empty.")}</p>
 					) : (
