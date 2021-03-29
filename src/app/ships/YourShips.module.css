@@ -2,6 +2,23 @@
 	margin-bottom: 0;
 }
 
+.listHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.5rem;
+}
+
+.listHeader button {
+	font-size: inherit;
+	line-height: inherit;
+	padding: 0;
+	background-color: unset;
+	color: var(--primary-color);
+	text-decoration: underline;
+	box-shadow: none;
+}
+
 .shipList {
 	margin: 0 calc(var(--normal-box-padding) - var(--normal-box-padding) * 2);
 }

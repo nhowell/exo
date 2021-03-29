@@ -5,11 +5,11 @@ import { YourShip } from "./YourShip";
 import styles from "./YourShips.module.css";
 
 export function YourShips() {
-	const { isLoading, isError, error, data } = useShips();
+	const { isLoading, isError, error, data, refetch } = useShips();
 
 	return (
 		<>
-			<h1 className={styles.heading}>{t("Your Fleet")}</h1>
+			<h1 className={styles.heading}>{t("Your Ships")}</h1>
 
 			{isLoading ? (
 				<p>{t("Loading...")}</p>
@@ -19,7 +19,14 @@ export function YourShips() {
 				<p>{t("You don't own any ships.")}</p>
 			) : (
 				<>
-					<p>{pluralize(data.ships.length, t("ship"), t("ships"))}</p>
+					<div className={styles.listHeader}>
+						<div>{pluralize(data.ships.length, t("ship"), t("ships"))}</div>
+						<div>
+							<button type="button" onClick={() => refetch()}>
+								Refresh
+							</button>
+						</div>
+					</div>
 
 					<div className={styles.shipList}>
 						{data.ships.map((ship) => (
