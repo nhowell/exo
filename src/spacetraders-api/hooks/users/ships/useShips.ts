@@ -17,11 +17,8 @@ export function useShips() {
 		userShipsQueryKey(spaceTradersApi.getUsername()),
 		() => spaceTradersApi.users.ships.getShips(),
 		{
-			onSuccess: (data) => {
-				console.log("useShips onSuccess", data);
-
-				updateRelatedQueryData(spaceTradersApi.getUsername(), data.ships);
-			},
+			onSuccess: (data) =>
+				updateRelatedQueryData(spaceTradersApi.getUsername(), data.ships),
 		},
 	);
 }
@@ -96,8 +93,6 @@ export function setShipInShipsQueryData(username: string, ship: IUserShip) {
 	});
 
 	if (!isEqual(data, newData)) {
-		console.log("setShipInShipsQueryData", ship, data, newData);
-
 		spaceTradersQueryClient.setQueryData<IGetUserShipsResponse>(
 			queryKey,
 			newData,

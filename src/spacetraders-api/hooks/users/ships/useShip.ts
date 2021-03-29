@@ -17,11 +17,8 @@ export function useShip(shipId: string) {
 		userShipQueryKey(spaceTradersApi.getUsername(), shipId),
 		() => spaceTradersApi.users.ships.getShip(shipId),
 		{
-			onSuccess: (data) => {
-				console.log("useShip onSuccess", data);
-
-				updateRelatedQueryData(spaceTradersApi.getUsername(), data.ship);
-			},
+			onSuccess: (data) =>
+				updateRelatedQueryData(spaceTradersApi.getUsername(), data.ship),
 		},
 	);
 }
@@ -85,8 +82,6 @@ export function setShipArrival(
 	const data = spaceTradersQueryClient.getQueryData<IGetUserShipResponse>(
 		userShipQueryKey(username, shipId),
 	);
-
-	console.log("setShipArrival", data, flightPlanId, location, shipId);
 
 	if (
 		data === undefined ||
