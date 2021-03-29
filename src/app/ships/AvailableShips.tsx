@@ -30,7 +30,7 @@ export function AvailableShips() {
 			) : (
 				<TileContainer>
 					{sortedShips.map((ship) => (
-						<Tile key={ship.type}>
+						<Tile key={ship.type} width="29rem">
 							<AvailableShip ship={ship} />
 						</Tile>
 					))}

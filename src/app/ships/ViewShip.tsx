@@ -9,6 +9,7 @@ import { Table } from "../../core/table/Table";
 import { IShipCargo } from "../../spacetraders-api/api/users/ships/types";
 import { ITableColumnHeader } from "../../core/table/types";
 import { Tile } from "../common/tiles/Tile";
+import { Tag } from "../common/Tag";
 
 interface IRouteParams {
 	shipId: string;
@@ -76,10 +77,7 @@ export function ViewShip(): ReactElement {
 					</aside>
 
 					<h1>
-						{ship.manufacturer} {ship.class}{" "}
-						<small className={styles.symbol}>
-							<code>{ship.type}</code>
-						</small>
+						{ship.manufacturer} {ship.class} <Tag text={ship.type} />
 					</h1>
 
 					<p>
