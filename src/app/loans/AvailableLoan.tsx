@@ -18,19 +18,25 @@ export function AvailableLoan(props: IOwnProps) {
 
 	return (
 		<>
-			<p>
-				<strong>{t("Type")}:</strong> {t(props.loan.type)}
-				<br />
-				<strong>{t("Amount")}:</strong> {creditFormat(props.loan.amount)}
-				<br />
-				<strong>{t("Rate")}:</strong> {percentFormat(props.loan.rate / 100)}
-				<br />
-				<strong>{t("Term")}:</strong>{" "}
-				{pluralize(props.loan.termInDays, t("day"), t("days"))}
-				<br />
-				<strong>{t("Collateral Required")}:</strong>{" "}
-				{props.loan.collateralRequired ? t("Yes") : t("No")}
-			</p>
+			<h3>{t(props.loan.type)}</h3>
+			<dl>
+				<div>
+					<dt>{t("Amount")}:</dt>
+					<dd>{creditFormat(props.loan.amount)}</dd>
+				</div>
+				<div>
+					<dt>{t("Rate")}:</dt>
+					<dd>{percentFormat(props.loan.rate / 100)}</dd>
+				</div>
+				<div>
+					<dt>{t("Term")}:</dt>
+					<dd>{pluralize(props.loan.termInDays, t("day"), t("days"))}</dd>
+				</div>
+				<div>
+					<dt>{t("Collateral Required")}:</dt>
+					<dd>{props.loan.collateralRequired ? t("Yes") : t("No")}</dd>
+				</div>
+			</dl>
 
 			{acceptLoan.error ? <p>{t(acceptLoan.error.message)}</p> : undefined}
 

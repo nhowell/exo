@@ -31,7 +31,7 @@ export function YourLoans() {
 			) : (
 				<TileContainer>
 					{sortedLoans.map((loan) => (
-						<Tile key={loan.id}>
+						<Tile key={loan.id} width="35rem">
 							<YourLoan loan={loan} />
 						</Tile>
 					))}

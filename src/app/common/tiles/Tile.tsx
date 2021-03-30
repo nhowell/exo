@@ -3,6 +3,7 @@ import styles from "./Tile.module.css";
 
 interface IOwnProps {
 	children: ReactNode;
+	padding?: "small";
 	width?: string;
 }
 

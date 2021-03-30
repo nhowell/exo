@@ -11,6 +11,7 @@ import styles from "./YourShip.module.css";
 import { ShipStatus } from "./ShipStatus";
 import React from "react";
 import { t } from "../../helpers/translate";
+import commonStyles from "../common/common.module.css";
 
 interface IOwnProps {
 	ship: IUserShip;
@@ -24,7 +25,7 @@ export const YourShip = React.memo(function (props: IOwnProps): ReactElement {
 			activeClassName={styles.activeShipLink}
 		>
 			<div>
-				{props.ship.type}
+				<span className={commonStyles.noWrap}>{props.ship.type}</span>
 				<br />
 				<strong>{t("Speed")}:</strong> {props.ship.speed}
 			</div>

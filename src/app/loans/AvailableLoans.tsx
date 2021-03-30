@@ -19,7 +19,7 @@ export function AvailableLoans() {
 			) : (
 				<TileContainer>
 					{data.loans.map((loan) => (
-						<Tile key={loan.type}>
+						<Tile key={loan.type} width="35rem">
 							<AvailableLoan loan={loan} />
 						</Tile>
 					))}

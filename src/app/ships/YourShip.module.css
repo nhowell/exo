@@ -7,6 +7,10 @@
 	border-top: 1px solid var(--primary-bg-color);
 }
 
+.shipLink > div:first-child {
+	padding-right: 1rem;
+}
+
 .shipLink:last-child {
 	border-bottom: 1px solid var(--primary-bg-color);
 }

@@ -67,11 +67,13 @@ h3:first-child,
 h4:first-child,
 h5:first-child,
 h6:first-child,
-p:first-child {
+p:first-child,
+dl:first-child {
 	margin-top: 0;
 }
 
-p:last-child {
+p:last-child,
+dl:last-child {
 	margin-bottom: 0;
 }
 
@@ -138,28 +140,26 @@ a {
 	color: var(--primary-color);
 }
 
-dl {
+dl > div {
 	display: flex;
-	flex-wrap: wrap;
 	align-items: stretch;
 }
 
-dt {
+dl > div:nth-of-type(odd) {
+	background-color: rgba(0, 0, 0, 0.25);
+}
+
+dl > div > dt {
 	font-weight: bold;
 }
 
-dd {
+dl > div > dd {
 	margin: 0;
 	text-align: right;
 }
 
-dt,
-dd {
-	flex-basis: 50%;
-	padding: 0.3rem 0.5rem;
-}
-
-dt:nth-of-type(odd),
-dd:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, 0.25);
+dl > div > dt,
+dl > div > dd {
+	padding: 0.3rem 0.6rem;
+	flex-grow: 1;
 }

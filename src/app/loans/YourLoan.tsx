@@ -18,29 +18,35 @@ export function YourLoan(props: IOwnProps) {
 		payOffLoan.mutate(props.loan.id);
 	};
 
+	const isPaid =
+		props.loan.status === LoanStatus.Paid ||
+		props.loan.status === LoanStatus.PaidLate;
+
 	return (
 		<>
-			<p>
-				<strong>{t("Type")}:</strong> {t(props.loan.type)}
-				<br />
-				<strong>{t("Status")}:</strong> {t(props.loan.status)}
-				<br />
-				<strong>{t("Repayment Amount")}:</strong>{" "}
-				{creditFormat(props.loan.repaymentAmount)}
-				{props.loan.status === LoanStatus.Paid ||
-				props.loan.status === LoanStatus.PaidLate ? undefined : (
-					<>
-						<br />
-						<strong>{t("Due")}:</strong>{" "}
-						<TimeRemaining until={props.loan.due} />
-					</>
+			<h3>{t(props.loan.type)}</h3>
+			<dl>
+				<div>
+					<dt>{t("Status")}:</dt>
+					<dd>{t(props.loan.status)}</dd>
+				</div>
+				<div>
+					<dt>{t("Repayment Amount")}:</dt>
+					<dd>{creditFormat(props.loan.repaymentAmount)}</dd>
+				</div>
+				{isPaid ? undefined : (
+					<div>
+						<dt>{t("Due")}:</dt>
+						<dd>
+							<TimeRemaining until={props.loan.due} />
+						</dd>
+					</div>
 				)}
-			</p>
+			</dl>
 
 			{payOffLoan.error ? <p>{t(payOffLoan.error.message)}</p> : undefined}
 
-			{props.loan.status === LoanStatus.Paid ||
-			props.loan.status === LoanStatus.PaidLate ? undefined : (
+			{isPaid ? undefined : (
 				<button
 					type="button"
 					onClick={handleClick}

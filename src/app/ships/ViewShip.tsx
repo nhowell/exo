@@ -10,6 +10,7 @@ import { IShipCargo } from "../../spacetraders-api/api/users/ships/types";
 import { ITableColumnHeader } from "../../core/table/types";
 import { Tile } from "../common/tiles/Tile";
 import { Tag } from "../common/Tag";
+import commonStyles from "../common/common.module.css";
 
 interface IRouteParams {
 	shipId: string;
@@ -66,13 +67,24 @@ export function ViewShip(): ReactElement {
 				<>
 					<aside className={styles.info}>
 						<Tile>
-							<strong>{t("Speed")}:</strong> {ship.speed}
-							<br />
-							<strong>{t("Max Cargo")}:</strong> {numberFormat(ship.maxCargo)}
-							<br />
-							<strong>{t("Weapons")}:</strong> {ship.weapons}
-							<br />
-							<strong>{t("Plating")}:</strong> {ship.plating}
+							<dl>
+								<div>
+									<dt>{t("Max Cargo")}:</dt>
+									<dd>{numberFormat(ship.maxCargo)}</dd>
+								</div>
+								<div>
+									<dt>{t("Speed")}:</dt>
+									<dd>{ship.speed}</dd>
+								</div>
+								<div>
+									<dt>{t("Weapons")}:</dt>
+									<dd>{ship.weapons}</dd>
+								</div>
+								<div>
+									<dt>{t("Plating")}:</dt>
+									<dd>{ship.plating}</dd>
+								</div>
+							</dl>
 						</Tile>
 					</aside>
 
@@ -88,7 +100,7 @@ export function ViewShip(): ReactElement {
 						.
 					</p>
 
-					<h2>{t("Cargo")}</h2>
+					<h2 className={commonStyles.clear}>{t("Cargo")}</h2>
 					{cargoGrid.length === 0 ? (
 						<p>{t("Cargo hold is empty.")}</p>
 					) : (

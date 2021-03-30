@@ -53,14 +53,22 @@ export function AvailableShip(props: IOwnProps) {
 				<Tag text={props.ship.type} />
 			</h3>
 			<dl>
-				<dt>{t("Max Cargo")}:</dt>
-				<dd>{numberFormat(props.ship.maxCargo)}</dd>
-				<dt>{t("Speed")}:</dt>
-				<dd>{numberFormat(props.ship.speed)}</dd>
-				<dt>{t("Plating")}:</dt>
-				<dd>{numberFormat(props.ship.plating)}</dd>
-				<dt>{t("Weapons")}:</dt>
-				<dd>{numberFormat(props.ship.weapons)}</dd>
+				<div>
+					<dt>{t("Max Cargo")}:</dt>
+					<dd>{numberFormat(props.ship.maxCargo)}</dd>
+				</div>
+				<div>
+					<dt>{t("Speed")}:</dt>
+					<dd>{numberFormat(props.ship.speed)}</dd>
+				</div>
+				<div>
+					<dt>{t("Plating")}:</dt>
+					<dd>{numberFormat(props.ship.plating)}</dd>
+				</div>
+				<div>
+					<dt>{t("Weapons")}:</dt>
+					<dd>{numberFormat(props.ship.weapons)}</dd>
+				</div>
 			</dl>
 
 			<Formik<IPurchaseShipForm>

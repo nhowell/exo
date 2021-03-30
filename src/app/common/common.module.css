@@ -1,3 +1,7 @@
 .noWrap {
 	white-space: nowrap;
 }
+
+.clear {
+	clear: both;
+}
