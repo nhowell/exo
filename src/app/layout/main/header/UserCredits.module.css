@@ -1,7 +1,5 @@
 .credits {
-	background-color: #535353;
-	padding: 0.88rem 1.6rem;
-	border-radius: 2rem;
 	margin-right: 1rem;
-	box-shadow: var(--normal-box-shadow);
+	font-family: var(--special-font-family);
+	color: var(--primary-color);
 }

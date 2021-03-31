@@ -5,4 +5,5 @@
 
 .mainLayout {
 	--header-height: 5rem;
+	--header-margin-bottom: 1rem;
 }

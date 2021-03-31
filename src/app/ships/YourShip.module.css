@@ -1,22 +1,29 @@
 .shipLink {
 	display: flex;
 	justify-content: space-between;
-	color: var(--muted-text-color);
+	color: var(--primary-text-color);
 	text-decoration: none;
-	padding: calc(var(--normal-box-padding) / 3) var(--normal-box-padding);
-	border-top: 1px solid var(--primary-bg-color);
+	background-color: var(--secondary-bg-color);
+	padding: calc(var(--normal-box-padding) / 3)
+		calc(var(--normal-box-padding) / 2);
+	border: var(--normal-border-width) solid var(--normal-border-color);
+	margin-bottom: calc(var(--normal-box-padding) / 2);
+	border-radius: var(--small-border-radius);
+}
+
+.shipLink:last-child {
+	margin-bottom: 0;
 }
 
 .shipLink > div:first-child {
 	padding-right: 1rem;
 }
 
-.shipLink:last-child {
-	border-bottom: 1px solid var(--primary-bg-color);
-}
-
-.shipLink:hover {
-	background-color: var(--tertiary-bg-color);
+.shipLink:hover,
+.shipLink:focus {
+	border-color: var(--hover-border-color);
+	background-color: var(--hover-bg-color);
+	outline: none;
 }
 
 .shipLink > div:last-child {
@@ -25,6 +32,7 @@
 
 .activeShipLink,
 .activeShipLink:hover {
-	background-color: var(--primary-bg-color);
+	border-color: var(--active-border-color);
+	background-color: var(--active-bg-color);
 	color: var(--primary-text-color);
 }

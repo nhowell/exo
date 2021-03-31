@@ -13,12 +13,12 @@
 	font-size: inherit;
 	line-height: inherit;
 	padding: 0;
-	background-color: unset;
+	background: unset;
 	color: var(--primary-color);
 	text-decoration: underline;
 	box-shadow: none;
-}
-
-.shipList {
-	margin: 0 calc(var(--normal-box-padding) - var(--normal-box-padding) * 2);
+	font-weight: normal;
+	text-shadow: none;
+	border: none;
+	font-family: var(--normal-font-family);
 }

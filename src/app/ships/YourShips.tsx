@@ -28,7 +28,7 @@ export function YourShips() {
 						</div>
 					</div>
 
-					<div className={styles.shipList}>
+					<div>
 						{data.ships.map((ship) => (
 							<YourShip key={ship.id} ship={ship} />
 						))}

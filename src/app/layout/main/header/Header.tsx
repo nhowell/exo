@@ -17,8 +17,8 @@ export function Header() {
 				</div>
 
 				<div className={styles.section}>
-					<Username />
 					<UserCredits />
+					<Username />
 					<Logout />
 				</div>
 			</div>

@@ -44,7 +44,7 @@ export function Content(props: IOwnProps) {
 					</NavLink>
 				</nav>
 
-				{props.children}
+				<div className={styles.content}>{props.children}</div>
 			</section>
 		</main>
 	);

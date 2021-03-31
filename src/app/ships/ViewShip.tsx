@@ -88,9 +88,11 @@ export function ViewShip(): ReactElement {
 						</Tile>
 					</aside>
 
-					<h1>
-						{ship.manufacturer} {ship.class} <Tag text={ship.type} />
-					</h1>
+					<header>
+						<h1>
+							{ship.manufacturer} {ship.class} <Tag text={ship.type} />
+						</h1>
+					</header>
 
 					<p>
 						<ShipStatus

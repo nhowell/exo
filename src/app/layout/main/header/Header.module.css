@@ -1,10 +1,10 @@
 .headerContainer {
 	height: var(--header-height);
-	background-color: var(--tertiary-bg-color);
 	box-shadow: var(--normal-box-shadow);
 	position: sticky;
 	top: 0;
 	z-index: 100;
+	margin-bottom: var(--header-margin-bottom);
 }
 
 .header {
