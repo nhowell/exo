@@ -1,6 +1,5 @@
 .headerContainer {
 	height: var(--header-height);
-	box-shadow: var(--normal-box-shadow);
 	position: sticky;
 	top: 0;
 	z-index: 100;
