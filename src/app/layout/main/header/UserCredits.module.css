@@ -1,5 +1,5 @@
 .credits {
 	margin-right: 1rem;
-	font-family: var(--special-font-family);
+	font-family: var(--monospace-font-family);
 	color: var(--primary-color);
 }
