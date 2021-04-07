@@ -23,7 +23,7 @@ export function YourShips() {
 						<div>{pluralize(data.ships.length, t("ship"), t("ships"))}</div>
 						<div>
 							<button type="button" onClick={() => refetch()}>
-								Refresh
+								{t("Refresh")}
 							</button>
 						</div>
 					</div>
