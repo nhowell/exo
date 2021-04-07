@@ -93,8 +93,7 @@ dl:last-child {
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+	font-family: var(--monospace-font-family);
 	background-color: rgba(0, 0, 0, 0.25);
 	border-radius: var(--small-border-radius);
 	padding: 0.1rem 0.4rem;
