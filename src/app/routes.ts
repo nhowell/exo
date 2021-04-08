@@ -2,10 +2,11 @@ import { ComponentType } from "react";
 import { generatePath } from "react-router-dom";
 import { Home } from "./home/Home";
 import { Loans } from "./loans/Loans";
-import { SystemMap } from "./map/SystemMap";
+import { Systems } from "./systems/Systems";
 import { Market } from "./market/Market";
 import { AvailableShips } from "./ships/AvailableShips";
 import { ViewShip } from "./ships/ViewShip";
+import { ViewSystem } from "./systems/ViewSystem";
 
 interface IRoute {
 	path: string;
@@ -14,16 +15,20 @@ interface IRoute {
 
 export const loginPath = "/login";
 export const homePath = "/";
-export const mapPath = "/map";
+export const systemsPath = "/systems";
+const viewSystemPath = "/systems/:symbol";
+export const generateViewSystemPath = (symbol: string) =>
+	generatePath(viewSystemPath, {
+		symbol,
+	});
 export const marketPath = "/market";
 export const shipyardPath = "/shipyard";
 export const loansPath = "/loans";
+const viewShipPath = "/ships/:shipId";
 export const generateViewShipPath = (shipId: string) =>
 	generatePath(viewShipPath, {
-		shipId: shipId,
+		shipId,
 	});
-
-const viewShipPath = "/ships/:shipId";
 
 export const routes: IRoute[] = [
 	{
@@ -31,8 +36,12 @@ export const routes: IRoute[] = [
 		component: Home,
 	},
 	{
-		path: mapPath,
-		component: SystemMap,
+		path: systemsPath,
+		component: Systems,
+	},
+	{
+		path: viewSystemPath,
+		component: ViewSystem,
 	},
 	{
 		path: marketPath,

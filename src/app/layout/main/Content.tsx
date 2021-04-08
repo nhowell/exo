@@ -5,7 +5,7 @@ import { t } from "../../../helpers/translate";
 import {
 	homePath,
 	loansPath,
-	mapPath,
+	systemsPath,
 	marketPath,
 	shipyardPath,
 } from "../../routes";
@@ -30,8 +30,8 @@ export function Content(props: IOwnProps) {
 					<NavLink to={homePath} activeClassName={styles.active} exact>
 						{t("Home")}
 					</NavLink>
-					<NavLink to={mapPath} activeClassName={styles.active}>
-						{t("Map")}
+					<NavLink to={systemsPath} activeClassName={styles.active}>
+						{t("Systems")}
 					</NavLink>
 					<NavLink to={marketPath} activeClassName={styles.active}>
 						{t("Market")}

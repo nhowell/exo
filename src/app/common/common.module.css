@@ -2,6 +2,10 @@
 	white-space: nowrap;
 }
 
+.overflowWordWrap {
+	overflow-wrap: break-word;
+}
+
 .clear {
 	clear: both;
 }

@@ -41,5 +41,5 @@ export function AvailableShips() {
 }
 
 function sortShips(ships: readonly IAvailableShip[]): IAvailableShip[] {
-	return sortBy(ships, [(x) => x.purchaseLocations[0].price]);
+	return sortBy(ships, (x) => x.purchaseLocations[0].price);
 }

@@ -44,12 +44,12 @@ export function YourLoans() {
 function sortLoans(loans: readonly IUserLoan[]): IUserLoan[] {
 	const currentLoans = sortBy(
 		loans.filter((x) => x.status === LoanStatus.Current),
-		[(x) => x.due],
+		(x) => x.due,
 	);
 
 	const paidLoans = sortBy(
 		loans.filter((x) => x.status !== LoanStatus.Current),
-		[(x) => x.due],
+		(x) => x.due,
 	);
 
 	return [...currentLoans, ...paidLoans];
