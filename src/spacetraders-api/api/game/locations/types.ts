@@ -53,7 +53,7 @@ export interface IStructure {
 	stability: number;
 }
 
-interface IStructureMaterial {
+export interface IStructureMaterial {
 	good: Good;
 	quantity: number;
 	targetQuantity: number;

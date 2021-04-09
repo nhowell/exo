@@ -11,6 +11,7 @@ import { LocationMessages } from "./LocationMessages";
 import { pluralize } from "../../../helpers/pluralize";
 import { mergeSymbols } from "../../../helpers/mergeSymbols";
 import { generateViewLocationDockedShipsPath } from "../../routes";
+import { Structures } from "./Structures";
 
 interface IRouteParams {
 	systemSymbol: string;
@@ -54,6 +55,10 @@ export function ViewLocation(): ReactElement {
 					</p>
 
 					<LocationMessages location={data.location} />
+
+					<div className={commonStyles.clear}></div>
+
+					<Structures structures={data.location.structures} />
 				</>
 			)}
 		</>

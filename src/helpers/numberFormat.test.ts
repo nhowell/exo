@@ -89,7 +89,7 @@ it("formats percentages and rounds", () => {
 	expect(percentFormat(-0.025)).toEqual("-3%");
 });
 
-it("formats percentages to the correct number of decimal places", () => {
+it("formats percentages to 2 decimal places", () => {
 	const format = createNumberFormatter({ style: "percent", decimalPlaces: 2 });
 
 	expect(format(0.5)).toEqual("50.00%");
@@ -103,4 +103,10 @@ it("formats percentages to the correct number of decimal places", () => {
 	expect(format(10.00625)).toEqual("1,000.63%");
 	expect(format(999_999.991)).toEqual("99,999,999.10%");
 	expect(format(-999_999.991)).toEqual("-99,999,999.10%");
+});
+
+it("formats percentages to 3 decimal places", () => {
+	const format = createNumberFormatter({ style: "percent", decimalPlaces: 3 });
+
+	expect(format(0.99992)).toEqual("99.992%");
 });
