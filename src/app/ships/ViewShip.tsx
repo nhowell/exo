@@ -2,7 +2,6 @@ import { ReactElement, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { t } from "../../helpers/translate";
 import { useShip } from "../../spacetraders-api/hooks/users/ships/useShip";
-import styles from "./ViewShip.module.css";
 import { ShipStatus } from "./ShipStatus";
 import { numberFormat } from "../../helpers/numberFormat";
 import { Table } from "../../core/table/Table";
@@ -65,7 +64,13 @@ export function ViewShip(): ReactElement {
 				<p>{t(error?.message ?? "Something went wrong.")}</p>
 			) : (
 				<>
-					<aside className={styles.info}>
+					<header>
+						<h1>
+							{ship.manufacturer} {ship.class} <Tag text={ship.type} />
+						</h1>
+					</header>
+
+					<aside className={commonStyles.floatRight}>
 						<Tile>
 							<dl>
 								<div>
@@ -87,12 +92,6 @@ export function ViewShip(): ReactElement {
 							</dl>
 						</Tile>
 					</aside>
-
-					<header>
-						<h1>
-							{ship.manufacturer} {ship.class} <Tag text={ship.type} />
-						</h1>
-					</header>
 
 					<p>
 						<ShipStatus

@@ -6,6 +6,10 @@
 	overflow-wrap: break-word;
 }
 
+.floatRight {
+	float: right;
+}
+
 .clear {
 	clear: both;
 }

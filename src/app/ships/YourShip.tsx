@@ -2,7 +2,6 @@ import { sum } from "lodash";
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 import {
-	Good,
 	IShipCargo,
 	IUserShip,
 } from "../../spacetraders-api/api/users/ships/types";
@@ -12,6 +11,7 @@ import { ShipStatus } from "./ShipStatus";
 import React from "react";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
+import { Good } from "../../spacetraders-api/api/types";
 
 interface IOwnProps {
 	ship: IUserShip;

@@ -1,4 +1,4 @@
-import { userFlightPlansQueryKey } from ".";
+import { userFlightPlanQueryKey } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
 import { setShipArrival } from "../ships/useShip";
 import {
@@ -8,18 +8,11 @@ import {
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
 
-export function getUserFlightPlanQueryKey(
-	username: string,
-	flightPlanId: string,
-): string[] {
-	return [...userFlightPlansQueryKey(username), flightPlanId];
-}
-
 export function useFlightPlan(flightPlanId: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(
-		getUserFlightPlanQueryKey(spaceTradersApi.getUsername(), flightPlanId),
+		userFlightPlanQueryKey(spaceTradersApi.getUsername(), flightPlanId),
 		() => spaceTradersApi.users.flightPlans.getFlightPlan(flightPlanId),
 		{
 			onSuccess: (data) =>
@@ -36,7 +29,7 @@ export function setFlightPlanQueryData(
 	flightPlanResponse: IGetUserFlightPlanResponse,
 ) {
 	spaceTradersQueryClient.setQueryData<IGetUserFlightPlanResponse>(
-		getUserFlightPlanQueryKey(username, flightPlanResponse.flightPlan.id),
+		userFlightPlanQueryKey(username, flightPlanResponse.flightPlan.id),
 		flightPlanResponse,
 	);
 
@@ -53,7 +46,7 @@ function refetchFlightPlanWhenItArrives(
 
 	setTimeout(() => {
 		spaceTradersQueryClient.refetchQueries(
-			getUserFlightPlanQueryKey(username, flightPlan.id),
+			userFlightPlanQueryKey(username, flightPlan.id),
 		);
 
 		// Optimistically update the ship's arrival.

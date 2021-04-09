@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 import { pluralize } from "../../helpers/pluralize";
+import { t } from "../../helpers/translate";
 import { ISystem } from "../../spacetraders-api/api/game/systems/types";
 import { Tag } from "../common/Tag";
 import { generateViewSystemPath } from "../routes";
@@ -16,7 +17,13 @@ export function System(props: IOwnProps): ReactElement {
 				{props.system.name} <Tag text={props.system.symbol} />
 			</h3>
 
-			<p>{pluralize(props.system.locations.length, "location", "locations")}</p>
+			<p>
+				{pluralize(
+					props.system.locations.length,
+					t("location"),
+					t("locations"),
+				)}
+			</p>
 
 			<p>
 				<NavLink to={generateViewSystemPath(props.system.symbol)}>

@@ -7,6 +7,9 @@ import { Market } from "./market/Market";
 import { AvailableShips } from "./ships/AvailableShips";
 import { ViewShip } from "./ships/ViewShip";
 import { ViewSystem } from "./systems/ViewSystem";
+import { ViewLocation } from "./systems/locations/ViewLocation";
+import { splitSymbol } from "../helpers/splitSymbol";
+import { ViewLocationDockedShips } from "./systems/locations/ViewLocationDockedShips";
 
 interface IRoute {
 	path: string;
@@ -21,6 +24,25 @@ export const generateViewSystemPath = (symbol: string) =>
 	generatePath(viewSystemPath, {
 		symbol,
 	});
+const viewLocationPath = "/systems/:systemSymbol/locations/:locationSymbol";
+export const generateViewLocationPath = (symbol: string) => {
+	const symbolParts = splitSymbol(symbol);
+
+	return generatePath(viewLocationPath, {
+		systemSymbol: symbolParts.systemSymbol,
+		locationSymbol: symbolParts.locationSymbolWithoutSystem,
+	});
+};
+const viewLocationDockedShipsPath =
+	"/systems/:systemSymbol/locations/:locationSymbol/ships";
+export const generateViewLocationDockedShipsPath = (symbol: string) => {
+	const symbolParts = splitSymbol(symbol);
+
+	return generatePath(viewLocationDockedShipsPath, {
+		systemSymbol: symbolParts.systemSymbol,
+		locationSymbol: symbolParts.locationSymbolWithoutSystem,
+	});
+};
 export const marketPath = "/market";
 export const shipyardPath = "/shipyard";
 export const loansPath = "/loans";
@@ -42,6 +64,14 @@ export const routes: IRoute[] = [
 	{
 		path: viewSystemPath,
 		component: ViewSystem,
+	},
+	{
+		path: viewLocationPath,
+		component: ViewLocation,
+	},
+	{
+		path: viewLocationDockedShipsPath,
+		component: ViewLocationDockedShips,
 	},
 	{
 		path: marketPath,

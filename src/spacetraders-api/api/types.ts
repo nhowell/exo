@@ -40,3 +40,24 @@ export interface INewUser {
 	createdAt: string;
 	updatedAt: string;
 }
+
+export enum Good {
+	Chemicals = "CHEMICALS",
+	ConstructionMaterials = "CONSTRUCTION_MATERIALS",
+	ConsumerGoods = "CONSUMER_GOODS",
+	Food = "FOOD",
+	Electronics = "ELECTRONICS",
+	ExoticPlasma = "EXOTIC_PLASMA",
+	Fuel = "FUEL",
+	FusionReactors = "FUSION_REACTORS",
+	Machinery = "MACHINERY",
+	Metals = "METALS",
+	ProteinSynthesizers = "PROTEIN_SYNTHESIZERS",
+	RareMetals = "RARE_METALS",
+	Research = "RESEARCH",
+	ShipParts = "SHIP_PARTS",
+	ShipPlating = "SHIP_PLATING",
+	Textiles = "TEXTILES",
+	UnstableCompounds = "UNSTABLE_COMPOUNDS",
+	Workers = "WORKERS",
+}
