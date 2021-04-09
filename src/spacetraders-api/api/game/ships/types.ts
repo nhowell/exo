@@ -1,3 +1,10 @@
+export interface IGetAvailableShipsParams {
+	/**
+	 * The class of ship to filter by, e.g. "MK-I".
+	 */
+	class?: string;
+}
+
 export interface IAvailableShipsResponse {
 	ships: IAvailableShip[];
 }
