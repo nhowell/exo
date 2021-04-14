@@ -21,6 +21,7 @@ export interface IAvailableShip {
 }
 
 interface IShipPurchaseLocation {
+	system: string;
 	location: string;
 	price: number;
 }
