@@ -45,6 +45,7 @@ export enum Good {
 	Chemicals = "CHEMICALS",
 	ConstructionMaterials = "CONSTRUCTION_MATERIALS",
 	ConsumerGoods = "CONSUMER_GOODS",
+	Drones = "DRONES",
 	Food = "FOOD",
 	Electronics = "ELECTRONICS",
 	ExoticPlasma = "EXOTIC_PLASMA",
@@ -59,5 +60,4 @@ export enum Good {
 	ShipPlating = "SHIP_PLATING",
 	Textiles = "TEXTILES",
 	UnstableCompounds = "UNSTABLE_COMPOUNDS",
-	Workers = "WORKERS",
 }
