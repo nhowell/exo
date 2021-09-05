@@ -79,7 +79,7 @@ export function useProvideAuth(): IAuth {
 		async (values: ILoginForm): Promise<string | undefined> => {
 			try {
 				await checkCredentials(values.username, values.token);
-			} catch (error) {
+			} catch (error: any) {
 				// Return the error message to be displayed on the login form.
 				return error.message;
 			}
