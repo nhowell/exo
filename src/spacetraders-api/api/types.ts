@@ -1,3 +1,5 @@
+import { IUser } from "./users/types";
+
 export interface IFailureResponse {
 	error: IFailureError;
 }
@@ -28,17 +30,7 @@ export interface IGameStatusResponse {
 
 export interface IClaimUsernameResponse {
 	token: string;
-	user: INewUser;
-}
-
-export interface INewUser {
-	id: string;
-	username: string;
-	picture: unknown | null;
-	email: string | null;
-	credits: number;
-	createdAt: string;
-	updatedAt: string;
+	user: IUser;
 }
 
 export enum Good {
