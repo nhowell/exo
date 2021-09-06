@@ -238,7 +238,7 @@ export class SpaceTradersApi {
 						limiter,
 						options,
 						maxRetries,
-						retry++,
+						retry + 1,
 					);
 				}
 
