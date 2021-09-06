@@ -23,7 +23,6 @@ export function UserCredits() {
 					duration={0.5}
 					end={data.user.credits}
 					formatter={creditFormat}
-					autoResetKey={data.user.credits}
 				/>
 			)}
 		</div>
