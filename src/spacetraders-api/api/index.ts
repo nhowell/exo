@@ -173,7 +173,7 @@ export class SpaceTradersApi {
 	static claimUsernameAndGetToken(
 		username: string,
 	): Promise<IClaimUsernameResponse> {
-		return this.request("post", `/users/${username}/token`, this.sharedLimiter);
+		return this.request("post", `/users/${username}/claim`, this.sharedLimiter);
 	}
 
 	/**
