@@ -1,6 +1,5 @@
 export enum LoanType {
 	Startup = "STARTUP",
-	Enterprise = "ENTERPRISE",
 }
 
 export interface IGetAvailableLoansResponse {
