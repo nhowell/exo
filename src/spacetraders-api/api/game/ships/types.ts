@@ -2,7 +2,7 @@ export interface IGetAvailableShipsParams {
 	/**
 	 * The class of ship to filter by, e.g. "MK-I".
 	 */
-	class?: string;
+	class?: ShipClass;
 }
 
 export interface IAvailableShipsResponse {
@@ -11,7 +11,7 @@ export interface IAvailableShipsResponse {
 
 export interface IAvailableShip {
 	type: string;
-	class: string;
+	class: ShipClass;
 	maxCargo: number;
 	speed: number;
 	manufacturer: string;
@@ -24,4 +24,10 @@ interface IShipPurchaseLocation {
 	system: string;
 	location: string;
 	price: number;
+}
+
+enum ShipClass {
+	MKI = "MK-I",
+	MKII = "MK-II",
+	MKIII = "MK-III",
 }
