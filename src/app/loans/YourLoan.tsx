@@ -1,11 +1,9 @@
 import { creditFormat } from "../../helpers/creditFormat";
 import { t } from "../../helpers/translate";
 import { usePayOffLoan } from "../../spacetraders-api/hooks/users/loans/usePayOffLoan";
-import {
-	IUserLoan,
-	LoanStatus,
-} from "../../spacetraders-api/api/users/loans/types";
+import { IUserLoan } from "../../spacetraders-api/api/users/loans/types";
 import { TimeRemaining } from "../common/TimeRemaining";
+import { LoanStatus } from "../../spacetraders-api/api/enums";
 
 interface IOwnProps {
 	loan: IUserLoan;
@@ -18,9 +16,9 @@ export function YourLoan(props: IOwnProps) {
 		payOffLoan.mutate(props.loan.id);
 	};
 
-	const isPaid =
-		props.loan.status === LoanStatus.Paid ||
-		props.loan.status === LoanStatus.PaidLate;
+	const isUnpaid =
+		props.loan.status !== LoanStatus.Paid &&
+		props.loan.status !== LoanStatus.PaidLate;
 
 	return (
 		<>
@@ -34,7 +32,7 @@ export function YourLoan(props: IOwnProps) {
 					<dt>{t("Repayment Amount")}:</dt>
 					<dd>{creditFormat(props.loan.repaymentAmount)}</dd>
 				</div>
-				{isPaid ? undefined : (
+				{isUnpaid && (
 					<div>
 						<dt>{t("Due")}:</dt>
 						<dd>
@@ -46,7 +44,7 @@ export function YourLoan(props: IOwnProps) {
 
 			{payOffLoan.error ? <p>{t(payOffLoan.error.message)}</p> : undefined}
 
-			{isPaid ? undefined : (
+			{isUnpaid && (
 				<button
 					type="button"
 					onClick={handleClick}

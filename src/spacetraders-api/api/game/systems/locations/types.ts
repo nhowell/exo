@@ -1,4 +1,5 @@
-import { ILocation, LocationType } from "../../locations/types";
+import { LocationType } from "../../../enums";
+import { ILocation } from "../../locations/types";
 
 export interface IGetLocationsInSystemParams {
 	/**

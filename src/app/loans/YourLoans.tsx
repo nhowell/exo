@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 import { sortBy } from "lodash";
 import { YourLoan } from "./YourLoan";
-import { LoanStatus } from "../../spacetraders-api/api/users/loans/types";
 import { IUserLoan } from "../../spacetraders-api/api/users/loans/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { t } from "../../helpers/translate";
 import { useLoans } from "../../spacetraders-api/hooks/users/loans/useLoans";
+import { LoanStatus } from "../../spacetraders-api/api/enums";
 
 export function YourLoans() {
 	const { isLoading, isError, error, data } = useLoans();

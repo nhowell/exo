@@ -1,10 +1,4 @@
-import { LoanType } from "../../types/types";
-
-export enum LoanStatus {
-	Current = "CURRENT",
-	Paid = "PAID",
-	PaidLate = "PAID_LATE",
-}
+import { LoanStatus, LoanType } from "../../enums";
 
 export interface IGetUserLoansResponse {
 	loans: IUserLoan[];

@@ -1,33 +1,11 @@
-export enum LoanType {
-	Startup = "STARTUP",
-}
-
-export enum GoodType {
-	BiometricFirearms = "BIOMETRIC_FIREARMS",
-	Chemicals = "CHEMICALS",
-	ConstructionMaterials = "CONSTRUCTION_MATERIALS",
-	ConsumerGoods = "CONSUMER_GOODS",
-	Drones = "DRONES",
-	Food = "FOOD",
-	Electronics = "ELECTRONICS",
-	ExoticPlasma = "EXOTIC_PLASMA",
-	Explosives = "EXPLOSIVES",
-	Fuel = "FUEL",
-	FusionReactors = "FUSION_REACTORS",
-	Machinery = "MACHINERY",
-	Metals = "METALS",
-	Nanobots = "NANOBOTS",
-	Narcotics = "NARCOTICS",
-	PrecisionInstruments = "PRECISION_INSTRUMENTS",
-	ProteinSynthesizers = "PROTEIN_SYNTHESIZERS",
-	RareMetals = "RARE_METALS",
-	Research = "RESEARCH",
-	ShipParts = "SHIP_PARTS",
-	ShipPlating = "SHIP_PLATING",
-	Textiles = "TEXTILES",
-	UnstableCompounds = "UNSTABLE_COMPOUNDS",
-	ZucoCrystals = "ZUCO_CRYSTALS",
-}
+import {
+	Good,
+	LoanType,
+	LocationType,
+	PlanetTrait,
+	ShipClass,
+	StructureType,
+} from "../enums";
 
 export interface GetAvailableLoanTypesResponse {
 	loans: IAvailableLoan[];
@@ -47,6 +25,36 @@ export interface GetGoodTypesResponse {
 
 export interface IGoodType {
 	name: string;
-	symbol: GoodType;
+	symbol: Good;
 	volumePerUnit: number;
+}
+
+export interface GetShipTypesResponse {
+	ships: IShipType[];
+}
+
+export interface IShipType {
+	type: string;
+	class: ShipClass;
+	maxCargo: number;
+	loadingSpeed: number;
+	speed: number;
+	manufacturer: string;
+	plating: number;
+	weapons: number;
+	restrictedGoods?: Good[];
+}
+
+export interface GetStructureTypesResponse {
+	structures: IStructureType[];
+}
+
+export interface IStructureType {
+	type: StructureType;
+	name: string;
+	price: number;
+	allowedLocationTypes: LocationType[];
+	allowedPlanetTraits: PlanetTrait[];
+	consumes: Good[];
+	produces: Good[];
 }

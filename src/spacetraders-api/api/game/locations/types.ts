@@ -1,4 +1,4 @@
-import { GoodType } from "../../types/types";
+import { Good, LocationType } from "../../enums";
 
 interface IBaseLocation {
 	symbol: string;
@@ -29,16 +29,6 @@ export interface ILocationDockedShips extends IBaseLocation {
 	ships: IDockedShip[];
 }
 
-export enum LocationType {
-	Anomaly = "ANOMALY",
-	Asteroid = "ASTEROID",
-	GasGiant = "GAS_GIANT",
-	Moon = "MOON",
-	Nebula = "NEBULA",
-	Planet = "PLANET",
-	Wormhole = "WORMHOLE",
-}
-
 export interface IDockedShip {
 	shipId: string;
 	username: string;
@@ -54,7 +44,7 @@ export interface IStructure {
 }
 
 export interface IStructureMaterial {
-	good: GoodType;
+	good: Good;
 	quantity: number;
 	targetQuantity: number;
 }

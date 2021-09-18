@@ -1,5 +1,5 @@
 import { sum } from "lodash";
-import { ReactElement } from "react";
+import { memo, ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 import {
 	IShipCargo,
@@ -8,16 +8,15 @@ import {
 import { generateViewShipPath } from "../routes";
 import styles from "./YourShip.module.css";
 import { ShipStatus } from "./ShipStatus";
-import React from "react";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
-import { GoodType } from "../../spacetraders-api/api/types/types";
+import { Good } from "../../spacetraders-api/api/enums";
 
 interface IOwnProps {
 	ship: IUserShip;
 }
 
-export const YourShip = React.memo(function (props: IOwnProps): ReactElement {
+export const YourShip = memo(function (props: IOwnProps): ReactElement {
 	return (
 		<NavLink
 			to={generateViewShipPath(props.ship.id)}
@@ -52,6 +51,6 @@ function cargo(ship: IUserShip): string {
 	return `${ship.maxCargo - ship.spaceAvailable}/${ship.maxCargo}${extraCargo}`;
 }
 
-function fuel(cargo: IShipCargo[]): number {
-	return cargo.find((x) => x.good === GoodType.Fuel)?.quantity ?? 0;
+function fuel(shipCargo: IShipCargo[]): number {
+	return shipCargo.find((x) => x.good === Good.Fuel)?.quantity ?? 0;
 }

@@ -1,5 +1,5 @@
 import { SpaceTradersApi } from "../..";
-import { LoanType } from "../../types/types";
+import { LoanType } from "../../enums";
 import { IGetUserInfoResponse } from "../types";
 import { IGetUserLoansResponse } from "./types";
 

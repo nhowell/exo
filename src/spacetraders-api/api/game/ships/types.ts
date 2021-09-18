@@ -1,3 +1,6 @@
+import { ShipClass } from "../../enums";
+import { IShipType } from "../../types/types";
+
 export interface IGetAvailableShipsParams {
 	/**
 	 * The class of ship to filter by, e.g. "MK-I".
@@ -9,14 +12,7 @@ export interface IAvailableShipsResponse {
 	ships: IAvailableShip[];
 }
 
-export interface IAvailableShip {
-	type: string;
-	class: ShipClass;
-	maxCargo: number;
-	speed: number;
-	manufacturer: string;
-	plating: number;
-	weapons: number;
+export interface IAvailableShip extends IShipType {
 	purchaseLocations: IShipPurchaseLocation[];
 }
 
@@ -24,10 +20,4 @@ interface IShipPurchaseLocation {
 	system: string;
 	location: string;
 	price: number;
-}
-
-enum ShipClass {
-	MKI = "MK-I",
-	MKII = "MK-II",
-	MKIII = "MK-III",
 }

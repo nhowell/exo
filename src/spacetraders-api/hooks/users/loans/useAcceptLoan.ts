@@ -1,7 +1,7 @@
 import { setUserInfoQueryData } from "../useUserInfo";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { LoanType } from "../../../api/types/types";
+import { LoanType } from "../../../api/enums";
 
 export function useAcceptLoan() {
 	const spaceTradersApi = useSpaceTradersApi();
