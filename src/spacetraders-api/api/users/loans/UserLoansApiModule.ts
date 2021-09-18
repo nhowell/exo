@@ -1,5 +1,5 @@
 import { SpaceTradersApi } from "../..";
-import { LoanType } from "../../game/loans/types";
+import { LoanType } from "../../types/types";
 import { IGetUserInfoResponse } from "../types";
 import { IGetUserLoansResponse } from "./types";
 

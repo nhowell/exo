@@ -1,7 +1,7 @@
 import { setUserInfoQueryData } from "../useUserInfo";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { LoanType } from "../../../api/game/loans/types";
+import { LoanType } from "../../../api/types/types";
 
 export function useAcceptLoan() {
 	const spaceTradersApi = useSpaceTradersApi();

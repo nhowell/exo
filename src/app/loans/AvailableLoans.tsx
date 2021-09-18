@@ -1,11 +1,11 @@
-import { useAvailableLoans } from "../../spacetraders-api/hooks/game/loans/useAvailableLoans";
+import { useAvailableLoanTypes } from "../../spacetraders-api/hooks/types/useAvailableLoanTypes";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableLoan } from "./AvailableLoan";
 import { Tile } from "../common/tiles/Tile";
 import { t } from "../../helpers/translate";
 
 export function AvailableLoans() {
-	const { isLoading, isError, error, data } = useAvailableLoans();
+	const { isLoading, isError, error, data } = useAvailableLoanTypes();
 
 	return (
 		<>

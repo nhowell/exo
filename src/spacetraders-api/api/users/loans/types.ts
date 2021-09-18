@@ -1,4 +1,4 @@
-import { LoanType } from "../../game/loans/types";
+import { LoanType } from "../../types/types";
 
 export enum LoanStatus {
 	Current = "CURRENT",

@@ -8,6 +8,7 @@ import {
 	IGameStatusResponse,
 	HttpStatusCode,
 } from "./types";
+import { TypesApiModule } from "./types/TypesApiModule";
 import { IGetUserInfoResponse } from "./users/types";
 import { UsersApiModule } from "./users/UsersApiModule";
 
@@ -115,6 +116,7 @@ export class SpaceTradersApi {
 
 	public game: GameApiModule;
 	public users: UsersApiModule;
+	public types: TypesApiModule;
 
 	constructor(
 		private username: string,
@@ -145,6 +147,7 @@ export class SpaceTradersApi {
 
 		this.game = new GameApiModule(this);
 		this.users = new UsersApiModule(this);
+		this.types = new TypesApiModule(this);
 	}
 
 	/**

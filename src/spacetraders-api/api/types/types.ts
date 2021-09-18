@@ -2,7 +2,7 @@ export enum LoanType {
 	Startup = "STARTUP",
 }
 
-export interface IGetAvailableLoansResponse {
+export interface GetAvailableLoanTypesResponse {
 	loans: IAvailableLoan[];
 }
 
