@@ -1,5 +1,5 @@
 import { SpaceTradersApi } from "..";
-import { GetAvailableLoanTypesResponse } from "./types";
+import { GetAvailableLoanTypesResponse, GetGoodTypesResponse } from "./types";
 
 const path = "/types";
 
@@ -8,5 +8,9 @@ export class TypesApiModule {
 
 	getAvailableLoanTypes(): Promise<GetAvailableLoanTypesResponse> {
 		return this.api.get(`${path}/loans`);
+	}
+
+	getGoodTypes(): Promise<GetGoodTypesResponse> {
+		return this.api.get(`${path}/goods`);
 	}
 }

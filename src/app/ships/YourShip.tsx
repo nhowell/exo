@@ -11,7 +11,7 @@ import { ShipStatus } from "./ShipStatus";
 import React from "react";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
-import { Good } from "../../spacetraders-api/api/types";
+import { GoodType } from "../../spacetraders-api/api/types/types";
 
 interface IOwnProps {
 	ship: IUserShip;
@@ -53,5 +53,5 @@ function cargo(ship: IUserShip): string {
 }
 
 function fuel(cargo: IShipCargo[]): number {
-	return cargo.find((x) => x.good === Good.Fuel)?.quantity ?? 0;
+	return cargo.find((x) => x.good === GoodType.Fuel)?.quantity ?? 0;
 }

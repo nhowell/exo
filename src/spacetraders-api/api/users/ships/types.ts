@@ -1,4 +1,4 @@
-import { Good } from "../../types";
+import { GoodType } from "../../types/types";
 
 export interface IPurchaseShipRequest {
 	location: string;
@@ -31,7 +31,7 @@ export interface IUserShip {
 }
 
 export interface IShipCargo {
-	good: Good;
+	good: GoodType;
 	quantity: number;
 	totalVolume: number;
 }

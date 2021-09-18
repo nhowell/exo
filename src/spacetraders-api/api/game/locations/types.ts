@@ -1,4 +1,4 @@
-import { Good } from "../../types";
+import { GoodType } from "../../types/types";
 
 interface IBaseLocation {
 	symbol: string;
@@ -54,7 +54,7 @@ export interface IStructure {
 }
 
 export interface IStructureMaterial {
-	good: Good;
+	good: GoodType;
 	quantity: number;
 	targetQuantity: number;
 }
