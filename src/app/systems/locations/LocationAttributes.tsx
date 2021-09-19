@@ -1,4 +1,6 @@
 import { ReactElement } from "react";
+import { boolToHumanDisplay } from "../../../helpers/boolToHumanDisplay";
+import { titleCase } from "../../../helpers/titleCase";
 import { t } from "../../../helpers/translate";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 
@@ -7,12 +9,11 @@ interface IOwnProps {
 }
 
 export function LocationAttributes(props: IOwnProps): ReactElement {
-	console.log(props.location);
 	return (
 		<dl>
 			<div>
 				<dt>{t("Type")}:</dt>
-				<dd>{props.location.type}</dd>
+				<dd>{t(titleCase(props.location.type))}</dd>
 			</div>
 			<div>
 				<dt>{t("Position")}:</dt>
@@ -22,11 +23,11 @@ export function LocationAttributes(props: IOwnProps): ReactElement {
 			</div>
 			<div>
 				<dt>{t("Allows Construction")}:</dt>
-				<dd>{props.location.allowsConstruction ? t("Yes") : t("No")}</dd>
+				<dd>{boolToHumanDisplay(props.location.allowsConstruction)}</dd>
 			</div>
 			<div>
 				<dt>{t("Traits")}:</dt>
-				<dd>{props.location.traits.join(", ")}</dd>
+				<dd>{props.location.traits.map(titleCase).map(t).join(", ")}</dd>
 			</div>
 		</dl>
 	);

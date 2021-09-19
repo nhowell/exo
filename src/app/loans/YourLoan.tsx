@@ -4,6 +4,7 @@ import { usePayOffLoan } from "../../spacetraders-api/hooks/my/loans/usePayOffLo
 import { IMyLoan } from "../../spacetraders-api/api/my/loans/types";
 import { TimeRemaining } from "../common/TimeRemaining";
 import { LoanStatus } from "../../spacetraders-api/api/enums";
+import { titleCase } from "../../helpers/titleCase";
 
 interface IOwnProps {
 	loan: IMyLoan;
@@ -22,11 +23,11 @@ export function YourLoan(props: IOwnProps) {
 
 	return (
 		<>
-			<h3>{t(props.loan.type)}</h3>
+			<h3>{t(titleCase(props.loan.type))}</h3>
 			<dl>
 				<div>
 					<dt>{t("Status")}:</dt>
-					<dd>{t(props.loan.status)}</dd>
+					<dd>{t(titleCase(props.loan.status))}</dd>
 				</div>
 				<div>
 					<dt>{t("Repayment Amount")}:</dt>

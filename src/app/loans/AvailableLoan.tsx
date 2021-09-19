@@ -4,6 +4,7 @@ import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
 import { useAcceptLoan } from "../../spacetraders-api/hooks/my/loans/useAcceptLoan";
 import { IAvailableLoan } from "../../spacetraders-api/api/types/types";
+import { boolToHumanDisplay } from "../../helpers/boolToHumanDisplay";
 
 interface IOwnProps {
 	loan: IAvailableLoan;
@@ -34,7 +35,7 @@ export function AvailableLoan(props: IOwnProps) {
 				</div>
 				<div>
 					<dt>{t("Collateral Required")}:</dt>
-					<dd>{props.loan.collateralRequired ? t("Yes") : t("No")}</dd>
+					<dd>{boolToHumanDisplay(props.loan.collateralRequired)}</dd>
 				</div>
 			</dl>
 

@@ -10,6 +10,7 @@ import { Tile } from "../common/tiles/Tile";
 import { Tag } from "../common/Tag";
 import commonStyles from "../common/common.module.css";
 import { ShipAttributes } from "./ShipAttributes";
+import { titleCase } from "../../helpers/titleCase";
 
 interface IRouteParams {
 	shipId: string;
@@ -23,6 +24,7 @@ const cargoColumnDefinitions: ITableColumnHeader<ICargoGrid>[] = [
 	{
 		keyname: "good",
 		label: "Good",
+		customFormat: (x) => t(titleCase(x.good)),
 	},
 	{
 		keyname: "volumePerUnit",
