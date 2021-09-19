@@ -1,6 +1,5 @@
 import { SpaceTradersApi } from "..";
 import { UserFlightPlansApiModule } from "./flight-plans/UserFlightPlansApiModule";
-import { UserLoansApiModule } from "./loans/UserLoansApiModule";
 import { UserShipsApiModule } from "./ships/UserShipsApiModule";
 import { IGetUserInfoResponse } from "./types";
 
@@ -8,14 +7,12 @@ const path = "/users";
 
 export class UsersApiModule {
 	flightPlans: UserFlightPlansApiModule;
-	loans: UserLoansApiModule;
 	ships: UserShipsApiModule;
 
 	constructor(private api: SpaceTradersApi) {
 		const currentUserPath = `${path}/${api.getUsername()}`;
 
 		this.flightPlans = new UserFlightPlansApiModule(api, currentUserPath);
-		this.loans = new UserLoansApiModule(api, currentUserPath);
 		this.ships = new UserShipsApiModule(api, currentUserPath);
 	}
 

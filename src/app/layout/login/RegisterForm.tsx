@@ -2,15 +2,20 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 import { t } from "../../../helpers/translate";
 import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/hooks/users/useClaimUsernameAndGetToken";
-import { IUserCredentials } from "../../hooks/useProvideAuth";
-import { ILoginForm } from "./LoginForm";
 import styles from "./RegisterForm.module.css";
 
-export interface IRegisterForm extends Pick<ILoginForm, "username"> {}
+export interface IRegisterForm {
+	username: string;
+}
 
 const initialValues: IRegisterForm = {
 	username: "",
 };
+
+interface IUserCredentials {
+	username: string;
+	token: string;
+}
 
 export function RegisterForm() {
 	const register = useClaimUsernameAndGetToken();
@@ -23,7 +28,7 @@ export function RegisterForm() {
 	) => {
 		register.mutate(values.username, {
 			onSuccess: (data) => {
-				setAuth({ username: values.username, token: data.token });
+				setAuth({ username: data.user.username, token: data.token });
 			},
 			onSettled: () => {
 				setSubmitting(false);

@@ -1,19 +1,14 @@
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { ILoginForm } from "../layout/login/LoginForm";
 import { spaceTradersQueryClient } from "../../spacetraders-api/hooks/spaceTradersQueryClient";
-import { checkCredentials } from "../../spacetraders-api/hooks/users/useUserInfo";
+import { checkToken } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 import { useHistory, useLocation } from "react-router";
 import { homePath, loginPath } from "../routes";
 
 interface IAuthState {
 	activeUsername: string | null;
-	accounts: { [username: string]: IUserCredentials };
-}
-
-export interface IUserCredentials {
-	username: string;
-	token: string;
+	accounts: { [username: string]: string };
 }
 
 export interface ICurrentUser {
@@ -51,16 +46,16 @@ export function useProvideAuth(): IAuth {
 			return;
 		}
 
-		const activeUserAuth =
+		const activeUserToken =
 			localStorageAuth.accounts[localStorageAuth.activeUsername];
 
 		async function asyncTask() {
-			if (activeUserAuth === undefined) {
+			if (activeUserToken === undefined) {
 				return;
 			}
 
 			try {
-				await checkCredentials(activeUserAuth.username, activeUserAuth.token);
+				await checkToken(activeUserToken);
 			} catch {
 				// Don't do anything and let the app go to the login page.
 			}
@@ -78,36 +73,31 @@ export function useProvideAuth(): IAuth {
 	const login = useCallback(
 		async (values: ILoginForm): Promise<string | undefined> => {
 			try {
-				await checkCredentials(values.username, values.token);
+				const accountInfo = await checkToken(values.token);
+				const username = accountInfo.user.username;
+
+				if (localStorageAuth === undefined) {
+					setLocalStorageAuth({
+						activeUsername: username,
+						accounts: {
+							[username]: values.token,
+						},
+					});
+				} else {
+					setLocalStorageAuth({
+						activeUsername: username,
+						accounts: {
+							...localStorageAuth.accounts,
+							[username]: values.token,
+						},
+					});
+				}
+
+				replaceHistory("/");
 			} catch (error: any) {
 				// Return the error message to be displayed on the login form.
 				return error.message;
 			}
-
-			if (localStorageAuth === undefined) {
-				setLocalStorageAuth({
-					activeUsername: values.username,
-					accounts: {
-						[values.username]: {
-							username: values.username,
-							token: values.token,
-						},
-					},
-				});
-			} else {
-				setLocalStorageAuth({
-					activeUsername: values.username,
-					accounts: {
-						...localStorageAuth.accounts,
-						[values.username]: {
-							username: values.username,
-							token: values.token,
-						},
-					},
-				});
-			}
-
-			replaceHistory("/");
 		},
 		[localStorageAuth, replaceHistory, setLocalStorageAuth],
 	);
@@ -135,7 +125,7 @@ export function useProvideAuth(): IAuth {
 
 		return {
 			username: localStorageAuth.activeUsername,
-			token: localStorageAuth.accounts[localStorageAuth.activeUsername].token,
+			token: localStorageAuth.accounts[localStorageAuth.activeUsername],
 			otherUsernames: Object.keys(localStorageAuth.accounts)
 				.filter((x) => x !== localStorageAuth.activeUsername)
 				.sort(),

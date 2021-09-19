@@ -2,7 +2,7 @@ import { creditFormat } from "../../helpers/creditFormat";
 import { percentFormat } from "../../helpers/numberFormat";
 import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
-import { useAcceptLoan } from "../../spacetraders-api/hooks/users/loans/useAcceptLoan";
+import { useAcceptLoan } from "../../spacetraders-api/hooks/my/loans/useAcceptLoan";
 import { IAvailableLoan } from "../../spacetraders-api/api/types/types";
 
 interface IOwnProps {

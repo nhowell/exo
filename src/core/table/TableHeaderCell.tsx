@@ -5,7 +5,7 @@ import classNames from "classnames";
 import tableCellStyles from "./TableCell.module.css";
 import styles from "./TableHeaderCell.module.css";
 
-interface IOwnProps extends Pick<ITableColumnHeader<any>, "align"> {
+interface IOwnProps extends Pick<ITableColumnHeader<unknown>, "align"> {
 	children: ReactElement;
 }
 

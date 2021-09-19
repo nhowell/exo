@@ -1,15 +1,15 @@
 import { useMemo } from "react";
 import { sortBy } from "lodash";
 import { YourLoan } from "./YourLoan";
-import { IUserLoan } from "../../spacetraders-api/api/users/loans/types";
+import { IMyLoan } from "../../spacetraders-api/api/my/loans/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { t } from "../../helpers/translate";
-import { useLoans } from "../../spacetraders-api/hooks/users/loans/useLoans";
+import { useMyLoans } from "../../spacetraders-api/hooks/my/loans/useMyLoans";
 import { LoanStatus } from "../../spacetraders-api/api/enums";
 
 export function YourLoans() {
-	const { isLoading, isError, error, data } = useLoans();
+	const { isLoading, isError, error, data } = useMyLoans();
 
 	const sortedLoans = useMemo(() => {
 		if (data === undefined) {
@@ -41,7 +41,7 @@ export function YourLoans() {
 	);
 }
 
-function sortLoans(loans: readonly IUserLoan[]): IUserLoan[] {
+function sortLoans(loans: readonly IMyLoan[]): IMyLoan[] {
 	const currentLoans = sortBy(
 		loans.filter((x) => x.status === LoanStatus.Current),
 		(x) => x.due,

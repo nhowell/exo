@@ -1,12 +1,12 @@
 import { CountUp } from "use-count-up";
 import { creditFormat } from "../../../../helpers/creditFormat";
 import { t } from "../../../../helpers/translate";
-import { useUserInfo } from "../../../../spacetraders-api/hooks/users/useUserInfo";
+import { useMyAccountInfo } from "../../../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { usePrevious } from "../../../hooks/usePrevious";
 import styles from "./UserCredits.module.css";
 
 export function UserCredits() {
-	const { isLoading, isError, data } = useUserInfo();
+	const { isLoading, isError, data } = useMyAccountInfo();
 
 	const prevCredits = usePrevious(data?.user.credits ?? 0);
 
@@ -18,6 +18,7 @@ export function UserCredits() {
 				<>{t("N/A")}</>
 			) : (
 				<CountUp
+					key={data.user.credits}
 					isCounting
 					start={prevCredits}
 					duration={0.5}

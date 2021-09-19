@@ -1,6 +1,8 @@
 import axios, { AxiosError } from "axios";
 import Bottleneck from "bottleneck";
 import { GameApiModule } from "./game/GameApiModule";
+import { MyApiModule } from "./my/MyApiModule";
+import { IGetMyAccountInfoResponse } from "./my/types";
 import {
 	SpaceTradersError,
 	IClaimUsernameResponse,
@@ -9,7 +11,6 @@ import {
 	HttpStatusCode,
 } from "./types";
 import { TypesApiModule } from "./types/TypesApiModule";
-import { IGetUserInfoResponse } from "./users/types";
 import { UsersApiModule } from "./users/UsersApiModule";
 
 interface ApiOptions {
@@ -115,8 +116,9 @@ export class SpaceTradersApi {
 	private maxRetries = 3;
 
 	public game: GameApiModule;
-	public users: UsersApiModule;
+	public my: MyApiModule;
 	public types: TypesApiModule;
+	public users: UsersApiModule;
 
 	constructor(
 		private username: string,
@@ -146,8 +148,9 @@ export class SpaceTradersApi {
 		}
 
 		this.game = new GameApiModule(this);
-		this.users = new UsersApiModule(this);
+		this.my = new MyApiModule(this);
 		this.types = new TypesApiModule(this);
+		this.users = new UsersApiModule(this);
 	}
 
 	/**
@@ -181,23 +184,12 @@ export class SpaceTradersApi {
 
 	/**
 	 * Check if a given username and token are valid.
-	 * @returns The user's info, otherwise throws.
+	 * @returns The user's account info, otherwise throws.
 	 */
-	static checkCredentials(
-		username: string,
-		token: string,
-	): Promise<IGetUserInfoResponse> {
-		// Normally axios encodes things for us, but in the edge case that the
-		// username has a space at the end, axios trims off the space instead of
-		// encoding it. When we manually encode it we can avoid this.
-		const encodedUsername = encodeURIComponent(username);
-
-		return this.request(
-			"get",
-			`/users/${encodedUsername}`,
-			this.sharedLimiter,
-			{ headers: { Authorization: `Bearer ${token}` } },
-		);
+	static checkToken(token: string): Promise<IGetMyAccountInfoResponse> {
+		return this.request("get", `/my/account`, this.sharedLimiter, {
+			headers: { Authorization: `Bearer ${token}` },
+		});
 	}
 
 	private static async request<T>(

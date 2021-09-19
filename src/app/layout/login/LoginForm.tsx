@@ -1,12 +1,12 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { t } from "../../../helpers/translate";
 import { useAuth } from "../../hooks/useAuth";
-import { IUserCredentials } from "../../hooks/useProvideAuth";
 
-export interface ILoginForm extends IUserCredentials {}
+export interface ILoginForm {
+	token: string;
+}
 
 const initialValues: ILoginForm = {
-	username: "",
 	token: "",
 };
 
@@ -35,21 +35,6 @@ export function LoginForm() {
 			<Formik<ILoginForm> initialValues={initialValues} onSubmit={handleLogin}>
 				{({ status, isSubmitting }) => (
 					<Form>
-						<div>
-							<label htmlFor="username">{t("Username")}</label>
-							<Field
-								type="text"
-								id="username"
-								name="username"
-								validate={(value: string) => {
-									if (!value) {
-										return t("Username is required.");
-									}
-								}}
-							/>
-							<ErrorMessage name="username" component="div" />
-						</div>
-
 						<div>
 							<label htmlFor="token">{t("Token")}</label>
 							<Field

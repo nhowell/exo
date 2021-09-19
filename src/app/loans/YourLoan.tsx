@@ -1,12 +1,12 @@
 import { creditFormat } from "../../helpers/creditFormat";
 import { t } from "../../helpers/translate";
-import { usePayOffLoan } from "../../spacetraders-api/hooks/users/loans/usePayOffLoan";
-import { IUserLoan } from "../../spacetraders-api/api/users/loans/types";
+import { usePayOffLoan } from "../../spacetraders-api/hooks/my/loans/usePayOffLoan";
+import { IMyLoan } from "../../spacetraders-api/api/my/loans/types";
 import { TimeRemaining } from "../common/TimeRemaining";
 import { LoanStatus } from "../../spacetraders-api/api/enums";
 
 interface IOwnProps {
-	loan: IUserLoan;
+	loan: IMyLoan;
 }
 
 export function YourLoan(props: IOwnProps) {

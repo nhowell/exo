@@ -88,7 +88,7 @@ interface IStandardRowProps<T>
 
 // Memoize each row to save on re-render performance.
 const StandardRow = typedMemo(function StandardRow<
-	T extends IAllStringKeyProps
+	T extends IAllStringKeyProps,
 >(props: IStandardRowProps<T>): ReactElement {
 	return (
 		<TableRow>
@@ -109,7 +109,10 @@ const StandardRow = typedMemo(function StandardRow<
 	);
 });
 
-function formatValue(format: ITableColumnHeader<any>["format"], value: any) {
+function formatValue(
+	format: ITableColumnHeader<unknown>["format"],
+	value: any,
+) {
 	switch (format) {
 		case "credits":
 			return creditFormat(value);
