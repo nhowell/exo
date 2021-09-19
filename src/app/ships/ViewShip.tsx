@@ -1,11 +1,11 @@
 import { ReactElement, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { t } from "../../helpers/translate";
-import { useShip } from "../../spacetraders-api/hooks/users/ships/useShip";
+import { useShip } from "../../spacetraders-api/hooks/my/ships/useShip";
 import { ShipStatus } from "./ShipStatus";
 import { numberFormat } from "../../helpers/numberFormat";
 import { Table } from "../../core/table/Table";
-import { IShipCargo } from "../../spacetraders-api/api/users/ships/types";
+import { IShipCargo } from "../../spacetraders-api/api/my/ships/types";
 import { ITableColumnHeader } from "../../core/table/types";
 import { Tile } from "../common/tiles/Tile";
 import { Tag } from "../common/Tag";

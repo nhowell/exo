@@ -1,14 +1,15 @@
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { IPurchaseShipRequest } from "../../../api/users/ships/types";
-import { setCreditsQueryData } from "../../my/useMyAccountInfo";
+import { IPurchaseShipRequest } from "../../../api/my/ships/types";
+import { setCreditsQueryData } from "../useMyAccountInfo";
+import { setShipQueryData } from "./useShip";
 
 export function usePurchaseShip() {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersMutation(
 		(request: IPurchaseShipRequest) =>
-			spaceTradersApi.users.ships.purchaseShip(request),
+			spaceTradersApi.my.ships.purchaseShip(request),
 		{
 			onSuccess: (data) => {
 				// Since purchasing a ship returns the user's credits, we can update
@@ -17,7 +18,7 @@ export function usePurchaseShip() {
 
 				// Since purchasing a ship returns the new ship, we can update
 				// the ships query with the new data to prevent an extra query.
-				// TODO
+				setShipQueryData(data.ship);
 			},
 		},
 	);

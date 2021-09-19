@@ -1,6 +1,6 @@
 import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
-import { useShips } from "../../spacetraders-api/hooks/users/ships/useShips";
+import { useShips } from "../../spacetraders-api/hooks/my/ships/useShips";
 import { YourShip } from "./YourShip";
 import styles from "./YourShips.module.css";
 

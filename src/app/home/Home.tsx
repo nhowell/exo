@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useMyAccountInfo } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
-import { useShips } from "../../spacetraders-api/hooks/users/ships/useShips";
+import { useShips } from "../../spacetraders-api/hooks/my/ships/useShips";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { loansPath, shipyardPath } from "../routes";
 

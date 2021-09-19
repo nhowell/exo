@@ -1,6 +1,6 @@
 import { userFlightPlanQueryKey } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
-import { setShipArrival } from "../ships/useShip";
+import { setShipArrival } from "../../my/ships/useShip";
 import {
 	IUserFlightPlan,
 	IGetUserFlightPlanResponse,
@@ -50,11 +50,6 @@ function refetchFlightPlanWhenItArrives(
 		);
 
 		// Optimistically update the ship's arrival.
-		setShipArrival(
-			username,
-			flightPlan.shipId,
-			flightPlan.id,
-			flightPlan.destination,
-		);
+		setShipArrival(flightPlan.shipId, flightPlan.id, flightPlan.destination);
 	}, flightPlan.timeRemainingInSeconds * 1000);
 }

@@ -1,11 +1,8 @@
 import { produce } from "immer";
-import { userShipsQueryKey } from ".";
+import { MY_SHIPS_QUERY_KEY } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
 import { setShipQueryDataForAllShips } from "./useShip";
-import {
-	IGetUserShipsResponse,
-	IUserShip,
-} from "../../../api/users/ships/types";
+import { IGetMyShipsResponse, IMyShip } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
 import { isEqual } from "lodash";
@@ -14,21 +11,19 @@ export function useShips() {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(
-		userShipsQueryKey(spaceTradersApi.getUsername()),
-		() => spaceTradersApi.users.ships.getShips(),
+		MY_SHIPS_QUERY_KEY,
+		() => spaceTradersApi.my.ships.getShips(),
 		{
-			onSuccess: (data) =>
-				updateRelatedQueryData(spaceTradersApi.getUsername(), data.ships),
+			onSuccess: (data) => updateRelatedQueryData(data.ships),
 		},
 	);
 }
 
-export function setShipsQueryData(username: string, ships: IUserShip[]) {
-	const queryKey = userShipsQueryKey(username);
+export function setShipsQueryData(ships: IMyShip[]) {
 	let shouldInvalidateUserShips = false;
 
-	spaceTradersQueryClient.setQueryData<IGetUserShipsResponse>(
-		queryKey,
+	spaceTradersQueryClient.setQueryData<IGetMyShipsResponse>(
+		MY_SHIPS_QUERY_KEY,
 		(old) => {
 			const newShips = produce(ships, (draft) => {
 				if (old !== undefined) {
@@ -62,24 +57,22 @@ export function setShipsQueryData(username: string, ships: IUserShip[]) {
 				}
 			});
 
-			updateRelatedQueryData(username, newShips);
+			updateRelatedQueryData(newShips);
 
 			return { ships: newShips };
 		},
 	);
 
 	if (shouldInvalidateUserShips) {
-		spaceTradersQueryClient.invalidateQueries(queryKey, {
+		spaceTradersQueryClient.invalidateQueries(MY_SHIPS_QUERY_KEY, {
 			exact: true,
 		});
 	}
 }
 
-export function setShipInShipsQueryData(username: string, ship: IUserShip) {
-	const queryKey = userShipsQueryKey(username);
-
-	const data = spaceTradersQueryClient.getQueryData<IGetUserShipsResponse>(
-		queryKey,
+export function setShipInShipsQueryData(ship: IMyShip) {
+	const data = spaceTradersQueryClient.getQueryData<IGetMyShipsResponse>(
+		MY_SHIPS_QUERY_KEY,
 	) ?? { ships: [] };
 
 	const newData = produce(data, (draft) => {
@@ -93,8 +86,8 @@ export function setShipInShipsQueryData(username: string, ship: IUserShip) {
 	});
 
 	if (!isEqual(data, newData)) {
-		spaceTradersQueryClient.setQueryData<IGetUserShipsResponse>(
-			queryKey,
+		spaceTradersQueryClient.setQueryData<IGetMyShipsResponse>(
+			MY_SHIPS_QUERY_KEY,
 			newData,
 		);
 	}
@@ -102,6 +95,6 @@ export function setShipInShipsQueryData(username: string, ship: IUserShip) {
 
 // The list of ships and the individual ship endpoints return the same data,
 // so we want to keep them in sync.
-function updateRelatedQueryData(username: string, ships: IUserShip[]) {
-	setShipQueryDataForAllShips(username, ships);
+function updateRelatedQueryData(ships: IMyShip[]) {
+	setShipQueryDataForAllShips(ships);
 }

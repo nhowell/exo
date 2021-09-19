@@ -1,10 +1,7 @@
 import { sum } from "lodash";
 import { memo, ReactElement } from "react";
 import { NavLink } from "react-router-dom";
-import {
-	IShipCargo,
-	IUserShip,
-} from "../../spacetraders-api/api/users/ships/types";
+import { IShipCargo, IMyShip } from "../../spacetraders-api/api/my/ships/types";
 import { generateViewShipPath } from "../routes";
 import styles from "./YourShip.module.css";
 import { ShipStatus } from "./ShipStatus";
@@ -13,7 +10,7 @@ import commonStyles from "../common/common.module.css";
 import { Good } from "../../spacetraders-api/api/enums";
 
 interface IOwnProps {
-	ship: IUserShip;
+	ship: IMyShip;
 }
 
 export const YourShip = memo(function (props: IOwnProps): ReactElement {
@@ -41,7 +38,7 @@ export const YourShip = memo(function (props: IOwnProps): ReactElement {
 	);
 });
 
-function cargo(ship: IUserShip): string {
+function cargo(ship: IMyShip): string {
 	const volumelessCargoCount = sum(
 		ship.cargo.filter((x) => x.totalVolume === 0).map((x) => x.quantity),
 	);

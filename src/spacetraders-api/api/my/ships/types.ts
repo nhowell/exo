@@ -1,4 +1,5 @@
 import { Good } from "../../enums";
+import { IShipType } from "../../types/types";
 
 export interface IPurchaseShipRequest {
 	location: string;
@@ -7,28 +8,22 @@ export interface IPurchaseShipRequest {
 
 export interface IPurchaseShipResponse {
 	credits: number;
-	ship: IUserShip;
+	ship: IMyShip;
 }
 
-export interface IGetUserShipsResponse {
-	ships: IUserShip[];
+export interface IGetMyShipsResponse {
+	ships: IMyShip[];
 }
 
-export interface IGetUserShipResponse {
-	ship: IUserShip;
+export interface IGetMyShipResponse {
+	ship: IMyShip;
 }
 
-export interface IUserShip {
+export interface IMyShip extends IShipType {
 	id: string;
-	class: string;
-	type: string;
 	cargo: IShipCargo[];
-	manufacturer: string;
-	maxCargo: number;
-	plating: number;
 	spaceAvailable: number;
-	speed: number;
-	weapons: number;
+	loadingSpeed: number;
 	x: number;
 	y: number;
 	location?: string;

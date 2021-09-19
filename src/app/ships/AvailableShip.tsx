@@ -3,7 +3,7 @@ import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import { t } from "../../helpers/translate";
 import { IAvailableShip } from "../../spacetraders-api/api/game/ships/types";
-import { usePurchaseShip } from "../../spacetraders-api/hooks/users/ships/usePurchaseShip";
+import { usePurchaseShip } from "../../spacetraders-api/hooks/my/ships/usePurchaseShip";
 import { Tag } from "../common/Tag";
 
 interface IOwnProps {
