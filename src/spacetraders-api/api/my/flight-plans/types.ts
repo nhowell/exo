@@ -1,8 +1,8 @@
-export interface IGetUserFlightPlanResponse {
-	flightPlan: IUserFlightPlan;
+export interface IGetMyFlightPlanResponse {
+	flightPlan: IMyFlightPlan;
 }
 
-export interface IUserFlightPlan {
+export interface IMyFlightPlan {
 	id: string;
 	shipId: string;
 	fuelConsumed: number;

@@ -6,20 +6,20 @@ interface IOwnProps {
 	children: ReactElement;
 }
 
-export const spaceTradersApiContext = createContext<SpaceTradersApi>(
+export const SpaceTradersApiContext = createContext<SpaceTradersApi>(
 	undefined as any,
 );
 
 export function SpaceTradersApiProvider(props: IOwnProps) {
-	const { username, token } = useCurrentUser();
+	const { token } = useCurrentUser();
 
 	const spaceTradersApi = useMemo(() => {
-		return new SpaceTradersApi(username, token);
-	}, [token, username]);
+		return new SpaceTradersApi(token);
+	}, [token]);
 
 	return (
-		<spaceTradersApiContext.Provider value={spaceTradersApi}>
+		<SpaceTradersApiContext.Provider value={spaceTradersApi}>
 			{props.children}
-		</spaceTradersApiContext.Provider>
+		</SpaceTradersApiContext.Provider>
 	);
 }

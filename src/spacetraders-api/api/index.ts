@@ -11,7 +11,6 @@ import {
 	HttpStatusCode,
 } from "./types";
 import { TypesApiModule } from "./types/TypesApiModule";
-import { UsersApiModule } from "./users/UsersApiModule";
 
 interface ApiOptions {
 	/**
@@ -118,10 +117,8 @@ export class SpaceTradersApi {
 	public game: GameApiModule;
 	public my: MyApiModule;
 	public types: TypesApiModule;
-	public users: UsersApiModule;
 
 	constructor(
-		private username: string,
 		/**
 		 * The user's "Bearer" token.
 		 */
@@ -150,7 +147,6 @@ export class SpaceTradersApi {
 		this.game = new GameApiModule(this);
 		this.my = new MyApiModule(this);
 		this.types = new TypesApiModule(this);
-		this.users = new UsersApiModule(this);
 	}
 
 	/**
@@ -267,10 +263,6 @@ export class SpaceTradersApi {
 
 	private static sleep(milliseconds: number): Promise<void> {
 		return new Promise((resolve) => setTimeout(resolve, milliseconds));
-	}
-
-	getUsername() {
-		return this.username;
 	}
 
 	get<T>(path: string, params?: any): Promise<T> {

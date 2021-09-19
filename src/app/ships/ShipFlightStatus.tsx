@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { TimeRemaining } from "../common/TimeRemaining";
-import { useFlightPlan } from "../../spacetraders-api/hooks/users/flight-plans/useFlightPlan";
+import { useFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useFlightPlan";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
 
