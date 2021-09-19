@@ -11,7 +11,8 @@ export function useSystems() {
 		GAME_SYSTEMS_QUERY_KEY,
 		() => spaceTradersApi.game.systems.getSystems(),
 		{
-			onSuccess: (data) => updateRelatedQueryData(data.systems),
+			// TODO: fix this once updated to the new endpoints
+			// onSuccess: (data) => updateRelatedQueryData(data.systems),
 		},
 	);
 }

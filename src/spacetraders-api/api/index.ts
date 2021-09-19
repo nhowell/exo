@@ -4,6 +4,7 @@ import { GameApiModule } from "./game/GameApiModule";
 import { LocationsApiModule } from "./locations/LocationsApiModule";
 import { MyApiModule } from "./my/MyApiModule";
 import { IGetMyAccountInfoResponse } from "./my/types";
+import { SystemsApiModule } from "./systems/SystemsApiModule";
 import {
 	SpaceTradersError,
 	IClaimUsernameResponse,
@@ -118,6 +119,7 @@ export class SpaceTradersApi {
 	public game: GameApiModule;
 	public locations: LocationsApiModule;
 	public my: MyApiModule;
+	public systems: SystemsApiModule;
 	public types: TypesApiModule;
 
 	constructor(
@@ -149,6 +151,7 @@ export class SpaceTradersApi {
 		this.game = new GameApiModule(this);
 		this.locations = new LocationsApiModule(this);
 		this.my = new MyApiModule(this);
+		this.systems = new SystemsApiModule(this);
 		this.types = new TypesApiModule(this);
 	}
 

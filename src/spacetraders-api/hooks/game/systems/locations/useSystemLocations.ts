@@ -1,5 +1,5 @@
 import { systemLocationsQueryKey } from ".";
-import { ISystemLocationsResponse } from "../../../../api/game/systems/locations/types";
+import { ISystemLocationsResponse } from "../../../../api/systems/types";
 import { ISystem } from "../../../../api/game/systems/types";
 import { spaceTradersQueryClient } from "../../../spaceTradersQueryClient";
 import { useSpaceTradersApi } from "../../../useSpaceTradersApi";
@@ -9,7 +9,7 @@ export function useSystemLocations(systemSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(systemLocationsQueryKey(systemSymbol), () =>
-		spaceTradersApi.game.systems.locations.getLocationsInSystem(systemSymbol),
+		spaceTradersApi.systems.getLocationsInSystem(systemSymbol),
 	);
 }
 

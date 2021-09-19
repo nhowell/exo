@@ -7,6 +7,7 @@ interface IOwnProps {
 }
 
 export function LocationAttributes(props: IOwnProps): ReactElement {
+	console.log(props.location);
 	return (
 		<dl>
 			<div>
@@ -23,11 +24,10 @@ export function LocationAttributes(props: IOwnProps): ReactElement {
 				<dt>{t("Allows Construction")}:</dt>
 				<dd>{props.location.allowsConstruction ? t("Yes") : t("No")}</dd>
 			</div>
-			{/* TODO: Add once migrated to new systems endpoints
-			 <div>
+			<div>
 				<dt>{t("Traits")}:</dt>
 				<dd>{props.location.traits.join(", ")}</dd>
-			</div> */}
+			</div>
 		</dl>
 	);
 }
