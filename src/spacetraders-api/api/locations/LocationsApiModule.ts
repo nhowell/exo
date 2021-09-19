@@ -1,8 +1,8 @@
-import { SpaceTradersApi } from "../..";
+import { SpaceTradersApi } from "..";
 import { IGetLocationDockedShipsResponse, IGetLocationResponse } from "./types";
 
 export class LocationsApiModule {
-	constructor(private api: SpaceTradersApi, private basePath: string) {}
+	constructor(private api: SpaceTradersApi) {}
 
 	getLocation(locationSymbol: string): Promise<IGetLocationResponse> {
 		return this.api.get(this.getLocationPath(locationSymbol));
@@ -15,6 +15,6 @@ export class LocationsApiModule {
 	}
 
 	private getLocationPath(symbol: string) {
-		return `${this.basePath}/locations/${symbol}`;
+		return `/locations/${symbol}`;
 	}
 }

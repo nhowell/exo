@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
-import { ILocation } from "../../spacetraders-api/api/game/locations/types";
+import { ILocation } from "../../spacetraders-api/api/locations/types";
 import { LocationName } from "./locations/LocationName";
 import { LocationAttributes } from "./locations/LocationAttributes";
 import { generateViewLocationPath } from "../routes";

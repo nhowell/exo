@@ -35,17 +35,7 @@ export enum LoanType {
 	Startup = "STARTUP",
 }
 
-export enum LocationType {
-	Anomaly = "ANOMALY",
-	Asteroid = "ASTEROID",
-	GasGiant = "GAS_GIANT",
-	Moon = "MOON",
-	Nebula = "NEBULA",
-	Planet = "PLANET",
-	Wormhole = "WORMHOLE",
-}
-
-export enum PlanetTrait {
+export enum LocationTrait {
 	AbundantMetalOres = "ABUNDANT_METAL_ORES",
 	AbundantNaturalChemicals = "ABUNDANT_NATURAL_CHEMICALS",
 	ArableLand = "ARABLE_LAND",
@@ -60,6 +50,16 @@ export enum PlanetTrait {
 	SomeTechnilogicalRuins = "SOME_TECHNOLOGICAL_RUINS",
 	RareMetalOres = "RARE_METAL_ORES",
 	TechnologicalRuins = "TECHNOLOGICAL_RUINS",
+}
+
+export enum LocationType {
+	Anomaly = "ANOMALY",
+	Asteroid = "ASTEROID",
+	GasGiant = "GAS_GIANT",
+	Moon = "MOON",
+	Nebula = "NEBULA",
+	Planet = "PLANET",
+	Wormhole = "WORMHOLE",
 }
 
 export enum ShipClass {

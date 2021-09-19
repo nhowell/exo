@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 import { t } from "../../helpers/translate";
 import { useShip } from "../../spacetraders-api/hooks/my/ships/useShip";
 import { ShipStatus } from "./ShipStatus";
-import { numberFormat } from "../../helpers/numberFormat";
 import { Table } from "../../core/table/Table";
 import { IShipCargo } from "../../spacetraders-api/api/my/ships/types";
 import { ITableColumnHeader } from "../../core/table/types";
 import { Tile } from "../common/tiles/Tile";
 import { Tag } from "../common/Tag";
 import commonStyles from "../common/common.module.css";
+import { ShipAttributes } from "./ShipAttributes";
 
 interface IRouteParams {
 	shipId: string;
@@ -72,34 +72,7 @@ export function ViewShip(): ReactElement {
 
 					<aside className={commonStyles.floatRight}>
 						<Tile>
-							<dl>
-								<div>
-									<dt>{t("Speed")}:</dt>
-									<dd>{ship.speed}</dd>
-								</div>
-								<div>
-									<dt>{t("Max Cargo")}:</dt>
-									<dd>{numberFormat(ship.maxCargo)}</dd>
-								</div>
-								<div>
-									<dt>{t("Loading Speed")}:</dt>
-									<dd>{numberFormat(ship.loadingSpeed)}</dd>
-								</div>
-								{ship.restrictedGoods && (
-									<div>
-										<dt>{t("Restricted Goods")}:</dt>
-										<dd>{ship.restrictedGoods.join(", ")}</dd>
-									</div>
-								)}
-								<div>
-									<dt>{t("Weapons")}:</dt>
-									<dd>{numberFormat(ship.weapons)}</dd>
-								</div>
-								<div>
-									<dt>{t("Plating")}:</dt>
-									<dd>{numberFormat(ship.plating)}</dd>
-								</div>
-							</dl>
+							<ShipAttributes ship={ship} />
 						</Tile>
 					</aside>
 

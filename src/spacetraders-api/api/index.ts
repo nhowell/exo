@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import Bottleneck from "bottleneck";
 import { GameApiModule } from "./game/GameApiModule";
+import { LocationsApiModule } from "./locations/LocationsApiModule";
 import { MyApiModule } from "./my/MyApiModule";
 import { IGetMyAccountInfoResponse } from "./my/types";
 import {
@@ -115,6 +116,7 @@ export class SpaceTradersApi {
 	private maxRetries = 3;
 
 	public game: GameApiModule;
+	public locations: LocationsApiModule;
 	public my: MyApiModule;
 	public types: TypesApiModule;
 
@@ -145,6 +147,7 @@ export class SpaceTradersApi {
 		}
 
 		this.game = new GameApiModule(this);
+		this.locations = new LocationsApiModule(this);
 		this.my = new MyApiModule(this);
 		this.types = new TypesApiModule(this);
 	}

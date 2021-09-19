@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
-import { IStructure } from "../../../spacetraders-api/api/game/locations/types";
 import { TileContainer } from "../../common/tiles/TileContainer";
 import { Tile } from "../../common/tiles/Tile";
 import { t } from "../../../helpers/translate";
 import { Structure } from "./Structure";
+import { IStructure } from "../../../spacetraders-api/api/structures/types";
 
 interface IOwnProps {
 	structures: IStructure[];

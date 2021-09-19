@@ -2,11 +2,10 @@ import { ReactElement, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { mergeSymbols } from "../../../helpers/mergeSymbols";
 import { t } from "../../../helpers/translate";
-import { useLocationDockedShips } from "../../../spacetraders-api/hooks/game/locations/useLocationDockedShips";
-import { LocationName } from "./LocationName";
+import { useLocationDockedShips } from "../../../spacetraders-api/hooks/locations/useLocationDockedShips";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
-import { IDockedShip } from "../../../spacetraders-api/api/game/locations/types";
+import { IDockedShip } from "../../../spacetraders-api/api/locations/types";
 import { sortBy } from "lodash";
 
 interface IRouteParams {
@@ -41,7 +40,7 @@ export function ViewLocationDockedShips(): ReactElement {
 			return [];
 		}
 
-		return sortShips(data.location.ships);
+		return sortShips(data.ships);
 	}, [data]);
 
 	return (
@@ -52,16 +51,6 @@ export function ViewLocationDockedShips(): ReactElement {
 				<p>{t(error?.message ?? "Something went wrong.")}</p>
 			) : (
 				<>
-					<header>
-						<h1>
-							{t("Ships Docked at")}{" "}
-							<LocationName
-								name={data.location.name}
-								symbol={data.location.symbol}
-							/>
-						</h1>
-					</header>
-
 					{sortedShips.length === 0 ? (
 						<p>{t("No ships are docked.")}</p>
 					) : (

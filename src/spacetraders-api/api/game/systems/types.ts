@@ -1,4 +1,4 @@
-import { ILocation } from "../locations/types";
+import { ILocation } from "../../locations/types";
 
 export interface ISystemsResponse {
 	systems: ISystem[];

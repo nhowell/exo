@@ -2,7 +2,7 @@ import {
 	Good,
 	LoanType,
 	LocationType,
-	PlanetTrait,
+	LocationTrait,
 	ShipClass,
 	StructureType,
 } from "../enums";
@@ -54,7 +54,7 @@ export interface IStructureType {
 	name: string;
 	price: number;
 	allowedLocationTypes: LocationType[];
-	allowedPlanetTraits: PlanetTrait[];
+	allowedPlanetTraits: LocationTrait[];
 	consumes: Good[];
 	produces: Good[];
 }

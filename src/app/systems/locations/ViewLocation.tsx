@@ -1,17 +1,15 @@
 import { ReactElement } from "react";
-import { useParams } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { t } from "../../../helpers/translate";
 import { Tile } from "../../common/tiles/Tile";
 import commonStyles from "../../common/common.module.css";
-import { useLocation } from "../../../spacetraders-api/hooks/game/locations/useLocation";
+import { useLocation } from "../../../spacetraders-api/hooks/locations/useLocation";
 import { LocationName } from "./LocationName";
 import { LocationAttributes } from "./LocationAttributes";
 import { LocationMessages } from "./LocationMessages";
 import { pluralize } from "../../../helpers/pluralize";
 import { mergeSymbols } from "../../../helpers/mergeSymbols";
 import { generateViewLocationDockedShipsPath } from "../../routes";
-import { Structures } from "./Structures";
 
 interface IRouteParams {
 	systemSymbol: string;
@@ -50,15 +48,15 @@ export function ViewLocation(): ReactElement {
 
 					<p>
 						<NavLink to={generateViewLocationDockedShipsPath(symbol)}>
-							{pluralize(data.dockedShips, t("docked ship"), t("docked ships"))}
+							{pluralize(
+								data.location.dockedShips,
+								t("docked ship"),
+								t("docked ships"),
+							)}
 						</NavLink>
 					</p>
 
 					<LocationMessages location={data.location} />
-
-					<div className={commonStyles.clear}></div>
-
-					<Structures structures={data.location.structures} />
 				</>
 			)}
 		</>

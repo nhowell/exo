@@ -1,10 +1,10 @@
 import { Formik, Form, FormikHelpers, ErrorMessage, Field } from "formik";
 import { creditFormat } from "../../helpers/creditFormat";
-import { numberFormat } from "../../helpers/numberFormat";
 import { t } from "../../helpers/translate";
 import { IAvailableShip } from "../../spacetraders-api/api/game/ships/types";
 import { usePurchaseShip } from "../../spacetraders-api/hooks/my/ships/usePurchaseShip";
 import { Tag } from "../common/Tag";
+import { ShipAttributes } from "./ShipAttributes";
 
 interface IOwnProps {
 	ship: IAvailableShip;
@@ -52,34 +52,8 @@ export function AvailableShip(props: IOwnProps) {
 				{props.ship.manufacturer} {props.ship.class}{" "}
 				<Tag text={props.ship.type} />
 			</h3>
-			<dl>
-				<div>
-					<dt>{t("Speed")}:</dt>
-					<dd>{numberFormat(props.ship.speed)}</dd>
-				</div>
-				<div>
-					<dt>{t("Max Cargo")}:</dt>
-					<dd>{numberFormat(props.ship.maxCargo)}</dd>
-				</div>
-				<div>
-					<dt>{t("Loading Speed")}:</dt>
-					<dd>{numberFormat(props.ship.loadingSpeed)}</dd>
-				</div>
-				{props.ship.restrictedGoods && (
-					<div>
-						<dt>{t("Restricted Goods")}:</dt>
-						<dd>{props.ship.restrictedGoods.join(", ")}</dd>
-					</div>
-				)}
-				<div>
-					<dt>{t("Plating")}:</dt>
-					<dd>{numberFormat(props.ship.plating)}</dd>
-				</div>
-				<div>
-					<dt>{t("Weapons")}:</dt>
-					<dd>{numberFormat(props.ship.weapons)}</dd>
-				</div>
-			</dl>
+
+			<ShipAttributes ship={props.ship} />
 
 			<Formik<IPurchaseShipForm>
 				initialValues={initialValues}

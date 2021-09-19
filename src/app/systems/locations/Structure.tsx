@@ -6,7 +6,7 @@ import { t } from "../../../helpers/translate";
 import {
 	IStructure,
 	IStructureMaterial,
-} from "../../../spacetraders-api/api/game/locations/types";
+} from "../../../spacetraders-api/api/structures/types";
 
 interface IOwnProps {
 	structure: IStructure;
@@ -39,7 +39,7 @@ const stabilityPercentFormat = createNumberFormatter({
 export function Structure(props: IOwnProps): ReactElement {
 	return (
 		<>
-			<h3>{props.structure.name}</h3>
+			<h3>{t(props.structure.name)}</h3>
 
 			<dl>
 				<div>
