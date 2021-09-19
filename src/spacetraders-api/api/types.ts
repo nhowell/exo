@@ -1,5 +1,3 @@
-import { IUser } from "./users/types";
-
 export interface IFailureResponse {
 	error: IFailureError;
 }
@@ -31,4 +29,9 @@ export interface IGameStatusResponse {
 export interface IClaimUsernameResponse {
 	token: string;
 	user: IUser;
+}
+
+interface IUser {
+	username: string;
+	credits: number;
 }

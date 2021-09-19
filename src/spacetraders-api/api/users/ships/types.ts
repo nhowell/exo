@@ -5,6 +5,11 @@ export interface IPurchaseShipRequest {
 	type: string;
 }
 
+export interface IPurchaseShipResponse {
+	credits: number;
+	ship: IUserShip;
+}
+
 export interface IGetUserShipsResponse {
 	ships: IUserShip[];
 }

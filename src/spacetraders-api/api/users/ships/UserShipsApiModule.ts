@@ -1,15 +1,15 @@
 import { SpaceTradersApi } from "../..";
-import { IGetUserInfoResponse } from "../types";
 import {
 	IGetUserShipResponse,
 	IGetUserShipsResponse,
 	IPurchaseShipRequest,
+	IPurchaseShipResponse,
 } from "./types";
 
 export class UserShipsApiModule {
 	constructor(private api: SpaceTradersApi, private basePath: string) {}
 
-	purchaseShip(request: IPurchaseShipRequest): Promise<IGetUserInfoResponse> {
+	purchaseShip(request: IPurchaseShipRequest): Promise<IPurchaseShipResponse> {
 		return this.api.post(this.getUserShipsPath(), request);
 	}
 
