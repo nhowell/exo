@@ -74,20 +74,30 @@ export function ViewShip(): ReactElement {
 						<Tile>
 							<dl>
 								<div>
-									<dt>{t("Max Cargo")}:</dt>
-									<dd>{numberFormat(ship.maxCargo)}</dd>
-								</div>
-								<div>
 									<dt>{t("Speed")}:</dt>
 									<dd>{ship.speed}</dd>
 								</div>
 								<div>
+									<dt>{t("Max Cargo")}:</dt>
+									<dd>{numberFormat(ship.maxCargo)}</dd>
+								</div>
+								<div>
+									<dt>{t("Loading Speed")}:</dt>
+									<dd>{numberFormat(ship.loadingSpeed)}</dd>
+								</div>
+								{ship.restrictedGoods && (
+									<div>
+										<dt>{t("Restricted Goods")}:</dt>
+										<dd>{ship.restrictedGoods.join(", ")}</dd>
+									</div>
+								)}
+								<div>
 									<dt>{t("Weapons")}:</dt>
-									<dd>{ship.weapons}</dd>
+									<dd>{numberFormat(ship.weapons)}</dd>
 								</div>
 								<div>
 									<dt>{t("Plating")}:</dt>
-									<dd>{ship.plating}</dd>
+									<dd>{numberFormat(ship.plating)}</dd>
 								</div>
 							</dl>
 						</Tile>

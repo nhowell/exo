@@ -54,13 +54,23 @@ export function AvailableShip(props: IOwnProps) {
 			</h3>
 			<dl>
 				<div>
+					<dt>{t("Speed")}:</dt>
+					<dd>{numberFormat(props.ship.speed)}</dd>
+				</div>
+				<div>
 					<dt>{t("Max Cargo")}:</dt>
 					<dd>{numberFormat(props.ship.maxCargo)}</dd>
 				</div>
 				<div>
-					<dt>{t("Speed")}:</dt>
-					<dd>{numberFormat(props.ship.speed)}</dd>
+					<dt>{t("Loading Speed")}:</dt>
+					<dd>{numberFormat(props.ship.loadingSpeed)}</dd>
 				</div>
+				{props.ship.restrictedGoods && (
+					<div>
+						<dt>{t("Restricted Goods")}:</dt>
+						<dd>{props.ship.restrictedGoods.join(", ")}</dd>
+					</div>
+				)}
 				<div>
 					<dt>{t("Plating")}:</dt>
 					<dd>{numberFormat(props.ship.plating)}</dd>
