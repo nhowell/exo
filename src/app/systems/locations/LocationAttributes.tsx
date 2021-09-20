@@ -25,10 +25,12 @@ export function LocationAttributes(props: IOwnProps): ReactElement {
 				<dt>{t("Allows Construction")}:</dt>
 				<dd>{boolToHumanDisplay(props.location.allowsConstruction)}</dd>
 			</div>
-			<div>
-				<dt>{t("Traits")}:</dt>
-				<dd>{props.location.traits.map(titleCase).map(t).join(", ")}</dd>
-			</div>
+			{props.location.traits.length > 0 && (
+				<div>
+					<dt>{t("Traits")}:</dt>
+					<dd>{props.location.traits.map(titleCase).map(t).join(", ")}</dd>
+				</div>
+			)}
 		</dl>
 	);
 }

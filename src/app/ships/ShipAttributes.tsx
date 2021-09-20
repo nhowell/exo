@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { numberFormat } from "../../helpers/numberFormat";
+import { titleCase } from "../../helpers/titleCase";
 import { t } from "../../helpers/translate";
 import { IShipType } from "../../spacetraders-api/api/types/types";
 
@@ -25,7 +26,7 @@ export function ShipAttributes(props: IOwnProps): ReactElement {
 			{props.ship.restrictedGoods && (
 				<div>
 					<dt>{t("Restricted Goods")}:</dt>
-					<dd>{props.ship.restrictedGoods.join(", ")}</dd>
+					<dd>{props.ship.restrictedGoods.map(titleCase).map(t).join(", ")}</dd>
 				</div>
 			)}
 			<div>
