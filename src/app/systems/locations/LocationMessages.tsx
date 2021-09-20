@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useMemo } from "react";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import commonStyles from "../../common/common.module.css";
 
@@ -7,14 +7,18 @@ interface IOwnProps {
 }
 
 export function LocationMessages(props: IOwnProps): ReactElement {
+	const messages = useMemo(
+		() => props.location.messages?.filter((x) => !x.includes("https://")) ?? [],
+		[props.location.messages],
+	);
+
 	return (
 		<>
-			{props.location.messages &&
-				props.location.messages.map((message, i) => (
-					<p key={i} className={commonStyles.overflowWordWrap}>
-						{message}
-					</p>
-				))}
+			{messages.map((message, i) => (
+				<p key={i} className={commonStyles.overflowWordWrap}>
+					{message}
+				</p>
+			))}
 		</>
 	);
 }
