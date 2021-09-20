@@ -5,6 +5,7 @@ import { t } from "../../helpers/translate";
 import { useAcceptLoan } from "../../spacetraders-api/hooks/my/loans/useAcceptLoan";
 import { IAvailableLoan } from "../../spacetraders-api/api/types/types";
 import { boolToHumanDisplay } from "../../helpers/boolToHumanDisplay";
+import { titleCase } from "../../helpers/titleCase";
 
 interface IOwnProps {
 	loan: IAvailableLoan;
@@ -19,7 +20,7 @@ export function AvailableLoan(props: IOwnProps) {
 
 	return (
 		<>
-			<h3>{t(props.loan.type)}</h3>
+			<h3>{t(titleCase(props.loan.type))}</h3>
 			<dl>
 				<div>
 					<dt>{t("Amount")}:</dt>
