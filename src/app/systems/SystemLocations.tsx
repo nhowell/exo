@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { t } from "../../helpers/translate";
-import { useSystemLocations } from "../../spacetraders-api/hooks/game/systems/locations/useSystemLocations";
+import { useSystemLocations } from "../../spacetraders-api/hooks/systems/useSystemLocations";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";
 import { SystemLocation } from "./SystemLocation";

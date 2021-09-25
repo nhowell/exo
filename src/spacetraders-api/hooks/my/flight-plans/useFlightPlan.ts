@@ -1,4 +1,4 @@
-import { myFlightPlanQueryKey } from ".";
+import { MY_FLIGHT_PLANS_QUERY_KEY } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
 import { setShipArrival } from "../ships/useShip";
 import {
@@ -7,6 +7,10 @@ import {
 } from "../../../api/my/flight-plans/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
+
+export function myFlightPlanQueryKey(flightPlanId: string): string[] {
+	return [...MY_FLIGHT_PLANS_QUERY_KEY, flightPlanId];
+}
 
 export function useFlightPlan(flightPlanId: string) {
 	const spaceTradersApi = useSpaceTradersApi();

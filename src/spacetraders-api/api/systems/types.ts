@@ -5,7 +5,11 @@ export interface IGetLocationsInSystemParams {
 	/**
 	 * The type of location to filter by, e.g. "PLANET".
 	 */
-	type: LocationType;
+	type?: LocationType;
+	/**
+	 * Filter on whether the location allows construction or not.
+	 */
+	allowsConstruction?: boolean;
 }
 
 export interface ISystemLocationsResponse {

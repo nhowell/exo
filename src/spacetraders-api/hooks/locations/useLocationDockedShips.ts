@@ -1,6 +1,10 @@
-import { locationDockedShipsQueryKey } from ".";
+import { locationQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+function locationDockedShipsQueryKey(symbol: string): string[] {
+	return [...locationQueryKey(symbol), "ships"];
+}
 
 export function useLocationDockedShips(symbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();

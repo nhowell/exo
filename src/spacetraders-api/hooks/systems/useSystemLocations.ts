@@ -1,9 +1,13 @@
-import { systemLocationsQueryKey } from ".";
-import { ISystemLocationsResponse } from "../../../../api/systems/types";
-import { ISystem } from "../../../../api/game/systems/types";
-import { spaceTradersQueryClient } from "../../../spaceTradersQueryClient";
-import { useSpaceTradersApi } from "../../../useSpaceTradersApi";
-import { useSpaceTradersQuery } from "../../../useSpaceTradersQuery";
+import { ISystemLocationsResponse } from "../../api/systems/types";
+import { ISystem } from "../../api/game/systems/types";
+import { spaceTradersQueryClient } from "../spaceTradersQueryClient";
+import { useSpaceTradersApi } from "../useSpaceTradersApi";
+import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+import { systemQueryKey } from ".";
+
+export function systemLocationsQueryKey(systemSymbol: string): string[] {
+	return [...systemQueryKey(systemSymbol), "locations"];
+}
 
 export function useSystemLocations(systemSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();
