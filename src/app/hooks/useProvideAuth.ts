@@ -93,7 +93,7 @@ export function useProvideAuth(): IAuth {
 					});
 				}
 
-				replaceHistory("/");
+				replaceHistory(homePath);
 			} catch (error: any) {
 				// Return the error message to be displayed on the login form.
 				return error.message;
