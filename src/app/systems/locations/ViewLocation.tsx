@@ -23,42 +23,38 @@ export function ViewLocation(): ReactElement {
 
 	const { isLoading, isError, error, data } = useLocation(symbol);
 
-	return (
+	return isLoading ? (
+		<p>{t("Loading...")}</p>
+	) : isError || data === undefined ? (
+		<p>{t(error?.message ?? "Something went wrong.")}</p>
+	) : (
 		<>
-			{isLoading ? (
-				<p>{t("Loading...")}</p>
-			) : isError || data === undefined ? (
-				<p>{t(error?.message ?? "Something went wrong.")}</p>
-			) : (
-				<>
-					<header>
-						<h1>
-							<LocationName
-								name={data.location.name}
-								symbol={data.location.symbol}
-							/>
-						</h1>
-					</header>
+			<header>
+				<h1>
+					<LocationName
+						name={data.location.name}
+						symbol={data.location.symbol}
+					/>
+				</h1>
+			</header>
 
-					<aside className={commonStyles.floatRight}>
-						<Tile>
-							<LocationAttributes location={data.location} />
-						</Tile>
-					</aside>
+			<aside className={commonStyles.floatRight}>
+				<Tile>
+					<LocationAttributes location={data.location} />
+				</Tile>
+			</aside>
 
-					<p>
-						<NavLink to={generateViewLocationDockedShipsPath(symbol)}>
-							{pluralize(
-								data.location.dockedShips,
-								t("docked ship"),
-								t("docked ships"),
-							)}
-						</NavLink>
-					</p>
+			<p>
+				<NavLink to={generateViewLocationDockedShipsPath(symbol)}>
+					{pluralize(
+						data.location.dockedShips,
+						t("docked ship"),
+						t("docked ships"),
+					)}
+				</NavLink>
+			</p>
 
-					<LocationMessages location={data.location} />
-				</>
-			)}
+			<LocationMessages location={data.location} />
 		</>
 	);
 }

@@ -1,30 +1,29 @@
-import { ReactElement, useMemo } from "react";
+import { ReactElement } from "react";
 import { useParams } from "react-router";
 import { t } from "../../helpers/translate";
-import { useSystems } from "../../spacetraders-api/hooks/game/systems/useSystems";
+import { useSystem } from "../../spacetraders-api/hooks/systems/useSystem";
 import { Tag } from "../common/Tag";
 import { SystemLocations } from "./SystemLocations";
 
 interface IRouteParams {
-	symbol: string;
+	systemSymbol: string;
 }
 
 export function ViewSystem(): ReactElement {
-	const { symbol } = useParams<IRouteParams>();
+	const { systemSymbol } = useParams<IRouteParams>();
+	const { isLoading, isError, error, data } = useSystem(systemSymbol);
 
-	const { isLoading, data } = useSystems();
-
-	const systemName = useMemo(() => {
-		return data?.systems.find((x) => x.symbol === symbol)?.name;
-	}, [symbol, data?.systems]);
-
-	return (
+	return isLoading ? (
+		<p>{t("Loading...")}</p>
+	) : isError || data === undefined ? (
+		<p>{t(error?.message ?? "Something went wrong.")}</p>
+	) : (
 		<>
 			<h1>
-				{isLoading ? t("Loading...") : systemName} <Tag text={symbol} />
+				{data.system.name} <Tag text={systemSymbol} />
 			</h1>
 
-			<SystemLocations systemSymbol={symbol} />
+			<SystemLocations systemSymbol={systemSymbol} />
 		</>
 	);
 }

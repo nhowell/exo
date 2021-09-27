@@ -19,10 +19,10 @@ interface IRoute {
 export const loginPath = "/login";
 export const homePath = "/";
 export const systemsPath = "/systems";
-const viewSystemPath = "/systems/:symbol";
-export const generateViewSystemPath = (symbol: string) =>
+const viewSystemPath = "/systems/:systemSymbol";
+export const generateViewSystemPath = (systemSymbol: string) =>
 	generatePath(viewSystemPath, {
-		symbol,
+		systemSymbol,
 	});
 const viewLocationPath = "/systems/:systemSymbol/locations/:locationSymbol";
 export const generateViewLocationPath = (symbol: string) => {

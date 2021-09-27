@@ -5,6 +5,7 @@ import { LocationName } from "./locations/LocationName";
 import { LocationAttributes } from "./locations/LocationAttributes";
 import { generateViewLocationPath } from "../routes";
 import { LocationMessages } from "./locations/LocationMessages";
+import { t } from "../../helpers/translate";
 
 interface IOwnProps {
 	location: ILocation;
@@ -26,7 +27,7 @@ export function SystemLocation(props: IOwnProps): ReactElement {
 
 			<p>
 				<NavLink to={generateViewLocationPath(props.location.symbol)}>
-					View details
+					{t("View details")}
 				</NavLink>
 			</p>
 		</>

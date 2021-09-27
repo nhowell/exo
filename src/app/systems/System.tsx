@@ -27,7 +27,7 @@ export function System(props: IOwnProps): ReactElement {
 
 			<p>
 				<NavLink to={generateViewSystemPath(props.system.symbol)}>
-					View details
+					{t("View details")}
 				</NavLink>
 			</p>
 		</>

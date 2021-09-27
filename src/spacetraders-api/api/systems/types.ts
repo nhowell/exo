@@ -1,6 +1,15 @@
 import { LocationType } from "../enums";
 import { ILocation } from "../locations/types";
 
+export interface ISystemResponse {
+	system: ISystem;
+}
+
+interface ISystem {
+	symbol: string;
+	name: string;
+}
+
 export interface IGetLocationsInSystemParams {
 	/**
 	 * The type of location to filter by, e.g. "PLANET".

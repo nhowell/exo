@@ -1,8 +1,16 @@
 import { SpaceTradersApi } from "..";
-import { IGetLocationsInSystemParams, ISystemLocationsResponse } from "./types";
+import {
+	IGetLocationsInSystemParams,
+	ISystemLocationsResponse,
+	ISystemResponse,
+} from "./types";
 
 export class SystemsApiModule {
 	constructor(private api: SpaceTradersApi) {}
+
+	getSystemInfo(systemSymbol: string): Promise<ISystemResponse> {
+		return this.api.get(this.getSystemPath(systemSymbol));
+	}
 
 	getLocationsInSystem(
 		systemSymbol: string,
