@@ -9,7 +9,11 @@ export function dockedShipsInSystemQueryKey(systemSymbol: string): string[] {
 export function useDockedShipsInSystem(systemSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
-	return useSpaceTradersQuery(dockedShipsInSystemQueryKey(systemSymbol), () =>
-		spaceTradersApi.systems.getDockedShipsInSystem(systemSymbol),
+	return useSpaceTradersQuery(
+		dockedShipsInSystemQueryKey(systemSymbol),
+		() => spaceTradersApi.systems.getDockedShipsInSystem(systemSymbol),
+		{
+			staleTime: 0,
+		},
 	);
 }

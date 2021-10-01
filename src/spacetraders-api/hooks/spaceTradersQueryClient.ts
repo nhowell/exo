@@ -5,7 +5,7 @@ export const spaceTradersQueryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			// Default to a long cache and stale time, so this will force caching
-			// by default. When a particular query doesn't want it's data cached,
+			// by default. When a particular query doesn't want its data cached,
 			// it should override this. The stale time is not set to Infinity because
 			// while some endpoints are mostly static, they do sometimes change, like
 			// when a new system, location, or anomaly is discovered.

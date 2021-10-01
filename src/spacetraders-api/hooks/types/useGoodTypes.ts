@@ -7,7 +7,12 @@ const GOOD_TYPES_QUERY_KEY = [TYPES_QUERY_KEY, "goods"];
 export function useGoodTypes() {
 	const spaceTradersApi = useSpaceTradersApi();
 
-	return useSpaceTradersQuery(GOOD_TYPES_QUERY_KEY, () =>
-		spaceTradersApi.types.getGoodTypes(),
+	return useSpaceTradersQuery(
+		GOOD_TYPES_QUERY_KEY,
+		() => spaceTradersApi.types.getGoodTypes(),
+		{
+			cacheTime: Infinity,
+			staleTime: Infinity,
+		},
 	);
 }
