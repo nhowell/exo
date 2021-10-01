@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { t } from "../../helpers/translate";
-import { useShip } from "../../spacetraders-api/hooks/my/ships/useShip";
+import { useMyShip } from "../../spacetraders-api/hooks/my/ships/useMyShip";
 import { ShipStatus } from "./ShipStatus";
 import { Table } from "../../core/table/Table";
 import { IShipCargo } from "../../spacetraders-api/api/my/ships/types";
@@ -49,7 +49,7 @@ const cargoColumnDefinitions: ITableColumnHeader<ICargoGrid>[] = [
 export function ViewShip(): ReactElement {
 	const { shipId } = useParams<IRouteParams>();
 
-	const { isLoading, isError, error, data } = useShip(shipId);
+	const { isLoading, isError, error, data } = useMyShip(shipId);
 
 	const ship = data?.ship;
 

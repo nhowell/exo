@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useParams } from "react-router";
 import { t } from "../../helpers/translate";
-import { useSystem } from "../../spacetraders-api/hooks/systems/useSystem";
+import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { Tag } from "../common/Tag";
 import { SystemLocations } from "./SystemLocations";
 
@@ -11,7 +11,7 @@ interface IRouteParams {
 
 export function ViewSystem(): ReactElement {
 	const { systemSymbol } = useParams<IRouteParams>();
-	const { isLoading, isError, error, data } = useSystem(systemSymbol);
+	const { isLoading, isError, error, data } = useSystemInfo(systemSymbol);
 
 	return isLoading ? (
 		<p>{t("Loading...")}</p>

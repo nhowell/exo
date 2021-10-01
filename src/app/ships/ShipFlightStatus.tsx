@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { TimeRemaining } from "../common/TimeRemaining";
-import { useFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useFlightPlan";
+import { useMyFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useMyFlightPlan";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
 
@@ -9,7 +9,9 @@ interface IOwnProps {
 }
 
 export function ShipFlightStatus(props: IOwnProps): ReactElement {
-	const { isLoading, isError, error, data } = useFlightPlan(props.flightPlanId);
+	const { isLoading, isError, error, data } = useMyFlightPlan(
+		props.flightPlanId,
+	);
 
 	return isLoading ? (
 		<>{t("Loading...")}</>

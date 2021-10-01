@@ -1,6 +1,6 @@
 import { MY_FLIGHT_PLANS_QUERY_KEY } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
-import { setShipArrival } from "../ships/useShip";
+import { setShipArrival } from "../ships/useMyShip";
 import {
 	IMyFlightPlan,
 	IGetMyFlightPlanResponse,
@@ -12,7 +12,7 @@ export function myFlightPlanQueryKey(flightPlanId: string): string[] {
 	return [...MY_FLIGHT_PLANS_QUERY_KEY, flightPlanId];
 }
 
-export function useFlightPlan(flightPlanId: string) {
+export function useMyFlightPlan(flightPlanId: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(

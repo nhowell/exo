@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { useMyAccountInfo } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
-import { useShips } from "../../spacetraders-api/hooks/my/ships/useShips";
+import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
 import { useCurrentUser } from "../hooks/useCurrentUser";
 import { loansPath, shipyardPath } from "../routes";
 
 export function Home() {
 	const currentUser = useCurrentUser();
 	const { data: myAccountInfoResponse } = useMyAccountInfo();
-	const { data: shipsResponse } = useShips();
+	const { data: shipsResponse } = useMyShips();
 
 	return (
 		<>

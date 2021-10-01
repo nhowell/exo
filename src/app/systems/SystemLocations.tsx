@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { t } from "../../helpers/translate";
-import { useSystemLocations } from "../../spacetraders-api/hooks/systems/useSystemLocations";
+import { useLocationsInSystem } from "../../spacetraders-api/hooks/systems/useLocationsInSystem";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";
 import { SystemLocation } from "./SystemLocation";
@@ -10,7 +10,7 @@ interface IOwnProps {
 }
 
 export function SystemLocations(props: IOwnProps): ReactElement {
-	const { isLoading, isError, error, data } = useSystemLocations(
+	const { isLoading, isError, error, data } = useLocationsInSystem(
 		props.systemSymbol,
 	);
 

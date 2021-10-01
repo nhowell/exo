@@ -1,11 +1,11 @@
 import { pluralize } from "../../helpers/pluralize";
 import { t } from "../../helpers/translate";
-import { useShips } from "../../spacetraders-api/hooks/my/ships/useShips";
+import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
 import { YourShip } from "./YourShip";
 import styles from "./YourShips.module.css";
 
 export function YourShips() {
-	const { isLoading, isError, error, data, refetch } = useShips();
+	const { isLoading, isError, error, data, refetch } = useMyShips();
 
 	return (
 		<>

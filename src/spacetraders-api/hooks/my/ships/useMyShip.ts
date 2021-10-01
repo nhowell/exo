@@ -1,13 +1,13 @@
 import { produce } from "immer";
 import { myShipQueryKey } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
-import { setShipInShipsQueryData } from "./useShips";
+import { setShipInShipsQueryData } from "./useMyShips";
 import { IGetMyShipResponse, IMyShip } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
 import { isEqual } from "lodash";
 
-export function useShip(shipId: string) {
+export function useMyShip(shipId: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(
