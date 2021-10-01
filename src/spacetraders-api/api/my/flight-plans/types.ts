@@ -2,16 +2,19 @@ export interface IGetMyFlightPlanResponse {
 	flightPlan: IMyFlightPlan;
 }
 
-export interface IMyFlightPlan {
-	id: string;
-	shipId: string;
+export interface IMyFlightPlan extends IFlightPlanBase {
 	fuelConsumed: number;
 	fuelRemaining: number;
 	timeRemainingInSeconds: number;
+	terminatedAt: string | null;
+	distance: number;
+}
+
+export interface IFlightPlanBase {
+	id: string;
+	shipId: string;
 	createdAt: string;
 	arrivesAt: string;
-	terminatedAt: string | null;
 	destination: string;
 	departure: string;
-	distance: number;
 }

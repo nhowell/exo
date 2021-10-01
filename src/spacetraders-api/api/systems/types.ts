@@ -1,5 +1,6 @@
 import { LocationType, ShipClass } from "../enums";
 import { IDockedShip, ILocation } from "../locations/types";
+import { IFlightPlanBase } from "../my/flight-plans/types";
 import { IShipType } from "../types/types";
 
 export interface ISystemResponse {
@@ -49,4 +50,13 @@ interface IShipPurchaseLocation {
 
 export interface IGetDockedShipsInSystemResponse {
 	ships: IDockedShip[];
+}
+
+export interface IGetFlightPlansInSystemResponse {
+	flightPlans: IFlightPlan[];
+}
+
+interface IFlightPlan extends IFlightPlanBase {
+	username: string;
+	shipType: string;
 }
