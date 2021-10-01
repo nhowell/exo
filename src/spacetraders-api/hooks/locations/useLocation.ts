@@ -2,12 +2,12 @@ import { locationQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
 
-export function useLocation(symbol: string) {
+export function useLocation(locationSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(
-		locationQueryKey(symbol),
-		() => spaceTradersApi.locations.getLocation(symbol),
+		locationQueryKey(locationSymbol),
+		() => spaceTradersApi.locations.getLocation(locationSymbol),
 		{
 			staleTime: 0,
 		},

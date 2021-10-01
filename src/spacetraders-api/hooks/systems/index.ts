@@ -1,3 +1,3 @@
-export function systemQueryKey(symbol: string): string[] {
-	return ["systems", symbol];
+export function systemQueryKey(systemSymbol: string): string[] {
+	return ["systems", systemSymbol];
 }

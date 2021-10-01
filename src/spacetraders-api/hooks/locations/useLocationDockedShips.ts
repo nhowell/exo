@@ -2,16 +2,16 @@ import { locationQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
 
-function locationDockedShipsQueryKey(symbol: string): string[] {
-	return [...locationQueryKey(symbol), "ships"];
+function locationDockedShipsQueryKey(locationSymbol: string): string[] {
+	return [...locationQueryKey(locationSymbol), "ships"];
 }
 
-export function useLocationDockedShips(symbol: string) {
+export function useLocationDockedShips(locationSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(
-		locationDockedShipsQueryKey(symbol),
-		() => spaceTradersApi.locations.getLocationDockedShips(symbol),
+		locationDockedShipsQueryKey(locationSymbol),
+		() => spaceTradersApi.locations.getLocationDockedShips(locationSymbol),
 		{
 			staleTime: 0,
 		},

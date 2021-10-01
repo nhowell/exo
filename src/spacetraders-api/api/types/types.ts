@@ -7,7 +7,7 @@ import {
 	StructureType,
 } from "../enums";
 
-export interface GetAvailableLoanTypesResponse {
+export interface IGetAvailableLoanTypesResponse {
 	loans: IAvailableLoan[];
 }
 
@@ -19,7 +19,7 @@ export interface IAvailableLoan {
 	termInDays: number;
 }
 
-export interface GetGoodTypesResponse {
+export interface IGetGoodTypesResponse {
 	goods: IGoodType[];
 }
 
@@ -29,7 +29,7 @@ export interface IGoodType {
 	volumePerUnit: number;
 }
 
-export interface GetShipTypesResponse {
+export interface IGetShipTypesResponse {
 	ships: IShipType[];
 }
 
@@ -45,7 +45,7 @@ export interface IShipType {
 	restrictedGoods?: Good[];
 }
 
-export interface GetStructureTypesResponse {
+export interface IGetStructureTypesResponse {
 	structures: IStructureType[];
 }
 

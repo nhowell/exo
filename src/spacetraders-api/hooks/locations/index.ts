@@ -1,3 +1,3 @@
-export function locationQueryKey(symbol: string): string[] {
-	return ["locations", symbol];
+export function locationQueryKey(locationSymbol: string): string[] {
+	return ["locations", locationSymbol];
 }

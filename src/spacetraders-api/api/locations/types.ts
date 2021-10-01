@@ -1,4 +1,4 @@
-import { LocationType, LocationTrait } from "../enums";
+import { LocationType, LocationTrait, Good } from "../enums";
 
 export interface IGetLocationResponse {
 	location: ILocationDetails;
@@ -27,4 +27,18 @@ export interface IDockedShip {
 	shipId: string;
 	username: string;
 	shipType: string;
+}
+
+export interface IGetLocationMarketplaceResponse {
+	marketplace: IMarketplaceListing[];
+}
+
+interface IMarketplaceListing {
+	symbol: Good;
+	volumePerUnit: number;
+	pricePerUnit: number;
+	spread: number;
+	purchasePricePerUnit: number;
+	sellPricePerUnit: number;
+	quantityAvailable: number;
 }

@@ -1,9 +1,9 @@
 import { SpaceTradersApi } from "..";
 import {
-	GetAvailableLoanTypesResponse,
-	GetGoodTypesResponse,
-	GetShipTypesResponse,
-	GetStructureTypesResponse,
+	IGetAvailableLoanTypesResponse,
+	IGetGoodTypesResponse,
+	IGetShipTypesResponse,
+	IGetStructureTypesResponse,
 } from "./types";
 
 const path = "/types";
@@ -11,19 +11,19 @@ const path = "/types";
 export class TypesApiModule {
 	constructor(private api: SpaceTradersApi) {}
 
-	getAvailableLoanTypes(): Promise<GetAvailableLoanTypesResponse> {
+	getAvailableLoanTypes(): Promise<IGetAvailableLoanTypesResponse> {
 		return this.api.get(`${path}/loans`);
 	}
 
-	getGoodTypes(): Promise<GetGoodTypesResponse> {
+	getGoodTypes(): Promise<IGetGoodTypesResponse> {
 		return this.api.get(`${path}/goods`);
 	}
 
-	getShipTypes(): Promise<GetShipTypesResponse> {
+	getShipTypes(): Promise<IGetShipTypesResponse> {
 		return this.api.get(`${path}/ships`);
 	}
 
-	getStructureTypes(): Promise<GetStructureTypesResponse> {
+	getStructureTypes(): Promise<IGetStructureTypesResponse> {
 		return this.api.get(`${path}/structures`);
 	}
 }

@@ -1,5 +1,9 @@
 import { SpaceTradersApi } from "..";
-import { IGetLocationDockedShipsResponse, IGetLocationResponse } from "./types";
+import {
+	IGetLocationDockedShipsResponse,
+	IGetLocationMarketplaceResponse,
+	IGetLocationResponse,
+} from "./types";
 
 export class LocationsApiModule {
 	constructor(private api: SpaceTradersApi) {}
@@ -14,7 +18,13 @@ export class LocationsApiModule {
 		return this.api.get(`${this.getLocationPath(locationSymbol)}/ships`);
 	}
 
-	private getLocationPath(symbol: string) {
-		return `/locations/${symbol}`;
+	getLocationMarketplace(
+		locationSymbol: string,
+	): Promise<IGetLocationMarketplaceResponse> {
+		return this.api.get(`${this.getLocationPath(locationSymbol)}/marketplace`);
+	}
+
+	private getLocationPath(locationSymbol: string) {
+		return `/locations/${locationSymbol}`;
 	}
 }
