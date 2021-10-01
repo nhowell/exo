@@ -1,5 +1,6 @@
-import { LocationType } from "../enums";
+import { LocationType, ShipClass } from "../enums";
 import { ILocation } from "../locations/types";
+import { IShipType } from "../types/types";
 
 export interface ISystemResponse {
 	system: ISystem;
@@ -23,4 +24,25 @@ export interface IGetLocationsInSystemParams {
 
 export interface ISystemLocationsResponse {
 	locations: ILocation[];
+}
+
+export interface IGetAvailableShipsInSystemParams {
+	/**
+	 * The class of ship to filter by, e.g. "MK-I".
+	 */
+	class?: ShipClass;
+}
+
+export interface ISystemAvailableShipsResponse {
+	ships: IAvailableShip[];
+}
+
+export interface IAvailableShip extends IShipType {
+	purchaseLocations: IShipPurchaseLocation[];
+}
+
+interface IShipPurchaseLocation {
+	system: string;
+	location: string;
+	price: number;
 }
