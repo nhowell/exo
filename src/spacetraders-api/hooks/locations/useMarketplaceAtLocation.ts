@@ -2,16 +2,16 @@ import { locationQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
 
-function locationMarketplaceQueryKey(locationSymbol: string): string[] {
+function marketplaceAtLocationQueryKey(locationSymbol: string): string[] {
 	return [...locationQueryKey(locationSymbol), "marketplace"];
 }
 
-export function useLocationMarketplace(locationSymbol: string) {
+export function useMarketplaceAtLocation(locationSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();
 
 	return useSpaceTradersQuery(
-		locationMarketplaceQueryKey(locationSymbol),
-		() => spaceTradersApi.locations.getLocationMarketplace(locationSymbol),
+		marketplaceAtLocationQueryKey(locationSymbol),
+		() => spaceTradersApi.locations.getMarketplaceAtLocation(locationSymbol),
 		{
 			staleTime: 0,
 		},

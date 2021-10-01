@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
+import { boolToHumanDisplay } from "../../../helpers/boolToHumanDisplay";
 import { createNumberFormatter } from "../../../helpers/numberFormat";
 import { t } from "../../../helpers/translate";
 import {
@@ -15,17 +16,17 @@ interface IOwnProps {
 const materialsColumnDefinitions: ITableColumnHeader<IStructureMaterial>[] = [
 	{
 		keyname: "good",
-		label: "Good",
+		label: t("Good"),
 	},
 	{
 		keyname: "quantity",
-		label: "Quantity",
+		label: t("Quantity"),
 		align: "right",
 		format: "number",
 	},
 	{
 		keyname: "targetQuantity",
-		label: "Target Quantity",
+		label: t("Target Quantity"),
 		align: "right",
 		format: "number",
 	},
@@ -44,7 +45,7 @@ export function Structure(props: IOwnProps): ReactElement {
 			<dl>
 				<div>
 					<dt>{t("Completed")}:</dt>
-					<dd>{props.structure.completed ? t("Yes") : t("No")}</dd>
+					<dd>{boolToHumanDisplay(props.structure.completed)}</dd>
 				</div>
 				<div>
 					<dt>{t("Stability")}:</dt>

@@ -20,7 +20,7 @@ export interface ILocation {
 	messages?: string[];
 }
 
-export interface IGetLocationDockedShipsResponse {
+export interface IGetDockedShipsAtLocationResponse {
 	ships: IDockedShip[];
 }
 
@@ -30,7 +30,7 @@ export interface IDockedShip {
 	shipType: string;
 }
 
-export interface IGetLocationMarketplaceResponse {
+export interface IGetMarketplaceAtLocationResponse {
 	marketplace: IMarketplaceListing[];
 }
 
@@ -44,6 +44,6 @@ interface IMarketplaceListing {
 	quantityAvailable: number;
 }
 
-export interface IGetLocationStructuresResponse {
+export interface IGetStructuresAtLocationResponse {
 	structures: IStructure[];
 }

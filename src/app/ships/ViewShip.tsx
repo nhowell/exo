@@ -23,24 +23,24 @@ interface ICargoGrid extends IShipCargo {
 const cargoColumnDefinitions: ITableColumnHeader<ICargoGrid>[] = [
 	{
 		keyname: "good",
-		label: "Good",
+		label: t("Good"),
 		customFormat: (x) => t(titleCase(x.good)),
 	},
 	{
 		keyname: "volumePerUnit",
-		label: "Volume per Unit",
+		label: t("Volume per Unit"),
 		align: "right",
 		format: "number",
 	},
 	{
 		keyname: "totalVolume",
-		label: "Total Volume",
+		label: t("Total Volume"),
 		align: "right",
 		format: "number",
 	},
 	{
 		keyname: "quantity",
-		label: "Quanity",
+		label: t("Quantity"),
 		align: "right",
 		format: "number",
 	},

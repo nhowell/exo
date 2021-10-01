@@ -2,7 +2,7 @@ import { ReactElement, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { mergeSymbols } from "../../../helpers/mergeSymbols";
 import { t } from "../../../helpers/translate";
-import { useLocationDockedShips } from "../../../spacetraders-api/hooks/locations/useLocationDockedShips";
+import { useDockedShipsAtLocation } from "../../../spacetraders-api/hooks/locations/useDockedShipsAtLocation";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
 import { IDockedShip } from "../../../spacetraders-api/api/locations/types";
@@ -16,15 +16,15 @@ interface IRouteParams {
 const dockedShipsColumnDefinitions: ITableColumnHeader<IDockedShip>[] = [
 	{
 		keyname: "shipId",
-		label: "Ship ID",
+		label: t("Ship ID"),
 	},
 	{
 		keyname: "username",
-		label: "Username",
+		label: t("Username"),
 	},
 	{
 		keyname: "shipType",
-		label: "Ship Type",
+		label: t("Ship Type"),
 	},
 ];
 
@@ -33,7 +33,7 @@ export function ViewLocationDockedShips(): ReactElement {
 
 	const symbol = mergeSymbols(systemSymbol, locationSymbol);
 
-	const { isLoading, isError, error, data } = useLocationDockedShips(symbol);
+	const { isLoading, isError, error, data } = useDockedShipsAtLocation(symbol);
 
 	const sortedShips = useMemo(() => {
 		if (data === undefined) {

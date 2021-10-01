@@ -1,9 +1,9 @@
 import { SpaceTradersApi } from "..";
 import {
-	IGetLocationDockedShipsResponse,
-	IGetLocationMarketplaceResponse,
+	IGetDockedShipsAtLocationResponse,
+	IGetMarketplaceAtLocationResponse,
 	IGetLocationResponse,
-	IGetLocationStructuresResponse,
+	IGetStructuresAtLocationResponse,
 } from "./types";
 
 export class LocationsApiModule {
@@ -13,21 +13,21 @@ export class LocationsApiModule {
 		return this.api.get(this.getLocationPath(locationSymbol));
 	}
 
-	getLocationDockedShips(
+	getDockedShipsAtLocation(
 		locationSymbol: string,
-	): Promise<IGetLocationDockedShipsResponse> {
+	): Promise<IGetDockedShipsAtLocationResponse> {
 		return this.api.get(`${this.getLocationPath(locationSymbol)}/ships`);
 	}
 
-	getLocationMarketplace(
+	getMarketplaceAtLocation(
 		locationSymbol: string,
-	): Promise<IGetLocationMarketplaceResponse> {
+	): Promise<IGetMarketplaceAtLocationResponse> {
 		return this.api.get(`${this.getLocationPath(locationSymbol)}/marketplace`);
 	}
 
-	getLocationStructures(
+	getStructuresAtLocation(
 		locationSymbol: string,
-	): Promise<IGetLocationStructuresResponse> {
+	): Promise<IGetStructuresAtLocationResponse> {
 		return this.api.get(`${this.getLocationPath(locationSymbol)}/structures`);
 	}
 
