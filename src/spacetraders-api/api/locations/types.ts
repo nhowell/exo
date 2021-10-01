@@ -1,4 +1,5 @@
 import { LocationType, LocationTrait, Good } from "../enums";
+import { IStructure } from "../structures/types";
 
 export interface IGetLocationResponse {
 	location: ILocationDetails;
@@ -41,4 +42,8 @@ interface IMarketplaceListing {
 	purchasePricePerUnit: number;
 	sellPricePerUnit: number;
 	quantityAvailable: number;
+}
+
+export interface IGetLocationStructuresResponse {
+	structures: IStructure[];
 }

@@ -3,6 +3,7 @@ import {
 	IGetLocationDockedShipsResponse,
 	IGetLocationMarketplaceResponse,
 	IGetLocationResponse,
+	IGetLocationStructuresResponse,
 } from "./types";
 
 export class LocationsApiModule {
@@ -22,6 +23,12 @@ export class LocationsApiModule {
 		locationSymbol: string,
 	): Promise<IGetLocationMarketplaceResponse> {
 		return this.api.get(`${this.getLocationPath(locationSymbol)}/marketplace`);
+	}
+
+	getLocationStructures(
+		locationSymbol: string,
+	): Promise<IGetLocationStructuresResponse> {
+		return this.api.get(`${this.getLocationPath(locationSymbol)}/structures`);
 	}
 
 	private getLocationPath(locationSymbol: string) {
