@@ -1,4 +1,9 @@
 import { Good } from "../enums";
+import { IMyShip } from "../my/ships/types";
+
+export interface IGetStructureResponse {
+	structure: IStructure;
+}
 
 export interface IStructure {
 	id: string;
@@ -12,4 +17,19 @@ export interface IStructureMaterial {
 	good: Good;
 	quantity: number;
 	targetQuantity: number;
+}
+
+export interface IDepositGoodsToStructureRequest {
+	shipId: string;
+	good: Good;
+	quantity: number;
+}
+
+export interface IDepositGoodsToStructureResponse {
+	deposit: {
+		good: Good;
+		quanity: number;
+	};
+	structure: IStructure;
+	ship: IMyShip;
 }

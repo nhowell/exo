@@ -4,6 +4,7 @@ import { GameApiModule } from "./game/GameApiModule";
 import { LocationsApiModule } from "./locations/LocationsApiModule";
 import { MyApiModule } from "./my/MyApiModule";
 import { IGetMyAccountInfoResponse } from "./my/types";
+import { StructuresApiModule } from "./structures/StructuresApiModule";
 import { SystemsApiModule } from "./systems/SystemsApiModule";
 import {
 	SpaceTradersError,
@@ -119,6 +120,7 @@ export class SpaceTradersApi {
 	public game: GameApiModule;
 	public locations: LocationsApiModule;
 	public my: MyApiModule;
+	public structures: StructuresApiModule;
 	public systems: SystemsApiModule;
 	public types: TypesApiModule;
 
@@ -151,6 +153,7 @@ export class SpaceTradersApi {
 		this.game = new GameApiModule(this);
 		this.locations = new LocationsApiModule(this);
 		this.my = new MyApiModule(this);
+		this.structures = new StructuresApiModule(this);
 		this.systems = new SystemsApiModule(this);
 		this.types = new TypesApiModule(this);
 	}
