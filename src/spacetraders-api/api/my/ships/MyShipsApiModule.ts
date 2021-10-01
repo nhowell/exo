@@ -2,6 +2,8 @@ import { SpaceTradersApi } from "../..";
 import {
 	IGetMyShipResponse,
 	IGetMyShipsResponse,
+	IJettisonCargoRequest,
+	IJettisonCargoResponse,
 	IPurchaseShipRequest,
 	IPurchaseShipResponse,
 	ITransferCargoRequest,
@@ -28,6 +30,13 @@ export class MyShipsApiModule {
 		request: ITransferCargoRequest,
 	): Promise<ITransferCargoResponse> {
 		return this.api.post(`${this.getMyShipPath(fromShipId)}/transfer`, request);
+	}
+
+	jettisonCargo(
+		fromShipId: string,
+		request: IJettisonCargoRequest,
+	): Promise<IJettisonCargoResponse> {
+		return this.api.post(`${this.getMyShipPath(fromShipId)}/jettison`, request);
 	}
 
 	private getMyShipsPath() {

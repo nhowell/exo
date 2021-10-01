@@ -46,3 +46,14 @@ export interface ITransferCargoResponse {
 	fromShip: IMyShip;
 	toShip: IMyShip;
 }
+
+export interface IJettisonCargoRequest {
+	good: Good;
+	quantity: number;
+}
+
+export interface IJettisonCargoResponse {
+	good: Good;
+	quantityRemaining: number;
+	shipId: string;
+}

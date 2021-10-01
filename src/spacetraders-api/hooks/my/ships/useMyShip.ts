@@ -6,6 +6,7 @@ import { IGetMyShipResponse, IMyShip } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
 import { isEqual } from "lodash";
+import { Good } from "../../../api/enums";
 
 export function useMyShip(shipId: string) {
 	const spaceTradersApi = useSpaceTradersApi();
@@ -89,6 +90,31 @@ export function setShipArrival(
 	const newShip = produce(data.ship, (draft) => {
 		delete draft.flightPlanId;
 		draft.location = location;
+	});
+
+	setShipQueryData(newShip);
+}
+
+export function setShipGoodQuantity(
+	shipId: string,
+	good: Good,
+	quantity: number,
+) {
+	const data = spaceTradersQueryClient.getQueryData<IGetMyShipResponse>(
+		myShipQueryKey(shipId),
+	);
+
+	if (data === undefined) {
+		return;
+	}
+
+	// Since we're modifying the original, we must do it immutably.
+	const newShip = produce(data.ship, (draft) => {
+		const existingGood = draft.cargo.find((x) => x.good === good);
+
+		if (existingGood !== undefined) {
+			existingGood.quantity = quantity;
+		}
 	});
 
 	setShipQueryData(newShip);
