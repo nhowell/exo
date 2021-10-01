@@ -3,6 +3,7 @@ import {
 	GetAvailableLoanTypesResponse,
 	GetGoodTypesResponse,
 	GetShipTypesResponse,
+	GetStructureTypesResponse,
 } from "./types";
 
 const path = "/types";
@@ -22,7 +23,7 @@ export class TypesApiModule {
 		return this.api.get(`${path}/ships`);
 	}
 
-	getStructureTypes(): Promise<GetGoodTypesResponse> {
+	getStructureTypes(): Promise<GetStructureTypesResponse> {
 		return this.api.get(`${path}/structures`);
 	}
 }
