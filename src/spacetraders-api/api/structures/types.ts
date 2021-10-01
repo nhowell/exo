@@ -28,7 +28,7 @@ export interface IDepositGoodsToStructureRequest {
 export interface IDepositGoodsToStructureResponse {
 	deposit: {
 		good: Good;
-		quanity: number;
+		quantity: number;
 	};
 	structure: IStructure;
 	ship: IMyShip;

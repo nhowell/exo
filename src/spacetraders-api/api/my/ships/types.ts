@@ -35,3 +35,14 @@ export interface IShipCargo {
 	quantity: number;
 	totalVolume: number;
 }
+
+export interface ITransferCargoRequest {
+	toShipId: string;
+	good: Good;
+	quantity: number;
+}
+
+export interface ITransferCargoResponse {
+	fromShip: IMyShip;
+	toShip: IMyShip;
+}

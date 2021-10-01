@@ -4,6 +4,8 @@ import {
 	IGetMyShipsResponse,
 	IPurchaseShipRequest,
 	IPurchaseShipResponse,
+	ITransferCargoRequest,
+	ITransferCargoResponse,
 } from "./types";
 
 export class MyShipsApiModule {
@@ -21,7 +23,18 @@ export class MyShipsApiModule {
 		return this.api.get(`${this.getMyShipsPath()}/${shipId}`);
 	}
 
+	transferCargo(
+		fromShipId: string,
+		request: ITransferCargoRequest,
+	): Promise<ITransferCargoResponse> {
+		return this.api.post(`${this.getMyShipPath(fromShipId)}/transfer`, request);
+	}
+
 	private getMyShipsPath() {
 		return `${this.basePath}/ships`;
+	}
+
+	private getMyShipPath(shipId: string) {
+		return `${this.getMyShipsPath()}/${shipId}`;
 	}
 }

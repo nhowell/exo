@@ -8,18 +8,18 @@ import {
 export class StructuresApiModule {
 	constructor(private api: SpaceTradersApi) {}
 
-	getStructure(id: string): Promise<IGetStructureResponse> {
-		return this.api.get(this.getStructurePath(id));
+	getStructure(structureId: string): Promise<IGetStructureResponse> {
+		return this.api.get(this.getStructurePath(structureId));
 	}
 
 	depositGoodsToStructure(
-		id: string,
+		structureId: string,
 		request: IDepositGoodsToStructureRequest,
 	): Promise<IDepositGoodsToStructureResponse> {
-		return this.api.post(this.getStructurePath(id), request);
+		return this.api.post(this.getStructurePath(structureId), request);
 	}
 
-	private getStructurePath(id: string) {
-		return `/structures/${id}`;
+	private getStructurePath(structureId: string) {
+		return `/structures/${structureId}`;
 	}
 }
