@@ -1,5 +1,5 @@
 import { LocationType, ShipClass } from "../enums";
-import { ILocation } from "../locations/types";
+import { IDockedShip, ILocation } from "../locations/types";
 import { IShipType } from "../types/types";
 
 export interface ISystemResponse {
@@ -45,4 +45,8 @@ interface IShipPurchaseLocation {
 	system: string;
 	location: string;
 	price: number;
+}
+
+export interface IGetDockedShipsInSystemResponse {
+	ships: IDockedShip[];
 }

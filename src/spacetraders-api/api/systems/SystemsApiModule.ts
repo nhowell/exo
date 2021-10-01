@@ -1,6 +1,7 @@
 import { SpaceTradersApi } from "..";
 import {
 	IGetAvailableShipsInSystemParams,
+	IGetDockedShipsInSystemResponse,
 	IGetLocationsInSystemParams,
 	ISystemAvailableShipsResponse,
 	ISystemLocationsResponse,
@@ -32,6 +33,12 @@ export class SystemsApiModule {
 			`${this.getSystemPath(systemSymbol)}/ship-listings`,
 			params,
 		);
+	}
+
+	getDockedShipsInSystem(
+		systemSymbol: string,
+	): Promise<IGetDockedShipsInSystemResponse> {
+		return this.api.get(`${this.getSystemPath(systemSymbol)}/ships`);
 	}
 
 	private getSystemPath(systemSymbol: string) {
