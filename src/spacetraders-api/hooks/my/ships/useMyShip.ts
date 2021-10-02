@@ -46,7 +46,11 @@ export function setShipQueryData(
 	}
 }
 
-export function setShipDeparture(shipId: string, flightPlanId: string) {
+export function setShipDeparture(
+	shipId: string,
+	flightPlanId: string,
+	fuelConsumed: number,
+) {
 	const data = getShipQueryData(shipId);
 
 	if (
@@ -58,10 +62,22 @@ export function setShipDeparture(shipId: string, flightPlanId: string) {
 	}
 
 	// Since we're modifying the original, we must do it immutably.
-	const newShip = produce(data.ship, (draft) => {
+	let newShip = produce(data.ship, (draft) => {
 		delete draft.location;
 		draft.flightPlanId = flightPlanId;
 	});
+
+	if (fuelConsumed > 0) {
+		const fuel = data.ship.cargo.find((x) => x.good === Good.Fuel);
+
+		if (fuel !== undefined) {
+			newShip = setGoodQuantity(
+				data.ship,
+				Good.Fuel,
+				fuel.quantity - fuelConsumed,
+			);
+		}
+	}
 
 	setShipQueryData(newShip);
 }
@@ -101,16 +117,23 @@ export function setShipGoodQuantity(
 		return;
 	}
 
-	// Since we're modifying the original, we must do it immutably.
-	const newShip = produce(data.ship, (draft) => {
-		const existingGood = draft.cargo.find((x) => x.good === good);
-
-		if (existingGood !== undefined) {
-			existingGood.quantity = quantity;
-		}
-	});
+	const newShip = setGoodQuantity(data.ship, good, quantity);
 
 	setShipQueryData(newShip);
+}
+
+function setGoodQuantity(ship: IMyShip, good: Good, quantity: number): IMyShip {
+	return produce(ship, (draft) => {
+		const existingGoodIndex = draft.cargo.findIndex((x) => x.good === good);
+
+		if (existingGoodIndex !== -1) {
+			if (quantity > 0) {
+				draft.cargo[existingGoodIndex].quantity = quantity;
+			} else {
+				draft.cargo.splice(existingGoodIndex, 1);
+			}
+		}
+	});
 }
 
 export function setShipQueryDataForAllShips(ships: IMyShip[]) {
