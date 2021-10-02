@@ -5,7 +5,7 @@ import produce from "immer";
 // Since the SpaceTraders API doesn't expose a /systems endpoint, new players
 // don't have a way to know which systems exist. This acts as a guide for new
 // players to give them the "Omicron Eridani" system to begin with.
-const STARTER_SYSTEM = "OE";
+export const STARTER_SYSTEM = "OE";
 
 export function useVisitedSystems(): [
 	string[],

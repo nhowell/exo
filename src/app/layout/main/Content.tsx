@@ -2,13 +2,7 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import { t } from "../../../helpers/translate";
-import {
-	homePath,
-	loansPath,
-	systemsPath,
-	marketPath,
-	shipyardPath,
-} from "../../routes";
+import { homePath, loansPath, systemsPath, marketPath } from "../../routes";
 import { YourShips } from "../../ships/YourShips";
 import styles from "./Content.module.css";
 import mainLayoutStyles from "./MainLayout.module.css";
@@ -35,9 +29,6 @@ export function Content(props: IOwnProps) {
 					</NavLink>
 					<NavLink to={marketPath} activeClassName={styles.active}>
 						{t("Market")}
-					</NavLink>
-					<NavLink to={shipyardPath} activeClassName={styles.active}>
-						{t("Shipyard")}
 					</NavLink>
 					<NavLink to={loansPath} activeClassName={styles.active}>
 						{t("Loans")}

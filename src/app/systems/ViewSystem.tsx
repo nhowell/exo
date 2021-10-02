@@ -5,11 +5,17 @@ import { AtLeastOneTabPane } from "../../core/tabs/types";
 import { t } from "../../helpers/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { Tag } from "../common/Tag";
+import { AvailableShips } from "./AvailableShips";
 import { SystemLocations } from "./SystemLocations";
 import { useAddVisitedSystem } from "./useAddVisitedSystem";
 
 interface IRouteParams {
 	systemSymbol: string;
+}
+
+export enum SystemTabKey {
+	Locations = "locations",
+	AvailableShips = "available-ships",
 }
 
 export function ViewSystem(): ReactElement {
@@ -24,14 +30,14 @@ export function ViewSystem(): ReactElement {
 
 	const panes: AtLeastOneTabPane = [
 		{
-			key: "locations",
+			key: SystemTabKey.Locations,
 			label: t("Locations"),
 			content: <SystemLocations systemSymbol={systemSymbol} />,
 		},
 		{
-			key: "available-ships",
+			key: SystemTabKey.AvailableShips,
 			label: t("Available Ships"),
-			content: <p>Coming soon</p>,
+			content: <AvailableShips systemSymbol={systemSymbol} />,
 		},
 	];
 

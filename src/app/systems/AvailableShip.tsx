@@ -1,10 +1,10 @@
 import { Formik, Form, FormikHelpers, ErrorMessage, Field } from "formik";
 import { creditFormat } from "../../helpers/creditFormat";
 import { t } from "../../helpers/translate";
-import { IAvailableShip } from "../../spacetraders-api/api/game/ships/types";
+import { IAvailableShip } from "../../spacetraders-api/api/systems/types";
 import { usePurchaseShip } from "../../spacetraders-api/hooks/my/ships/usePurchaseShip";
 import { Tag } from "../common/Tag";
-import { ShipAttributes } from "./ShipAttributes";
+import { ShipAttributes } from "../ships/ShipAttributes";
 
 interface IOwnProps {
 	ship: IAvailableShip;

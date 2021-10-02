@@ -4,7 +4,6 @@ import { Home } from "./home/Home";
 import { Loans } from "./loans/Loans";
 import { Systems } from "./systems/Systems";
 import { Market } from "./market/Market";
-import { AvailableShips } from "./ships/AvailableShips";
 import { ViewShip } from "./ships/ViewShip";
 import { ViewSystem } from "./systems/ViewSystem";
 import { ViewLocation } from "./systems/locations/ViewLocation";
@@ -44,7 +43,6 @@ export const generateViewLocationDockedShipsPath = (symbol: string) => {
 	});
 };
 export const marketPath = "/market";
-export const shipyardPath = "/shipyard";
 export const loansPath = "/loans";
 const viewShipPath = "/ships/:shipId";
 export const generateViewShipPath = (shipId: string) =>
@@ -76,10 +74,6 @@ export const routes: IRoute[] = [
 	{
 		path: marketPath,
 		component: Market,
-	},
-	{
-		path: shipyardPath,
-		component: AvailableShips,
 	},
 	{
 		path: loansPath,

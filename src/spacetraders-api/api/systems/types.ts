@@ -35,7 +35,7 @@ export interface IGetAvailableShipsInSystemParams {
 }
 
 export interface ISystemAvailableShipsResponse {
-	ships: IAvailableShip[];
+	shipListings: IAvailableShip[];
 }
 
 export interface IAvailableShip extends IShipType {
