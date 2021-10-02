@@ -1,13 +1,14 @@
-import { Dispatch, useCallback, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 
 export enum LocalStorageKey {
 	Auth = "auth",
+	VisitedSystems = "visited-systems",
 }
 
 export function useLocalStorage<T>(
 	key: LocalStorageKey,
 	initialValue: T | (() => T),
-): [T, Dispatch<T>] {
+): [T, Dispatch<SetStateAction<T>>] {
 	// Pass initial state function to useState so logic is only executed once.
 	const [storedValue, setStoredValue] = useState<T>(() => {
 		try {
@@ -25,7 +26,7 @@ export function useLocalStorage<T>(
 	});
 
 	const setValue = useCallback(
-		(value: T) => {
+		(value: SetStateAction<T>) => {
 			try {
 				// Allow value to be a function so we have same API as useState
 				const valueToStore =

@@ -4,6 +4,7 @@ import { t } from "../../helpers/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { Tag } from "../common/Tag";
 import { SystemLocations } from "./SystemLocations";
+import { useAddVisitedSystem } from "./useAddVisitedSystem";
 
 interface IRouteParams {
 	systemSymbol: string;
@@ -12,6 +13,12 @@ interface IRouteParams {
 export function ViewSystem(): ReactElement {
 	const { systemSymbol } = useParams<IRouteParams>();
 	const { isLoading, isError, error, data } = useSystemInfo(systemSymbol);
+
+	useAddVisitedSystem(
+		!isLoading && !isError && data !== undefined
+			? data.system.symbol
+			: undefined,
+	);
 
 	return isLoading ? (
 		<p>{t("Loading...")}</p>
