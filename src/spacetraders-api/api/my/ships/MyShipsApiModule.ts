@@ -6,6 +6,7 @@ import {
 	IJettisonCargoResponse,
 	IPurchaseShipRequest,
 	IPurchaseShipResponse,
+	IScrapShipResponse,
 	ITransferCargoRequest,
 	ITransferCargoResponse,
 } from "./types";
@@ -37,6 +38,10 @@ export class MyShipsApiModule {
 		request: IJettisonCargoRequest,
 	): Promise<IJettisonCargoResponse> {
 		return this.api.post(`${this.getMyShipPath(fromShipId)}/jettison`, request);
+	}
+
+	scrapShip(shipId: string): Promise<IScrapShipResponse> {
+		return this.api.delete(this.getMyShipPath(shipId));
 	}
 
 	private getMyShipsPath() {

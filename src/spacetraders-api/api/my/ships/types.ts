@@ -57,3 +57,8 @@ export interface IJettisonCargoResponse {
 	quantityRemaining: number;
 	shipId: string;
 }
+
+export interface IScrapShipResponse {
+	success: string;
+	salePrice: number;
+}

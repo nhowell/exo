@@ -41,3 +41,23 @@ export function setCreditsQueryData(credits: number) {
 		newAccountInfo,
 	);
 }
+
+export function adjustCreditsQueryData(creditAdjustmentAmount: number) {
+	const accountInfo =
+		spaceTradersQueryClient.getQueryData<IGetMyAccountInfoResponse>(
+			MY_ACCOUNT_QUERY_KEY,
+		);
+
+	if (accountInfo === undefined) {
+		return;
+	}
+
+	const newAccountInfo = produce(accountInfo, (draft) => {
+		draft.user.credits += creditAdjustmentAmount;
+	});
+
+	spaceTradersQueryClient.setQueryData<IGetMyAccountInfoResponse>(
+		MY_ACCOUNT_QUERY_KEY,
+		newAccountInfo,
+	);
+}

@@ -98,3 +98,24 @@ export function setShipInShipsQueryData(ship: IMyShip) {
 function updateRelatedQueryData(ships: IMyShip[]) {
 	setShipQueryDataForAllShips(ships);
 }
+
+export function removeShipFromShipsQueryData(shipId: string) {
+	const data =
+		spaceTradersQueryClient.getQueryData<IGetMyShipsResponse>(
+			MY_SHIPS_QUERY_KEY,
+		);
+
+	if (data === undefined) {
+		return;
+	}
+
+	// Since we're modifying the original, we must do it immutably.
+	const newData = produce(data, (draft) => {
+		draft.ships = draft.ships.filter((x) => x.id !== shipId);
+	});
+
+	spaceTradersQueryClient.setQueryData<IGetMyShipsResponse>(
+		MY_SHIPS_QUERY_KEY,
+		newData,
+	);
+}
