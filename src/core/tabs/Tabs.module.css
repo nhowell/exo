@@ -1,0 +1,39 @@
+.tabList {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+}
+
+.tabList li {
+	margin-left: calc(var(--normal-box-padding) / 2);
+	margin-bottom: calc(var(--normal-box-padding) / 2);
+}
+
+.tabList li:first-child {
+	margin-left: 0;
+}
+
+.tabList a {
+	color: var(--primary-text-color);
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	padding: 0.9rem 1.5rem;
+	border: var(--normal-border-width) solid var(--normal-border-color);
+	border-radius: var(--small-border-radius);
+	font-family: var(--special-font-family);
+}
+
+.tabList a:hover,
+.tabList a:focus {
+	border-color: var(--hover-border-color);
+	background-color: var(--hover-bg-color);
+	outline: none;
+}
+
+.tabList a.activeTab {
+	color: var(--primary-text-color);
+	background-color: var(--active-bg-color);
+	border-color: var(--active-border-color);
+}

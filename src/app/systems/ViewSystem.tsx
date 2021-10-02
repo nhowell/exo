@@ -1,5 +1,7 @@
 import { ReactElement } from "react";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
+import { Tabs } from "../../core/tabs/Tabs";
+import { AtLeastOneTabPane } from "../../core/tabs/types";
 import { t } from "../../helpers/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { Tag } from "../common/Tag";
@@ -20,6 +22,21 @@ export function ViewSystem(): ReactElement {
 			: undefined,
 	);
 
+	const panes: AtLeastOneTabPane = [
+		{
+			key: "locations",
+			label: t("Locations"),
+			content: <SystemLocations systemSymbol={systemSymbol} />,
+		},
+		{
+			key: "available-ships",
+			label: t("Available Ships"),
+			content: <p>Coming soon</p>,
+		},
+	];
+
+	const location = useLocation();
+
 	return isLoading ? (
 		<p>{t("Loading...")}</p>
 	) : isError || data === undefined ? (
@@ -30,7 +47,7 @@ export function ViewSystem(): ReactElement {
 				{data.system.name} <Tag text={systemSymbol} />
 			</h1>
 
-			<SystemLocations systemSymbol={systemSymbol} />
+			<Tabs panes={panes} initialActiveTabKey={location.hash.substring(1)} />
 		</>
 	);
 }
