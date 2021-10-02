@@ -20,13 +20,17 @@ export function useMyShip(shipId: string) {
 	);
 }
 
+function getShipQueryData(shipId: string) {
+	return spaceTradersQueryClient.getQueryData<IGetMyShipResponse>(
+		myShipQueryKey(shipId),
+	);
+}
+
 export function setShipQueryData(
 	ship: IMyShip,
 	shouldUpdateShipsQueryData = true,
 ) {
-	const data = spaceTradersQueryClient.getQueryData<IGetMyShipResponse>(
-		myShipQueryKey(ship.id),
-	);
+	const data = getShipQueryData(ship.id);
 
 	if (data !== undefined && isEqual(data.ship, ship)) {
 		return;
@@ -42,14 +46,32 @@ export function setShipQueryData(
 	}
 }
 
+export function setShipDeparture(shipId: string, flightPlanId: string) {
+	const data = getShipQueryData(shipId);
+
+	if (
+		data === undefined ||
+		(data.ship.flightPlanId !== flightPlanId &&
+			data.ship.flightPlanId !== undefined)
+	) {
+		return;
+	}
+
+	// Since we're modifying the original, we must do it immutably.
+	const newShip = produce(data.ship, (draft) => {
+		delete draft.location;
+		draft.flightPlanId = flightPlanId;
+	});
+
+	setShipQueryData(newShip);
+}
+
 export function setShipArrival(
 	shipId: string,
 	flightPlanId: string,
 	location: string,
 ) {
-	const data = spaceTradersQueryClient.getQueryData<IGetMyShipResponse>(
-		myShipQueryKey(shipId),
-	);
+	const data = getShipQueryData(shipId);
 
 	if (
 		data === undefined ||
@@ -73,9 +95,7 @@ export function setShipGoodQuantity(
 	good: Good,
 	quantity: number,
 ) {
-	const data = spaceTradersQueryClient.getQueryData<IGetMyShipResponse>(
-		myShipQueryKey(shipId),
-	);
+	const data = getShipQueryData(shipId);
 
 	if (data === undefined) {
 		return;

@@ -24,15 +24,13 @@ export function useMyFlightPlan(flightPlanId: string) {
 	);
 }
 
-export function setFlightPlanQueryData(
-	flightPlanResponse: IGetMyFlightPlanResponse,
-) {
+export function setFlightPlanQueryData(flightPlan: IMyFlightPlan) {
 	spaceTradersQueryClient.setQueryData<IGetMyFlightPlanResponse>(
-		myFlightPlanQueryKey(flightPlanResponse.flightPlan.id),
-		flightPlanResponse,
+		myFlightPlanQueryKey(flightPlan.id),
+		{ flightPlan: flightPlan },
 	);
 
-	refetchFlightPlanWhenItArrives(flightPlanResponse.flightPlan);
+	refetchFlightPlanWhenItArrives(flightPlan);
 }
 
 function refetchFlightPlanWhenItArrives(flightPlan: IMyFlightPlan) {

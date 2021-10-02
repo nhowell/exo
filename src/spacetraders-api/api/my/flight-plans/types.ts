@@ -18,3 +18,12 @@ export interface IFlightPlanBase {
 	destination: string;
 	departure: string;
 }
+
+export interface ISubmitFlightPlanRequest {
+	shipId: string;
+	destination: string;
+}
+
+export interface ISubmitFlightPlanResponse {
+	flightPlan: IMyFlightPlan;
+}
