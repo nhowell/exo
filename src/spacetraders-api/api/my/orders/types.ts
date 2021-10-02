@@ -1,13 +1,13 @@
 import { Good } from "../../enums";
 import { IMyShip } from "../ships/types";
 
-export interface IPlacePurchaseOrderRequest {
+export interface IPlaceOrderRequest {
 	shipId: string;
 	good: Good;
 	quantity: number;
 }
 
-export interface IPlacePurchaseOrderResponse {
+export interface IPlaceOrderResponse {
 	credits: number;
 	order: IOrder;
 	ship: IMyShip;

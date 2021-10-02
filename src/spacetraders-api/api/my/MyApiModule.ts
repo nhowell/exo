@@ -1,7 +1,7 @@
 import { SpaceTradersApi } from "..";
 import { MyFlightPlansApiModule } from "./flight-plans/MyFlightPlansApiModule";
 import { MyLoansApiModule } from "./loans/MyLoansApiModule";
-import { MyPurchaseOrdersApiModule } from "./purchase-orders/MyPurchaseOrdersApiModule";
+import { MyOrdersApiModule } from "./orders/MyOrdersApiModule";
 import { MyShipsApiModule } from "./ships/MyShipsApiModule";
 import { IGetMyAccountInfoResponse } from "./types";
 
@@ -10,13 +10,13 @@ const path = "/my";
 export class MyApiModule {
 	flightPlans: MyFlightPlansApiModule;
 	loans: MyLoansApiModule;
-	purchaseOrders: MyPurchaseOrdersApiModule;
+	orders: MyOrdersApiModule;
 	ships: MyShipsApiModule;
 
 	constructor(private api: SpaceTradersApi) {
 		this.flightPlans = new MyFlightPlansApiModule(api, path);
 		this.loans = new MyLoansApiModule(api, path);
-		this.purchaseOrders = new MyPurchaseOrdersApiModule(api, path);
+		this.orders = new MyOrdersApiModule(api, path);
 		this.ships = new MyShipsApiModule(api, path);
 	}
 
