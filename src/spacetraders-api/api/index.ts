@@ -89,15 +89,13 @@ const defaultLimiterOptions: LimiterOptions = {
 	minTime: 100,
 };
 
-interface RequestOptions {
+interface RequestOptions<T> {
 	params?:
 		| {
 				[key: string]: unknown;
 		  }
 		| URLSearchParams;
-	data?: {
-		[key: string]: unknown;
-	};
+	data?: T;
 	headers?: Headers;
 }
 
@@ -201,7 +199,7 @@ export class SpaceTradersApi {
 		method: "get" | "post" | "put" | "delete",
 		path: string,
 		limiter: Bottleneck,
-		options?: RequestOptions,
+		options?: RequestOptions<T>,
 		maxRetries: number = 0,
 		retry: number = 0,
 	): Promise<T> {
@@ -229,7 +227,7 @@ export class SpaceTradersApi {
 					retry < maxRetries
 				) {
 					const retryAfter =
-						(error.response?.headers["retry-after"] ?? 1) * 1_000;
+						parseInt(error.response?.headers["retry-after"] ?? "1") * 1_000;
 					await this.sleep(retryAfter);
 
 					return this.request<T>(
