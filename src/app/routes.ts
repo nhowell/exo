@@ -3,7 +3,6 @@ import { generatePath } from "react-router-dom";
 import { Home } from "./home/Home";
 import { Loans } from "./loans/Loans";
 import { Systems } from "./systems/Systems";
-import { Market } from "./market/Market";
 import { ViewShip } from "./ships/ViewShip";
 import { ViewSystem } from "./systems/ViewSystem";
 import { ViewLocation } from "./systems/locations/ViewLocation";
@@ -31,7 +30,6 @@ export const generateViewLocationPath = (symbol: string) => {
 		locationSymbol: symbolParts.locationSymbolWithoutSystem,
 	});
 };
-export const marketPath = "/market";
 export const loansPath = "/loans";
 const viewShipPath = "/ships/:shipId";
 export const generateViewShipPath = (shipId: string) =>
@@ -55,10 +53,6 @@ export const routes: IRoute[] = [
 	{
 		path: viewLocationPath,
 		component: ViewLocation,
-	},
-	{
-		path: marketPath,
-		component: Market,
 	},
 	{
 		path: loansPath,
