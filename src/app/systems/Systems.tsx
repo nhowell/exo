@@ -3,6 +3,7 @@ import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";
 import { System } from "./System";
 import { useKnownSystems } from "./useKnownSystems";
+import { generateViewSystemPath } from "../routes";
 
 export function Systems() {
 	const knownSystems = useKnownSystems();
@@ -19,7 +20,11 @@ export function Systems() {
 			) : (
 				<TileContainer>
 					{knownSystems.data.map((systemSymbol) => (
-						<Tile key={systemSymbol} width="28.5rem">
+						<Tile
+							key={systemSymbol}
+							width="28.5rem"
+							linkTo={generateViewSystemPath(systemSymbol)}
+						>
 							<System symbol={systemSymbol} />
 						</Tile>
 					))}

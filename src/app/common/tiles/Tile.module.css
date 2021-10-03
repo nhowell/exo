@@ -6,3 +6,19 @@
 	border: var(--normal-border-width) solid var(--normal-border-color);
 	box-shadow: var(--normal-box-shadow);
 }
+
+.tile > *:last-child {
+	margin: 0;
+}
+
+a.tile {
+	text-decoration: none;
+	color: var(--primary-text-color);
+}
+
+a.tile:hover,
+a.tile:focus {
+	border-color: var(--hover-border-color);
+	background-color: var(--hover-bg-color);
+	outline: none;
+}

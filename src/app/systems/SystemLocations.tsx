@@ -4,6 +4,7 @@ import { useLocationsInSystem } from "../../spacetraders-api/hooks/systems/useLo
 import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";
 import { SystemLocation } from "./SystemLocation";
+import { generateViewLocationPath } from "../routes";
 
 interface IOwnProps {
 	systemSymbol: string;
@@ -23,7 +24,11 @@ export function SystemLocations(props: IOwnProps): ReactElement {
 	) : (
 		<TileContainer>
 			{data.locations.map((location) => (
-				<Tile key={location.type} width="28.5rem">
+				<Tile
+					key={location.symbol}
+					width="28.5rem"
+					linkTo={generateViewLocationPath(location.symbol)}
+				>
 					<SystemLocation location={location} />
 				</Tile>
 			))}
