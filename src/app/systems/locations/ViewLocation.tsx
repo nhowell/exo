@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useLocation as useBrowserLocation, useParams } from "react-router-dom";
 import { t } from "../../../helpers/translate";
-import { Tile } from "../../common/tiles/Tile";
-import commonStyles from "../../common/common.module.css";
 import { useLocation } from "../../../spacetraders-api/hooks/locations/useLocation";
 import { LocationName } from "./LocationName";
-import { LocationAttributes } from "./LocationAttributes";
-import { LocationMessages } from "./LocationMessages";
-import { pluralize } from "../../../helpers/pluralize";
 import { mergeSymbols } from "../../../helpers/mergeSymbols";
-import { generateViewLocationDockedShipsPath } from "../../routes";
+import { Tabs } from "../../../core/tabs/Tabs";
+import { AtLeastOneTabPane } from "../../../core/tabs/types";
+import { LocationDockedShips } from "./LocationDockedShips";
+import { LocationMarketplace } from "./LocationMarketplace";
+import { LocationInfo } from "./LocationInfo";
+import { ILocation } from "../../../spacetraders-api/api/locations/types";
 
 interface IRouteParams {
 	systemSymbol: string;
@@ -22,6 +22,26 @@ export function ViewLocation(): ReactElement {
 	const symbol = mergeSymbols(systemSymbol, locationSymbol);
 
 	const { isLoading, isError, error, data } = useLocation(symbol);
+
+	const getPanes = (location: ILocation): AtLeastOneTabPane => [
+		{
+			key: "info",
+			label: t("Info"),
+			content: <LocationInfo location={location} />,
+		},
+		{
+			key: "marketplace",
+			label: t("Marketplace"),
+			content: <LocationMarketplace locationSymbol={symbol} />,
+		},
+		{
+			key: "docked-ships",
+			label: t("Docked Ships"),
+			content: <LocationDockedShips locationSymbol={symbol} />,
+		},
+	];
+
+	const browserLocation = useBrowserLocation();
 
 	return isLoading ? (
 		<p>{t("Loading...")}</p>
@@ -38,23 +58,10 @@ export function ViewLocation(): ReactElement {
 				</h1>
 			</header>
 
-			<aside className={commonStyles.floatRight}>
-				<Tile>
-					<LocationAttributes location={data.location} />
-				</Tile>
-			</aside>
-
-			<p>
-				<NavLink to={generateViewLocationDockedShipsPath(symbol)}>
-					{pluralize(
-						data.location.dockedShips,
-						t("docked ship"),
-						t("docked ships"),
-					)}
-				</NavLink>
-			</p>
-
-			<LocationMessages location={data.location} />
+			<Tabs
+				panes={getPanes(data.location)}
+				initialActiveTabKey={browserLocation.hash.substring(1)}
+			/>
 		</>
 	);
 }

@@ -1,6 +1,4 @@
 import { ReactElement, useMemo } from "react";
-import { useParams } from "react-router-dom";
-import { mergeSymbols } from "../../../helpers/mergeSymbols";
 import { t } from "../../../helpers/translate";
 import { useDockedShipsAtLocation } from "../../../spacetraders-api/hooks/locations/useDockedShipsAtLocation";
 import { Table } from "../../../core/table/Table";
@@ -8,16 +6,11 @@ import { ITableColumnHeader } from "../../../core/table/types";
 import { IDockedShip } from "../../../spacetraders-api/api/locations/types";
 import { sortBy } from "lodash";
 
-interface IRouteParams {
-	systemSymbol: string;
+interface IOwnProps {
 	locationSymbol: string;
 }
 
 const dockedShipsColumnDefinitions: ITableColumnHeader<IDockedShip>[] = [
-	{
-		keyname: "shipId",
-		label: t("Ship ID"),
-	},
 	{
 		keyname: "username",
 		label: t("Username"),
@@ -28,12 +21,10 @@ const dockedShipsColumnDefinitions: ITableColumnHeader<IDockedShip>[] = [
 	},
 ];
 
-export function ViewLocationDockedShips(): ReactElement {
-	const { systemSymbol, locationSymbol } = useParams<IRouteParams>();
-
-	const symbol = mergeSymbols(systemSymbol, locationSymbol);
-
-	const { isLoading, isError, error, data } = useDockedShipsAtLocation(symbol);
+export function LocationDockedShips(props: IOwnProps): ReactElement {
+	const { isLoading, isError, error, data } = useDockedShipsAtLocation(
+		props.locationSymbol,
+	);
 
 	const sortedShips = useMemo(() => {
 		if (data === undefined) {
@@ -43,27 +34,19 @@ export function ViewLocationDockedShips(): ReactElement {
 		return sortShips(data.ships);
 	}, [data]);
 
-	return (
-		<>
-			{isLoading ? (
-				<p>{t("Loading...")}</p>
-			) : isError || data === undefined ? (
-				<p>{t(error?.message ?? "Something went wrong.")}</p>
-			) : (
-				<>
-					{sortedShips.length === 0 ? (
-						<p>{t("No ships are docked.")}</p>
-					) : (
-						<Table<IDockedShip>
-							keyField="shipId"
-							columnDefinitions={dockedShipsColumnDefinitions}
-							tableData={sortedShips}
-							striped
-						/>
-					)}
-				</>
-			)}
-		</>
+	return isLoading ? (
+		<p>{t("Loading...")}</p>
+	) : isError || data === undefined ? (
+		<p>{t(error?.message ?? "Something went wrong.")}</p>
+	) : sortedShips.length === 0 ? (
+		<p>{t("No ships are docked.")}</p>
+	) : (
+		<Table<IDockedShip>
+			keyField="shipId"
+			columnDefinitions={dockedShipsColumnDefinitions}
+			tableData={sortedShips}
+			striped
+		/>
 	);
 }
 

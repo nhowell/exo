@@ -16,6 +16,7 @@
 
 .tabList a {
 	color: var(--primary-text-color);
+	background-color: var(--secondary-bg-color);
 	text-decoration: none;
 	text-align: center;
 	display: block;

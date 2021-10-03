@@ -34,7 +34,7 @@ export interface IGetMarketplaceAtLocationResponse {
 	marketplace: IMarketplaceListing[];
 }
 
-interface IMarketplaceListing {
+export interface IMarketplaceListing {
 	symbol: Good;
 	volumePerUnit: number;
 	pricePerUnit: number;

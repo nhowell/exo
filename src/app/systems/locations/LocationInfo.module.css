@@ -1,0 +1,7 @@
+.attributes {
+	display: inline-block;
+}
+
+section + .attributes {
+	margin-top: 3rem;
+}
