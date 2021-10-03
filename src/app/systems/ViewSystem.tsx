@@ -6,6 +6,7 @@ import { t } from "../../helpers/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { Tag } from "../common/Tag";
 import { AvailableShips } from "./AvailableShips";
+import { SystemBreadcrumb } from "./SystemBreadcrumb";
 import { SystemLocations } from "./SystemLocations";
 import { useAddVisitedSystem } from "./useAddVisitedSystem";
 
@@ -49,6 +50,8 @@ export function ViewSystem(): ReactElement {
 		<p>{t(error?.message ?? "Something went wrong.")}</p>
 	) : (
 		<>
+			<SystemBreadcrumb systemName={data.system.name} />
+
 			<h1>
 				{data.system.name} <Tag text={systemSymbol} />
 			</h1>

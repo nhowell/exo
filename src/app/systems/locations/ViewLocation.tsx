@@ -10,6 +10,7 @@ import { LocationDockedShips } from "./LocationDockedShips";
 import { LocationMarketplace } from "./LocationMarketplace";
 import { LocationInfo } from "./LocationInfo";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
+import { LocationBreadcrumb } from "./LocationBreadcrumb";
 
 interface IRouteParams {
 	systemSymbol: string;
@@ -49,14 +50,14 @@ export function ViewLocation(): ReactElement {
 		<p>{t(error?.message ?? "Something went wrong.")}</p>
 	) : (
 		<>
-			<header>
-				<h1>
-					<LocationName
-						name={data.location.name}
-						symbol={data.location.symbol}
-					/>
-				</h1>
-			</header>
+			<LocationBreadcrumb
+				systemSymbol={systemSymbol}
+				locationName={data.location.name}
+			/>
+
+			<h1>
+				<LocationName name={data.location.name} symbol={data.location.symbol} />
+			</h1>
 
 			<Tabs
 				panes={getPanes(data.location)}
