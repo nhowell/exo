@@ -5,7 +5,7 @@ interface IOwnProps {
 }
 
 export function LoadingSpinner(props: IOwnProps) {
-	const diameter = props.size === "small" ? "1.8rem" : "4rem";
+	const diameter = props.size === "small" ? "18" : "40";
 
 	return (
 		<svg
