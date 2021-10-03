@@ -19,16 +19,16 @@ const marketplaceListingsColumnDefinitions: ITableColumnHeader<IMarketplaceListi
 			customFormat: (x) => t(titleCase(x.symbol)),
 		},
 		{
-			keyname: "volumePerUnit",
-			label: t("Volume per Unit"),
-			align: "right",
-			format: "number",
-		},
-		{
 			keyname: "purchasePricePerUnit",
 			label: t("Purchase Price per Unit"),
 			align: "right",
 			format: "credits",
+		},
+		{
+			keyname: "quantityAvailable",
+			label: t("Quantity Available"),
+			align: "right",
+			format: "number",
 		},
 		{
 			keyname: "sellPricePerUnit",
@@ -37,8 +37,8 @@ const marketplaceListingsColumnDefinitions: ITableColumnHeader<IMarketplaceListi
 			format: "credits",
 		},
 		{
-			keyname: "quantityAvailable",
-			label: t("Quantity Available"),
+			keyname: "volumePerUnit",
+			label: t("Volume per Unit"),
 			align: "right",
 			format: "number",
 		},

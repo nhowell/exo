@@ -115,10 +115,10 @@ function formatValue(
 ) {
 	switch (format) {
 		case "credits":
-			return creditFormat(value);
+			return value === undefined ? undefined : creditFormat(value);
 
 		case "number":
-			return numberFormat(value);
+			return value === undefined ? undefined : numberFormat(value);
 
 		// TODO: handle date formatting.
 

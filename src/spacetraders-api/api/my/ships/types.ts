@@ -19,6 +19,22 @@ export interface IGetMyShipResponse {
 	ship: IMyShip;
 }
 
+export interface IMyDockedShip extends IMyShip {
+	location: string;
+}
+
+export function isDocked(ship: IMyShip): ship is IMyDockedShip {
+	return ship.location !== undefined;
+}
+
+export interface IMyInFlightShip extends IMyShip {
+	flightPlanId: string;
+}
+
+export function isInFlight(ship: IMyShip): ship is IMyInFlightShip {
+	return ship.flightPlanId !== undefined;
+}
+
 export interface IMyShip extends IShipType {
 	id: string;
 	cargo: IShipCargo[];
