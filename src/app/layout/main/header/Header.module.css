@@ -21,6 +21,13 @@
 	align-items: center;
 }
 
+@media (max-width: 1120px) {
+	.headerContainer {
+		background-color: rgba(0, 0, 0, 0.9);
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	}
+}
+
 @media (max-width: 800px) {
 	.header {
 		justify-content: flex-end;
