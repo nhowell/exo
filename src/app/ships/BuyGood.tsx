@@ -30,6 +30,7 @@ export function BuyGood(props: IOwnProps): ReactElement {
 		{ setSubmitting, resetForm }: FormikHelpers<IBuyGoodForm>,
 	) => {
 		if (values.quantity === null) {
+			setSubmitting(false);
 			return;
 		}
 

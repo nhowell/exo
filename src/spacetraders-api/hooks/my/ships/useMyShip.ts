@@ -72,7 +72,7 @@ export function setShipDeparture(
 
 		if (fuel !== undefined) {
 			newShip = setGoodQuantity(
-				data.ship,
+				newShip,
 				Good.Fuel,
 				fuel.quantity - fuelConsumed,
 			);
@@ -127,6 +127,12 @@ function setGoodQuantity(ship: IMyShip, good: Good, quantity: number): IMyShip {
 		const existingGoodIndex = draft.cargo.findIndex((x) => x.good === good);
 
 		if (existingGoodIndex !== -1) {
+			const prevQuantity = draft.cargo[existingGoodIndex].quantity;
+			const volumePerUnit =
+				draft.cargo[existingGoodIndex].totalVolume / prevQuantity;
+
+			draft.spaceAvailable += (prevQuantity - quantity) * volumePerUnit;
+
 			if (quantity > 0) {
 				draft.cargo[existingGoodIndex].quantity = quantity;
 			} else {

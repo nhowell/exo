@@ -22,7 +22,7 @@ export function ShipCargoItem(props: IOwnProps): ReactElement {
 					<dt>{t("Volume per Unit")}:</dt>
 					<dd>
 						{numberFormat(
-							props.cargoItem.quantity / props.cargoItem.totalVolume,
+							props.cargoItem.totalVolume / props.cargoItem.quantity,
 						)}
 					</dd>
 				</div>

@@ -10,8 +10,8 @@ import { Tabs } from "../../core/tabs/Tabs";
 import { ShipInfo } from "./ShipInfo";
 import { ShipCargo } from "./ShipCargo";
 import { BuyGoods } from "./BuyGoods";
-import { ComingSoon } from "../common/ComingSoon";
 import { SellGoods } from "./SellGoods";
+import { Travel } from "./Travel";
 
 interface IRouteParams {
 	shipId: string;
@@ -50,7 +50,7 @@ export function ViewShip(): ReactElement {
 			key: "travel",
 			label: t("Travel"),
 			content: isDocked(ship) ? (
-				<ComingSoon />
+				<Travel ship={ship} />
 			) : (
 				<p>{t("Ship is currently in-transit.")}</p>
 			),

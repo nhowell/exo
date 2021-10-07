@@ -21,7 +21,7 @@ const initialValues: IPurchaseShipForm = {
 export function AvailableShip(props: IOwnProps) {
 	const purchaseShip = usePurchaseShip();
 
-	const handlePurchase = async (
+	const handlePurchase = (
 		values: IPurchaseShipForm,
 		{ setSubmitting, resetForm }: FormikHelpers<IPurchaseShipForm>,
 	) => {
