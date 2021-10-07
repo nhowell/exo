@@ -3,12 +3,15 @@ import { useLocation, useParams } from "react-router-dom";
 import { t } from "../../helpers/translate";
 import { useMyShip } from "../../spacetraders-api/hooks/my/ships/useMyShip";
 import { ShipStatus } from "./ShipStatus";
-import { IMyShip } from "../../spacetraders-api/api/my/ships/types";
+import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";
 import { Tag } from "../common/Tag";
 import { AtLeastOneTabPane } from "../../core/tabs/types";
 import { Tabs } from "../../core/tabs/Tabs";
 import { ShipInfo } from "./ShipInfo";
 import { ShipCargo } from "./ShipCargo";
+import { BuyGoods } from "./BuyGoods";
+import { ComingSoon } from "../common/ComingSoon";
+import { SellGoods } from "./SellGoods";
 
 interface IRouteParams {
 	shipId: string;
@@ -24,6 +27,33 @@ export function ViewShip(): ReactElement {
 			key: "cargo",
 			label: t("Cargo"),
 			content: <ShipCargo ship={ship} />,
+		},
+		{
+			key: "buy",
+			label: t("Buy"),
+			content: isDocked(ship) ? (
+				<BuyGoods ship={ship} />
+			) : (
+				<p>{t("Ship is currently in-transit.")}</p>
+			),
+		},
+		{
+			key: "sell",
+			label: t("Sell"),
+			content: isDocked(ship) ? (
+				<SellGoods ship={ship} />
+			) : (
+				<p>{t("Ship is currently in-transit.")}</p>
+			),
+		},
+		{
+			key: "travel",
+			label: t("Travel"),
+			content: isDocked(ship) ? (
+				<ComingSoon />
+			) : (
+				<p>{t("Ship is currently in-transit.")}</p>
+			),
 		},
 		{
 			key: "info",

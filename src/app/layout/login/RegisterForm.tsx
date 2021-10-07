@@ -22,7 +22,7 @@ export function RegisterForm() {
 
 	const [auth, setAuth] = useState<IUserCredentials>();
 
-	const handleRegister = async (
+	const handleRegister = (
 		values: IRegisterForm,
 		{ setSubmitting }: FormikHelpers<IRegisterForm>,
 	) => {
