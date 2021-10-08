@@ -1,8 +1,10 @@
-# SpaceTraders UI
+# Enterprise
+
+A React UI for the [SpaceTraders API](https://spacetraders.io).
 
 The goal of this project is to build a user interface for the [SpaceTraders API](https://spacetraders.io) while also exploring some technologies that I've wanted to try out, such as `react-query`.
 
-It is very much a work-in-progress.
+It is a work-in-progress.
 
 Visit https://spacetraders.nickhowell.com/ to see it live.
 

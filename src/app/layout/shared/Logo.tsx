@@ -13,7 +13,7 @@ export function Logo(props: IOwnProps) {
 				props.size === "large" && styles.large,
 			)}
 		>
-			SpaceTraders
+			Enterprise
 		</h1>
 	);
 }

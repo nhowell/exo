@@ -13,10 +13,12 @@ export function LoginLayout() {
 			<header>
 				<Logo size="large" />
 				<p>
-					<a href="https://spacetraders.io/">SpaceTraders</a> is an MMO backed
-					entirely by a <a href="https://api.spacetraders.io/">RESTful API</a>.
-					Manage a fleet of ships, automate trade routes, discover hidden
-					secrets in the universe and more. Play/Build now!
+					Enterprise is a user interface for{" "}
+					<a href="https://spacetraders.io/">SpaceTraders</a> &mdash; an MMO
+					backed entirely by a{" "}
+					<a href="https://api.spacetraders.io/">RESTful API</a>. Manage a fleet
+					of ships, automate trade routes, discover hidden secrets in the
+					universe and more. Play/Build now!
 				</p>
 			</header>
 
