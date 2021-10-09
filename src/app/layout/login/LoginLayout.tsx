@@ -13,7 +13,7 @@ export function LoginLayout() {
 			<header>
 				<Logo size="large" />
 				<p>
-					Enterprise is a user interface for{" "}
+					AstroCorp is a user interface for{" "}
 					<a href="https://spacetraders.io/">SpaceTraders</a> &mdash; an MMO
 					backed entirely by a{" "}
 					<a href="https://api.spacetraders.io/">RESTful API</a>. Manage a fleet

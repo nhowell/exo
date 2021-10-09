@@ -13,7 +13,7 @@ export function Logo(props: IOwnProps) {
 				props.size === "large" && styles.large,
 			)}
 		>
-			Enterprise
+			AstroCorp
 		</h1>
 	);
 }
