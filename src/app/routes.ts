@@ -1,6 +1,6 @@
 import { ComponentType } from "react";
 import { generatePath } from "react-router-dom";
-import { Home } from "./home/Home";
+import { Dashboard } from "./dashboard/Dashboard";
 import { Loans } from "./loans/Loans";
 import { Systems } from "./systems/Systems";
 import { ViewShip } from "./ships/ViewShip";
@@ -14,7 +14,7 @@ interface IRoute {
 }
 
 export const loginPath = "/login";
-export const homePath = "/";
+export const dashboardPath = "/";
 export const systemsPath = "/systems";
 const viewSystemPath = "/systems/:systemSymbol";
 export const generateViewSystemPath = (systemSymbol: string) =>
@@ -39,8 +39,8 @@ export const generateViewShipPath = (shipId: string) =>
 
 export const routes: IRoute[] = [
 	{
-		path: homePath,
-		component: Home,
+		path: dashboardPath,
+		component: Dashboard,
 	},
 	{
 		path: systemsPath,

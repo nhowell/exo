@@ -1,5 +1,6 @@
 import styles from "./Logo.module.css";
 import classnames from "classnames";
+import { APP_NAME } from "../../constants";
 
 interface IOwnProps {
 	size: "normal" | "large";
@@ -13,7 +14,7 @@ export function Logo(props: IOwnProps) {
 				props.size === "large" && styles.large,
 			)}
 		>
-			AstroCorp
+			{APP_NAME}
 		</h1>
 	);
 }

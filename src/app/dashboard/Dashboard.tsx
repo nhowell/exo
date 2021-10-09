@@ -1,21 +1,25 @@
 import { NavLink } from "react-router-dom";
 import { useMyAccountInfo } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
-import { useCurrentUser } from "../hooks/useCurrentUser";
 import { generateViewSystemPath, loansPath } from "../routes";
 import { STARTER_SYSTEM } from "../systems/useVisitedSystems";
 import { SystemTabKey } from "../systems/ViewSystem";
+import { APP_NAME } from "../constants";
 
-export function Home() {
-	const currentUser = useCurrentUser();
-	const { data: myAccountInfoResponse } = useMyAccountInfo();
-	const { data: shipsResponse } = useMyShips();
+export function Dashboard() {
+	const { isLoading: isMyAccountInfoLoading, data: myAccountInfoResponse } =
+		useMyAccountInfo();
+	const { isLoading: isMyShipsLoading, data: shipsResponse } = useMyShips();
+
+	if (isMyAccountInfoLoading || isMyShipsLoading) {
+		return <p>Loading...</p>;
+	}
 
 	return (
 		<>
 			{shipsResponse?.ships.length === 0 ? (
 				<>
-					<p>Welcome to SpaceTraders, {currentUser.username}!</p>
+					<p>Welcome to {APP_NAME}!</p>
 					<p>
 						To get started{" "}
 						{myAccountInfoResponse?.user.credits === 0 ? (
@@ -39,7 +43,7 @@ export function Home() {
 					</p>
 				</>
 			) : (
-				<p>Welcome back, {currentUser.username}!</p>
+				<p>Welcome back to {APP_NAME}!</p>
 			)}
 		</>
 	);

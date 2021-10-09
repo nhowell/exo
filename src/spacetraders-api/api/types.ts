@@ -19,6 +19,7 @@ export class SpaceTradersError extends Error {
 }
 
 export enum HttpStatusCode {
+	Conflict = 409,
 	TooManyRequests = 429,
 }
 

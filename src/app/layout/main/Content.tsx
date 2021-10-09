@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import { t } from "../../../helpers/translate";
-import { homePath, loansPath, systemsPath } from "../../routes";
+import { dashboardPath, loansPath, systemsPath } from "../../routes";
 import { YourShips } from "../../ships/YourShips";
 import styles from "./Content.module.css";
 import mainLayoutStyles from "./MainLayout.module.css";
@@ -21,8 +21,8 @@ export function Content(props: IOwnProps) {
 			</section>
 			<section>
 				<nav>
-					<NavLink to={homePath} activeClassName={styles.active} exact>
-						{t("Home")}
+					<NavLink to={dashboardPath} activeClassName={styles.active} exact>
+						{t("Dashboard")}
 					</NavLink>
 					<NavLink to={systemsPath} activeClassName={styles.active}>
 						{t("Systems")}

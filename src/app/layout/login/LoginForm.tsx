@@ -36,14 +36,14 @@ export function LoginForm() {
 				{({ status, isSubmitting }) => (
 					<Form>
 						<div>
-							<label htmlFor="token">{t("Token")}</label>
+							<label htmlFor="token">{t("Access Token")}</label>
 							<Field
 								type="password"
 								id="token"
 								name="token"
 								validate={(value: string) => {
 									if (!value) {
-										return t("Token is required.");
+										return t("Access Token is required.");
 									}
 								}}
 							/>

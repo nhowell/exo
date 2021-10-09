@@ -4,7 +4,7 @@ import { spaceTradersQueryClient } from "../../spacetraders-api/hooks/spaceTrade
 import { checkToken } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 import { useHistory, useLocation } from "react-router";
-import { homePath, loginPath } from "../routes";
+import { dashboardPath, loginPath } from "../routes";
 
 interface IAuthState {
 	activeUsername: string | null;
@@ -63,7 +63,7 @@ export function useProvideAuth(): IAuth {
 			setIsAutoLoginLoading(false);
 
 			if (location.pathname === loginPath) {
-				replaceHistory(homePath);
+				replaceHistory(dashboardPath);
 			}
 		}
 
@@ -93,7 +93,7 @@ export function useProvideAuth(): IAuth {
 					});
 				}
 
-				replaceHistory(homePath);
+				replaceHistory(dashboardPath);
 			} catch (error: any) {
 				// Return the error message to be displayed on the login form.
 				return error.message;

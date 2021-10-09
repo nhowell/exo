@@ -6,14 +6,18 @@ import { LoginForm } from "./LoginForm";
 import styles from "./LoginLayout.module.css";
 import { RegisterForm } from "./RegisterForm";
 import { t } from "../../../helpers/translate";
+import { useState } from "react";
+import { APP_NAME } from "../../constants";
 
 export function LoginLayout() {
+	const [isRegistered, setIsRegistered] = useState(false);
+
 	return (
 		<div className={styles.container}>
 			<header>
 				<Logo size="large" />
 				<p>
-					AstroCorp is a user interface for{" "}
+					{APP_NAME} is a user interface for{" "}
 					<a href="https://spacetraders.io/">SpaceTraders</a> &mdash; an MMO
 					backed entirely by a{" "}
 					<a href="https://api.spacetraders.io/">RESTful API</a>. Manage a fleet
@@ -24,11 +28,13 @@ export function LoginLayout() {
 
 			<main>
 				<TileContainer center>
-					<Tile width="34rem">
-						<LoginForm />
-					</Tile>
-					<Tile width="34rem">
-						<RegisterForm />
+					{!isRegistered && (
+						<Tile width="34rem">
+							<LoginForm />
+						</Tile>
+					)}
+					<Tile width={isRegistered ? "55rem" : "34rem"}>
+						<RegisterForm onRegister={() => setIsRegistered(true)} />
 					</Tile>
 				</TileContainer>
 			</main>

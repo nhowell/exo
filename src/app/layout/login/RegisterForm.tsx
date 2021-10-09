@@ -1,8 +1,15 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 import { t } from "../../../helpers/translate";
+import { HttpStatusCode } from "../../../spacetraders-api/api/types";
 import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/hooks/users/useClaimUsernameAndGetToken";
+import { APP_NAME } from "../../constants";
+import { useAuth } from "../../hooks/useAuth";
 import styles from "./RegisterForm.module.css";
+
+interface IOwnProps {
+	onRegister(): void;
+}
 
 export interface IRegisterForm {
 	username: string;
@@ -17,10 +24,10 @@ interface IUserCredentials {
 	token: string;
 }
 
-export function RegisterForm() {
+export function RegisterForm(props: IOwnProps) {
 	const register = useClaimUsernameAndGetToken();
 
-	const [auth, setAuth] = useState<IUserCredentials>();
+	const [userCredentials, setUserCredentials] = useState<IUserCredentials>();
 
 	const handleRegister = (
 		values: IRegisterForm,
@@ -28,7 +35,8 @@ export function RegisterForm() {
 	) => {
 		register.mutate(values.username, {
 			onSuccess: (data) => {
-				setAuth({ username: data.user.username, token: data.token });
+				setUserCredentials({ username: data.user.username, token: data.token });
+				props.onRegister();
 			},
 			onSettled: () => {
 				setSubmitting(false);
@@ -36,58 +44,77 @@ export function RegisterForm() {
 		});
 	};
 
+	const auth = useAuth();
+
 	return (
 		<>
-			<h1>{t("Register")}</h1>
-
-			{auth ? (
+			{userCredentials ? (
 				<>
+					<h1>{t("Registration Complete")}</h1>
 					<p>
-						{t("Welcome to SpaceTraders,")} <code>{auth.username}</code>.
+						{t("Welcome to")} {APP_NAME}!
 					</p>
 					<p>
-						<strong>{t("Your Token")}:</strong> <code>{auth.token}</code>
+						{t("You're the CEO of the newly founded")}{" "}
+						<code>{userCredentials.username}</code>.
+					</p>
+					<p>
+						<strong>{t("Your Access Token")}:</strong>{" "}
+						<code>{userCredentials.token}</code>
 					</p>
 					<p className={styles.info}>
 						{t(
-							"Remember to save your token someplace safe! Once you've saved your token, login and start playing!",
+							"Remember to save your access token someplace safe! After you've saved your token, we'll log you in and you can start playing!",
 						)}
 					</p>
+					<button
+						type="button"
+						onClick={() => auth.login({ token: userCredentials.token })}
+					>
+						{t("Ok, I've saved my token. Let's get started!")}
+					</button>
 				</>
 			) : (
-				<Formik<IRegisterForm>
-					initialValues={initialValues}
-					onSubmit={handleRegister}
-				>
-					{({ isSubmitting }) => (
-						<Form>
-							<div>
-								<label htmlFor="newUsername">{t("Username")}</label>
-								<Field
-									type="text"
-									id="newUsername"
-									name="username"
-									validate={(value: string) => {
-										if (!value) {
-											return t("Username is required.");
-										}
-									}}
-								/>
-								<ErrorMessage name="username" component="div" />
-							</div>
+				<>
+					<h1>{t("Register")}</h1>
+					<Formik<IRegisterForm>
+						initialValues={initialValues}
+						onSubmit={handleRegister}
+					>
+						{({ isSubmitting }) => (
+							<Form>
+								<div>
+									<label htmlFor="newUsername">{t("Corporation Name")}</label>
+									<Field
+										type="text"
+										id="newUsername"
+										name="username"
+										validate={(value: string) => {
+											if (!value) {
+												return t("Corporation Name is required.");
+											}
+										}}
+									/>
+									<ErrorMessage name="username" component="div" />
+								</div>
 
-							{register.error ? (
-								<div>{t(register.error.message)}</div>
-							) : undefined}
+								{register.error ? (
+									register.error.statusCode === HttpStatusCode.Conflict ? (
+										<div>{t("Corporation name already taken.")}</div>
+									) : (
+										<div>{t(register.error.message)}</div>
+									)
+								) : undefined}
 
-							<div>
-								<button type="submit" disabled={isSubmitting}>
-									{t("Claim username and get token")}
-								</button>
-							</div>
-						</Form>
-					)}
-				</Formik>
+								<div>
+									<button type="submit" disabled={isSubmitting}>
+										{t("Register new corporation")}
+									</button>
+								</div>
+							</Form>
+						)}
+					</Formik>
+				</>
 			)}
 		</>
 	);
