@@ -5,3 +5,17 @@
 	font-size: 2.5rem;
 	line-height: 2.5rem;
 }
+
+@media (max-width: 1120px) {
+	.credits {
+		font-size: 2rem;
+		line-height: 2rem;
+	}
+}
+
+@media (max-width: 800px) {
+	.credits {
+		font-size: 1.6rem;
+		line-height: 1.8rem;
+	}
+}
