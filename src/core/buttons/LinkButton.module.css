@@ -11,6 +11,7 @@
 	border: none;
 	font-family: var(--normal-font-family);
 	margin: 0;
+	border-radius: 0;
 }
 
 .linkButton:focus,
