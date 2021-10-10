@@ -10,7 +10,7 @@ export const SpaceTradersApiContext = createContext<SpaceTradersApi>(
 	undefined as any,
 );
 
-export function SpaceTradersApiProvider(props: IOwnProps) {
+export function SpaceTradersApiProvider(props: IOwnProps): ReactElement {
 	const { token } = useCurrentUser();
 
 	const spaceTradersApi = useMemo(() => {

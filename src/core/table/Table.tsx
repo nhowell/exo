@@ -20,6 +20,7 @@ export interface ITableProps<T> {
 	loading?: boolean;
 	errorMessage?: string;
 	striped?: boolean;
+	highlightRow?: (row: T) => boolean;
 }
 
 export function Table<T extends IAllStringKeyProps>(
@@ -72,6 +73,7 @@ export function Table<T extends IAllStringKeyProps>(
 								rowData={rowData}
 								keyField={props.keyField}
 								columnDefinitions={props.columnDefinitions}
+								highlight={props.highlightRow?.(rowData)}
 							/>
 						);
 					})
@@ -84,6 +86,7 @@ export function Table<T extends IAllStringKeyProps>(
 interface IStandardRowProps<T>
 	extends Pick<ITableProps<T>, "keyField" | "columnDefinitions"> {
 	rowData: T;
+	highlight?: boolean;
 }
 
 // Memoize each row to save on re-render performance.
@@ -91,7 +94,7 @@ const StandardRow = typedMemo(function StandardRow<
 	T extends IAllStringKeyProps,
 >(props: IStandardRowProps<T>): ReactElement {
 	return (
-		<TableRow>
+		<TableRow highlight={props.highlight}>
 			{props.columnDefinitions.map((column) => {
 				return (
 					<TableCell key={column.keyname} align={column.align}>

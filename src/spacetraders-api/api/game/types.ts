@@ -3,7 +3,7 @@ export interface INetWorthLeaderboardResponse {
 	userNetWorth: IUserNetWorth;
 }
 
-interface IUserNetWorth {
+export interface IUserNetWorth {
 	username: string;
 	netWorth: number;
 	rank: number;

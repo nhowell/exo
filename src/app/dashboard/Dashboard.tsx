@@ -5,6 +5,9 @@ import { generateViewSystemPath, loansPath } from "../routes";
 import { STARTER_SYSTEM } from "../systems/useVisitedSystems";
 import { SystemTabKey } from "../systems/ViewSystem";
 import { APP_NAME } from "../constants";
+import { TileContainer } from "../common/tiles/TileContainer";
+import { NetWorthLeaderboard } from "./NetWorthLeaderboard";
+import { Tile } from "../common/tiles/Tile";
 
 export function Dashboard() {
 	const { isLoading: isMyAccountInfoLoading, data: myAccountInfoResponse } =
@@ -43,7 +46,11 @@ export function Dashboard() {
 					</p>
 				</>
 			) : (
-				<p>Welcome back to {APP_NAME}!</p>
+				<TileContainer>
+					<Tile>
+						<NetWorthLeaderboard />
+					</Tile>
+				</TileContainer>
 			)}
 		</>
 	);

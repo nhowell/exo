@@ -1,0 +1,25 @@
+.linkButton {
+	font-size: inherit;
+	line-height: inherit;
+	padding: 0;
+	background: unset;
+	color: var(--primary-color);
+	text-decoration: underline;
+	box-shadow: none;
+	font-weight: normal;
+	text-shadow: none;
+	border: none;
+	font-family: var(--normal-font-family);
+	margin: 0;
+}
+
+.linkButton:focus,
+.linkButton:hover {
+	background: unset;
+}
+
+.linkButton:disabled {
+	color: var(--primary-text-color);
+	text-decoration: none;
+	cursor: default;
+}

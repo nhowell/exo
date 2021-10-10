@@ -167,6 +167,10 @@ a {
 	color: var(--primary-color);
 }
 
+dl {
+	margin-bottom: 0;
+}
+
 dl > div {
 	display: flex;
 	align-items: stretch;

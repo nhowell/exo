@@ -6,9 +6,9 @@ interface IOwnProps {
 	children: ReactElement;
 }
 
-export const currentDateTimeContext = createContext<DateTime>(DateTime.now());
+export const CurrentDateTimeContext = createContext<DateTime>(DateTime.now());
 
-export function CurrentDateTimeProvider(props: IOwnProps) {
+export function CurrentDateTimeProvider(props: IOwnProps): ReactElement {
 	const [currentDateTime, setCurrentDateTime] = useState(DateTime.now());
 
 	useInterval(() => {
@@ -16,8 +16,8 @@ export function CurrentDateTimeProvider(props: IOwnProps) {
 	}, 1_000);
 
 	return (
-		<currentDateTimeContext.Provider value={currentDateTime}>
+		<CurrentDateTimeContext.Provider value={currentDateTime}>
 			{props.children}
-		</currentDateTimeContext.Provider>
+		</CurrentDateTimeContext.Provider>
 	);
 }
