@@ -28,16 +28,6 @@
 	}
 }
 
-@media (max-width: 800px) {
-	.header {
-		justify-content: flex-end;
-	}
-
-	.hideLogoIfNeeded {
-		display: none;
-	}
-}
-
 .header button {
 	margin-top: 0;
 }

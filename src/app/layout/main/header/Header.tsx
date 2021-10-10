@@ -1,5 +1,3 @@
-import { GameStatus } from "../../shared/GameStatus";
-import { Logo } from "../../shared/Logo";
 import { Username } from "./Username";
 import { UserCredits } from "./UserCredits";
 import { Logout } from "./Logout";
@@ -11,13 +9,11 @@ export function Header() {
 	return (
 		<header className={styles.headerContainer}>
 			<div className={classNames(styles.header, mainLayoutStyles.maxWidth)}>
-				<div className={classNames(styles.section, styles.hideLogoIfNeeded)}>
-					<Logo size="normal" />
-					<GameStatus />
+				<div className={styles.section}>
+					<UserCredits />
 				</div>
 
 				<div className={styles.section}>
-					<UserCredits />
 					<Username />
 					<Logout />
 				</div>
