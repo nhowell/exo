@@ -5,7 +5,7 @@ import { ITableColumnHeader } from "../../core/table/types";
 import { t } from "../../helpers/translate";
 import { IUserNetWorth } from "../../spacetraders-api/api/game/types";
 import { useNetWorthLeaderboard } from "../../spacetraders-api/hooks/game/useNetWorthLeaderboard";
-import { TimeRemaining } from "../common/TimeRemaining";
+import { TimeSince } from "../common/TimeSince";
 import styles from "./NetWorthLeaderboard.module.css";
 
 const columnDefinitions: ITableColumnHeader<IUserNetWorth>[] = [
@@ -81,7 +81,7 @@ export function NetWorthLeaderboard(): ReactElement {
 
 					<div className={styles.refresh}>
 						<div>
-							{t("Last refreshed:")} <TimeRemaining until={dataUpdatedAt} />
+							{t("Last refreshed:")} <TimeSince since={dataUpdatedAt} />
 						</div>
 						<div>
 							<LinkButton onClick={() => refetch()} disabled={isRefetching}>

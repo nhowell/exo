@@ -1,6 +1,12 @@
+import { t } from "./translate";
+
 export function durationFormat(seconds: number): string {
 	if (isNaN(seconds)) {
-		seconds = 0;
+		return t("N/A");
+	}
+
+	if (seconds === 0) {
+		return t("now");
 	}
 
 	const totalSeconds = Math.ceil(Math.abs(seconds));
@@ -25,12 +31,12 @@ export function durationFormat(seconds: number): string {
 	}
 
 	if (timeComponents.length < 2) {
-		const seconds = totalSeconds % 60;
-		timeComponents.push(`${seconds}s`);
+		const secs = totalSeconds % 60;
+		timeComponents.push(`${secs}s`);
 	}
 
 	if (seconds < 0) {
-		timeComponents.push("ago");
+		timeComponents.push(t("ago"));
 	}
 
 	return timeComponents.join(" ");

@@ -1,7 +1,7 @@
 import { durationFormat } from "./durationFormat";
 
 it("formats whole seconds to time remaining", () => {
-	expect(durationFormat(0)).toEqual("0s");
+	expect(durationFormat(0)).toEqual("now");
 	expect(durationFormat(1)).toEqual("1s");
 	expect(durationFormat(59)).toEqual("59s");
 	expect(durationFormat(60)).toEqual("1m 0s");
@@ -33,7 +33,7 @@ it("rounds fractional seconds up", () => {
 });
 
 it("should handle negative numbers", () => {
-	expect(durationFormat(-0)).toEqual("0s");
+	expect(durationFormat(-0)).toEqual("now");
 	expect(durationFormat(-0.5)).toEqual("1s ago");
 	expect(durationFormat(-1)).toEqual("1s ago");
 	expect(durationFormat(-59)).toEqual("59s ago");
@@ -42,5 +42,5 @@ it("should handle negative numbers", () => {
 });
 
 it("should handle NaN", () => {
-	expect(durationFormat(NaN)).toEqual("0s");
+	expect(durationFormat(NaN)).toEqual("N/A");
 });
