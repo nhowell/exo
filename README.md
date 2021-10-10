@@ -1,4 +1,4 @@
-# AstroCorp
+# Exo
 
 A React UI for the [SpaceTraders API](https://spacetraders.io).
 
