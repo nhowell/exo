@@ -33,7 +33,7 @@ export function LoginLayout() {
 							<LoginForm />
 						</Tile>
 					)}
-					<Tile width={isRegistered ? "55rem" : "34rem"}>
+					<Tile width={isRegistered ? undefined : "34rem"}>
 						<RegisterForm onRegister={() => setIsRegistered(true)} />
 					</Tile>
 				</TileContainer>

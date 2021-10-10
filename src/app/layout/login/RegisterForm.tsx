@@ -55,7 +55,7 @@ export function RegisterForm(props: IOwnProps) {
 						{t("Welcome to")} {APP_NAME}!
 					</p>
 					<p>
-						{t("You're the CEO of the newly founded")}{" "}
+						{t("You're the CEO of the new space trading corporation,")}{" "}
 						<code>{userCredentials.username}</code>.
 					</p>
 					<p>
