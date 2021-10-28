@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import Bottleneck from "bottleneck";
 import { GameApiModule } from "./game/GameApiModule";
 import { LocationsApiModule } from "./locations/LocationsApiModule";
@@ -195,16 +195,16 @@ export class SpaceTradersApi {
 		});
 	}
 
-	private static async request<T>(
+	private static async request<TResponse, TData>(
 		method: "get" | "post" | "put" | "delete",
 		path: string,
 		limiter: Bottleneck,
-		options?: RequestOptions<T>,
+		options?: RequestOptions<TData>,
 		maxRetries: number = 0,
 		retry: number = 0,
-	): Promise<T> {
+	): Promise<TResponse> {
 		const sendRequest = () =>
-			axiosInstance.request<T>({
+			axiosInstance.request<TResponse, AxiosResponse<TResponse, TData>, TData>({
 				method: method,
 				url: path,
 				...options,
@@ -230,7 +230,7 @@ export class SpaceTradersApi {
 						parseInt(error.response?.headers["retry-after"] ?? "1") * 1_000;
 					await this.sleep(retryAfter);
 
-					return this.request<T>(
+					return this.request<TResponse, TData>(
 						method,
 						path,
 						limiter,
@@ -272,7 +272,7 @@ export class SpaceTradersApi {
 		return new Promise((resolve) => setTimeout(resolve, milliseconds));
 	}
 
-	get<T>(path: string, params?: any): Promise<T> {
+	get<TResponse>(path: string, params?: any): Promise<TResponse> {
 		return SpaceTradersApi.request(
 			"get",
 			path,
@@ -285,7 +285,7 @@ export class SpaceTradersApi {
 		);
 	}
 
-	post<T>(path: string, data?: any): Promise<T> {
+	post<TResponse, TData>(path: string, data?: TData): Promise<TResponse> {
 		return SpaceTradersApi.request(
 			"post",
 			path,
@@ -298,7 +298,7 @@ export class SpaceTradersApi {
 		);
 	}
 
-	put<T>(path: string, data?: any): Promise<T> {
+	put<TResponse, TData>(path: string, data?: TData): Promise<TResponse> {
 		return SpaceTradersApi.request(
 			"put",
 			path,
@@ -311,7 +311,7 @@ export class SpaceTradersApi {
 		);
 	}
 
-	delete<T>(path: string): Promise<T> {
+	delete<TResponse>(path: string): Promise<TResponse> {
 		return SpaceTradersApi.request(
 			"delete",
 			path,
