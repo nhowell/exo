@@ -12,13 +12,14 @@ import { LocationInfo } from "./LocationInfo";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import { LocationBreadcrumb } from "./LocationBreadcrumb";
 
-interface IRouteParams {
-	systemSymbol: string;
-	locationSymbol: string;
-}
-
 export function ViewLocation(): ReactElement {
-	const { systemSymbol, locationSymbol } = useParams<IRouteParams>();
+	const { systemSymbol, locationSymbol } = useParams();
+
+	if (systemSymbol === undefined) {
+		throw new Error("Missing 'systemSymbol' parameter.");
+	} else if (locationSymbol === undefined) {
+		throw new Error("Missing 'locationSymbol' parameter.");
+	}
 
 	const symbol = mergeSymbols(systemSymbol, locationSymbol);
 

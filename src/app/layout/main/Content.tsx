@@ -21,13 +21,23 @@ export function Content(props: IOwnProps) {
 			</section>
 			<section>
 				<nav>
-					<NavLink to={dashboardPath} activeClassName={styles.active} exact>
+					<NavLink
+						to={dashboardPath}
+						className={({ isActive }) => (isActive ? styles.active : "")}
+						end
+					>
 						{t("Dashboard")}
 					</NavLink>
-					<NavLink to={systemsPath} activeClassName={styles.active}>
+					<NavLink
+						to={systemsPath}
+						className={({ isActive }) => (isActive ? styles.active : "")}
+					>
 						{t("Systems")}
 					</NavLink>
-					<NavLink to={loansPath} activeClassName={styles.active}>
+					<NavLink
+						to={loansPath}
+						className={({ isActive }) => (isActive ? styles.active : "")}
+					>
 						{t("Loans")}
 					</NavLink>
 				</nav>

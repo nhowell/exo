@@ -13,12 +13,12 @@ import { BuyGoods } from "./BuyGoods";
 import { SellGoods } from "./SellGoods";
 import { Travel } from "./Travel";
 
-interface IRouteParams {
-	shipId: string;
-}
-
 export function ViewShip(): ReactElement {
-	const { shipId } = useParams<IRouteParams>();
+	const { shipId } = useParams();
+
+	if (shipId === undefined) {
+		throw new Error("Missing 'shipId' parameter.");
+	}
 
 	const { isLoading, isError, error, data } = useMyShip(shipId);
 

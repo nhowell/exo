@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "./hooks/useAuth";
 
 interface IOwnProps {
@@ -11,7 +11,7 @@ export function RequireAuth({ children, redirectTo }: IOwnProps) {
 	const auth = useAuth();
 
 	return auth.currentUser === undefined ? (
-		<Redirect to={redirectTo} />
+		<Navigate to={redirectTo} />
 	) : (
 		children
 	);

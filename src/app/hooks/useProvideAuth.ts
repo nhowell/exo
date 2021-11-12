@@ -3,7 +3,7 @@ import { ILoginForm } from "../layout/login/LoginForm";
 import { spaceTradersQueryClient } from "../../spacetraders-api/hooks/spaceTradersQueryClient";
 import { checkToken } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
-import { useHistory, useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { dashboardPath, loginPath } from "../routes";
 
 interface IAuthState {
@@ -33,7 +33,7 @@ export function useProvideAuth(): IAuth {
 		localStorageAuth !== undefined && localStorageAuth.activeUsername !== null,
 	);
 
-	const { replace: replaceHistory } = useHistory();
+	const navigate = useNavigate();
 
 	const location = useLocation();
 
@@ -63,12 +63,12 @@ export function useProvideAuth(): IAuth {
 			setIsAutoLoginLoading(false);
 
 			if (location.pathname === loginPath) {
-				replaceHistory(dashboardPath);
+				navigate(dashboardPath, { replace: true });
 			}
 		}
 
 		asyncTask();
-	}, [isAutoLoginLoading, localStorageAuth, location.pathname, replaceHistory]);
+	}, [isAutoLoginLoading, localStorageAuth, location.pathname, navigate]);
 
 	const login = useCallback(
 		async (values: ILoginForm): Promise<string | undefined> => {
@@ -93,13 +93,13 @@ export function useProvideAuth(): IAuth {
 					});
 				}
 
-				replaceHistory(dashboardPath);
+				navigate(dashboardPath, { replace: true });
 			} catch (error: any) {
 				// Return the error message to be displayed on the login form.
 				return error.message;
 			}
 		},
-		[localStorageAuth, replaceHistory, setLocalStorageAuth],
+		[localStorageAuth, navigate, setLocalStorageAuth],
 	);
 
 	const logout = useCallback(() => {
@@ -112,8 +112,8 @@ export function useProvideAuth(): IAuth {
 		// Clear any other items out of local storage.
 		window.localStorage.clear();
 
-		replaceHistory(loginPath);
-	}, [localStorageAuth, replaceHistory, setLocalStorageAuth]);
+		navigate(loginPath);
+	}, [localStorageAuth, navigate, setLocalStorageAuth]);
 
 	const currentUser = useMemo((): ICurrentUser | undefined => {
 		if (

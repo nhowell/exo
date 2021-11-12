@@ -8,6 +8,7 @@ import { ShipStatus } from "./ShipStatus";
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
 import { Good } from "../../spacetraders-api/api/enums";
+import classNames from "classnames";
 
 interface IOwnProps {
 	ship: IMyShip;
@@ -17,8 +18,9 @@ export const YourShip = memo(function (props: IOwnProps): ReactElement {
 	return (
 		<NavLink
 			to={generateViewShipPath(props.ship.id)}
-			className={styles.shipLink}
-			activeClassName={styles.activeShipLink}
+			className={({ isActive }) =>
+				classNames(styles.shipLink, isActive && styles.activeShipLink)
+			}
 		>
 			<div>
 				<span className={commonStyles.noWrap}>{props.ship.type}</span>

@@ -10,17 +10,18 @@ import { SystemBreadcrumb } from "./SystemBreadcrumb";
 import { SystemLocations } from "./SystemLocations";
 import { useAddVisitedSystem } from "./useAddVisitedSystem";
 
-interface IRouteParams {
-	systemSymbol: string;
-}
-
 export enum SystemTabKey {
 	Locations = "locations",
 	AvailableShips = "available-ships",
 }
 
 export function ViewSystem(): ReactElement {
-	const { systemSymbol } = useParams<IRouteParams>();
+	const { systemSymbol } = useParams();
+
+	if (systemSymbol === undefined) {
+		throw new Error("Missing 'systemSymbol' parameter.");
+	}
+
 	const { isLoading, isError, error, data } = useSystemInfo(systemSymbol);
 
 	useAddVisitedSystem(

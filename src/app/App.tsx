@@ -1,6 +1,6 @@
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LoginLayout } from "./layout/login/LoginLayout";
 import { MainLayout } from "./layout/main/MainLayout";
 import { spaceTradersQueryClient } from "../spacetraders-api/hooks/spaceTradersQueryClient";
@@ -16,34 +16,32 @@ export function App() {
 		<QueryClientProvider client={spaceTradersQueryClient}>
 			<BrowserRouter>
 				<AuthProvider>
-					<Switch>
-						<Route exact path={loginPath}>
-							<LoginLayout />
-						</Route>
+					<Routes>
+						<Route path={loginPath} element={<LoginLayout />} />
 						<Route
 							path="*"
-							render={() => (
+							element={
 								<RequireAuth redirectTo={loginPath}>
 									<SpaceTradersApiProvider>
 										<CurrentDateTimeProvider>
 											<MainLayout>
-												<Switch>
+												<Routes>
 													{routes.map((route) => (
-														<Route key={route.path} path={route.path} exact>
-															<route.component />
-														</Route>
+														<Route
+															key={route.path}
+															path={route.path}
+															element={<route.component />}
+														/>
 													))}
-													<Route path="*">
-														<NotFound />
-													</Route>
-												</Switch>
+													<Route path="*" element={<NotFound />} />
+												</Routes>
 											</MainLayout>
 										</CurrentDateTimeProvider>
 									</SpaceTradersApiProvider>
 								</RequireAuth>
-							)}
+							}
 						/>
-					</Switch>
+					</Routes>
 				</AuthProvider>
 			</BrowserRouter>
 			<ReactQueryDevtools />
