@@ -29,7 +29,7 @@
 	text-align: center;
 	display: block;
 	background-color: var(--secondary-bg-color);
-	padding: 0.9rem 1.5rem;
+	padding: 0.85rem 1.5rem;
 	border: var(--normal-border-width) solid var(--normal-border-color);
 	font-family: var(--special-font-family);
 	margin-left: calc(var(--normal-box-padding) / 2);
