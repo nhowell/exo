@@ -10,6 +10,7 @@ import { RequireAuth } from "./RequireAuth";
 import { NotFound } from "./NotFound";
 import { CurrentDateTimeProvider } from "./CurrentDateTimeProvider";
 import { SpaceTradersApiProvider } from "./SpaceTradersApiProvider";
+import { ThreeJS } from "./threejs/ThreeJS";
 
 export function App() {
 	return (
@@ -24,18 +25,26 @@ export function App() {
 								<RequireAuth redirectTo={loginPath}>
 									<SpaceTradersApiProvider>
 										<CurrentDateTimeProvider>
-											<MainLayout>
-												<Routes>
-													{routes.map((route) => (
-														<Route
-															key={route.path}
-															path={route.path}
-															element={<route.component />}
-														/>
-													))}
-													<Route path="*" element={<NotFound />} />
-												</Routes>
-											</MainLayout>
+											<Routes>
+												<Route path="threejs" element={<ThreeJS />} />
+												<Route
+													path="*"
+													element={
+														<MainLayout>
+															<Routes>
+																{routes.map((route) => (
+																	<Route
+																		key={route.path}
+																		path={route.path}
+																		element={<route.component />}
+																	/>
+																))}
+																<Route path="*" element={<NotFound />} />
+															</Routes>
+														</MainLayout>
+													}
+												/>
+											</Routes>
 										</CurrentDateTimeProvider>
 									</SpaceTradersApiProvider>
 								</RequireAuth>
