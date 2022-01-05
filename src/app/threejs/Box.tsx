@@ -22,13 +22,13 @@ export function Box(props: IOwnProps): ReactElement {
 		<mesh
 			{...props}
 			ref={mesh}
-			scale={active ? 1.5 : 1}
+			scale={active ? 1 : 0.5}
 			onClick={(event) => setActive(!active)}
 			onPointerOver={(event) => setHover(true)}
 			onPointerOut={(event) => setHover(false)}
 		>
-			<boxGeometry args={[1, 1, 1]} />
-			<meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+			<sphereGeometry args={[1, 40, 30]} />
+			<meshToonMaterial color={hovered ? "hotpink" : "orange"} />
 		</mesh>
 	);
 }
