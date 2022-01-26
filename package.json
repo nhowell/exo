@@ -69,8 +69,5 @@
 	"prettier": {
 		"trailingComma": "all",
 		"useTabs": true
-	},
-	"devDependencies": {
-		"mini-css-extract-plugin": "2.4.7"
 	}
 }
