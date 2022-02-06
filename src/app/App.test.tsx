@@ -7,7 +7,7 @@ it("renders without crashing", () => {
 	ReactDOM.render(<App />, div);
 });
 
-test("renders", () => {
+it("renders Server Status text", () => {
 	render(<App />);
 	const element = screen.getByText(/Server Status/i);
 	expect(element).toBeInTheDocument();
