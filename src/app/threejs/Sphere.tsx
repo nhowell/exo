@@ -6,7 +6,7 @@ interface IOwnProps {
 	position: Vector3;
 }
 
-export function Box(props: IOwnProps): ReactElement {
+export function Sphere(props: IOwnProps): ReactElement {
 	// This reference will give us direct access to the mesh
 	const mesh = useRef<Mesh>(null!);
 
@@ -22,7 +22,7 @@ export function Box(props: IOwnProps): ReactElement {
 		<mesh
 			{...props}
 			ref={mesh}
-			scale={active ? 1 : 0.5}
+			scale={active ? 2 : 1}
 			onClick={(event) => setActive(!active)}
 			onPointerOver={(event) => setHover(true)}
 			onPointerOut={(event) => setHover(false)}
