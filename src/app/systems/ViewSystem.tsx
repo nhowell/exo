@@ -6,6 +6,7 @@ import { t } from "../../helpers/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { Tag } from "../common/Tag";
 import { AvailableShips } from "./AvailableShips";
+import { SystemMap } from "./map/SystemMap";
 import { SystemBreadcrumb } from "./SystemBreadcrumb";
 import { SystemLocations } from "./SystemLocations";
 import { useAddVisitedSystem } from "./useAddVisitedSystem";
@@ -13,6 +14,7 @@ import { useAddVisitedSystem } from "./useAddVisitedSystem";
 export enum SystemTabKey {
 	Locations = "locations",
 	AvailableShips = "available-ships",
+	Map = "map",
 }
 
 export function ViewSystem(): ReactElement {
@@ -40,6 +42,11 @@ export function ViewSystem(): ReactElement {
 			key: SystemTabKey.AvailableShips,
 			label: t("Available Ships"),
 			content: <AvailableShips systemSymbol={systemSymbol} />,
+		},
+		{
+			key: SystemTabKey.Map,
+			label: t("Map"),
+			content: <SystemMap systemSymbol={systemSymbol} />,
 		},
 	];
 

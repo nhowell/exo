@@ -16,7 +16,7 @@ export function Tabs(props: IOwnProps): ReactElement {
 		props.panes.find((x) => x.key === activeTabKey) ?? props.panes[0];
 
 	return (
-		<div>
+		<>
 			<ul className={styles.tabList}>
 				{props.panes.map((pane) => (
 					<li key={pane.key}>
@@ -33,7 +33,7 @@ export function Tabs(props: IOwnProps): ReactElement {
 				))}
 			</ul>
 
-			<div className={styles.tabContent}>{activeTabPane.content}</div>
-		</div>
+			{activeTabPane.content}
+		</>
 	);
 }
