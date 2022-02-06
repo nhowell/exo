@@ -1,4 +1,4 @@
-import { MapControls, OrthographicCamera, Stars } from "@react-three/drei";
+import { MapControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { ReactElement } from "react";
 import { t } from "../../helpers/translate";
@@ -16,16 +16,32 @@ export function ThreeJS(): ReactElement {
 		<p>{t(error?.message ?? "Something went wrong.")}</p>
 	) : (
 		<Canvas>
-			<OrthographicCamera makeDefault zoom={4} position={[0, 0, 500]} />
-			<gridHelper args={[200, 10, `white`, `gray`]} />
-			<axesHelper />
-			<ambientLight intensity={0.1} />
-			<pointLight position={[10, 10, 10]} />
-			<Stars />
+			<PerspectiveCamera
+				makeDefault
+				zoom={1}
+				position={[0, 200, 0]}
+				rotation={[-Math.PI / 2, 0, 0]}
+				far={100000}
+			/>
+			<color attach="background" args={["black"]} />
+			<polarGridHelper args={[120, 8, 12, 64, "#0d1c3c", "#0d1c3c"]} />
+			<ambientLight intensity={0.05} />
+			<pointLight position={[0, 0, 0]} />
+			<Stars
+				radius={10000}
+				depth={5000}
+				count={5000}
+				factor={150}
+				saturation={0.5}
+			/>
 			{data.locations.map((location) => (
-				<Sphere key={location.symbol} position={[location.x, location.y, 0]} />
+				<Sphere key={location.symbol} position={[location.x, 0, -location.y]} />
 			))}
-			<MapControls />
+			<MapControls
+				maxPolarAngle={Math.PI / 2}
+				minDistance={5}
+				maxDistance={300}
+			/>
 		</Canvas>
 	);
 }
