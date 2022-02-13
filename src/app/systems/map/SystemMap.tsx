@@ -1,7 +1,6 @@
 import { MapControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { ReactElement } from "react";
-import { t } from "../../../helpers/translate";
 import { LocationType } from "../../../spacetraders-api/api/enums";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import { useLocationsInSystem } from "../../../spacetraders-api/hooks/systems/useLocationsInSystem";
@@ -11,47 +10,46 @@ import { Moon } from "./objects/Moon";
 import { GasGiant } from "./objects/GasGiant";
 import { Asteroid } from "./objects/Asteroid";
 import { Wormhole } from "./objects/Wormhole";
+import { QueryResultHandler } from "../../common/QueryResultHandler";
 
 interface IOwnProps {
 	systemSymbol: string;
 }
 
 export function SystemMap(props: IOwnProps): ReactElement {
-	const { isLoading, isError, error, data } = useLocationsInSystem(
-		props.systemSymbol,
-	);
+	const result = useLocationsInSystem(props.systemSymbol);
 
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : (
-		<Canvas>
-			<PerspectiveCamera
-				makeDefault
-				zoom={1}
-				position={[0, 200, 0]}
-				rotation={[-Math.PI / 2, 0, 0]}
-				far={100000}
-			/>
-			<color attach="background" args={["black"]} />
-			<polarGridHelper args={[120, 8, 12, 64, "#030712", "#030712"]} />
-			<ambientLight intensity={0.1} />
-			<pointLight position={[0, 0, 0]} />
-			<Stars
-				radius={10000}
-				depth={5000}
-				count={5000}
-				factor={150}
-				saturation={0.5}
-			/>
-			<MapControls
-				maxPolarAngle={Math.PI / 2}
-				minDistance={5}
-				maxDistance={300}
-			/>
-			{data.locations.map(renderLocation)}
-		</Canvas>
+	return (
+		<QueryResultHandler queryResult={result}>
+			{(data) => (
+				<Canvas>
+					<PerspectiveCamera
+						makeDefault
+						zoom={1}
+						position={[0, 200, 0]}
+						rotation={[-Math.PI / 2, 0, 0]}
+						far={100000}
+					/>
+					<color attach="background" args={["black"]} />
+					<polarGridHelper args={[120, 8, 12, 64, "#030712", "#030712"]} />
+					<ambientLight intensity={0.1} />
+					<pointLight position={[0, 0, 0]} />
+					<Stars
+						radius={10000}
+						depth={5000}
+						count={5000}
+						factor={150}
+						saturation={0.5}
+					/>
+					<MapControls
+						maxPolarAngle={Math.PI / 2}
+						minDistance={5}
+						maxDistance={300}
+					/>
+					{data.locations.map(renderLocation)}
+				</Canvas>
+			)}
+		</QueryResultHandler>
 	);
 }
 
