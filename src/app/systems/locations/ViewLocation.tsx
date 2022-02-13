@@ -11,6 +11,7 @@ import { LocationMarketplace } from "./LocationMarketplace";
 import { LocationInfo } from "./LocationInfo";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import { LocationBreadcrumb } from "./LocationBreadcrumb";
+import { QueryResultHandler } from "../../common/QueryResultHandler";
 
 export function ViewLocation(): ReactElement {
 	const { systemSymbol, locationSymbol } = useParams();
@@ -23,7 +24,7 @@ export function ViewLocation(): ReactElement {
 
 	const symbol = mergeSymbols(systemSymbol, locationSymbol);
 
-	const { isLoading, isError, error, data } = useLocation(symbol);
+	const result = useLocation(symbol);
 
 	const getPanes = (location: ILocation): AtLeastOneTabPane => [
 		{
@@ -45,25 +46,28 @@ export function ViewLocation(): ReactElement {
 
 	const browserLocation = useBrowserLocation();
 
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : (
-		<>
-			<LocationBreadcrumb
-				systemSymbol={systemSymbol}
-				locationName={data.location.name}
-			/>
+	return (
+		<QueryResultHandler queryResult={result}>
+			{(data) => (
+				<>
+					<LocationBreadcrumb
+						systemSymbol={systemSymbol}
+						locationName={data.location.name}
+					/>
 
-			<h1>
-				<LocationName name={data.location.name} symbol={data.location.symbol} />
-			</h1>
+					<h1>
+						<LocationName
+							name={data.location.name}
+							symbol={data.location.symbol}
+						/>
+					</h1>
 
-			<Tabs
-				panes={getPanes(data.location)}
-				initialActiveTabKey={browserLocation.hash.substring(1)}
-			/>
-		</>
+					<Tabs
+						panes={getPanes(data.location)}
+						initialActiveTabKey={browserLocation.hash.substring(1)}
+					/>
+				</>
+			)}
+		</QueryResultHandler>
 	);
 }

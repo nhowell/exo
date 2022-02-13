@@ -1,22 +1,22 @@
 import { ReactElement } from "react";
-import { t } from "../../helpers/translate";
 import { Tag } from "../common/Tag";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
+import { QueryResultHandler } from "../common/QueryResultHandler";
 
 interface IOwnProps {
 	symbol: string;
 }
 
 export function System(props: IOwnProps): ReactElement {
-	const { isLoading, isError, error, data } = useSystemInfo(props.symbol);
+	const result = useSystemInfo(props.symbol);
 
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : (
-		<h3>
-			{data.system.name} <Tag text={data.system.symbol} />
-		</h3>
+	return (
+		<QueryResultHandler queryResult={result}>
+			{(data) => (
+				<h3>
+					{data.system.name} <Tag text={data.system.symbol} />
+				</h3>
+			)}
+		</QueryResultHandler>
 	);
 }

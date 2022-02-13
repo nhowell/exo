@@ -1,11 +1,15 @@
-import { ReactElement, useMemo } from "react";
+import { ReactElement } from "react";
 import { t } from "../../../helpers/translate";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
-import { IMarketplaceListing } from "../../../spacetraders-api/api/locations/types";
+import {
+	IGetMarketplaceAtLocationResponse,
+	IMarketplaceListing,
+} from "../../../spacetraders-api/api/locations/types";
 import { sortBy } from "lodash";
 import { useMarketplaceAtLocation } from "../../../spacetraders-api/hooks/locations/useMarketplaceAtLocation";
 import { titleCase } from "../../../helpers/titleCase";
+import { TransformedQueryResultHandler } from "../../common/TransformedQueryResultHandler";
 
 interface IOwnProps {
 	locationSymbol: string;
@@ -45,36 +49,37 @@ const marketplaceListingsColumnDefinitions: ITableColumnHeader<IMarketplaceListi
 	];
 
 export function LocationMarketplace(props: IOwnProps): ReactElement {
-	const { isLoading, isError, error, data } = useMarketplaceAtLocation(
-		props.locationSymbol,
-	);
+	const result = useMarketplaceAtLocation(props.locationSymbol);
 
-	const sortedListings = useMemo(() => {
-		if (data === undefined) {
-			return [];
-		}
-
-		return sortMarketplaceListings(data.marketplace);
-	}, [data]);
-
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : sortedListings.length === 0 ? (
-		<p>{t("No marketplace listings available.")}</p>
-	) : (
-		<Table<IMarketplaceListing>
-			keyField="symbol"
-			columnDefinitions={marketplaceListingsColumnDefinitions}
-			tableData={sortedListings}
-			striped
-		/>
+	return (
+		<TransformedQueryResultHandler
+			queryResult={result}
+			transformData={transformData}
+		>
+			{(sortedListings) =>
+				sortedListings.length === 0 ? (
+					<p>{t("No marketplace listings available.")}</p>
+				) : (
+					<Table<IMarketplaceListing>
+						keyField="symbol"
+						columnDefinitions={marketplaceListingsColumnDefinitions}
+						tableData={sortedListings}
+						striped
+					/>
+				)
+			}
+		</TransformedQueryResultHandler>
 	);
 }
 
+function transformData(
+	data: IGetMarketplaceAtLocationResponse,
+): IMarketplaceListing[] {
+	return sortMarketplaceListings(data.marketplace);
+}
+
 function sortMarketplaceListings(
-	marketplaceListings: readonly IMarketplaceListing[],
+	marketplaceListings: IMarketplaceListing[],
 ): IMarketplaceListing[] {
 	return sortBy(marketplaceListings, [(x) => x.symbol]);
 }

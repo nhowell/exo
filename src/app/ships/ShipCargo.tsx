@@ -26,6 +26,6 @@ export function ShipCargo(props: IOwnProps): ReactElement {
 	);
 }
 
-function sortCargo(cargo: readonly IShipCargo[]): IShipCargo[] {
+function sortCargo(cargo: IShipCargo[]): IShipCargo[] {
 	return sortBy(cargo, [(x) => x.good]);
 }

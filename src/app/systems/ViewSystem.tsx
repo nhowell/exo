@@ -4,6 +4,7 @@ import { Tabs } from "../../core/tabs/Tabs";
 import { AtLeastOneTabPane } from "../../core/tabs/types";
 import { t } from "../../helpers/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
+import { QueryResultHandler } from "../common/QueryResultHandler";
 import { Tag } from "../common/Tag";
 import { AvailableShips } from "./AvailableShips";
 import { SystemMap } from "./map/SystemMap";
@@ -24,13 +25,9 @@ export function ViewSystem(): ReactElement {
 		throw new Error("Missing 'systemSymbol' parameter.");
 	}
 
-	const { isLoading, isError, error, data } = useSystemInfo(systemSymbol);
+	const result = useSystemInfo(systemSymbol);
 
-	useAddVisitedSystem(
-		!isLoading && !isError && data !== undefined
-			? data.system.symbol
-			: undefined,
-	);
+	useAddVisitedSystem(result.data?.system.symbol);
 
 	const panes: AtLeastOneTabPane = [
 		{
@@ -52,19 +49,22 @@ export function ViewSystem(): ReactElement {
 
 	const location = useLocation();
 
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : (
-		<>
-			<SystemBreadcrumb systemName={data.system.name} />
+	return (
+		<QueryResultHandler queryResult={result}>
+			{(data) => (
+				<>
+					<SystemBreadcrumb systemName={data.system.name} />
 
-			<h1>
-				{data.system.name} <Tag text={systemSymbol} />
-			</h1>
+					<h1>
+						{data.system.name} <Tag text={systemSymbol} />
+					</h1>
 
-			<Tabs panes={panes} initialActiveTabKey={location.hash.substring(1)} />
-		</>
+					<Tabs
+						panes={panes}
+						initialActiveTabKey={location.hash.substring(1)}
+					/>
+				</>
+			)}
+		</QueryResultHandler>
 	);
 }

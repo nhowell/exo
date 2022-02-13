@@ -1,10 +1,14 @@
-import { ReactElement, useMemo } from "react";
+import { ReactElement } from "react";
 import { t } from "../../../helpers/translate";
 import { useDockedShipsAtLocation } from "../../../spacetraders-api/hooks/locations/useDockedShipsAtLocation";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
-import { IDockedShip } from "../../../spacetraders-api/api/locations/types";
+import {
+	IDockedShip,
+	IGetDockedShipsAtLocationResponse,
+} from "../../../spacetraders-api/api/locations/types";
 import { sortBy } from "lodash";
+import { TransformedQueryResultHandler } from "../../common/TransformedQueryResultHandler";
 
 interface IOwnProps {
 	locationSymbol: string;
@@ -22,34 +26,33 @@ const dockedShipsColumnDefinitions: ITableColumnHeader<IDockedShip>[] = [
 ];
 
 export function LocationDockedShips(props: IOwnProps): ReactElement {
-	const { isLoading, isError, error, data } = useDockedShipsAtLocation(
-		props.locationSymbol,
-	);
+	const result = useDockedShipsAtLocation(props.locationSymbol);
 
-	const sortedShips = useMemo(() => {
-		if (data === undefined) {
-			return [];
-		}
-
-		return sortShips(data.ships);
-	}, [data]);
-
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : sortedShips.length === 0 ? (
-		<p>{t("No ships are docked.")}</p>
-	) : (
-		<Table<IDockedShip>
-			keyField="shipId"
-			columnDefinitions={dockedShipsColumnDefinitions}
-			tableData={sortedShips}
-			striped
-		/>
+	return (
+		<TransformedQueryResultHandler
+			queryResult={result}
+			transformData={transformData}
+		>
+			{(ships) =>
+				ships.length === 0 ? (
+					<p>{t("No ships are docked.")}</p>
+				) : (
+					<Table<IDockedShip>
+						keyField="shipId"
+						columnDefinitions={dockedShipsColumnDefinitions}
+						tableData={ships}
+						striped
+					/>
+				)
+			}
+		</TransformedQueryResultHandler>
 	);
 }
 
-function sortShips(ships: readonly IDockedShip[]): IDockedShip[] {
+function transformData(data: IGetDockedShipsAtLocationResponse): IDockedShip[] {
+	return sortShips(data.ships);
+}
+
+function sortShips(ships: IDockedShip[]): IDockedShip[] {
 	return sortBy(ships, [(x) => x.username.toLowerCase(), (x) => x.shipType]);
 }

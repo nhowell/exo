@@ -12,6 +12,7 @@ import { ShipCargo } from "./ShipCargo";
 import { BuyGoods } from "./BuyGoods";
 import { SellGoods } from "./SellGoods";
 import { Travel } from "./Travel";
+import { QueryResultHandler } from "../common/QueryResultHandler";
 
 export function ViewShip(): ReactElement {
 	const { shipId } = useParams();
@@ -20,7 +21,7 @@ export function ViewShip(): ReactElement {
 		throw new Error("Missing 'shipId' parameter.");
 	}
 
-	const { isLoading, isError, error, data } = useMyShip(shipId);
+	const result = useMyShip(shipId);
 
 	const getPanes = (ship: IMyShip): AtLeastOneTabPane => [
 		{
@@ -64,31 +65,31 @@ export function ViewShip(): ReactElement {
 
 	const location = useLocation();
 
-	return isLoading ? (
-		<p>{t("Loading...")}</p>
-	) : isError || data === undefined ? (
-		<p>{t(error?.message ?? "Something went wrong.")}</p>
-	) : (
-		<>
-			<header>
-				<h1>
-					{data.ship.manufacturer} {data.ship.class}{" "}
-					<Tag text={data.ship.type} />
-				</h1>
-			</header>
+	return (
+		<QueryResultHandler queryResult={result}>
+			{(data) => (
+				<>
+					<header>
+						<h1>
+							{data.ship.manufacturer} {data.ship.class}{" "}
+							<Tag text={data.ship.type} />
+						</h1>
+					</header>
 
-			<p>
-				<ShipStatus
-					location={data.ship.location}
-					flightPlanId={data.ship.flightPlanId}
-				/>
-				.
-			</p>
+					<p>
+						<ShipStatus
+							location={data.ship.location}
+							flightPlanId={data.ship.flightPlanId}
+						/>
+						.
+					</p>
 
-			<Tabs
-				panes={getPanes(data.ship)}
-				initialActiveTabKey={location.hash.substring(1)}
-			/>
-		</>
+					<Tabs
+						panes={getPanes(data.ship)}
+						initialActiveTabKey={location.hash.substring(1)}
+					/>
+				</>
+			)}
+		</QueryResultHandler>
 	);
 }
