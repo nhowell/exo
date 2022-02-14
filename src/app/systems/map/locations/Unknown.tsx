@@ -1,12 +1,9 @@
-import { useFrame, Vector3 } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { ReactElement, useRef, useState } from "react";
 import { Mesh } from "three";
+import { ILocationProps } from "./types";
 
-interface IOwnProps {
-	position: Vector3;
-}
-
-export function Moon(props: IOwnProps): ReactElement {
+export function Unknown(props: ILocationProps): ReactElement {
 	// This reference will give us direct access to the mesh
 	const mesh = useRef<Mesh>(null!);
 
@@ -27,8 +24,8 @@ export function Moon(props: IOwnProps): ReactElement {
 			onPointerOver={() => setHover(true)}
 			onPointerOut={() => setHover(false)}
 		>
-			<sphereGeometry args={[0.3, 20, 15]} />
-			<meshStandardMaterial color={hovered ? "#dedede" : "#bfbfbf"} />
+			<sphereGeometry args={[1, 20, 15]} />
+			<meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
 		</mesh>
 	);
 }

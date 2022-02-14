@@ -1,12 +1,9 @@
-import { useFrame, Vector3 } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { ReactElement, useRef, useState } from "react";
 import { Mesh } from "three";
+import { ILocationProps } from "./types";
 
-interface IOwnProps {
-	position: Vector3;
-}
-
-export function Planet(props: IOwnProps): ReactElement {
+export function Asteroid(props: ILocationProps): ReactElement {
 	// This reference will give us direct access to the mesh
 	const mesh = useRef<Mesh>(null!);
 
@@ -27,8 +24,8 @@ export function Planet(props: IOwnProps): ReactElement {
 			onPointerOver={() => setHover(true)}
 			onPointerOut={() => setHover(false)}
 		>
-			<sphereGeometry args={[1, 20, 15]} />
-			<meshStandardMaterial color={hovered ? "#7db3ff" : "#4a95ff"} />
+			<sphereGeometry args={[0.2, 20, 15]} />
+			<meshStandardMaterial color={hovered ? "#b5a793" : "#7d705e"} />
 		</mesh>
 	);
 }

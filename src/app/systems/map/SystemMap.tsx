@@ -4,12 +4,12 @@ import { ReactElement } from "react";
 import { LocationType } from "../../../spacetraders-api/api/enums";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import { useLocationsInSystem } from "../../../spacetraders-api/hooks/systems/useLocationsInSystem";
-import { Sphere } from "./objects/Sphere";
-import { Planet } from "./objects/Planet";
-import { Moon } from "./objects/Moon";
-import { GasGiant } from "./objects/GasGiant";
-import { Asteroid } from "./objects/Asteroid";
-import { Wormhole } from "./objects/Wormhole";
+import { Unknown } from "./locations/Unknown";
+import { Planet } from "./locations/Planet";
+import { Moon } from "./locations/Moon";
+import { GasGiant } from "./locations/GasGiant";
+import { Asteroid } from "./locations/Asteroid";
+import { Wormhole } from "./locations/Wormhole";
 import { QueryResultHandler } from "../../common/QueryResultHandler";
 
 interface IOwnProps {
@@ -54,44 +54,34 @@ export function SystemMap(props: IOwnProps): ReactElement {
 }
 
 function renderLocation(location: ILocation) {
-	switch (location.type) {
+	const LocationComponent = getLocationTypeComponent(location.type);
+
+	return (
+		<LocationComponent
+			key={location.symbol}
+			position={[location.x, 0, -location.y]}
+		/>
+	);
+}
+
+function getLocationTypeComponent(locationType: LocationType) {
+	switch (locationType) {
 		case LocationType.Asteroid:
-			return (
-				<Asteroid
-					key={location.symbol}
-					position={[location.x, 0, -location.y]}
-				/>
-			);
+			return Asteroid;
 
 		case LocationType.GasGiant:
-			return (
-				<GasGiant
-					key={location.symbol}
-					position={[location.x, 0, -location.y]}
-				/>
-			);
+			return GasGiant;
 
 		case LocationType.Moon:
-			return (
-				<Moon key={location.symbol} position={[location.x, 0, -location.y]} />
-			);
+			return Moon;
 
 		case LocationType.Planet:
-			return (
-				<Planet key={location.symbol} position={[location.x, 0, -location.y]} />
-			);
+			return Planet;
 
 		case LocationType.Wormhole:
-			return (
-				<Wormhole
-					key={location.symbol}
-					position={[location.x, 0, -location.y]}
-				/>
-			);
+			return Wormhole;
 
 		default:
-			return (
-				<Sphere key={location.symbol} position={[location.x, 0, -location.y]} />
-			);
+			return Unknown;
 	}
 }

@@ -1,12 +1,9 @@
-import { useFrame, Vector3 } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { ReactElement, useRef, useState } from "react";
 import { Mesh } from "three";
+import { ILocationProps } from "./types";
 
-interface IOwnProps {
-	position: Vector3;
-}
-
-export function Wormhole(props: IOwnProps): ReactElement {
+export function Wormhole(props: ILocationProps): ReactElement {
 	// This reference will give us direct access to the mesh
 	const mesh = useRef<Mesh>(null!);
 
