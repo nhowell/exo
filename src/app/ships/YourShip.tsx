@@ -14,7 +14,7 @@ interface IOwnProps {
 	ship: IMyShip;
 }
 
-export const YourShip = memo(function (props: IOwnProps): ReactElement {
+function YourShip(props: IOwnProps): ReactElement {
 	return (
 		<NavLink
 			to={generateViewShipPath(props.ship.id)}
@@ -38,7 +38,10 @@ export const YourShip = memo(function (props: IOwnProps): ReactElement {
 			</div>
 		</NavLink>
 	);
-});
+}
+
+const YourShipMemoized = memo(YourShip);
+export { YourShipMemoized as YourShip };
 
 function cargo(ship: IMyShip): string {
 	const volumelessCargoCount = sum(
