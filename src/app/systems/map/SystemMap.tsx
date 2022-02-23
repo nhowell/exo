@@ -60,6 +60,8 @@ function renderLocation(location: ILocation) {
 		<LocationComponent
 			key={location.symbol}
 			position={[location.x, 0, -location.y]}
+			symbol={location.symbol}
+			name={location.name}
 		/>
 	);
 }

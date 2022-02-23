@@ -2,6 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { ReactElement, useRef, useState } from "react";
 import { Mesh } from "three";
 import { ILocationProps } from "./types";
+import { LocationLabel } from "./LocationLabel";
 
 export function Planet(props: ILocationProps): ReactElement {
 	// This reference will give us direct access to the mesh
@@ -14,18 +15,22 @@ export function Planet(props: ILocationProps): ReactElement {
 	// Subscribe this component to the render-loop, rotate the mesh every frame
 	useFrame(() => (mesh.current.rotation.y += 0.01));
 
+	const radius = 1;
+
 	// Return view, these are regular three.js elements expressed in JSX
 	return (
-		<mesh
-			{...props}
-			ref={mesh}
-			scale={active ? 1.2 : 1}
-			onClick={() => setActive(!active)}
-			onPointerOver={() => setHover(true)}
-			onPointerOut={() => setHover(false)}
-		>
-			<sphereGeometry args={[1, 20, 15]} />
-			<meshStandardMaterial color={hovered ? "#7db3ff" : "#4a95ff"} />
-		</mesh>
+		<group position={props.position}>
+			<mesh
+				ref={mesh}
+				scale={active ? 1.2 : 1}
+				onClick={() => setActive(!active)}
+				onPointerOver={() => setHover(true)}
+				onPointerOut={() => setHover(false)}
+			>
+				<sphereGeometry args={[radius, 20, 15]} />
+				<meshStandardMaterial color={hovered ? "#7db3ff" : "#4a95ff"} />
+			</mesh>
+			<LocationLabel radius={radius} symbol={props.symbol} name={props.name} />
+		</group>
 	);
 }
