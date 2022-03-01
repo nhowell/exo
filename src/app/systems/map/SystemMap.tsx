@@ -26,8 +26,7 @@ export function SystemMap(props: IOwnProps): ReactElement {
 					<PerspectiveCamera
 						makeDefault
 						zoom={1}
-						position={[0, 200, 0]}
-						rotation={[-Math.PI / 2, 0, 0]}
+						position={[0, 60, 190]}
 						far={100000}
 					/>
 					<color attach="background" args={["black"]} />

@@ -21,6 +21,11 @@ export const generateViewSystemPath = (systemSymbol: string) =>
 	generatePath(viewSystemPath, {
 		systemSymbol,
 	});
+export const viewSystemMapPath = "/systems/:systemSymbol/map";
+export const generateViewSystemMapPath = (systemSymbol: string) =>
+	generatePath(viewSystemMapPath, {
+		systemSymbol,
+	});
 const viewLocationPath = "/systems/:systemSymbol/locations/:locationSymbol";
 export const generateViewLocationPath = (symbol: string) => {
 	const symbolParts = splitSymbol(symbol);
