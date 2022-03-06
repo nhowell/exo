@@ -10,7 +10,6 @@ import { Moon } from "./locations/Moon";
 import { GasGiant } from "./locations/GasGiant";
 import { Asteroid } from "./locations/Asteroid";
 import { Wormhole } from "./locations/Wormhole";
-import { QueryResultHandler } from "../../common/QueryResultHandler";
 
 interface IOwnProps {
 	systemSymbol: string;
@@ -20,35 +19,32 @@ export function SystemMap(props: IOwnProps): ReactElement {
 	const result = useLocationsInSystem(props.systemSymbol);
 
 	return (
-		<QueryResultHandler queryResult={result}>
-			{(data) => (
-				<Canvas>
-					<PerspectiveCamera
-						makeDefault
-						zoom={1}
-						position={[0, 60, 190]}
-						far={100000}
-					/>
-					<color attach="background" args={["black"]} />
-					<polarGridHelper args={[120, 8, 12, 64, "#030712", "#030712"]} />
-					<ambientLight intensity={0.1} />
-					<pointLight position={[0, 0, 0]} />
-					<Stars
-						radius={10000}
-						depth={5000}
-						count={5000}
-						factor={150}
-						saturation={0.5}
-					/>
-					<MapControls
-						maxPolarAngle={Math.PI / 2}
-						minDistance={5}
-						maxDistance={300}
-					/>
-					{data.locations.map(renderLocation)}
-				</Canvas>
-			)}
-		</QueryResultHandler>
+		<Canvas>
+			<PerspectiveCamera
+				makeDefault
+				zoom={1}
+				position={[0, 60, 190]}
+				far={100000}
+			/>
+			<color attach="background" args={["black"]} />
+			<polarGridHelper args={[120, 8, 12, 64, "#030712", "#030712"]} />
+			<ambientLight intensity={0.1} />
+			<pointLight position={[0, 0, 0]} />
+			<Stars
+				radius={10000}
+				depth={5000}
+				count={5000}
+				factor={150}
+				saturation={0.5}
+			/>
+			<MapControls
+				maxPolarAngle={Math.PI / 2}
+				minDistance={5}
+				maxDistance={300}
+			/>
+
+			{result.data?.locations.map(renderLocation)}
+		</Canvas>
 	);
 }
 
