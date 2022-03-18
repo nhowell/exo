@@ -10,7 +10,13 @@ import {
 } from "./types";
 
 export class SystemsApiModule {
-	constructor(private api: SpaceTradersApi) {}
+	constructor(private api: SpaceTradersApi) {
+		this.getSystemInfo = this.getSystemInfo.bind(this);
+		this.getLocationsInSystem = this.getLocationsInSystem.bind(this);
+		this.getAvailableShipsInSystem = this.getAvailableShipsInSystem.bind(this);
+		this.getDockedShipsInSystem = this.getDockedShipsInSystem.bind(this);
+		this.getFlightPlansInSystem = this.getFlightPlansInSystem.bind(this);
+	}
 
 	getSystemInfo(systemSymbol: string): Promise<ISystemResponse> {
 		return this.api.get(this.getSystemPath(systemSymbol));

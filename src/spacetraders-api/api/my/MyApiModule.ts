@@ -21,6 +21,8 @@ export class MyApiModule {
 		this.orders = new MyOrdersApiModule(api, path);
 		this.ships = new MyShipsApiModule(api, path);
 		this.warpJumps = new MyWarpJumpsApiModule(api, path);
+
+		this.getAccountInfo = this.getAccountInfo.bind(this);
 	}
 
 	getAccountInfo(): Promise<IGetMyAccountInfoResponse> {

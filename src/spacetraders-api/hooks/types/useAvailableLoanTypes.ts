@@ -9,7 +9,7 @@ export function useAvailableLoanTypes() {
 
 	return useSpaceTradersQuery(
 		AVAILABLE_LOAN_TYPES_QUERY_KEY,
-		() => spaceTradersApi.types.getAvailableLoanTypes(),
+		spaceTradersApi.types.getAvailableLoanTypes,
 		{
 			cacheTime: Infinity,
 			staleTime: Infinity,

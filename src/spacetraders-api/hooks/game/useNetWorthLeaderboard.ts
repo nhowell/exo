@@ -7,7 +7,7 @@ export function useNetWorthLeaderboard() {
 
 	return useSpaceTradersQuery(
 		[GAME_QUERY_KEY, "leaderboard"],
-		() => spaceTradersApi.game.getNetWorthLeaderboard(),
+		spaceTradersApi.game.getNetWorthLeaderboard,
 		{
 			staleTime: 600_000, // 10 minutes
 		},

@@ -8,8 +8,9 @@ import produce from "immer";
 export function useMyLoans() {
 	const spaceTradersApi = useSpaceTradersApi();
 
-	return useSpaceTradersQuery(MY_LOANS_QUERY_KEY, () =>
-		spaceTradersApi.my.loans.getLoans(),
+	return useSpaceTradersQuery(
+		MY_LOANS_QUERY_KEY,
+		spaceTradersApi.my.loans.getLoans,
 	);
 }
 

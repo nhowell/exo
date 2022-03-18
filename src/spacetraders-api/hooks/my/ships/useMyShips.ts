@@ -12,7 +12,7 @@ export function useMyShips() {
 
 	return useSpaceTradersQuery(
 		MY_SHIPS_QUERY_KEY,
-		() => spaceTradersApi.my.ships.getShips(),
+		spaceTradersApi.my.ships.getShips,
 		{
 			onSuccess: (data) => updateRelatedQueryData(data.ships),
 		},

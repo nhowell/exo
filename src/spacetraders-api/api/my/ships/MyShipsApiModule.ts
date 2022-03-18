@@ -12,7 +12,16 @@ import {
 } from "./types";
 
 export class MyShipsApiModule {
-	constructor(private api: SpaceTradersApi, private basePath: string) {}
+	constructor(private api: SpaceTradersApi, private basePath: string) {
+		this.purchaseShip = this.purchaseShip.bind(this);
+		this.getShips = this.getShips.bind(this);
+		this.getShip = this.getShip.bind(this);
+		this.transferCargo = this.transferCargo.bind(this);
+		this.jettisonCargo = this.jettisonCargo.bind(this);
+		this.scrapShip = this.scrapShip.bind(this);
+		this.getMyShipsPath = this.getMyShipsPath.bind(this);
+		this.getMyShipsPath = this.getMyShipsPath.bind(this);
+	}
 
 	purchaseShip(request: IPurchaseShipRequest): Promise<IPurchaseShipResponse> {
 		return this.api.post(this.getMyShipsPath(), request);

@@ -9,7 +9,7 @@ export function useGoodTypes() {
 
 	return useSpaceTradersQuery(
 		GOOD_TYPES_QUERY_KEY,
-		() => spaceTradersApi.types.getGoodTypes(),
+		spaceTradersApi.types.getGoodTypes,
 		{
 			cacheTime: Infinity,
 			staleTime: Infinity,

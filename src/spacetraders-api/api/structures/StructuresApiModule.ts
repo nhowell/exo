@@ -6,7 +6,10 @@ import {
 } from "./types";
 
 export class StructuresApiModule {
-	constructor(private api: SpaceTradersApi) {}
+	constructor(private api: SpaceTradersApi) {
+		this.getStructure = this.getStructure.bind(this);
+		this.depositGoodsToStructure = this.depositGoodsToStructure.bind(this);
+	}
 
 	getStructure(structureId: string): Promise<IGetStructureResponse> {
 		return this.api.get(this.getStructurePath(structureId));

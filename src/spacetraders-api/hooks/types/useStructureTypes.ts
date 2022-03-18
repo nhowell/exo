@@ -9,7 +9,7 @@ export function useStructureTypes() {
 
 	return useSpaceTradersQuery(
 		STRUCTURE_TYPES_QUERY_KEY,
-		() => spaceTradersApi.types.getStructureTypes(),
+		spaceTradersApi.types.getStructureTypes,
 		{
 			cacheTime: Infinity,
 			staleTime: Infinity,

@@ -9,7 +9,12 @@ import {
 const path = "/types";
 
 export class TypesApiModule {
-	constructor(private api: SpaceTradersApi) {}
+	constructor(private api: SpaceTradersApi) {
+		this.getAvailableLoanTypes = this.getAvailableLoanTypes.bind(this);
+		this.getGoodTypes = this.getGoodTypes.bind(this);
+		this.getShipTypes = this.getShipTypes.bind(this);
+		this.getStructureTypes = this.getStructureTypes.bind(this);
+	}
 
 	getAvailableLoanTypes(): Promise<IGetAvailableLoanTypesResponse> {
 		return this.api.get(`${path}/loans`);

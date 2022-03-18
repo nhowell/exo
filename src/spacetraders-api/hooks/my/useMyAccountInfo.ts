@@ -11,8 +11,9 @@ const MY_ACCOUNT_QUERY_KEY = [MY_QUERY_KEY, "account"];
 export function useMyAccountInfo() {
 	const spaceTradersApi = useSpaceTradersApi();
 
-	return useSpaceTradersQuery(MY_ACCOUNT_QUERY_KEY, () =>
-		spaceTradersApi.my.getAccountInfo(),
+	return useSpaceTradersQuery(
+		MY_ACCOUNT_QUERY_KEY,
+		spaceTradersApi.my.getAccountInfo,
 	);
 }
 

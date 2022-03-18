@@ -2,7 +2,10 @@ import { SpaceTradersApi } from "../..";
 import { IAttemptWarpJumpResponse } from "./types";
 
 export class MyWarpJumpsApiModule {
-	constructor(private api: SpaceTradersApi, private basePath: string) {}
+	constructor(private api: SpaceTradersApi, private basePath: string) {
+		this.attemptWarpJump = this.attemptWarpJump.bind(this);
+		this.getMyWarpJumpsPath = this.getMyWarpJumpsPath.bind(this);
+	}
 
 	attemptWarpJump(shipId: string): Promise<IAttemptWarpJumpResponse> {
 		return this.api.post(this.getMyWarpJumpsPath(), { shipId });

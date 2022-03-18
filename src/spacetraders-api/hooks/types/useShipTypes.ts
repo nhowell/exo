@@ -9,7 +9,7 @@ export function useShipTypes() {
 
 	return useSpaceTradersQuery(
 		SHIP_TYPES_QUERY_KEY,
-		() => spaceTradersApi.types.getShipTypes(),
+		spaceTradersApi.types.getShipTypes,
 		{
 			cacheTime: Infinity,
 			staleTime: Infinity,
