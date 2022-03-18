@@ -154,6 +154,13 @@ export class SpaceTradersApi {
 		this.structures = new StructuresApiModule(this);
 		this.systems = new SystemsApiModule(this);
 		this.types = new TypesApiModule(this);
+
+		this.get = this.get.bind(this);
+		this.post = this.post.bind(this);
+		this.put = this.put.bind(this);
+		this.delete = this.delete.bind(this);
+		this.getLimiter = this.getLimiter.bind(this);
+		this.getAuthorizationHeader = this.getAuthorizationHeader.bind(this);
 	}
 
 	/**
