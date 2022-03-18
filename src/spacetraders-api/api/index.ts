@@ -25,7 +25,7 @@ interface ApiOptions {
 
 interface LimiterOptions {
 	/**
-	 * Initial reservior value. How many jobs can be executed before the limiter
+	 * Initial reservoir value. How many jobs can be executed before the limiter
 	 * stops executing jobs. If reservoir reaches 0, no jobs will be executed
 	 * until it is no longer 0. New jobs will still be queued up.
 	 */
@@ -84,7 +84,7 @@ const defaultLimiterOptions: LimiterOptions = {
 	reservoirIncreaseInterval: 1_000,
 	reservoirIncreaseAmount: 2,
 	reservoirIncreaseMaximum: 8,
-	// We'll put a small delay betweem each request so we don't overload the
+	// We'll put a small delay between each request so we don't overload the
 	// server with a bunch of requests all at the same moment.
 	minTime: 100,
 };
