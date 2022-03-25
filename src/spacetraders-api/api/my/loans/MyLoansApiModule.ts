@@ -11,7 +11,6 @@ export class MyLoansApiModule {
 		this.acceptLoan = this.acceptLoan.bind(this);
 		this.getLoans = this.getLoans.bind(this);
 		this.payOffLoan = this.payOffLoan.bind(this);
-		this.getMyLoansPath = this.getMyLoansPath.bind(this);
 	}
 
 	acceptLoan(type: LoanType): Promise<IAcceptLoanResponse> {

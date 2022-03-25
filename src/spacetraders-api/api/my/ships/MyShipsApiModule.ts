@@ -19,8 +19,6 @@ export class MyShipsApiModule {
 		this.transferCargo = this.transferCargo.bind(this);
 		this.jettisonCargo = this.jettisonCargo.bind(this);
 		this.scrapShip = this.scrapShip.bind(this);
-		this.getMyShipsPath = this.getMyShipsPath.bind(this);
-		this.getMyShipsPath = this.getMyShipsPath.bind(this);
 	}
 
 	purchaseShip(request: IPurchaseShipRequest): Promise<IPurchaseShipResponse> {
