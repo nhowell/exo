@@ -6,11 +6,24 @@ import { IShipType } from "../../spacetraders-api/api/types/types";
 
 interface IOwnProps {
 	ship: IShipType;
+	detailed?: boolean;
 }
 
 export function ShipAttributes(props: IOwnProps): ReactElement {
 	return (
 		<dl>
+			{props.detailed && (
+				<>
+					<div>
+						<dt>{t("Manufacturer")}:</dt>
+						<dd>{props.ship.manufacturer}</dd>
+					</div>
+					<div>
+						<dt>{t("Class")}:</dt>
+						<dd>{props.ship.class}</dd>
+					</div>
+				</>
+			)}
 			<div>
 				<dt>{t("Speed")}:</dt>
 				<dd>{numberFormat(props.ship.speed)}</dd>
@@ -29,14 +42,6 @@ export function ShipAttributes(props: IOwnProps): ReactElement {
 					<dd>{props.ship.restrictedGoods.map(titleCase).map(t).join(", ")}</dd>
 				</div>
 			)}
-			<div>
-				<dt>{t("Weapons")}:</dt>
-				<dd>{numberFormat(props.ship.weapons)}</dd>
-			</div>
-			<div>
-				<dt>{t("Plating")}:</dt>
-				<dd>{numberFormat(props.ship.plating)}</dd>
-			</div>
 		</dl>
 	);
 }

@@ -11,7 +11,7 @@ export function ShipInfo(props: IOwnProps): ReactElement {
 	return (
 		<section className={styles.attributes}>
 			<h2>Attributes</h2>
-			<ShipAttributes ship={props.ship} />
+			<ShipAttributes ship={props.ship} detailed />
 		</section>
 	);
 }
