@@ -9,12 +9,15 @@ import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
 import { Good } from "../../spacetraders-api/api/enums";
 import classNames from "classnames";
+import { useShipName } from "./useShipName";
 
 interface IOwnProps {
 	ship: IMyShip;
 }
 
 function YourShip(props: IOwnProps): ReactElement {
+	const shipName = useShipName(props.ship.id);
+
 	return (
 		<NavLink
 			to={generateViewShipPath(props.ship.id)}
@@ -23,9 +26,11 @@ function YourShip(props: IOwnProps): ReactElement {
 			}
 		>
 			<div>
-				<span className={commonStyles.noWrap}>{props.ship.type}</span>
+				<span className={commonStyles.noWrap}>
+					<strong>{shipName}</strong>
+				</span>
 				<br />
-				<strong>{t("Speed")}:</strong> {props.ship.speed}
+				{props.ship.type}
 			</div>
 			<div>
 				<ShipStatus
@@ -33,7 +38,10 @@ function YourShip(props: IOwnProps): ReactElement {
 					flightPlanId={props.ship.flightPlanId}
 				/>
 				<br />
-				<strong>{t("Fuel")}:</strong> {fuel(props.ship.cargo)}{" "}
+				<strong>{t("Speed")}:</strong> {props.ship.speed}
+				{", "}
+				<strong>{t("Fuel")}:</strong> {fuel(props.ship.cargo)}
+				{", "}
 				<strong>{t("Cargo")}:</strong> {cargo(props.ship)}
 			</div>
 		</NavLink>

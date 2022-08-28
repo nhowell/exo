@@ -13,6 +13,7 @@ import { BuyGoods } from "./BuyGoods";
 import { SellGoods } from "./SellGoods";
 import { Travel } from "./Travel";
 import { QueryResultHandler } from "../common/QueryResultHandler";
+import { useShipName } from "./useShipName";
 
 export function ViewShip(): ReactElement {
 	const { shipId } = useParams();
@@ -65,14 +66,15 @@ export function ViewShip(): ReactElement {
 
 	const location = useLocation();
 
+	const shipName = useShipName(shipId);
+
 	return (
 		<QueryResultHandler queryResult={result}>
 			{(data) => (
 				<>
 					<header>
 						<h1>
-							{data.ship.manufacturer} {data.ship.class}{" "}
-							<Tag text={data.ship.type} />
+							{shipName} <Tag text={data.ship.type} />
 						</h1>
 					</header>
 
