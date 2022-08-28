@@ -27,7 +27,7 @@ export function SystemMap(props: IOwnProps): ReactElement {
 				far={100000}
 			/>
 			<color attach="background" args={["black"]} />
-			<polarGridHelper args={[120, 8, 12, 64, "#030712", "#030712"]} />
+			<polarGridHelper args={[120, 8, 12, 64, 0x101f48, 0x101f48]} />
 			<ambientLight intensity={0.1} />
 			<pointLight position={[0, 0, 0]} />
 			<Stars
