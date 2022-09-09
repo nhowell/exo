@@ -21,6 +21,8 @@ export interface IGetMyShipResponse {
 
 export interface IMyDockedShip extends IMyShip {
 	location: string;
+	x: number;
+	y: number;
 }
 
 export function isDocked(ship: IMyShip): ship is IMyDockedShip {
@@ -39,9 +41,8 @@ export interface IMyShip extends IShipType {
 	id: string;
 	cargo: IShipCargo[];
 	spaceAvailable: number;
-	loadingSpeed: number;
-	x: number;
-	y: number;
+	x?: number;
+	y?: number;
 	location?: string;
 	flightPlanId?: string;
 }
