@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
+import { ErrorMessage, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement, useCallback } from "react";
 import { splitSymbol } from "../../helpers/splitSymbol";
 import { t } from "../../helpers/translate";
@@ -6,9 +6,9 @@ import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { useSubmitFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useSubmitFlightPlan";
 import { useLocationsInSystem } from "../../spacetraders-api/hooks/systems/useLocationsInSystem";
 import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";
-import { Tag } from "../common/Tag";
 import { ISystemLocationsResponse } from "../../spacetraders-api/api/systems/types";
 import { ILocation } from "../../spacetraders-api/api/locations/types";
+import { Destination } from "./Destination";
 
 interface IOwnProps {
 	ship: IMyDockedShip;
@@ -60,13 +60,19 @@ export function Travel(props: IOwnProps): ReactElement {
 		);
 	};
 
+	const origin = result.data?.locations.find(
+		(x) => x.symbol === props.ship.location,
+	);
+
 	return (
 		<TransformedQueryResultHandler
 			queryResult={result}
 			transformData={transformData}
 		>
 			{(destinations) =>
-				destinations.length === 0 ? (
+				origin === undefined ? (
+					<p>{t("Origin could not be determined.")}</p>
+				) : destinations.length === 0 ? (
 					<p>{t("No travel destinations available.")}</p>
 				) : (
 					<>
@@ -80,19 +86,12 @@ export function Travel(props: IOwnProps): ReactElement {
 									<div>
 										{destinations.map((destination) => {
 											return (
-												<label key={destination.symbol}>
-													<Field
-														type="radio"
-														name="destination"
-														value={destination.symbol}
-														validate={(value: string | null) => {
-															if (value === null) {
-																return t("Please choose a destination.");
-															}
-														}}
-													/>
-													{destination.name} <Tag text={destination.symbol} />
-												</label>
+												<Destination
+													key={destination.symbol}
+													ship={props.ship}
+													origin={origin}
+													destination={destination}
+												/>
 											);
 										})}
 										<ErrorMessage name="destination" component="div" />

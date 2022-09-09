@@ -5,9 +5,15 @@ import { calculateFlightSeconds } from "./calculateFlightSeconds";
 
 export function calculateFlightSecondsForFlightPlan(
 	ship: IMyDockedShip,
-	location: ILocation,
+	origin: ILocation,
+	destination: ILocation,
 ) {
-	const distance = calculateDistance(ship.x, ship.y, location.x, location.y);
+	const distance = calculateDistance(
+		origin.x,
+		origin.y,
+		destination.x,
+		destination.y,
+	);
 
 	return calculateFlightSeconds(distance, ship.speed);
 }
