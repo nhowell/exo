@@ -135,6 +135,7 @@ function setGoodQuantity(ship: IMyShip, good: Good, quantity: number): IMyShip {
 
 			if (quantity > 0) {
 				draft.cargo[existingGoodIndex].quantity = quantity;
+				draft.cargo[existingGoodIndex].totalVolume = quantity * volumePerUnit;
 			} else {
 				draft.cargo.splice(existingGoodIndex, 1);
 			}
