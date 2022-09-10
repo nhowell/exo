@@ -40,7 +40,7 @@ function getFuelEfficiency(shipType: ShipType): number {
 }
 
 function getDockingEfficiency(shipType: ShipType): number {
-	const dockingEfficiency = shipFuelEfficiencies.get(shipType);
+	const dockingEfficiency = shipDockingEfficiencies.get(shipType);
 
 	if (dockingEfficiency === undefined) {
 		// If we fail to find the docking efficiency for the given ship type, then
