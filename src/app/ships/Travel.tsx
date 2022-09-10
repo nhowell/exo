@@ -9,6 +9,9 @@ import { TransformedQueryResultHandler } from "../common/TransformedQueryResultH
 import { ISystemLocationsResponse } from "../../spacetraders-api/api/systems/types";
 import { ILocation } from "../../spacetraders-api/api/locations/types";
 import { Destination } from "./Destination";
+import { useAttemptWarpJump } from "../../spacetraders-api/hooks/my/warp-jumps/useAttemptWarpJump";
+import { LocationMessages } from "../systems/locations/LocationMessages";
+import { LocationType } from "../../spacetraders-api/api/enums";
 
 interface IOwnProps {
 	ship: IMyDockedShip;
@@ -23,6 +26,12 @@ const initialValues: ISubmitFlightPlanForm = {
 };
 
 export function Travel(props: IOwnProps): ReactElement {
+	const attemptWarpJump = useAttemptWarpJump();
+
+	const handleWarpJumpClick = () => {
+		attemptWarpJump.mutate(props.ship.id);
+	};
+
 	const systemSymbol = splitSymbol(props.ship.location).systemSymbol;
 
 	const result = useLocationsInSystem(systemSymbol);
@@ -64,54 +73,67 @@ export function Travel(props: IOwnProps): ReactElement {
 		(x) => x.symbol === props.ship.location,
 	);
 
+	if (origin === undefined) {
+		return <p>{t("Origin could not be determined.")}</p>;
+	}
+
 	return (
-		<TransformedQueryResultHandler
-			queryResult={result}
-			transformData={transformData}
-		>
-			{(destinations) =>
-				origin === undefined ? (
-					<p>{t("Origin could not be determined.")}</p>
-				) : destinations.length === 0 ? (
-					<p>{t("No travel destinations available.")}</p>
-				) : (
-					<>
-						<h3>{t("Destinations")}</h3>
-						<Formik<ISubmitFlightPlanForm>
-							initialValues={initialValues}
-							onSubmit={handleSubmit}
-						>
-							{({ isSubmitting }) => (
-								<Form>
-									<div>
-										{destinations.map((destination) => {
-											return (
-												<Destination
-													key={destination.symbol}
-													ship={props.ship}
-													origin={origin}
-													destination={destination}
-												/>
-											);
-										})}
-										<ErrorMessage name="destination" component="div" />
-									</div>
+		<>
+			<LocationMessages location={origin} />
+			{origin.type === LocationType.Wormhole && (
+				<>
+					<button type="button" onClick={handleWarpJumpClick}>
+						{t("Attempt warp jump")}
+					</button>
+					{attemptWarpJump.isError && <p>{attemptWarpJump.error.message}</p>}
+				</>
+			)}
+			<TransformedQueryResultHandler
+				queryResult={result}
+				transformData={transformData}
+			>
+				{(destinations) =>
+					destinations.length === 0 ? (
+						<p>{t("No travel destinations available.")}</p>
+					) : (
+						<>
+							<h3>{t("Destinations")}</h3>
+							<Formik<ISubmitFlightPlanForm>
+								initialValues={initialValues}
+								onSubmit={handleSubmit}
+							>
+								{({ isSubmitting }) => (
+									<Form>
+										<div>
+											{destinations.map((destination) => {
+												return (
+													<Destination
+														key={destination.symbol}
+														ship={props.ship}
+														origin={origin}
+														destination={destination}
+													/>
+												);
+											})}
+											<ErrorMessage name="destination" component="div" />
+										</div>
 
-									{submitFlightPlan.error ? (
-										<div>{t(submitFlightPlan.error.message)}</div>
-									) : undefined}
+										{submitFlightPlan.error ? (
+											<div>{t(submitFlightPlan.error.message)}</div>
+										) : undefined}
 
-									<div>
-										<button type="submit" disabled={isSubmitting}>
-											{t("Submit flight plan")}
-										</button>
-									</div>
-								</Form>
-							)}
-						</Formik>
-					</>
-				)
-			}
-		</TransformedQueryResultHandler>
+										<div>
+											<button type="submit" disabled={isSubmitting}>
+												{t("Submit flight plan")}
+											</button>
+										</div>
+									</Form>
+								)}
+							</Formik>
+						</>
+					)
+				}
+			</TransformedQueryResultHandler>
+		</>
 	);
 }
