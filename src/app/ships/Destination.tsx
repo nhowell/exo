@@ -1,6 +1,7 @@
 import { Field } from "formik";
 import { ReactElement } from "react";
 import { calculateFlightSecondsForFlightPlan } from "../../helpers/calculateFlightSecondsForFlightPlan";
+import { calculateFuelCostForFlightPlan } from "../../helpers/calculateFuelCostForFlightPlan";
 import { durationFormat } from "../../helpers/durationFormat";
 import { t } from "../../helpers/translate";
 import { ILocation } from "../../spacetraders-api/api/locations/types";
@@ -20,6 +21,12 @@ export function Destination(props: IOwnProps): ReactElement {
 		props.destination,
 	);
 
+	const fuelCost = calculateFuelCostForFlightPlan(
+		props.ship,
+		props.origin,
+		props.destination,
+	);
+
 	return (
 		<label>
 			<Field
@@ -33,7 +40,10 @@ export function Destination(props: IOwnProps): ReactElement {
 				}}
 			/>
 			{props.destination.name} <Tag text={props.destination.symbol} />{" "}
-			<small>{durationFormat(duration)}</small>
+			<small>
+				{t("Fuel:")} {fuelCost}
+			</small>
+			, <small>{durationFormat(duration)}</small>
 		</label>
 	);
 }

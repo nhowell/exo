@@ -62,6 +62,27 @@ export enum LocationType {
 	Wormhole = "WORMHOLE",
 }
 
+export enum ShipType {
+	JackshawI = "JW-MK-I",
+	JackshawII = "JW-MK-II",
+	ZetraII = "ZA-MK-II",
+	ZetraIII = "ZA-MK-III",
+	GravagerI = "GR-MK-I",
+	GravagerII = "GR-MK-II",
+	GravagerIII = "GR-MK-III",
+	ElectrumI = "EM-MK-I",
+	ElectrumII = "EM-MK-II", // Not actually sold anywhere
+	ElectrumIII = "EM-MK-III",
+	ElectrumIV = "EM-MK-IV",
+	HermesI = "HM-MK-I",
+	HermesII = "HM-MK-II", // Not actually sold anywhere
+	HermesIII = "HM-MK-III",
+	TiddalikI = "TD-MK-I",
+	DradesI = "DR-MK-I",
+	ZatashiI = "ZT-MK-I",
+	ZatashiII = "ZT-MK-II",
+}
+
 export enum ShipClass {
 	MKI = "MK-I",
 	MKII = "MK-II",

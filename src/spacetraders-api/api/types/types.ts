@@ -5,6 +5,7 @@ import {
 	LocationTrait,
 	ShipClass,
 	StructureType,
+	ShipType,
 } from "../enums";
 
 export interface IGetAvailableLoanTypesResponse {
@@ -34,7 +35,7 @@ export interface IGetShipTypesResponse {
 }
 
 export interface IShipType {
-	type: string;
+	type: ShipType;
 	class: ShipClass;
 	maxCargo: number;
 	loadingSpeed: number;
