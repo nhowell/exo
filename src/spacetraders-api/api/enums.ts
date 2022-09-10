@@ -47,7 +47,7 @@ export enum LocationTrait {
 	SomeMetalOres = "SOME_METAL_ORES",
 	SomeNaturalChemicals = "SOME_NATURAL_CHEMICALS",
 	SomeRareMetalOres = "SOME_RARE_METAL_ORES",
-	SomeTechnilogicalRuins = "SOME_TECHNOLOGICAL_RUINS",
+	SomeTechnologicalRuins = "SOME_TECHNOLOGICAL_RUINS",
 	RareMetalOres = "RARE_METAL_ORES",
 	TechnologicalRuins = "TECHNOLOGICAL_RUINS",
 }
