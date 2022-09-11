@@ -74,6 +74,7 @@ export function JettisonCargo(props: IOwnProps): ReactElement {
 							name="quantity"
 							min={0}
 							max={maxQuantity}
+							pattern="[0-9]*"
 							validate={(value: string) => {
 								if (!value) {
 									return t("Quantity is required.");

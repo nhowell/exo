@@ -72,8 +72,6 @@ export function DepositGoods(props: IOwnProps): ReactElement {
 			.filter(isDocked)
 			.filter((x) => x.location === props.locationSymbol) ?? [];
 
-	// const maxQuantity = props.cargoItem.quantity;
-
 	return (
 		<Formik<IDepositGoodsForm>
 			initialValues={initialValues}
@@ -126,22 +124,13 @@ export function DepositGoods(props: IOwnProps): ReactElement {
 					</div>
 
 					<div>
-						<label htmlFor="quantity">
-							{t("Quantity")}{" "}
-							{/* <small>
-								<LinkButton
-									onClick={() => setFieldValue("quantity", maxQuantity)}
-								>
-									{t("Max")}
-								</LinkButton>
-							</small> */}
-						</label>
+						<label htmlFor="quantity">{t("Quantity")}</label>
 						<Field
 							type="number"
 							id="quantity"
 							name="quantity"
 							min={0}
-							// max={maxQuantity}
+							pattern="[0-9]*"
 							validate={(value: string) => {
 								if (!value) {
 									return t("Quantity is required.");
