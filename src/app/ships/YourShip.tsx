@@ -33,10 +33,7 @@ function YourShip(props: IOwnProps): ReactElement {
 				{props.ship.type}
 			</div>
 			<div>
-				<ShipStatus
-					location={props.ship.location}
-					flightPlanId={props.ship.flightPlanId}
-				/>
+				<ShipStatus ship={props.ship} locationAsLink={false} />
 				<br />
 				<strong>{t("Speed")}:</strong> {props.ship.speed}
 				{", "}

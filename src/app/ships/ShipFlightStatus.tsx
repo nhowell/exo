@@ -4,9 +4,11 @@ import { useMyFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/us
 import { t } from "../../helpers/translate";
 import commonStyles from "../common/common.module.css";
 import { QueryResultHandler } from "../common/QueryResultHandler";
+import { LocationSymbol } from "../systems/locations/LocationSymbol";
 
 interface IOwnProps {
 	flightPlanId: string;
+	locationAsLink: boolean;
 }
 
 export function ShipFlightStatus(props: IOwnProps): ReactElement {
@@ -25,13 +27,15 @@ export function ShipFlightStatus(props: IOwnProps): ReactElement {
 				) : (
 					<>
 						{t("In transit from")}{" "}
-						<span className={commonStyles.noWrap}>
-							{data.flightPlan.departure}
-						</span>{" "}
+						<LocationSymbol
+							locationSymbol={data.flightPlan.departure}
+							asLink={props.locationAsLink}
+						/>{" "}
 						{t("to")}{" "}
-						<span className={commonStyles.noWrap}>
-							{data.flightPlan.destination}
-						</span>{" "}
+						<LocationSymbol
+							locationSymbol={data.flightPlan.destination}
+							asLink={props.locationAsLink}
+						/>{" "}
 						- <TimeRemaining until={data.flightPlan.arrivesAt} />
 					</>
 				)

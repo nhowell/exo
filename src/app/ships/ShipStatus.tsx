@@ -1,23 +1,36 @@
 import { ReactElement } from "react";
 import { t } from "../../helpers/translate";
 import { ShipFlightStatus } from "./ShipFlightStatus";
-import commonStyles from "../common/common.module.css";
+import {
+	IMyShip,
+	isDocked,
+	isInFlight,
+} from "../../spacetraders-api/api/my/ships/types";
+import { LocationSymbol } from "../systems/locations/LocationSymbol";
 
 interface IOwnProps {
-	location: string | undefined;
-	flightPlanId: string | undefined;
+	ship: IMyShip;
+	locationAsLink: boolean;
 }
 
 export function ShipStatus(props: IOwnProps): ReactElement {
-	if (props.location !== undefined) {
+	if (isDocked(props.ship)) {
 		return (
 			<>
 				{t("Docked at")}{" "}
-				<span className={commonStyles.noWrap}>{props.location}</span>
+				<LocationSymbol
+					locationSymbol={props.ship.location}
+					asLink={props.locationAsLink}
+				/>
 			</>
 		);
-	} else if (props.flightPlanId !== undefined) {
-		return <ShipFlightStatus flightPlanId={props.flightPlanId} />;
+	} else if (isInFlight(props.ship)) {
+		return (
+			<ShipFlightStatus
+				flightPlanId={props.ship.flightPlanId}
+				locationAsLink={props.locationAsLink}
+			/>
+		);
 	}
 
 	return <>{t("Unknown")}</>;

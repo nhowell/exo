@@ -79,11 +79,7 @@ export function ViewShip(): ReactElement {
 					</header>
 
 					<p>
-						<ShipStatus
-							location={data.ship.location}
-							flightPlanId={data.ship.flightPlanId}
-						/>
-						.
+						<ShipStatus ship={data.ship} locationAsLink />.
 					</p>
 
 					<Tabs
