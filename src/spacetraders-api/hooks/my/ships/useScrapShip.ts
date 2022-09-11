@@ -1,7 +1,7 @@
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
 import { adjustCreditsQueryData } from "../useMyAccountInfo";
-import { removeShipFromShipsQueryData } from "./useMyShips";
+import { removeShipQueryData } from "./useMyShip";
 
 export function useScrapShip() {
 	const spaceTradersApi = useSpaceTradersApi();
@@ -16,7 +16,7 @@ export function useScrapShip() {
 
 				// Since scrapping a ship deletes the ship, we can update
 				// the ships query to prevent an extra query.
-				removeShipFromShipsQueryData(shipId);
+				removeShipQueryData(shipId);
 			},
 		},
 	);

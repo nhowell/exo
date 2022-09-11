@@ -1,7 +1,10 @@
 import { produce } from "immer";
 import { myShipQueryKey } from ".";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
-import { setShipInShipsQueryData } from "./useMyShips";
+import {
+	removeShipFromShipsQueryData,
+	setShipInShipsQueryData,
+} from "./useMyShips";
 import { IGetMyShipResponse, IMyShip } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
@@ -153,4 +156,10 @@ export function setShipQueryDataForAllShips(ships: IMyShip[]) {
 // so we want to keep them in sync.
 function updateRelatedQueryData(ship: IMyShip) {
 	setShipInShipsQueryData(ship);
+}
+
+export function removeShipQueryData(shipId: string) {
+	spaceTradersQueryClient.removeQueries(myShipQueryKey(shipId));
+
+	removeShipFromShipsQueryData(shipId);
 }

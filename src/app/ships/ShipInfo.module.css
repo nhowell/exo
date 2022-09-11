@@ -1,3 +1,7 @@
 .attributes {
 	display: inline-block;
 }
+
+section + .scrapShip {
+	margin-top: 3rem;
+}
