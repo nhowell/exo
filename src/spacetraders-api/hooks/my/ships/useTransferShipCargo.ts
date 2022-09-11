@@ -13,8 +13,9 @@ export function useTransferShipCargo(fromShipId: string) {
 			onSuccess: (data) => {
 				// Since transferring cargo returns both ships, we can update
 				// the ship query with the new data to prevent extra queries.
-				setShipQueryData(data.fromShip);
-				setShipQueryData(data.toShip);
+				// Note: Some of the fields are missing, so we'll do a merge of the data.
+				setShipQueryData(data.fromShip, true, true);
+				setShipQueryData(data.toShip, true, true);
 			},
 		},
 	);

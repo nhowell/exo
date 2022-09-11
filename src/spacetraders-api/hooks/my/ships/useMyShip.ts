@@ -32,11 +32,18 @@ function getShipQueryData(shipId: string) {
 export function setShipQueryData(
 	ship: IMyShip,
 	shouldUpdateShipsQueryData = true,
+	mergeShipData = false,
 ) {
 	const data = getShipQueryData(ship.id);
 
 	if (data !== undefined && isEqual(data.ship, ship)) {
 		return;
+	}
+
+	if (mergeShipData && data !== undefined) {
+		ship = produce(data.ship, (draft) => {
+			return { ...draft, ...ship };
+		});
 	}
 
 	spaceTradersQueryClient.setQueryData<IGetMyShipResponse>(

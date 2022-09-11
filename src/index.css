@@ -148,15 +148,12 @@ textarea {
 	padding: 0.6rem 0.6rem;
 }
 
-select:focus {
-	font-size: 1.6rem;
-}
-
 input[type="number"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
 input[type="text"]:focus,
-textarea {
+textarea:focus,
+select:focus {
 	background-color: var(--hover-bg-color);
 	border-color: var(--hover-border-color);
 	outline: none;
@@ -164,6 +161,16 @@ textarea {
 
 input[type="checkbox"] {
 	margin: 0.3rem 0.3rem 1.3rem 0;
+}
+
+select {
+	font-size: 1.6rem;
+	width: 100%;
+	background-color: var(--secondary-bg-color);
+	border: var(--normal-border-width) solid var(--normal-border-color);
+	color: var(--primary-text-color);
+	margin: 0.3rem 0;
+	padding: 0.7rem 0.6rem;
 }
 
 label {

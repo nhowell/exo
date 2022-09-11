@@ -39,6 +39,7 @@ export function JettisonCargo(props: IOwnProps): ReactElement {
 			{
 				onSuccess: () => {
 					resetForm();
+					props.onCancel();
 				},
 				onSettled: () => {
 					setSubmitting(false);

@@ -1,11 +1,17 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { LinkButton } from "../../core/buttons/LinkButton";
 import { numberFormat } from "../../helpers/numberFormat";
 import { titleCase } from "../../helpers/titleCase";
 import { t } from "../../helpers/translate";
-import { IMyShip, IShipCargo } from "../../spacetraders-api/api/my/ships/types";
+import {
+	IMyShip,
+	isDocked,
+	IShipCargo,
+} from "../../spacetraders-api/api/my/ships/types";
 import { Tile } from "../common/tiles/Tile";
 import { JettisonCargo } from "./JettisonCargo";
+import styles from "./ShipCargoItem.module.css";
+import { TransferCargo } from "./TransferCargo";
 
 interface IOwnProps {
 	ship: IMyShip;
@@ -13,7 +19,14 @@ interface IOwnProps {
 }
 
 export function ShipCargoItem(props: IOwnProps): ReactElement {
-	const [showJettison, setShowJettison] = useState(false);
+	const [action, setAction] = useState<null | "transfer" | "jettison">(null);
+
+	// Unset the "transfer" action if the ship is no longer docked.
+	useEffect(() => {
+		if (action === "transfer" && !isDocked(props.ship)) {
+			setAction(null);
+		}
+	}, [action, props.ship]);
 
 	return (
 		<Tile width="28.5rem">
@@ -37,17 +50,34 @@ export function ShipCargoItem(props: IOwnProps): ReactElement {
 				</div>
 			</dl>
 
-			{showJettison ? (
+			{action === "jettison" && (
 				<JettisonCargo
 					ship={props.ship}
 					cargoItem={props.cargoItem}
-					onCancel={() => setShowJettison(false)}
+					onCancel={() => setAction(null)}
 				/>
-			) : (
+			)}
+
+			{action === "transfer" && isDocked(props.ship) && (
+				<TransferCargo
+					ship={props.ship}
+					cargoItem={props.cargoItem}
+					onCancel={() => setAction(null)}
+				/>
+			)}
+
+			{action === null && (
 				<p>
-					<LinkButton onClick={() => setShowJettison(true)}>
-						{t("Jettison")}
-					</LinkButton>
+					<div className={styles.jettisonLink}>
+						<LinkButton onClick={() => setAction("jettison")}>
+							{t("Jettison")}
+						</LinkButton>
+					</div>
+					{isDocked(props.ship) && (
+						<LinkButton onClick={() => setAction("transfer")}>
+							{t("Transfer")}
+						</LinkButton>
+					)}
 				</p>
 			)}
 		</Tile>
