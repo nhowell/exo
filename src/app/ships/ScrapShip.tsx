@@ -1,5 +1,6 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LinkButton } from "../../core/buttons/LinkButton";
 import { t } from "../../helpers/translate";
 import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { useScrapShip } from "../../spacetraders-api/hooks/my/ships/useScrapShip";
@@ -22,16 +23,35 @@ export function ScrapShip(props: IOwnProps): ReactElement {
 		});
 	};
 
+	const [showConfirmation, setShowConfirmation] = useState(false);
+
 	return (
 		<>
 			<p>
 				{t(
-					"Scrapping a ship for credits gives back 25% of its original purchase price. Any cargo will be lost and the ship will be destroyed.",
+					"Scrapping a ship for credits gives back 25% of its original purchase price.",
 				)}
 			</p>
-			<button type="button" onClick={handleScrapShip}>
-				{t("Scrap ship")}
-			</button>
+			{showConfirmation ? (
+				<>
+					<p>
+						{t(
+							"Are you sure? All cargo will be lost and the ship will be destroyed.",
+						)}
+					</p>
+					<button type="button" onClick={handleScrapShip}>
+						{t("Yes, scrap ship")}
+					</button>{" "}
+					{t("or")}{" "}
+					<LinkButton onClick={() => setShowConfirmation(false)}>
+						{t("Cancel")}
+					</LinkButton>
+				</>
+			) : (
+				<LinkButton onClick={() => setShowConfirmation(true)}>
+					{t("Scrap ship")}
+				</LinkButton>
+			)}
 			{scrapShip.isError && <p>{scrapShip.error.message}</p>}
 		</>
 	);
