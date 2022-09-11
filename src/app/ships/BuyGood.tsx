@@ -51,6 +51,14 @@ export function BuyGood(props: IOwnProps): ReactElement {
 		);
 	};
 
+	const maxQuantity = Math.min(
+		props.marketplaceListing.quantityAvailable,
+		props.ship.loadingSpeed,
+		Math.floor(
+			props.ship.spaceAvailable / props.marketplaceListing.volumePerUnit,
+		),
+	);
+
 	return (
 		<Tile width="35rem">
 			<h3>{t(titleCase(props.marketplaceListing.symbol))}</h3>
@@ -85,6 +93,8 @@ export function BuyGood(props: IOwnProps): ReactElement {
 								type="number"
 								id="quantity"
 								name="quantity"
+								min={0}
+								max={maxQuantity}
 								validate={(value: string) => {
 									if (!value) {
 										return t("Quantity is required.");
