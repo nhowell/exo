@@ -19,6 +19,12 @@
 	background: unset;
 }
 
+.linkButton:focus-visible {
+	outline-width: 1px;
+	outline-style: dashed;
+	outline-color: var(--primary-color);
+}
+
 .linkButton:disabled {
 	color: var(--primary-text-color);
 	text-decoration: none;
