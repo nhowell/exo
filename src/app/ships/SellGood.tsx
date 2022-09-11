@@ -80,7 +80,7 @@ export function SellGood(props: IOwnProps): ReactElement {
 					initialValues={initialValues}
 					onSubmit={handleSell}
 				>
-					{({ isSubmitting, setFieldValue }) => (
+					{({ isSubmitting, setFieldValue, values }) => (
 						<Form>
 							<div>
 								<label htmlFor="quantity">
@@ -115,7 +115,12 @@ export function SellGood(props: IOwnProps): ReactElement {
 							<div>
 								<button type="submit" disabled={isSubmitting}>
 									{t("Sell")}
-								</button>
+								</button>{" "}
+								{values.quantity !== null &&
+									values.quantity > 0 &&
+									creditFormat(
+										values.quantity * props.marketplaceListing.sellPricePerUnit,
+									)}
 							</div>
 						</Form>
 					)}
