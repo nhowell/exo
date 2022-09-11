@@ -73,67 +73,65 @@ export function Travel(props: IOwnProps): ReactElement {
 		(x) => x.symbol === props.ship.location,
 	);
 
-	if (origin === undefined) {
-		return <p>{t("Origin could not be determined.")}</p>;
-	}
-
 	return (
-		<>
-			<LocationMessages location={origin} />
-			{origin.type === LocationType.Wormhole && (
-				<>
-					<button type="button" onClick={handleWarpJumpClick}>
-						{t("Attempt warp jump")}
-					</button>
-					{attemptWarpJump.isError && <p>{attemptWarpJump.error.message}</p>}
-				</>
-			)}
-			<TransformedQueryResultHandler
-				queryResult={result}
-				transformData={transformData}
-			>
-				{(destinations) =>
-					destinations.length === 0 ? (
-						<p>{t("No travel destinations available.")}</p>
-					) : (
-						<>
-							<h3>{t("Destinations")}</h3>
-							<Formik<ISubmitFlightPlanForm>
-								initialValues={initialValues}
-								onSubmit={handleSubmit}
-							>
-								{({ isSubmitting }) => (
-									<Form>
-										<div>
-											{destinations.map((destination) => {
-												return (
-													<Destination
-														key={destination.symbol}
-														ship={props.ship}
-														origin={origin}
-														destination={destination}
-													/>
-												);
-											})}
-											<ErrorMessage name="destination" component="div" />
-										</div>
-
-										{submitFlightPlan.error ? (
-											<div>{t(submitFlightPlan.error.message)}</div>
-										) : undefined}
-
-										<div>
-											<button type="submit" disabled={isSubmitting}>
-												{t("Submit flight plan")}
-											</button>
-										</div>
-									</Form>
+		<TransformedQueryResultHandler
+			queryResult={result}
+			transformData={transformData}
+		>
+			{(destinations) =>
+				destinations.length === 0 ? (
+					<p>{t("No travel destinations available.")}</p>
+				) : origin === undefined ? (
+					<p>{t("Origin could not be determined.")}</p>
+				) : (
+					<>
+						<LocationMessages location={origin} />
+						{origin.type === LocationType.Wormhole && (
+							<>
+								<button type="button" onClick={handleWarpJumpClick}>
+									{t("Attempt warp jump")}
+								</button>
+								{attemptWarpJump.isError && (
+									<p>{attemptWarpJump.error.message}</p>
 								)}
-							</Formik>
-						</>
-					)
-				}
-			</TransformedQueryResultHandler>
-		</>
+							</>
+						)}
+						<h3>{t("Destinations")}</h3>
+						<Formik<ISubmitFlightPlanForm>
+							initialValues={initialValues}
+							onSubmit={handleSubmit}
+						>
+							{({ isSubmitting }) => (
+								<Form>
+									<div>
+										{destinations.map((destination) => {
+											return (
+												<Destination
+													key={destination.symbol}
+													ship={props.ship}
+													origin={origin}
+													destination={destination}
+												/>
+											);
+										})}
+										<ErrorMessage name="destination" component="div" />
+									</div>
+
+									{submitFlightPlan.error ? (
+										<div>{t(submitFlightPlan.error.message)}</div>
+									) : undefined}
+
+									<div>
+										<button type="submit" disabled={isSubmitting}>
+											{t("Submit flight plan")}
+										</button>
+									</div>
+								</Form>
+							)}
+						</Formik>
+					</>
+				)
+			}
+		</TransformedQueryResultHandler>
 	);
 }
