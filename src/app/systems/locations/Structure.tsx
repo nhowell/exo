@@ -3,6 +3,7 @@ import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
 import { boolToHumanDisplay } from "../../../helpers/boolToHumanDisplay";
 import { createNumberFormatter } from "../../../helpers/numberFormat";
+import { titleCase } from "../../../helpers/titleCase";
 import { t } from "../../../helpers/translate";
 import {
 	IStructure,
@@ -17,6 +18,7 @@ const materialsColumnDefinitions: ITableColumnHeader<IStructureMaterial>[] = [
 	{
 		keyname: "good",
 		label: t("Good"),
+		customFormat: (item) => t(titleCase(item.good)),
 	},
 	{
 		keyname: "quantity",

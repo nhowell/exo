@@ -12,6 +12,7 @@ import { LocationInfo } from "./LocationInfo";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import { LocationBreadcrumb } from "./LocationBreadcrumb";
 import { QueryResultHandler } from "../../common/QueryResultHandler";
+import { LocationStructures } from "./LocationStructures";
 
 export function ViewLocation(): ReactElement {
 	const { systemSymbol, locationSymbol } = useParams();
@@ -36,6 +37,11 @@ export function ViewLocation(): ReactElement {
 			key: "marketplace",
 			label: t("Marketplace"),
 			content: <LocationMarketplace locationSymbol={symbol} />,
+		},
+		{
+			key: "structures",
+			label: t("Structures"),
+			content: <LocationStructures locationSymbol={symbol} />,
 		},
 		{
 			key: "docked-ships",
