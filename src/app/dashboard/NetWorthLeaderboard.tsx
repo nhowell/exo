@@ -14,17 +14,17 @@ import styles from "./NetWorthLeaderboard.module.css";
 
 const columnDefinitions: ITableColumnHeader<IUserNetWorth>[] = [
 	{
-		keyname: "rank",
+		keyName: "rank",
 		label: t("Rank"),
 		format: "number",
 		align: "right",
 	},
 	{
-		keyname: "username",
+		keyName: "username",
 		label: t("Corporation"),
 	},
 	{
-		keyname: "netWorth",
+		keyName: "netWorth",
 		label: t("Net Worth"),
 		format: "credits",
 		align: "right",

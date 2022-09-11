@@ -32,7 +32,7 @@ export function Table<T extends IAllStringKeyProps>(
 				<TableRow>
 					{props.columnDefinitions.map((column) => {
 						return (
-							<TableHeaderCell key={column.keyname} align={column.align}>
+							<TableHeaderCell key={column.keyName} align={column.align}>
 								<>{column.label}</>
 							</TableHeaderCell>
 						);
@@ -97,14 +97,14 @@ const StandardRow = typedMemo(function StandardRow<
 		<TableRow highlight={props.highlight}>
 			{props.columnDefinitions.map((column) => {
 				return (
-					<TableCell key={column.keyname} align={column.align}>
+					<TableCell key={column.keyName} align={column.align}>
 						{column.customElementFormat
 							? column.customElementFormat(props.rowData)
 							: column.customFormat
 							? column.customFormat(props.rowData)
 							: column.format !== undefined
-							? formatValue(column.format, props.rowData[column.keyname])
-							: props.rowData[column.keyname]}
+							? formatValue(column.format, props.rowData[column.keyName])
+							: props.rowData[column.keyName]}
 					</TableCell>
 				);
 			})}

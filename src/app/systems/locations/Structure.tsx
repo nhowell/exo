@@ -16,18 +16,18 @@ interface IOwnProps {
 
 const materialsColumnDefinitions: ITableColumnHeader<IStructureMaterial>[] = [
 	{
-		keyname: "good",
+		keyName: "good",
 		label: t("Good"),
 		customFormat: (item) => t(titleCase(item.good)),
 	},
 	{
-		keyname: "quantity",
+		keyName: "quantity",
 		label: t("Quantity"),
 		align: "right",
 		format: "number",
 	},
 	{
-		keyname: "targetQuantity",
+		keyName: "targetQuantity",
 		label: t("Target Quantity"),
 		align: "right",
 		format: "number",

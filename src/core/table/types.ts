@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 export interface ITableColumnHeader<T> {
-	keyname: Extract<keyof T, string>;
+	keyName: Extract<keyof T, string>;
 	label: string;
 	align?: "left" | "center" | "right";
 	format?: "credits" | "number" | "date" | "datetime";

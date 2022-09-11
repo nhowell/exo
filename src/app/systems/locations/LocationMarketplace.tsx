@@ -18,30 +18,30 @@ interface IOwnProps {
 const marketplaceListingsColumnDefinitions: ITableColumnHeader<IMarketplaceListing>[] =
 	[
 		{
-			keyname: "symbol",
+			keyName: "symbol",
 			label: t("Good"),
 			customFormat: (x) => t(titleCase(x.symbol)),
 		},
 		{
-			keyname: "purchasePricePerUnit",
+			keyName: "purchasePricePerUnit",
 			label: t("Purchase Price per Unit"),
 			align: "right",
 			format: "credits",
 		},
 		{
-			keyname: "quantityAvailable",
+			keyName: "quantityAvailable",
 			label: t("Quantity Available"),
 			align: "right",
 			format: "number",
 		},
 		{
-			keyname: "sellPricePerUnit",
+			keyName: "sellPricePerUnit",
 			label: t("Sell Price per Unit"),
 			align: "right",
 			format: "credits",
 		},
 		{
-			keyname: "volumePerUnit",
+			keyName: "volumePerUnit",
 			label: t("Volume per Unit"),
 			align: "right",
 			format: "number",

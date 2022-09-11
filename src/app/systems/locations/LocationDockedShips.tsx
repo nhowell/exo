@@ -16,11 +16,11 @@ interface IOwnProps {
 
 const dockedShipsColumnDefinitions: ITableColumnHeader<IDockedShip>[] = [
 	{
-		keyname: "username",
+		keyName: "username",
 		label: t("Username"),
 	},
 	{
-		keyname: "shipType",
+		keyName: "shipType",
 		label: t("Ship Type"),
 	},
 ];
