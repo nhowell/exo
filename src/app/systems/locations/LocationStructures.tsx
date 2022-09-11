@@ -22,7 +22,10 @@ export function LocationStructures(props: IOwnProps): ReactElement {
 					<TileContainer>
 						{data.structures.map((structure) => (
 							<Tile key={structure.id}>
-								<Structure structure={structure} />
+								<Structure
+									structure={structure}
+									locationSymbol={props.locationSymbol}
+								/>
 							</Tile>
 						))}
 					</TileContainer>

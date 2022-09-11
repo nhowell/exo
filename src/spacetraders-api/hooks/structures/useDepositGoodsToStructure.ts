@@ -2,6 +2,7 @@ import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../useSpaceTradersMutation";
 import { IDepositGoodsToStructureRequest } from "../../api/structures/types";
 import { setShipQueryData } from "../my/ships/useMyShip";
+import { setStructureInStructuresQueryData } from "../locations/useStructuresAtLocation";
 
 export function useDepositGoodsToStructure(structureId: string) {
 	const spaceTradersApi = useSpaceTradersApi();
@@ -13,7 +14,9 @@ export function useDepositGoodsToStructure(structureId: string) {
 			onSuccess: (data) => {
 				// Since depositing goods to a structure returns the structure, we can update
 				// the structure query with the new data to prevent an extra query.
-				// TODO
+				if (data.ship.location !== undefined) {
+					setStructureInStructuresQueryData(data.ship.location, data.structure);
+				}
 
 				// Since depositing goods to a structure returns the ship, we can update
 				// the ships query with the new data to prevent an extra query.

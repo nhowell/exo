@@ -1,4 +1,5 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
+import { LinkButton } from "../../../core/buttons/LinkButton";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
 import { boolToHumanDisplay } from "../../../helpers/boolToHumanDisplay";
@@ -9,9 +10,11 @@ import {
 	IStructure,
 	IStructureMaterial,
 } from "../../../spacetraders-api/api/structures/types";
+import { DepositGoods } from "./DepositGoods";
 
 interface IOwnProps {
 	structure: IStructure;
+	locationSymbol: string;
 }
 
 const materialsColumnDefinitions: ITableColumnHeader<IStructureMaterial>[] = [
@@ -40,6 +43,8 @@ const stabilityPercentFormat = createNumberFormatter({
 });
 
 export function Structure(props: IOwnProps): ReactElement {
+	const [showDepositGoods, setShowDepositGoods] = useState(false);
+
 	return (
 		<>
 			<h3>{t(props.structure.name)}</h3>
@@ -63,6 +68,20 @@ export function Structure(props: IOwnProps): ReactElement {
 				tableData={props.structure.materials}
 				striped
 			/>
+
+			{showDepositGoods ? (
+				<DepositGoods
+					structure={props.structure}
+					locationSymbol={props.locationSymbol}
+					onCancel={() => setShowDepositGoods(false)}
+				/>
+			) : (
+				<p>
+					<LinkButton onClick={() => setShowDepositGoods(true)}>
+						{t("Deposit goods")}
+					</LinkButton>
+				</p>
+			)}
 		</>
 	);
 }
