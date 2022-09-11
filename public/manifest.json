@@ -1,6 +1,6 @@
 {
 	"short_name": "Exo",
-	"name": "SpaceTraders: Exo",
+	"name": "Exo: A user interface for the SpaceTraders API",
 	"icons": [
 		{
 			"src": "favicon.ico",
