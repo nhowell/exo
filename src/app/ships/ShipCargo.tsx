@@ -20,7 +20,11 @@ export function ShipCargo(props: IOwnProps): ReactElement {
 	) : (
 		<TileContainer>
 			{sortedCargo.map((cargoItem) => (
-				<ShipCargoItem key={cargoItem.good} cargoItem={cargoItem} />
+				<ShipCargoItem
+					key={cargoItem.good}
+					ship={props.ship}
+					cargoItem={cargoItem}
+				/>
 			))}
 		</TileContainer>
 	);
