@@ -19,6 +19,7 @@
 	--secondary-bg-color: rgba(50, 82, 160, 0.2);
 	--tertiary-bg-color: rgba(50, 82, 160, 0.15);
 	--quaternary-bg-color: #2d2d2d;
+	--small-box-padding: 0.75rem;
 	--normal-box-padding: 1.5rem;
 	--normal-border-radius: 1.5rem 0 1.5rem;
 	--small-border-radius: 0.8rem 0 0.8rem;

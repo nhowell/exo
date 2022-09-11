@@ -15,6 +15,10 @@
 	justify-content: space-between;
 }
 
+.header button {
+	margin-top: 0;
+}
+
 .section {
 	display: flex;
 	flex-wrap: nowrap;
@@ -28,6 +32,8 @@
 	}
 }
 
-.header button {
-	margin-top: 0;
+@media (max-width: 800px) {
+	.header {
+		padding: 0 var(--small-box-padding);
+	}
 }

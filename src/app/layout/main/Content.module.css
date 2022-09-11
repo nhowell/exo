@@ -88,3 +88,9 @@
 		margin-left: 0;
 	}
 }
+
+@media (max-width: 800px) {
+	.contentContainer {
+		padding: 0 var(--small-box-padding);
+	}
+}
