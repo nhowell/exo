@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement } from "react";
+import { LinkButton } from "../../core/buttons/LinkButton";
 import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import { titleCase } from "../../helpers/titleCase";
@@ -74,41 +75,52 @@ export function SellGood(props: IOwnProps): ReactElement {
 				</div>
 			</dl>
 
-			<Formik<ISellGoodForm>
-				initialValues={initialValues}
-				onSubmit={handleSell}
-			>
-				{({ isSubmitting }) => (
-					<Form>
-						<div>
-							<label htmlFor="quantity">{t("Quantity")}</label>
-							<Field
-								type="number"
-								id="quantity"
-								name="quantity"
-								min={0}
-								max={maxQuantity}
-								validate={(value: string) => {
-									if (!value) {
-										return t("Quantity is required.");
-									}
-								}}
-							/>
-							<ErrorMessage name="quantity" component="div" />
-						</div>
+			{props.marketplaceListing.quantityOwned > 0 && (
+				<Formik<ISellGoodForm>
+					initialValues={initialValues}
+					onSubmit={handleSell}
+				>
+					{({ isSubmitting, setFieldValue }) => (
+						<Form>
+							<div>
+								<label htmlFor="quantity">
+									{t("Quantity")}{" "}
+									<small>
+										<LinkButton
+											onClick={() => setFieldValue("quantity", maxQuantity)}
+										>
+											{t("Max")}
+										</LinkButton>
+									</small>
+								</label>
+								<Field
+									type="number"
+									id="quantity"
+									name="quantity"
+									min={0}
+									max={maxQuantity}
+									validate={(value: string) => {
+										if (!value) {
+											return t("Quantity is required.");
+										}
+									}}
+								/>
+								<ErrorMessage name="quantity" component="div" />
+							</div>
 
-						{placeSellOrder.error ? (
-							<div>{t(placeSellOrder.error.message)}</div>
-						) : undefined}
+							{placeSellOrder.error ? (
+								<div>{t(placeSellOrder.error.message)}</div>
+							) : undefined}
 
-						<div>
-							<button type="submit" disabled={isSubmitting}>
-								{t("Sell")}
-							</button>
-						</div>
-					</Form>
-				)}
-			</Formik>
+							<div>
+								<button type="submit" disabled={isSubmitting}>
+									{t("Sell")}
+								</button>
+							</div>
+						</Form>
+					)}
+				</Formik>
+			)}
 		</Tile>
 	);
 }

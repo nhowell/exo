@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement } from "react";
+import { LinkButton } from "../../core/buttons/LinkButton";
 import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import { titleCase } from "../../helpers/titleCase";
@@ -85,10 +86,19 @@ export function BuyGood(props: IOwnProps): ReactElement {
 				initialValues={initialValues}
 				onSubmit={handlePurchase}
 			>
-				{({ isSubmitting }) => (
+				{({ isSubmitting, setFieldValue }) => (
 					<Form>
 						<div>
-							<label htmlFor="quantity">{t("Quantity")}</label>
+							<label htmlFor="quantity">
+								{t("Quantity")}{" "}
+								<small>
+									<LinkButton
+										onClick={() => setFieldValue("quantity", maxQuantity)}
+									>
+										{t("Max")}
+									</LinkButton>
+								</small>
+							</label>
 							<Field
 								type="number"
 								id="quantity"
