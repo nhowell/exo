@@ -19,7 +19,10 @@ export class StructuresApiModule {
 		structureId: string,
 		request: IDepositGoodsToStructureRequest,
 	): Promise<IDepositGoodsToStructureResponse> {
-		return this.api.post(this.getStructurePath(structureId), request);
+		return this.api.post(
+			`${this.getStructurePath(structureId)}/deposit`,
+			request,
+		);
 	}
 
 	private getStructurePath(structureId: string) {
