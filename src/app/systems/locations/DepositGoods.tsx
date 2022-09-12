@@ -28,7 +28,7 @@ interface IDepositGoodsForm {
 const initialValues: IDepositGoodsForm = {
 	shipId: null,
 	good: null,
-	quantity: 0,
+	quantity: null,
 };
 
 export function DepositGoods(props: IOwnProps): ReactElement {

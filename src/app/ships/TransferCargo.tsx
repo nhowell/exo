@@ -24,7 +24,7 @@ interface ITransferCargoForm {
 
 const initialValues: ITransferCargoForm = {
 	toShipId: null,
-	quantity: 0,
+	quantity: null,
 };
 
 export function TransferCargo(props: IOwnProps): ReactElement {

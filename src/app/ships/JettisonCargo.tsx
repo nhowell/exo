@@ -16,7 +16,7 @@ interface IJettisonCargoForm {
 }
 
 const initialValues: IJettisonCargoForm = {
-	quantity: 0,
+	quantity: null,
 };
 
 export function JettisonCargo(props: IOwnProps): ReactElement {

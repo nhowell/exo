@@ -20,7 +20,7 @@ interface ISellGoodForm {
 }
 
 const initialValues: ISellGoodForm = {
-	quantity: 0,
+	quantity: null,
 };
 
 export function SellGood(props: IOwnProps): ReactElement {
