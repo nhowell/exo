@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { LinkButton } from "../../core/buttons/LinkButton";
 import { numberFormat } from "../../helpers/numberFormat";
 import { titleCase } from "../../helpers/titleCase";
@@ -22,11 +22,9 @@ export function ShipCargoItem(props: IOwnProps): ReactElement {
 	const [action, setAction] = useState<null | "transfer" | "jettison">(null);
 
 	// Unset the "transfer" action if the ship is no longer docked.
-	useEffect(() => {
-		if (action === "transfer" && !isDocked(props.ship)) {
-			setAction(null);
-		}
-	}, [action, props.ship]);
+	if (action === "transfer" && !isDocked(props.ship)) {
+		setAction(null);
+	}
 
 	return (
 		<Tile width="28.5rem">
