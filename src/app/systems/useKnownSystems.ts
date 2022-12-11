@@ -32,7 +32,7 @@ export function useKnownSystems() {
 		}
 	}, [addVisitedSystemsIfNeeded, currentSystems]);
 
-	const sortedKnownSystems = useMemo(() => {
+	const sortedKnownSystems: string[] = useMemo(() => {
 		const knownSystemsSet = new Set([
 			...visitedSystems,
 			...(currentSystems ?? []),
