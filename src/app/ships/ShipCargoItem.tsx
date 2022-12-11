@@ -8,9 +8,9 @@ import {
 	isDocked,
 	IShipCargo,
 } from "../../spacetraders-api/api/my/ships/types";
+import { ActionButtons } from "../common/ActionButtons";
 import { Tile } from "../common/tiles/Tile";
 import { JettisonCargo } from "./JettisonCargo";
-import styles from "./ShipCargoItem.module.css";
 import { TransferCargo } from "./TransferCargo";
 
 interface IOwnProps {
@@ -65,18 +65,16 @@ export function ShipCargoItem(props: IOwnProps): ReactElement {
 			)}
 
 			{action === null && (
-				<p>
-					<div className={styles.jettisonLink}>
-						<LinkButton onClick={() => setAction("jettison")}>
-							{t("Jettison")}
-						</LinkButton>
-					</div>
+				<ActionButtons>
 					{isDocked(props.ship) && (
 						<LinkButton onClick={() => setAction("transfer")}>
 							{t("Transfer")}
 						</LinkButton>
 					)}
-				</p>
+					<LinkButton onClick={() => setAction("jettison")}>
+						{t("Jettison")}
+					</LinkButton>
+				</ActionButtons>
 			)}
 		</Tile>
 	);

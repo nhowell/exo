@@ -10,6 +10,7 @@ import {
 	IStructure,
 	IStructureMaterial,
 } from "../../../spacetraders-api/api/structures/types";
+import { ActionButtons } from "../../common/ActionButtons";
 import { DepositGoods } from "./DepositGoods";
 
 interface IOwnProps {
@@ -76,11 +77,11 @@ export function Structure(props: IOwnProps): ReactElement {
 					onCancel={() => setShowDepositGoods(false)}
 				/>
 			) : (
-				<p>
+				<ActionButtons>
 					<LinkButton onClick={() => setShowDepositGoods(true)}>
 						{t("Deposit goods")}
 					</LinkButton>
-				</p>
+				</ActionButtons>
 			)}
 		</>
 	);
