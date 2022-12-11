@@ -69,7 +69,8 @@ export function ViewShip(): ReactElement {
 	const shipName = useShipName(shipId);
 
 	return (
-		<QueryResultHandler queryResult={result}>
+		// Set a unique key so that switching between ships resets the state.
+		<QueryResultHandler key={shipId} queryResult={result}>
 			{(data) => (
 				<>
 					<header>

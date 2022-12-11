@@ -61,7 +61,7 @@ export function ViewSystem(): ReactElement {
 	const location = useLocation();
 
 	return (
-		<QueryResultHandler queryResult={result}>
+		<QueryResultHandler key={systemSymbol} queryResult={result}>
 			{(data) => (
 				<>
 					<SystemBreadcrumb systemName={data.system.name} />
