@@ -12,11 +12,11 @@ interface IOwnProps {
 }
 
 interface IJettisonCargoForm {
-	quantity: number | null;
+	quantity: number | "";
 }
 
 const initialValues: IJettisonCargoForm = {
-	quantity: null,
+	quantity: "",
 };
 
 export function JettisonCargo(props: IOwnProps): ReactElement {
@@ -26,7 +26,7 @@ export function JettisonCargo(props: IOwnProps): ReactElement {
 		values: IJettisonCargoForm,
 		{ setSubmitting, resetForm }: FormikHelpers<IJettisonCargoForm>,
 	) => {
-		if (values.quantity === null) {
+		if (values.quantity === "") {
 			setSubmitting(false);
 			return;
 		}

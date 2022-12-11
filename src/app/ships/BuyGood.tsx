@@ -16,11 +16,11 @@ interface IOwnProps {
 }
 
 interface IBuyGoodForm {
-	quantity: number | null;
+	quantity: number | "";
 }
 
 const initialValues: IBuyGoodForm = {
-	quantity: null,
+	quantity: "",
 };
 
 export function BuyGood(props: IOwnProps): ReactElement {
@@ -30,7 +30,7 @@ export function BuyGood(props: IOwnProps): ReactElement {
 		values: IBuyGoodForm,
 		{ setSubmitting, resetForm }: FormikHelpers<IBuyGoodForm>,
 	) => {
-		if (values.quantity === null) {
+		if (values.quantity === "") {
 			setSubmitting(false);
 			return;
 		}
@@ -123,7 +123,7 @@ export function BuyGood(props: IOwnProps): ReactElement {
 							<button type="submit" disabled={isSubmitting}>
 								{t("Purchase")}
 							</button>{" "}
-							{values.quantity !== null &&
+							{values.quantity !== "" &&
 								values.quantity > 0 &&
 								creditFormat(
 									values.quantity *

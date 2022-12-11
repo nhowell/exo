@@ -18,13 +18,13 @@ interface IOwnProps {
 }
 
 interface ITransferCargoForm {
-	toShipId: string | null;
-	quantity: number | null;
+	toShipId: string;
+	quantity: number | "";
 }
 
 const initialValues: ITransferCargoForm = {
-	toShipId: null,
-	quantity: null,
+	toShipId: "",
+	quantity: "",
 };
 
 export function TransferCargo(props: IOwnProps): ReactElement {
@@ -34,7 +34,7 @@ export function TransferCargo(props: IOwnProps): ReactElement {
 		values: ITransferCargoForm,
 		{ setSubmitting, resetForm }: FormikHelpers<ITransferCargoForm>,
 	) => {
-		if (values.toShipId === null || values.quantity === null) {
+		if (values.toShipId === "" || values.quantity === "") {
 			setSubmitting(false);
 			return;
 		}

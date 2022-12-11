@@ -20,15 +20,15 @@ interface IOwnProps {
 }
 
 interface IDepositGoodsForm {
-	shipId: string | null;
-	good: Good | null;
-	quantity: number | null;
+	shipId: string;
+	good: Good | "";
+	quantity: number | "";
 }
 
 const initialValues: IDepositGoodsForm = {
-	shipId: null,
-	good: null,
-	quantity: null,
+	shipId: "",
+	good: "",
+	quantity: "",
 };
 
 export function DepositGoods(props: IOwnProps): ReactElement {
@@ -38,11 +38,7 @@ export function DepositGoods(props: IOwnProps): ReactElement {
 		values: IDepositGoodsForm,
 		{ setSubmitting, resetForm }: FormikHelpers<IDepositGoodsForm>,
 	) => {
-		if (
-			values.shipId === null ||
-			values.good === null ||
-			values.quantity === null
-		) {
+		if (values.shipId === "" || values.good === "" || values.quantity === "") {
 			setSubmitting(false);
 			return;
 		}
@@ -77,7 +73,7 @@ export function DepositGoods(props: IOwnProps): ReactElement {
 			initialValues={initialValues}
 			onSubmit={handleTransfer}
 		>
-			{({ isSubmitting, setFieldValue }) => (
+			{({ isSubmitting }) => (
 				<Form>
 					<div>
 						<label htmlFor="shipId">{t("Ship")}</label>
