@@ -10,7 +10,7 @@ Visit https://spacetraders.nickhowell.com/ to see it live.
 
 ## Technologies Used
 
-- [React](https://reactjs.org/) (via [Create React App](https://create-react-app.dev/))
+- [React](https://reactjs.org/) (via [Vite](https://vitejs.dev/))
 - [Typescript](https://www.typescriptlang.org/)
 - [react-query](https://react-query.tanstack.com/)
 - [react-three-fiber](https://docs.pmnd.rs/react-three-fiber)

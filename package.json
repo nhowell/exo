@@ -4,27 +4,15 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   },
   "jest": {
@@ -48,8 +36,7 @@
     "react-router-dom": "^6.0.2",
     "three": "^0.149.0",
     "unique-names-generator": "^4.7.1",
-    "use-count-up": "^3.0.1",
-    "web-vitals": "^3.0.0"
+    "use-count-up": "^3.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -63,10 +50,11 @@
     "@types/react-dom": "^18.0.10",
     "@types/react-router-dom": "^5.3.3",
     "@types/three": "^0.149.0",
+    "@vitejs/plugin-react-swc": "^3.1.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "prettier": "^2.8.3",
-    "react-scripts": "^5.0.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
   }
 }
