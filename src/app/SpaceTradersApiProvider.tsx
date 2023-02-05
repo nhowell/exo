@@ -7,7 +7,7 @@ interface IOwnProps {
 }
 
 export const SpaceTradersApiContext = createContext<SpaceTradersApi>(
-	undefined as any,
+	undefined as unknown as SpaceTradersApi,
 );
 
 export function SpaceTradersApiProvider(props: IOwnProps): ReactElement {

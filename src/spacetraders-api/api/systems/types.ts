@@ -1,3 +1,4 @@
+import { IAllStringKeyProps } from "../../../utilities/types";
 import { LocationType, ShipClass } from "../enums";
 import { IDockedShip, ILocation } from "../locations/types";
 import { IFlightPlanBase } from "../my/flight-plans/types";
@@ -12,7 +13,7 @@ interface ISystem {
 	name: string;
 }
 
-export interface IGetLocationsInSystemParams {
+export interface IGetLocationsInSystemParams extends IAllStringKeyProps {
 	/**
 	 * The type of location to filter by, e.g. "PLANET".
 	 */
@@ -27,7 +28,7 @@ export interface ISystemLocationsResponse {
 	locations: ILocation[];
 }
 
-export interface IGetAvailableShipsInSystemParams {
+export interface IGetAvailableShipsInSystemParams extends IAllStringKeyProps {
 	/**
 	 * The class of ship to filter by, e.g. "MK-I".
 	 */

@@ -1,11 +1,11 @@
-import { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import { ITableColumnHeader } from "./types";
 import coreStyles from "../core.module.css";
 import classNames from "classnames";
 import styles from "./TableCell.module.css";
 
-interface IOwnProps extends Pick<ITableColumnHeader<any>, "align"> {
-	children: ReactElement;
+interface IOwnProps extends Pick<ITableColumnHeader<unknown>, "align"> {
+	children: ReactNode;
 	colspan?: number;
 }
 

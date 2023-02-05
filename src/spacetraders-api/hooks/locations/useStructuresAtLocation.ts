@@ -1,4 +1,4 @@
-import produce from "immer";
+import { produce } from "immer";
 import { isEqual } from "lodash";
 import { locationQueryKey } from ".";
 import { IGetStructuresAtLocationResponse } from "../../api/locations/types";

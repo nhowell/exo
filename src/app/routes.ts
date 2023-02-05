@@ -10,7 +10,7 @@ import { splitSymbol } from "../helpers/splitSymbol";
 
 interface IRoute {
 	path: string;
-	component: ComponentType<any>;
+	component: ComponentType<unknown>;
 }
 
 export const loginPath = "/login";

@@ -1,3 +1,4 @@
+import { IAllStringKeyProps } from "../../../utilities/types";
 import { Good } from "../enums";
 import { IMyShip } from "../my/ships/types";
 
@@ -13,7 +14,7 @@ export interface IStructure {
 	stability: number;
 }
 
-export interface IStructureMaterial {
+export interface IStructureMaterial extends IAllStringKeyProps {
 	good: Good;
 	quantity: number;
 	targetQuantity: number;

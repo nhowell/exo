@@ -1,3 +1,4 @@
+import { IAllStringKeyProps } from "../../../utilities/types";
 import { LocationType, LocationTrait, Good } from "../enums";
 import { IStructure } from "../structures/types";
 
@@ -24,7 +25,7 @@ export interface IGetDockedShipsAtLocationResponse {
 	ships: IDockedShip[];
 }
 
-export interface IDockedShip {
+export interface IDockedShip extends IAllStringKeyProps {
 	shipId: string;
 	username: string;
 	shipType: string;
@@ -34,7 +35,7 @@ export interface IGetMarketplaceAtLocationResponse {
 	marketplace: IMarketplaceListing[];
 }
 
-export interface IMarketplaceListing {
+export interface IMarketplaceListing extends IAllStringKeyProps {
 	symbol: Good;
 	volumePerUnit: number;
 	pricePerUnit: number;

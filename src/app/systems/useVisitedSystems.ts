@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { LocalStorageKey, useLocalStorage } from "../hooks/useLocalStorage";
-import produce from "immer";
+import { produce } from "immer";
 
 // Since the SpaceTraders API doesn't expose a /systems endpoint, new players
 // don't have a way to know which systems exist. This acts as a guide for new

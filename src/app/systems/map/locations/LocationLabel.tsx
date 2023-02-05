@@ -12,9 +12,10 @@ interface IOwnProps {
 
 export function LocationLabel(props: IOwnProps): ReactElement {
 	// This reference will give us direct access to the mesh
-	const mesh = useRef<Mesh>(null!);
+	const mesh = useRef<Mesh>(null);
 
 	useFrame(({ camera }) => {
+		if (!mesh.current) return;
 		// Make text face the camera
 		mesh.current.quaternion.copy(camera.quaternion);
 	});

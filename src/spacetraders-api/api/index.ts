@@ -205,8 +205,8 @@ export class SpaceTradersApi {
 		path: string,
 		limiter: Bottleneck,
 		options?: RequestOptions<TData>,
-		maxRetries: number = 0,
-		retry: number = 0,
+		maxRetries = 0,
+		retry = 0,
 	): Promise<TResponse> {
 		const sendRequest = () =>
 			axiosInstance.request<TResponse, AxiosResponse<TResponse, TData>, TData>({
@@ -260,24 +260,36 @@ export class SpaceTradersApi {
 	}
 
 	private static isStandardFailureResponse(
-		response: any,
+		response: unknown,
 	): response is IFailureResponse {
 		return (
-			response?.error !== undefined &&
-			response.error.code &&
-			response.error.message
+			typeof response === "object" &&
+			response !== null &&
+			"error" in response &&
+			response?.error != null &&
+			typeof response.error === "object" &&
+			"code" in response.error &&
+			"message" in response.error
 		);
 	}
 
-	private static isAxiosError<T>(error: any): error is AxiosError<T> {
-		return error.isAxiosError;
+	private static isAxiosError<T>(error: unknown): error is AxiosError<T> {
+		return (
+			typeof error === "object" &&
+			error !== null &&
+			"isAxiosError" in error &&
+			!!error.isAxiosError
+		);
 	}
 
 	private static sleep(milliseconds: number): Promise<void> {
 		return new Promise((resolve) => setTimeout(resolve, milliseconds));
 	}
 
-	get<TResponse>(path: string, params?: any): Promise<TResponse> {
+	get<TResponse>(
+		path: string,
+		params?: RequestOptions<void>["params"],
+	): Promise<TResponse> {
 		return SpaceTradersApi.request(
 			"get",
 			path,

@@ -8,7 +8,3 @@ export interface ITableColumnHeader<T> {
 	customFormat?: (item: T) => string | number | null | undefined;
 	customElementFormat?: (item: T) => ReactElement | undefined;
 }
-
-export interface IAllStringKeyProps {
-	[key: string]: any;
-}

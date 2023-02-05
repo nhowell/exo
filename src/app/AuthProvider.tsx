@@ -12,7 +12,9 @@ export const authContext = createContext<IAuth>({
 		return Promise.resolve(undefined);
 	},
 	currentUser: undefined,
-	logout: () => {},
+	logout: () => {
+		return;
+	},
 });
 
 export function AuthProvider(props: IOwnProps) {

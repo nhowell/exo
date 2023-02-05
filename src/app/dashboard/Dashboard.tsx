@@ -41,8 +41,8 @@ export function Dashboard() {
 					</p>
 					<p>
 						Next, fuel up your ship and explore. Buy and sell goods to earn more
-						credits. Soon, you'll be expanding your fleet and paying off your
-						loan.
+						credits. Soon, you&apos;ll be expanding your fleet and paying off
+						your loan.
 					</p>
 				</>
 			) : (

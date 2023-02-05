@@ -1,5 +1,5 @@
-import React, { ReactElement, useMemo } from "react";
-import { IAllStringKeyProps, ITableColumnHeader } from "./types";
+import { Key, ReactElement, ReactNode, useMemo } from "react";
+import { ITableColumnHeader } from "./types";
 import { TableHeader } from "./TableHeader";
 import { TableBody } from "./TableBody";
 import { TableRow } from "./TableRow";
@@ -8,7 +8,7 @@ import { TableCell } from "./TableCell";
 import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import styles from "./Table.module.css";
-import { typedMemo } from "../../utilities/types";
+import { IAllStringKeyProps, typedMemo } from "../../utilities/types";
 import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
 import { t } from "../../helpers/translate";
 
@@ -69,7 +69,7 @@ export function Table<T extends IAllStringKeyProps>(
 					props.tableData.map((rowData) => {
 						return (
 							<StandardRow<T>
-								key={rowData[props.keyField]}
+								key={rowData[props.keyField] as Key}
 								rowData={rowData}
 								keyField={props.keyField}
 								columnDefinitions={props.columnDefinitions}
@@ -104,7 +104,7 @@ const StandardRow = typedMemo(function StandardRow<
 							? column.customFormat(props.rowData)
 							: column.format !== undefined
 							? formatValue(column.format, props.rowData[column.keyName])
-							: props.rowData[column.keyName]}
+							: (props.rowData[column.keyName] as ReactNode)}
 					</TableCell>
 				);
 			})}
@@ -114,18 +114,18 @@ const StandardRow = typedMemo(function StandardRow<
 
 function formatValue(
 	format: ITableColumnHeader<unknown>["format"],
-	value: any,
-) {
-	switch (format) {
-		case "credits":
-			return value === undefined ? undefined : creditFormat(value);
-
-		case "number":
-			return value === undefined ? undefined : numberFormat(value);
-
-		// TODO: handle date formatting.
-
-		default:
-			return value;
+	value: unknown,
+): ReactNode {
+	if (typeof value === "number") {
+		if (format === "credits") {
+			return creditFormat(value);
+		}
+		if (format === "number") {
+			return numberFormat(value);
+		}
 	}
+
+	// TODO: handle date formatting.
+
+	return value as ReactNode;
 }

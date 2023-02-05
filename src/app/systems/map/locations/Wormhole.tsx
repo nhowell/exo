@@ -6,14 +6,17 @@ import { ILocationProps } from "./types";
 
 export function Wormhole(props: ILocationProps): ReactElement {
 	// This reference will give us direct access to the mesh
-	const mesh = useRef<Mesh>(null!);
+	const mesh = useRef<Mesh>(null);
 
 	// Set up state for the hovered and active state
 	const [hovered, setHover] = useState(false);
 	const [active, setActive] = useState(false);
 
 	// Subscribe this component to the render-loop, rotate the mesh every frame
-	useFrame(() => (mesh.current.rotation.y += 0.01));
+	useFrame(() => {
+		if (!mesh.current) return;
+		mesh.current.rotation.y += 0.01;
+	});
 
 	const radius = 1;
 

@@ -3,7 +3,7 @@ import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
 import { IGetMyLoansResponse, IMyLoan } from "../../../api/my/loans/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
-import produce from "immer";
+import { produce } from "immer";
 
 export function useMyLoans() {
 	const spaceTradersApi = useSpaceTradersApi();

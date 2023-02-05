@@ -94,9 +94,17 @@ export function useProvideAuth(): IAuth {
 				}
 
 				navigate(dashboardPath, { replace: true });
-			} catch (error: any) {
+			} catch (error: unknown) {
 				// Return the error message to be displayed on the login form.
-				return error.message;
+				if (
+					typeof error === "object" &&
+					error !== null &&
+					"message" in error &&
+					typeof error.message === "string"
+				) {
+					return error.message;
+				}
+				return "Something went wrong.";
 			}
 		},
 		[localStorageAuth, navigate, setLocalStorageAuth],
