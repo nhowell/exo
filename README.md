@@ -6,7 +6,7 @@ The goal of this project is to build a user interface for the [SpaceTraders API]
 
 It is a work-in-progress.
 
-Visit https://spacetraders.nickhowell.com/ to see it live.
+Visit https://exo.nickhowell.com/ to see it live.
 
 ## Technologies Used
 
@@ -20,5 +20,4 @@ Visit https://spacetraders.nickhowell.com/ to see it live.
 - [formik](https://formik.org/)
 - [luxon](https://moment.github.io/luxon/)
 - [immer](https://immerjs.github.io/immer/)
-- [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) (For hosting the built web app)
-- Github Actions (Builds the app and deploys it to Azure Static Web Apps)
+- [Vercel](https://vercel.com) (For building and hosting the web app)
