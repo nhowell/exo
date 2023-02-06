@@ -11,7 +11,7 @@ export default defineConfig({
 			eslint: process.env.VITEST
 				? undefined
 				: {
-						lintCommand: 'eslint . --ext .ts,.tsx --max-warnings=0"',
+						lintCommand: "eslint . --ext .ts,.tsx --max-warnings=0",
 				  },
 			typescript: !process.env.VITEST,
 		}),
