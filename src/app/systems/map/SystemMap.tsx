@@ -19,7 +19,7 @@ export function SystemMap(props: IOwnProps): ReactElement {
 	const result = useLocationsInSystem(props.systemSymbol);
 
 	return (
-		<Canvas>
+		<Canvas style={{ zIndex: 1 }}>
 			<PerspectiveCamera
 				makeDefault
 				zoom={1}
