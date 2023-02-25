@@ -4,7 +4,7 @@ import { SpaceTradersError } from "../api/types";
 export function useSpaceTradersMutation<
 	TData = unknown,
 	TVariables = void,
-	TContext = unknown
+	TContext = unknown,
 >(
 	mutationFn: MutationFunction<TData, TVariables>,
 	options?: UseMutationOptions<TData, SpaceTradersError, TVariables, TContext>,
