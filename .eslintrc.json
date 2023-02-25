@@ -6,6 +6,7 @@
 		"plugin:react/jsx-runtime",
 		"plugin:react-hooks/recommended",
 		"plugin:import/recommended",
+		"plugin:import/typescript",
 		"plugin:jsx-a11y/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:promise/recommended",
