@@ -8,6 +8,7 @@
 		"plugin:import/recommended",
 		"plugin:jsx-a11y/recommended",
 		"plugin:@typescript-eslint/recommended",
+		"plugin:promise/recommended",
 		"plugin:testing-library/react",
 		"plugin:vitest/recommended",
 		// This disables the formatting rules in ESLint that Prettier is going to be responsible for handling.
@@ -21,6 +22,7 @@
 		},
 		// Tells eslint how to resolve imports
 		"import/resolver": {
+			"typescript": true,
 			"node": {
 				"paths": ["src"],
 				"extensions": [".js", ".jsx", ".ts", ".tsx"]
