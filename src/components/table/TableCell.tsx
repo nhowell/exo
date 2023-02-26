@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { ReactElement, ReactNode } from "react";
 
-import coreStyles from "../core.module.css";
+import coreStyles from "../shared.module.css";
 
 import styles from "./TableCell.module.css";
 import { ITableColumnHeader } from "./types";

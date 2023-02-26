@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "@/core/loading/LoadingSpinner";
+import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 
 import styles from "./GameLoading.module.css";
 

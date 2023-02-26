@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 
-import { LinkButton } from "@/core/buttons/LinkButton";
+import { LinkButton } from "@/components/buttons/LinkButton";
 import {
 	IMyShip,
 	isDocked,

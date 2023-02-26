@@ -1,8 +1,8 @@
 import { ReactElement } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
-import { Tabs } from "@/core/tabs/Tabs";
-import { AtLeastOneTabPane } from "@/core/tabs/types";
+import { Tabs } from "@/components/tabs/Tabs";
+import { AtLeastOneTabPane } from "@/components/tabs/types";
 import { IMyShip, isDocked } from "@/spacetraders-api/api/my/ships/types";
 import { useMyShip } from "@/spacetraders-api/hooks/my/ships/useMyShip";
 import { t } from "@/utils/translate";

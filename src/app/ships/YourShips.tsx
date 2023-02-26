@@ -1,4 +1,4 @@
-import { LinkButton } from "@/core/buttons/LinkButton";
+import { LinkButton } from "@/components/buttons/LinkButton";
 import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
 import { pluralize } from "@/utils/pluralize";
 import { t } from "@/utils/translate";

@@ -1,7 +1,7 @@
 import { FormikHelpers, Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactElement } from "react";
 
-import { LinkButton } from "@/core/buttons/LinkButton";
+import { LinkButton } from "@/components/buttons/LinkButton";
 import {
 	IMyDockedShip,
 	isDocked,

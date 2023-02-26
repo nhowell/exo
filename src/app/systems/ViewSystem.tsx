@@ -2,8 +2,8 @@ import { ReactElement } from "react";
 import { useLocation, useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 
-import { Tabs } from "@/core/tabs/Tabs";
-import { AtLeastOneTabPane } from "@/core/tabs/types";
+import { Tabs } from "@/components/tabs/Tabs";
+import { AtLeastOneTabPane } from "@/components/tabs/types";
 import { useSystemInfo } from "@/spacetraders-api/hooks/systems/useSystemInfo";
 import { t } from "@/utils/translate";
 

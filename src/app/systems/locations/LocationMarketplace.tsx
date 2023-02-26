@@ -1,8 +1,8 @@
 import { sortBy } from "lodash";
 import { ReactElement } from "react";
 
-import { Table } from "@/core/table/Table";
-import { ITableColumnHeader } from "@/core/table/types";
+import { Table } from "@/components/table/Table";
+import { ITableColumnHeader } from "@/components/table/types";
 import {
 	IGetMarketplaceAtLocationResponse,
 	IMarketplaceListing,

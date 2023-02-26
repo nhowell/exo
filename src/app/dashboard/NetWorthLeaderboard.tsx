@@ -1,8 +1,8 @@
 import { ReactElement, useCallback } from "react";
 
-import { LinkButton } from "@/core/buttons/LinkButton";
-import { Table } from "@/core/table/Table";
-import { ITableColumnHeader } from "@/core/table/types";
+import { LinkButton } from "@/components/buttons/LinkButton";
+import { Table } from "@/components/table/Table";
+import { ITableColumnHeader } from "@/components/table/types";
 import {
 	INetWorthLeaderboardResponse,
 	IUserNetWorth,

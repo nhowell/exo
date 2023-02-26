@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement } from "react";
 
-import { LinkButton } from "@/core/buttons/LinkButton";
+import { LinkButton } from "@/components/buttons/LinkButton";
 import { Good } from "@/spacetraders-api/api/enums";
 import { IMyDockedShip, isDocked } from "@/spacetraders-api/api/my/ships/types";
 import { IStructure } from "@/spacetraders-api/api/structures/types";
