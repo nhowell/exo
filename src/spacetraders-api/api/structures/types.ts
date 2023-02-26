@@ -1,4 +1,4 @@
-import { IAllStringKeyProps } from "../../../utilities/types";
+import { IAllStringKeyProps } from "../../../types";
 import { Good } from "../enums";
 import { IMyShip } from "../my/ships/types";
 

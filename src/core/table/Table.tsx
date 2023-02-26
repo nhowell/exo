@@ -8,7 +8,7 @@ import { TableCell } from "./TableCell";
 import { creditFormat } from "../../helpers/creditFormat";
 import { numberFormat } from "../../helpers/numberFormat";
 import styles from "./Table.module.css";
-import { IAllStringKeyProps, typedMemo } from "../../utilities/types";
+import { IAllStringKeyProps, typedMemo } from "../../types";
 import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
 import { t } from "../../helpers/translate";
 

@@ -1,4 +1,4 @@
-import { IAllStringKeyProps } from "../../../utilities/types";
+import { IAllStringKeyProps } from "../../../types";
 
 export interface INetWorthLeaderboardResponse {
 	netWorth: IUserNetWorth[];
