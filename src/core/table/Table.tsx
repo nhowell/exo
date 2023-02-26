@@ -5,7 +5,7 @@ import { creditFormat } from "@/utils/creditFormat";
 import { numberFormat } from "@/utils/numberFormat";
 import { t } from "@/utils/translate";
 
-import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
+import { LoadingSpinner } from "../loading/LoadingSpinner";
 
 import styles from "./Table.module.css";
 import { TableBody } from "./TableBody";
