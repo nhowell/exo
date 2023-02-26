@@ -1,8 +1,10 @@
 import { ReactElement } from "react";
+
 import { ILocation } from "../../spacetraders-api/api/locations/types";
-import { LocationName } from "./locations/LocationName";
+
 import { LocationAttributes } from "./locations/LocationAttributes";
 import { LocationMessages } from "./locations/LocationMessages";
+import { LocationName } from "./locations/LocationName";
 
 interface IOwnProps {
 	location: ILocation;

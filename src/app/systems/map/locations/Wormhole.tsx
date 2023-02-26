@@ -1,6 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { ReactElement, useRef, useState } from "react";
 import { Mesh } from "three";
+
 import { LocationLabel } from "./LocationLabel";
 import { ILocationProps } from "./types";
 

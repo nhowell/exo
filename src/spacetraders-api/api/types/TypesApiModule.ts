@@ -1,4 +1,5 @@
 import { SpaceTradersApi } from "..";
+
 import {
 	IGetAvailableLoanTypesResponse,
 	IGetGoodTypesResponse,

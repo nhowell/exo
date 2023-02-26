@@ -1,16 +1,18 @@
 import { Key, ReactElement, ReactNode, useMemo } from "react";
-import { ITableColumnHeader } from "./types";
-import { TableHeader } from "./TableHeader";
-import { TableBody } from "./TableBody";
-import { TableRow } from "./TableRow";
-import { TableHeaderCell } from "./TableHeaderCell";
-import { TableCell } from "./TableCell";
+
+import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
+import { IAllStringKeyProps, typedMemo } from "../../types";
 import { creditFormat } from "../../utils/creditFormat";
 import { numberFormat } from "../../utils/numberFormat";
-import styles from "./Table.module.css";
-import { IAllStringKeyProps, typedMemo } from "../../types";
-import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
 import { t } from "../../utils/translate";
+
+import styles from "./Table.module.css";
+import { TableBody } from "./TableBody";
+import { TableCell } from "./TableCell";
+import { TableHeader } from "./TableHeader";
+import { TableHeaderCell } from "./TableHeaderCell";
+import { TableRow } from "./TableRow";
+import { ITableColumnHeader } from "./types";
 
 export interface ITableProps<T> {
 	columnDefinitions: ITableColumnHeader<T>[];

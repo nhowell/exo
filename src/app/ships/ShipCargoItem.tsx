@@ -1,15 +1,17 @@
 import { ReactElement, useState } from "react";
+
 import { LinkButton } from "../../core/buttons/LinkButton";
-import { numberFormat } from "../../utils/numberFormat";
-import { titleCase } from "../../utils/titleCase";
-import { t } from "../../utils/translate";
 import {
 	IMyShip,
 	isDocked,
 	IShipCargo,
 } from "../../spacetraders-api/api/my/ships/types";
+import { numberFormat } from "../../utils/numberFormat";
+import { titleCase } from "../../utils/titleCase";
+import { t } from "../../utils/translate";
 import { ActionButtons } from "../common/ActionButtons";
 import { Tile } from "../common/tiles/Tile";
+
 import { JettisonCargo } from "./JettisonCargo";
 import { TransferCargo } from "./TransferCargo";
 

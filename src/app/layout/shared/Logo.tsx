@@ -1,6 +1,8 @@
-import styles from "./Logo.module.css";
 import classnames from "classnames";
+
 import { APP_NAME } from "../../constants";
+
+import styles from "./Logo.module.css";
 
 interface IOwnProps {
 	size: "normal" | "large";

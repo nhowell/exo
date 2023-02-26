@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import Bottleneck from "bottleneck";
+
 import { GameApiModule } from "./game/GameApiModule";
 import { LocationsApiModule } from "./locations/LocationsApiModule";
 import { MyApiModule } from "./my/MyApiModule";

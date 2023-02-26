@@ -1,5 +1,6 @@
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
 import { systemQueryKey } from ".";
 
 export function useSystemInfo(systemSymbol: string) {

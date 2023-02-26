@@ -1,6 +1,7 @@
 import { createContext, ReactElement } from "react";
-import { IAuth, useProvideAuth } from "./hooks/useProvideAuth";
+
 import { GameLoading } from "./common/loading/GameLoading";
+import { IAuth, useProvideAuth } from "./hooks/useProvideAuth";
 
 interface IOwnProps {
 	children: ReactElement;

@@ -1,4 +1,5 @@
 import { SpaceTradersApi } from "../..";
+
 import { IPlaceOrderRequest, IPlaceOrderResponse } from "./types";
 
 export class MyOrdersApiModule {

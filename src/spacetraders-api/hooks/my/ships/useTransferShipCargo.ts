@@ -1,6 +1,7 @@
+import { ITransferCargoRequest } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { ITransferCargoRequest } from "../../../api/my/ships/types";
+
 import { setShipQueryData } from "./useMyShip";
 
 export function useTransferShipCargo(fromShipId: string) {

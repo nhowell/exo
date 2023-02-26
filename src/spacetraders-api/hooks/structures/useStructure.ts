@@ -1,5 +1,6 @@
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
 import { structureQueryKey } from ".";
 
 export function useStructure(structureId: string) {

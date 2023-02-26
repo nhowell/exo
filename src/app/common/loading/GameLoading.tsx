@@ -1,5 +1,5 @@
-import { LoadingSpinner } from "./LoadingSpinner";
 import styles from "./GameLoading.module.css";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 export function GameLoading() {
 	return (

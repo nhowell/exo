@@ -1,8 +1,10 @@
-import { ReactElement, ReactNode } from "react";
-import { ITableColumnHeader } from "./types";
-import coreStyles from "../core.module.css";
 import classNames from "classnames";
+import { ReactElement, ReactNode } from "react";
+
+import coreStyles from "../core.module.css";
+
 import styles from "./TableCell.module.css";
+import { ITableColumnHeader } from "./types";
 
 interface IOwnProps extends Pick<ITableColumnHeader<unknown>, "align"> {
 	children: ReactNode;

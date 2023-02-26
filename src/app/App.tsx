@@ -1,14 +1,16 @@
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { spaceTradersQueryClient } from "../spacetraders-api/hooks/spaceTradersQueryClient";
+
+import { AuthProvider } from "./AuthProvider";
+import { CurrentDateTimeProvider } from "./CurrentDateTimeProvider";
 import { LoginLayout } from "./layout/login/LoginLayout";
 import { MainLayout } from "./layout/main/MainLayout";
-import { spaceTradersQueryClient } from "../spacetraders-api/hooks/spaceTradersQueryClient";
-import { AuthProvider } from "./AuthProvider";
-import { loginPath, routes, viewSystemMapPath } from "./routes";
-import { RequireAuth } from "./RequireAuth";
 import { NotFound } from "./NotFound";
-import { CurrentDateTimeProvider } from "./CurrentDateTimeProvider";
+import { RequireAuth } from "./RequireAuth";
+import { loginPath, routes, viewSystemMapPath } from "./routes";
 import { SpaceTradersApiProvider } from "./SpaceTradersApiProvider";
 import { ViewSystemMap } from "./systems/ViewSystemMap";
 

@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import { useMemo } from "react";
-import { t } from "../../../utils/translate";
+
 import { useGameStatus } from "../../../spacetraders-api/hooks/game/useGameStatus";
+import { t } from "../../../utils/translate";
+
 import styles from "./GameStatus.module.css";
 
 interface IGameStatus {

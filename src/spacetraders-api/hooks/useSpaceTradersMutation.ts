@@ -1,4 +1,5 @@
 import { MutationFunction, useMutation, UseMutationOptions } from "react-query";
+
 import { SpaceTradersError } from "../api/types";
 
 export function useSpaceTradersMutation<

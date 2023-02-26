@@ -1,14 +1,16 @@
 import { MapControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { ReactElement } from "react";
+
 import { LocationType } from "../../../spacetraders-api/api/enums";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 import { useLocationsInSystem } from "../../../spacetraders-api/hooks/systems/useLocationsInSystem";
-import { Unknown } from "./locations/Unknown";
-import { Planet } from "./locations/Planet";
-import { Moon } from "./locations/Moon";
-import { GasGiant } from "./locations/GasGiant";
+
 import { Asteroid } from "./locations/Asteroid";
+import { GasGiant } from "./locations/GasGiant";
+import { Moon } from "./locations/Moon";
+import { Planet } from "./locations/Planet";
+import { Unknown } from "./locations/Unknown";
 import { Wormhole } from "./locations/Wormhole";
 
 interface IOwnProps {

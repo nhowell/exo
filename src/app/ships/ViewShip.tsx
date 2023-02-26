@@ -1,18 +1,20 @@
 import { ReactElement } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { t } from "../../utils/translate";
-import { useMyShip } from "../../spacetraders-api/hooks/my/ships/useMyShip";
-import { ShipStatus } from "./ShipStatus";
-import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";
-import { Tag } from "../common/Tag";
-import { AtLeastOneTabPane } from "../../core/tabs/types";
+
 import { Tabs } from "../../core/tabs/Tabs";
-import { ShipInfo } from "./ShipInfo";
-import { ShipCargo } from "./ShipCargo";
+import { AtLeastOneTabPane } from "../../core/tabs/types";
+import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";
+import { useMyShip } from "../../spacetraders-api/hooks/my/ships/useMyShip";
+import { t } from "../../utils/translate";
+import { QueryResultHandler } from "../common/QueryResultHandler";
+import { Tag } from "../common/Tag";
+
 import { BuyGoods } from "./BuyGoods";
 import { SellGoods } from "./SellGoods";
+import { ShipCargo } from "./ShipCargo";
+import { ShipInfo } from "./ShipInfo";
+import { ShipStatus } from "./ShipStatus";
 import { Travel } from "./Travel";
-import { QueryResultHandler } from "../common/QueryResultHandler";
 import { useShipName } from "./useShipName";
 
 export function ViewShip(): ReactElement {

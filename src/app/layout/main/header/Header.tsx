@@ -1,9 +1,11 @@
-import { Username } from "./Username";
-import { UserCredits } from "./UserCredits";
-import { Logout } from "./Logout";
-import styles from "./Header.module.css";
-import mainLayoutStyles from "../MainLayout.module.css";
 import classNames from "classnames";
+
+import mainLayoutStyles from "../MainLayout.module.css";
+
+import styles from "./Header.module.css";
+import { Logout } from "./Logout";
+import { UserCredits } from "./UserCredits";
+import { Username } from "./Username";
 
 export function Header() {
 	return (

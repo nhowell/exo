@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
-import styles from "./ShipInfo.module.css";
+
 import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";
-import { ShipAttributes } from "./ShipAttributes";
 import { t } from "../../utils/translate";
+
 import { ScrapShip } from "./ScrapShip";
+import { ShipAttributes } from "./ShipAttributes";
+import styles from "./ShipInfo.module.css";
 
 interface IOwnProps {
 	ship: IMyShip;

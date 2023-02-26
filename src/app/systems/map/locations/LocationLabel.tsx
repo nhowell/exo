@@ -1,8 +1,9 @@
-import { ReactElement, useRef } from "react";
 import { Html } from "@react-three/drei";
-import { Tag } from "../../../common/Tag";
 import { useFrame } from "@react-three/fiber";
+import { ReactElement, useRef } from "react";
 import { Mesh } from "three";
+
+import { Tag } from "../../../common/Tag";
 
 interface IOwnProps {
 	radius: number;

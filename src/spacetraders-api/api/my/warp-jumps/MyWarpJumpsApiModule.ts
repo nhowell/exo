@@ -1,4 +1,5 @@
 import { SpaceTradersApi } from "../..";
+
 import { IAttemptWarpJumpResponse } from "./types";
 
 export class MyWarpJumpsApiModule {

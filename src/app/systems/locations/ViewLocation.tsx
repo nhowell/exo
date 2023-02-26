@@ -1,17 +1,19 @@
 import { ReactElement } from "react";
 import { useLocation as useBrowserLocation, useParams } from "react-router-dom";
-import { t } from "../../../utils/translate";
-import { useLocation } from "../../../spacetraders-api/hooks/locations/useLocation";
-import { LocationName } from "./LocationName";
-import { mergeSymbols } from "../../../utils/mergeSymbols";
+
 import { Tabs } from "../../../core/tabs/Tabs";
 import { AtLeastOneTabPane } from "../../../core/tabs/types";
-import { LocationDockedShips } from "./LocationDockedShips";
-import { LocationMarketplace } from "./LocationMarketplace";
-import { LocationInfo } from "./LocationInfo";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
-import { LocationBreadcrumb } from "./LocationBreadcrumb";
+import { useLocation } from "../../../spacetraders-api/hooks/locations/useLocation";
+import { mergeSymbols } from "../../../utils/mergeSymbols";
+import { t } from "../../../utils/translate";
 import { QueryResultHandler } from "../../common/QueryResultHandler";
+
+import { LocationBreadcrumb } from "./LocationBreadcrumb";
+import { LocationDockedShips } from "./LocationDockedShips";
+import { LocationInfo } from "./LocationInfo";
+import { LocationMarketplace } from "./LocationMarketplace";
+import { LocationName } from "./LocationName";
 import { LocationStructures } from "./LocationStructures";
 
 export function ViewLocation(): ReactElement {

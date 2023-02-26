@@ -1,5 +1,6 @@
 import { DateTime } from "luxon";
 import { useMemo } from "react";
+
 import { useCurrentDateTime } from "./useCurrentDateTime";
 
 export function useDurationFromNow(date: string | number): number {

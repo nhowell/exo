@@ -1,8 +1,9 @@
+import { ISubmitFlightPlanRequest } from "../../../api/my/flight-plans/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { ISubmitFlightPlanRequest } from "../../../api/my/flight-plans/types";
-import { setFlightPlanQueryData } from "./useMyFlightPlan";
 import { setShipDeparture } from "../ships/useMyShip";
+
+import { setFlightPlanQueryData } from "./useMyFlightPlan";
 
 export function useSubmitFlightPlan() {
 	const spaceTradersApi = useSpaceTradersApi();

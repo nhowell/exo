@@ -1,6 +1,7 @@
-import { GAME_QUERY_KEY } from ".";
 import { SpaceTradersApi } from "../../api";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+import { GAME_QUERY_KEY } from ".";
 
 export function useGameStatus() {
 	return useSpaceTradersQuery(

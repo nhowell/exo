@@ -1,11 +1,12 @@
 import { Field } from "formik";
 import { ReactElement } from "react";
+
+import { ILocation } from "../../spacetraders-api/api/locations/types";
+import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { calculateFlightSecondsForFlightPlan } from "../../utils/calculateFlightSecondsForFlightPlan";
 import { calculateFuelCostForFlightPlan } from "../../utils/calculateFuelCostForFlightPlan";
 import { durationFormat } from "../../utils/durationFormat";
 import { t } from "../../utils/translate";
-import { ILocation } from "../../spacetraders-api/api/locations/types";
-import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { Tag } from "../common/Tag";
 
 interface IOwnProps {

@@ -1,13 +1,15 @@
-import { TileContainer } from "../../common/tiles/TileContainer";
+import { useState } from "react";
+
+import { t } from "../../../utils/translate";
 import { Tile } from "../../common/tiles/Tile";
+import { TileContainer } from "../../common/tiles/TileContainer";
+import { APP_NAME } from "../../constants";
 import { GameStatus } from "../shared/GameStatus";
 import { Logo } from "../shared/Logo";
+
 import { LoginForm } from "./LoginForm";
 import styles from "./LoginLayout.module.css";
 import { RegisterForm } from "./RegisterForm";
-import { t } from "../../../utils/translate";
-import { useState } from "react";
-import { APP_NAME } from "../../constants";
 
 export function LoginLayout() {
 	const [isRegistered, setIsRegistered] = useState(false);

@@ -1,6 +1,7 @@
-import { GAME_QUERY_KEY } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+import { GAME_QUERY_KEY } from ".";
 
 export function useNetWorthLeaderboard() {
 	const spaceTradersApi = useSpaceTradersApi();

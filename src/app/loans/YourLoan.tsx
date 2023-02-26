@@ -1,10 +1,10 @@
-import { creditFormat } from "../../utils/creditFormat";
-import { t } from "../../utils/translate";
-import { usePayOffLoan } from "../../spacetraders-api/hooks/my/loans/usePayOffLoan";
-import { IMyLoan } from "../../spacetraders-api/api/my/loans/types";
-import { TimeRemaining } from "../common/TimeRemaining";
 import { LoanStatus } from "../../spacetraders-api/api/enums";
+import { IMyLoan } from "../../spacetraders-api/api/my/loans/types";
+import { usePayOffLoan } from "../../spacetraders-api/hooks/my/loans/usePayOffLoan";
+import { creditFormat } from "../../utils/creditFormat";
 import { titleCase } from "../../utils/titleCase";
+import { t } from "../../utils/translate";
+import { TimeRemaining } from "../common/TimeRemaining";
 
 interface IOwnProps {
 	loan: IMyLoan;

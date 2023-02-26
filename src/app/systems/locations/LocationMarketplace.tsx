@@ -1,14 +1,15 @@
+import { sortBy } from "lodash";
 import { ReactElement } from "react";
-import { t } from "../../../utils/translate";
+
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
 import {
 	IGetMarketplaceAtLocationResponse,
 	IMarketplaceListing,
 } from "../../../spacetraders-api/api/locations/types";
-import { sortBy } from "lodash";
 import { useMarketplaceAtLocation } from "../../../spacetraders-api/hooks/locations/useMarketplaceAtLocation";
 import { titleCase } from "../../../utils/titleCase";
+import { t } from "../../../utils/translate";
 import { TransformedQueryResultHandler } from "../../common/TransformedQueryResultHandler";
 
 interface IOwnProps {

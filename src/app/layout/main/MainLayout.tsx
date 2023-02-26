@@ -1,6 +1,7 @@
-import { Header } from "./header/Header";
-import { Content } from "./Content";
 import { ReactNode } from "react";
+
+import { Content } from "./Content";
+import { Header } from "./header/Header";
 import styles from "./MainLayout.module.css";
 
 interface IOwnProps {

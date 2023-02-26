@@ -1,6 +1,7 @@
-import { locationQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+import { locationQueryKey } from ".";
 
 function marketplaceAtLocationQueryKey(locationSymbol: string): string[] {
 	return [...locationQueryKey(locationSymbol), "marketplace"];

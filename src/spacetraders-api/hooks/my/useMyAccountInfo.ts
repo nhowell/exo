@@ -1,10 +1,12 @@
+import { produce } from "immer";
+
+import { SpaceTradersApi } from "../../api";
+import { IGetMyAccountInfoResponse } from "../../api/my/types";
 import { spaceTradersQueryClient } from "../spaceTradersQueryClient";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
-import { SpaceTradersApi } from "../../api";
+
 import { MY_QUERY_KEY } from ".";
-import { IGetMyAccountInfoResponse } from "../../api/my/types";
-import { produce } from "immer";
 
 const MY_ACCOUNT_QUERY_KEY = [MY_QUERY_KEY, "account"];
 

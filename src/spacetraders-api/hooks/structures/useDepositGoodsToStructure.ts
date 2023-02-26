@@ -1,8 +1,8 @@
+import { IDepositGoodsToStructureRequest } from "../../api/structures/types";
+import { setStructureInStructuresQueryData } from "../locations/useStructuresAtLocation";
+import { setShipQueryData } from "../my/ships/useMyShip";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../useSpaceTradersMutation";
-import { IDepositGoodsToStructureRequest } from "../../api/structures/types";
-import { setShipQueryData } from "../my/ships/useMyShip";
-import { setStructureInStructuresQueryData } from "../locations/useStructuresAtLocation";
 
 export function useDepositGoodsToStructure(structureId: string) {
 	const spaceTradersApi = useSpaceTradersApi();

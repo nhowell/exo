@@ -1,4 +1,5 @@
 import { QueryClient } from "react-query";
+
 import { HttpStatusCode, SpaceTradersError } from "../api/types";
 
 export const spaceTradersQueryClient = new QueryClient({

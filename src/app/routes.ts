@@ -1,12 +1,14 @@
 import { ComponentType } from "react";
 import { generatePath } from "react-router-dom";
+
+import { splitSymbol } from "../utils/splitSymbol";
+
 import { Dashboard } from "./dashboard/Dashboard";
 import { Loans } from "./loans/Loans";
-import { Systems } from "./systems/Systems";
 import { ViewShip } from "./ships/ViewShip";
-import { ViewSystem } from "./systems/ViewSystem";
 import { ViewLocation } from "./systems/locations/ViewLocation";
-import { splitSymbol } from "../utils/splitSymbol";
+import { Systems } from "./systems/Systems";
+import { ViewSystem } from "./systems/ViewSystem";
 
 interface IRoute {
 	path: string;

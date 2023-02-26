@@ -1,7 +1,8 @@
+import { IPurchaseShipRequest } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { IPurchaseShipRequest } from "../../../api/my/ships/types";
 import { setCreditsQueryData } from "../useMyAccountInfo";
+
 import { setShipQueryData } from "./useMyShip";
 
 export function usePurchaseShip() {

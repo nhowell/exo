@@ -1,15 +1,17 @@
+import classNames from "classnames";
 import { sum } from "lodash";
 import { memo, ReactElement } from "react";
 import { NavLink } from "react-router-dom";
+
+import { Good } from "../../spacetraders-api/api/enums";
 import { IShipCargo, IMyShip } from "../../spacetraders-api/api/my/ships/types";
-import { generateViewShipPath } from "../routes";
-import styles from "./YourShip.module.css";
-import { ShipStatus } from "./ShipStatus";
 import { t } from "../../utils/translate";
 import commonStyles from "../common/common.module.css";
-import { Good } from "../../spacetraders-api/api/enums";
-import classNames from "classnames";
+import { generateViewShipPath } from "../routes";
+
+import { ShipStatus } from "./ShipStatus";
 import { useShipName } from "./useShipName";
+import styles from "./YourShip.module.css";
 
 interface IOwnProps {
 	ship: IMyShip;

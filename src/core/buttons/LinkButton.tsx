@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode } from "react";
+
 import styles from "./LinkButton.module.css";
 
 interface IOwnProps {

@@ -1,15 +1,18 @@
 import { produce } from "immer";
-import { myShipQueryKey } from ".";
+import { isEqual } from "lodash";
+
+import { Good } from "../../../api/enums";
+import { IGetMyShipResponse, IMyShip } from "../../../api/my/ships/types";
 import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
+import { useSpaceTradersApi } from "../../useSpaceTradersApi";
+import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
+
 import {
 	removeShipFromShipsQueryData,
 	setShipInShipsQueryData,
 } from "./useMyShips";
-import { IGetMyShipResponse, IMyShip } from "../../../api/my/ships/types";
-import { useSpaceTradersApi } from "../../useSpaceTradersApi";
-import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
-import { isEqual } from "lodash";
-import { Good } from "../../../api/enums";
+
+import { myShipQueryKey } from ".";
 
 export function useMyShip(shipId: string) {
 	const spaceTradersApi = useSpaceTradersApi();

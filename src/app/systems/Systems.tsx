@@ -1,9 +1,10 @@
 import { t } from "../../utils/translate";
-import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";
+import { TileContainer } from "../common/tiles/TileContainer";
+import { generateViewSystemPath } from "../routes";
+
 import { System } from "./System";
 import { useKnownSystems } from "./useKnownSystems";
-import { generateViewSystemPath } from "../routes";
 
 export function Systems() {
 	const knownSystems = useKnownSystems();

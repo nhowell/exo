@@ -1,7 +1,7 @@
+import { IPlaceOrderRequest } from "../../../api/my/orders/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
 import { setShipQueryData } from "../ships/useMyShip";
-import { IPlaceOrderRequest } from "../../../api/my/orders/types";
 import { setCreditsQueryData } from "../useMyAccountInfo";
 
 export function usePlacePurchaseOrder() {

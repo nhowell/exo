@@ -5,6 +5,7 @@ import {
 	UseQueryOptions,
 	UseQueryResult,
 } from "react-query";
+
 import { SpaceTradersError } from "../api/types";
 
 export type UseSpaceTradersQueryResult<TData> = UseQueryResult<

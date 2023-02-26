@@ -1,9 +1,11 @@
-import { MY_LOANS_QUERY_KEY } from ".";
-import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
+import { produce } from "immer";
+
 import { IGetMyLoansResponse, IMyLoan } from "../../../api/my/loans/types";
+import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
-import { produce } from "immer";
+
+import { MY_LOANS_QUERY_KEY } from ".";
 
 export function useMyLoans() {
 	const spaceTradersApi = useSpaceTradersApi();

@@ -1,4 +1,5 @@
 import { SpaceTradersApi } from "..";
+
 import { INetWorthLeaderboardResponse } from "./types";
 
 const path = "/game";

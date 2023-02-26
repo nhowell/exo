@@ -1,16 +1,18 @@
 import { ReactElement, useState } from "react";
+
 import { LinkButton } from "../../../core/buttons/LinkButton";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
-import { boolToHumanDisplay } from "../../../utils/boolToHumanDisplay";
-import { createNumberFormatter } from "../../../utils/numberFormat";
-import { titleCase } from "../../../utils/titleCase";
-import { t } from "../../../utils/translate";
 import {
 	IStructure,
 	IStructureMaterial,
 } from "../../../spacetraders-api/api/structures/types";
+import { boolToHumanDisplay } from "../../../utils/boolToHumanDisplay";
+import { createNumberFormatter } from "../../../utils/numberFormat";
+import { titleCase } from "../../../utils/titleCase";
+import { t } from "../../../utils/translate";
 import { ActionButtons } from "../../common/ActionButtons";
+
 import { DepositGoods } from "./DepositGoods";
 
 interface IOwnProps {

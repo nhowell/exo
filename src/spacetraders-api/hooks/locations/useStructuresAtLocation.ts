@@ -1,11 +1,13 @@
 import { produce } from "immer";
 import { isEqual } from "lodash";
-import { locationQueryKey } from ".";
+
 import { IGetStructuresAtLocationResponse } from "../../api/locations/types";
 import { IStructure } from "../../api/structures/types";
 import { spaceTradersQueryClient } from "../spaceTradersQueryClient";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+import { locationQueryKey } from ".";
 
 function structuresAtLocationQueryKey(locationSymbol: string): string[] {
 	return [...locationQueryKey(locationSymbol), "structures"];

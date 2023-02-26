@@ -1,6 +1,7 @@
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
 import { adjustCreditsQueryData } from "../useMyAccountInfo";
+
 import { removeShipQueryData } from "./useMyShip";
 
 export function useScrapShip() {

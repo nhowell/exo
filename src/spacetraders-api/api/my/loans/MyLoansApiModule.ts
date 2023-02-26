@@ -1,5 +1,6 @@
 import { SpaceTradersApi } from "../..";
 import { LoanType } from "../../enums";
+
 import {
 	IAcceptLoanResponse,
 	IGetMyLoansResponse,

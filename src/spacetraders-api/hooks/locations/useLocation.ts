@@ -1,6 +1,7 @@
-import { locationQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+import { locationQueryKey } from ".";
 
 export function useLocation(locationSymbol: string) {
 	const spaceTradersApi = useSpaceTradersApi();

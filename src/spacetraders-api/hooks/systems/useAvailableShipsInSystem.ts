@@ -1,6 +1,7 @@
-import { systemQueryKey } from ".";
 import { useSpaceTradersApi } from "../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../useSpaceTradersQuery";
+
+import { systemQueryKey } from ".";
 
 export function availableShipsInSystemQueryKey(systemSymbol: string): string[] {
 	return [...systemQueryKey(systemSymbol), "ship-listings"];

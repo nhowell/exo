@@ -1,15 +1,17 @@
 import { sortBy } from "lodash";
-import { YourLoan } from "./YourLoan";
+
+import { LoanStatus } from "../../spacetraders-api/api/enums";
 import {
 	IGetMyLoansResponse,
 	IMyLoan,
 } from "../../spacetraders-api/api/my/loans/types";
+import { useMyLoans } from "../../spacetraders-api/hooks/my/loans/useMyLoans";
+import { t } from "../../utils/translate";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
-import { t } from "../../utils/translate";
-import { useMyLoans } from "../../spacetraders-api/hooks/my/loans/useMyLoans";
-import { LoanStatus } from "../../spacetraders-api/api/enums";
 import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";
+
+import { YourLoan } from "./YourLoan";
 
 export function YourLoans() {
 	const result = useMyLoans();

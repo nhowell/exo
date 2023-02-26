@@ -1,7 +1,8 @@
+import { LoanType } from "../../../api/enums";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { LoanType } from "../../../api/enums";
 import { setCreditsQueryData } from "../useMyAccountInfo";
+
 import { addNewLoanToQueryData } from "./useMyLoans";
 
 export function useAcceptLoan() {

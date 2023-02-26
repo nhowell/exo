@@ -1,9 +1,10 @@
 import { useAvailableLoanTypes } from "../../spacetraders-api/hooks/types/useAvailableLoanTypes";
-import { TileContainer } from "../common/tiles/TileContainer";
-import { AvailableLoan } from "./AvailableLoan";
-import { Tile } from "../common/tiles/Tile";
 import { t } from "../../utils/translate";
 import { QueryResultHandler } from "../common/QueryResultHandler";
+import { Tile } from "../common/tiles/Tile";
+import { TileContainer } from "../common/tiles/TileContainer";
+
+import { AvailableLoan } from "./AvailableLoan";
 
 export function AvailableLoans() {
 	const result = useAvailableLoanTypes();

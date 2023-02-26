@@ -1,9 +1,11 @@
 import { CountUp } from "use-count-up";
+
+import { useMyAccountInfo } from "../../../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { creditFormat } from "../../../../utils/creditFormat";
 import { t } from "../../../../utils/translate";
-import { useMyAccountInfo } from "../../../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { QueryResultHandler } from "../../../common/QueryResultHandler";
 import { usePrevious } from "../../../hooks/usePrevious";
+
 import styles from "./UserCredits.module.css";
 
 export function UserCredits() {

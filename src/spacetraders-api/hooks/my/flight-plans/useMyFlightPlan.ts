@@ -1,12 +1,13 @@
-import { MY_FLIGHT_PLANS_QUERY_KEY } from ".";
-import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
-import { setShipArrival } from "../ships/useMyShip";
 import {
 	IMyFlightPlan,
 	IGetMyFlightPlanResponse,
 } from "../../../api/my/flight-plans/types";
+import { spaceTradersQueryClient } from "../../spaceTradersQueryClient";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersQuery } from "../../useSpaceTradersQuery";
+import { setShipArrival } from "../ships/useMyShip";
+
+import { MY_FLIGHT_PLANS_QUERY_KEY } from ".";
 
 export function myFlightPlanQueryKey(flightPlanId: string): string[] {
 	return [...MY_FLIGHT_PLANS_QUERY_KEY, flightPlanId];

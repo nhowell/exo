@@ -1,10 +1,12 @@
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
-import { ILoginForm } from "../layout/login/LoginForm";
-import { spaceTradersQueryClient } from "../../spacetraders-api/hooks/spaceTradersQueryClient";
-import { checkToken } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
-import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 import { useLocation, useNavigate } from "react-router";
+
+import { checkToken } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
+import { spaceTradersQueryClient } from "../../spacetraders-api/hooks/spaceTradersQueryClient";
+import { ILoginForm } from "../layout/login/LoginForm";
 import { dashboardPath, loginPath } from "../routes";
+
+import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";
 
 interface IAuthState {
 	activeUsername: string | null;

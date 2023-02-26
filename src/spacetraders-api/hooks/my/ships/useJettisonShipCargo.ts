@@ -1,6 +1,7 @@
+import { IJettisonCargoRequest } from "../../../api/my/ships/types";
 import { useSpaceTradersApi } from "../../useSpaceTradersApi";
 import { useSpaceTradersMutation } from "../../useSpaceTradersMutation";
-import { IJettisonCargoRequest } from "../../../api/my/ships/types";
+
 import { setShipGoodQuantity } from "./useMyShip";
 
 export function useJettisonShipCargo(fromShipId: string) {
