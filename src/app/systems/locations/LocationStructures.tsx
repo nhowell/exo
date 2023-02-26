@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { t } from "../../../helpers/translate";
+import { t } from "../../../utils/translate";
 import { useStructuresAtLocation } from "../../../spacetraders-api/hooks/locations/useStructuresAtLocation";
 import { QueryResultHandler } from "../../common/QueryResultHandler";
 import { Tile } from "../../common/tiles/Tile";

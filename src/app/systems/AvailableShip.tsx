@@ -1,6 +1,6 @@
 import { Formik, Form, FormikHelpers, ErrorMessage, Field } from "formik";
-import { creditFormat } from "../../helpers/creditFormat";
-import { t } from "../../helpers/translate";
+import { creditFormat } from "../../utils/creditFormat";
+import { t } from "../../utils/translate";
 import { IAvailableShip } from "../../spacetraders-api/api/systems/types";
 import { usePurchaseShip } from "../../spacetraders-api/hooks/my/ships/usePurchaseShip";
 import { Tag } from "../common/Tag";

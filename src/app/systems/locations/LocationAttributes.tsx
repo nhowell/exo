@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import { boolToHumanDisplay } from "../../../helpers/boolToHumanDisplay";
-import { titleCase } from "../../../helpers/titleCase";
-import { t } from "../../../helpers/translate";
+import { boolToHumanDisplay } from "../../../utils/boolToHumanDisplay";
+import { titleCase } from "../../../utils/titleCase";
+import { t } from "../../../utils/translate";
 import { ILocation } from "../../../spacetraders-api/api/locations/types";
 
 interface IOwnProps {

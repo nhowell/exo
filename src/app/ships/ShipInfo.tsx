@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import styles from "./ShipInfo.module.css";
 import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";
 import { ShipAttributes } from "./ShipAttributes";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { ScrapShip } from "./ScrapShip";
 
 interface IOwnProps {

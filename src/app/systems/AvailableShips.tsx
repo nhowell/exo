@@ -1,7 +1,7 @@
 import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableShip } from "./AvailableShip";
 import { Tile } from "../common/tiles/Tile";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { sortBy } from "lodash";
 import { useAvailableShipsInSystem } from "../../spacetraders-api/hooks/systems/useAvailableShipsInSystem";
 import {

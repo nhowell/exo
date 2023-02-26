@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
-import { t } from "../../../helpers/translate";
+import { t } from "../../../utils/translate";
 import { dashboardPath, loansPath, systemsPath } from "../../routes";
 import { YourShips } from "../../ships/YourShips";
 import styles from "./Content.module.css";

@@ -6,7 +6,7 @@ import { Systems } from "./systems/Systems";
 import { ViewShip } from "./ships/ViewShip";
 import { ViewSystem } from "./systems/ViewSystem";
 import { ViewLocation } from "./systems/locations/ViewLocation";
-import { splitSymbol } from "../helpers/splitSymbol";
+import { splitSymbol } from "../utils/splitSymbol";
 
 interface IRoute {
 	path: string;

@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { ShipFlightStatus } from "./ShipFlightStatus";
 import {
 	IMyShip,

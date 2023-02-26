@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { t } from "../../../helpers/translate";
+import { t } from "../../../utils/translate";
 import { useDockedShipsAtLocation } from "../../../spacetraders-api/hooks/locations/useDockedShipsAtLocation";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";

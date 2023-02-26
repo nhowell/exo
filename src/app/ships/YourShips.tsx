@@ -1,6 +1,6 @@
 import { LinkButton } from "../../core/buttons/LinkButton";
-import { pluralize } from "../../helpers/pluralize";
-import { t } from "../../helpers/translate";
+import { pluralize } from "../../utils/pluralize";
+import { t } from "../../utils/translate";
 import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
 import { QueryResultHandler } from "../common/QueryResultHandler";
 import { YourShip } from "./YourShip";

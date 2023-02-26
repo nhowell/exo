@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
-import { numberFormat } from "../../helpers/numberFormat";
-import { titleCase } from "../../helpers/titleCase";
-import { t } from "../../helpers/translate";
+import { numberFormat } from "../../utils/numberFormat";
+import { titleCase } from "../../utils/titleCase";
+import { t } from "../../utils/translate";
 import { IShipType } from "../../spacetraders-api/api/types/types";
 
 interface IOwnProps {

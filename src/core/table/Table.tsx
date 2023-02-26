@@ -5,12 +5,12 @@ import { TableBody } from "./TableBody";
 import { TableRow } from "./TableRow";
 import { TableHeaderCell } from "./TableHeaderCell";
 import { TableCell } from "./TableCell";
-import { creditFormat } from "../../helpers/creditFormat";
-import { numberFormat } from "../../helpers/numberFormat";
+import { creditFormat } from "../../utils/creditFormat";
+import { numberFormat } from "../../utils/numberFormat";
 import styles from "./Table.module.css";
 import { IAllStringKeyProps, typedMemo } from "../../types";
 import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 
 export interface ITableProps<T> {
 	columnDefinitions: ITableColumnHeader<T>[];

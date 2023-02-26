@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LinkButton } from "../../core/buttons/LinkButton";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { useScrapShip } from "../../spacetraders-api/hooks/my/ships/useScrapShip";
 import { dashboardPath } from "../routes";

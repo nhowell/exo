@@ -1,6 +1,6 @@
 import { CountUp } from "use-count-up";
-import { creditFormat } from "../../../../helpers/creditFormat";
-import { t } from "../../../../helpers/translate";
+import { creditFormat } from "../../../../utils/creditFormat";
+import { t } from "../../../../utils/translate";
 import { useMyAccountInfo } from "../../../../spacetraders-api/hooks/my/useMyAccountInfo";
 import { QueryResultHandler } from "../../../common/QueryResultHandler";
 import { usePrevious } from "../../../hooks/usePrevious";

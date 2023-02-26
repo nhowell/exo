@@ -1,7 +1,7 @@
 import { ErrorMessage, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement, useCallback } from "react";
-import { splitSymbol } from "../../helpers/splitSymbol";
-import { t } from "../../helpers/translate";
+import { splitSymbol } from "../../utils/splitSymbol";
+import { t } from "../../utils/translate";
 import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { useSubmitFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useSubmitFlightPlan";
 import { useLocationsInSystem } from "../../spacetraders-api/hooks/systems/useLocationsInSystem";

@@ -5,7 +5,7 @@ import { Logo } from "../shared/Logo";
 import { LoginForm } from "./LoginForm";
 import styles from "./LoginLayout.module.css";
 import { RegisterForm } from "./RegisterForm";
-import { t } from "../../../helpers/translate";
+import { t } from "../../../utils/translate";
 import { useState } from "react";
 import { APP_NAME } from "../../constants";
 

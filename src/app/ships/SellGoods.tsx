@@ -1,5 +1,5 @@
 import { ReactElement, useCallback } from "react";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { IGetMarketplaceAtLocationResponse } from "../../spacetraders-api/api/locations/types";
 import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
 import { useMarketplaceAtLocation } from "../../spacetraders-api/hooks/locations/useMarketplaceAtLocation";

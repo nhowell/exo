@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
-import { t } from "../../../helpers/translate";
+import { t } from "../../../utils/translate";
 import { useSystemInfo } from "../../../spacetraders-api/hooks/systems/useSystemInfo";
 import { generateViewSystemPath, systemsPath } from "../../routes";
 

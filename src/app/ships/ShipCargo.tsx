@@ -1,6 +1,6 @@
 import { sortBy } from "lodash";
 import { ReactElement, useMemo } from "react";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { IMyShip, IShipCargo } from "../../spacetraders-api/api/my/ships/types";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { ShipCargoItem } from "./ShipCargoItem";

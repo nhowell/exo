@@ -1,6 +1,6 @@
 import { sortBy } from "lodash";
 import { ReactElement, useCallback } from "react";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import {
 	IGetMarketplaceAtLocationResponse,
 	IMarketplaceListing,

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useLocation, useParams } from "react-router-dom";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { useMyShip } from "../../spacetraders-api/hooks/my/ships/useMyShip";
 import { ShipStatus } from "./ShipStatus";
 import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";

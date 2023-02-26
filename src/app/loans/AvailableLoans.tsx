@@ -2,7 +2,7 @@ import { useAvailableLoanTypes } from "../../spacetraders-api/hooks/types/useAva
 import { TileContainer } from "../common/tiles/TileContainer";
 import { AvailableLoan } from "./AvailableLoan";
 import { Tile } from "../common/tiles/Tile";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { QueryResultHandler } from "../common/QueryResultHandler";
 
 export function AvailableLoans() {

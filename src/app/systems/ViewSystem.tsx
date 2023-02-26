@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Tabs } from "../../core/tabs/Tabs";
 import { AtLeastOneTabPane } from "../../core/tabs/types";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
 import { QueryResultHandler } from "../common/QueryResultHandler";
 import { Tag } from "../common/Tag";

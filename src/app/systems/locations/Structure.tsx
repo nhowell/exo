@@ -2,10 +2,10 @@ import { ReactElement, useState } from "react";
 import { LinkButton } from "../../../core/buttons/LinkButton";
 import { Table } from "../../../core/table/Table";
 import { ITableColumnHeader } from "../../../core/table/types";
-import { boolToHumanDisplay } from "../../../helpers/boolToHumanDisplay";
-import { createNumberFormatter } from "../../../helpers/numberFormat";
-import { titleCase } from "../../../helpers/titleCase";
-import { t } from "../../../helpers/translate";
+import { boolToHumanDisplay } from "../../../utils/boolToHumanDisplay";
+import { createNumberFormatter } from "../../../utils/numberFormat";
+import { titleCase } from "../../../utils/titleCase";
+import { t } from "../../../utils/translate";
 import {
 	IStructure,
 	IStructureMaterial,

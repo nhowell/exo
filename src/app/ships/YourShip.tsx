@@ -5,7 +5,7 @@ import { IShipCargo, IMyShip } from "../../spacetraders-api/api/my/ships/types";
 import { generateViewShipPath } from "../routes";
 import styles from "./YourShip.module.css";
 import { ShipStatus } from "./ShipStatus";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import commonStyles from "../common/common.module.css";
 import { Good } from "../../spacetraders-api/api/enums";
 import classNames from "classnames";

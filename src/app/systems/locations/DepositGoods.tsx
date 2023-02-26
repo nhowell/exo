@@ -1,8 +1,8 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement } from "react";
 import { LinkButton } from "../../../core/buttons/LinkButton";
-import { titleCase } from "../../../helpers/titleCase";
-import { t } from "../../../helpers/translate";
+import { titleCase } from "../../../utils/titleCase";
+import { t } from "../../../utils/translate";
 import { Good } from "../../../spacetraders-api/api/enums";
 import {
 	IMyDockedShip,

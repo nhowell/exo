@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from "react";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { UseSpaceTradersQueryResult } from "../../spacetraders-api/hooks/useSpaceTradersQuery";
 
 export interface ITransformedQueryResultHandlerProps<TData, TTransformedData> {

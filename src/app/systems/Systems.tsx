@@ -1,4 +1,4 @@
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";
 import { System } from "./System";

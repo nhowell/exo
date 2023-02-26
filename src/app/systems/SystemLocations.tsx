@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { useLocationsInSystem } from "../../spacetraders-api/hooks/systems/useLocationsInSystem";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { Tile } from "../common/tiles/Tile";

@@ -1,11 +1,11 @@
-import { creditFormat } from "../../helpers/creditFormat";
-import { percentFormat } from "../../helpers/numberFormat";
-import { pluralize } from "../../helpers/pluralize";
-import { t } from "../../helpers/translate";
+import { creditFormat } from "../../utils/creditFormat";
+import { percentFormat } from "../../utils/numberFormat";
+import { pluralize } from "../../utils/pluralize";
+import { t } from "../../utils/translate";
 import { useAcceptLoan } from "../../spacetraders-api/hooks/my/loans/useAcceptLoan";
 import { IAvailableLoan } from "../../spacetraders-api/api/types/types";
-import { boolToHumanDisplay } from "../../helpers/boolToHumanDisplay";
-import { titleCase } from "../../helpers/titleCase";
+import { boolToHumanDisplay } from "../../utils/boolToHumanDisplay";
+import { titleCase } from "../../utils/titleCase";
 
 interface IOwnProps {
 	loan: IAvailableLoan;

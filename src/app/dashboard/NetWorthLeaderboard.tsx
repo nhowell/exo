@@ -2,7 +2,7 @@ import { ReactElement, useCallback } from "react";
 import { LinkButton } from "../../core/buttons/LinkButton";
 import { Table } from "../../core/table/Table";
 import { ITableColumnHeader } from "../../core/table/types";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import {
 	INetWorthLeaderboardResponse,
 	IUserNetWorth,

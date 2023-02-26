@@ -1,8 +1,8 @@
 import { ReactElement, useState } from "react";
 import { LinkButton } from "../../core/buttons/LinkButton";
-import { numberFormat } from "../../helpers/numberFormat";
-import { titleCase } from "../../helpers/titleCase";
-import { t } from "../../helpers/translate";
+import { numberFormat } from "../../utils/numberFormat";
+import { titleCase } from "../../utils/titleCase";
+import { t } from "../../utils/translate";
 import {
 	IMyShip,
 	isDocked,

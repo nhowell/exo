@@ -6,7 +6,7 @@ import {
 } from "../../spacetraders-api/api/my/loans/types";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import { useMyLoans } from "../../spacetraders-api/hooks/my/loans/useMyLoans";
 import { LoanStatus } from "../../spacetraders-api/api/enums";
 import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { TimeRemaining } from "../common/TimeRemaining";
 import { useMyFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useMyFlightPlan";
-import { t } from "../../helpers/translate";
+import { t } from "../../utils/translate";
 import commonStyles from "../common/common.module.css";
 import { QueryResultHandler } from "../common/QueryResultHandler";
 import { LocationSymbol } from "../systems/locations/LocationSymbol";
