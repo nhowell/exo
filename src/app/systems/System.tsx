@@ -1,9 +1,8 @@
 import { ReactElement } from "react";
 
+import { QueryResultHandler } from "@/components/QueryResultHandler";
+import { Tag } from "@/components/Tag";
 import { useSystemInfo } from "@/spacetraders-api/hooks/systems/useSystemInfo";
-
-import { QueryResultHandler } from "../common/QueryResultHandler";
-import { Tag } from "../common/Tag";
 
 interface IOwnProps {
 	symbol: string;

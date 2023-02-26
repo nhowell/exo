@@ -3,14 +3,13 @@ import { ReactElement } from "react";
 
 import { Table } from "@/components/table/Table";
 import { ITableColumnHeader } from "@/components/table/types";
+import { TransformedQueryResultHandler } from "@/components/TransformedQueryResultHandler";
 import {
 	IDockedShip,
 	IGetDockedShipsAtLocationResponse,
 } from "@/spacetraders-api/api/locations/types";
 import { useDockedShipsAtLocation } from "@/spacetraders-api/hooks/locations/useDockedShipsAtLocation";
 import { t } from "@/utils/translate";
-
-import { TransformedQueryResultHandler } from "../../common/TransformedQueryResultHandler";
 
 interface IOwnProps {
 	locationSymbol: string;

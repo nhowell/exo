@@ -1,9 +1,8 @@
 import { LinkButton } from "@/components/buttons/LinkButton";
+import { QueryResultHandler } from "@/components/QueryResultHandler";
 import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
 import { pluralize } from "@/utils/pluralize";
 import { t } from "@/utils/translate";
-
-import { QueryResultHandler } from "../common/QueryResultHandler";
 
 import { YourShip } from "./YourShip";
 import styles from "./YourShips.module.css";

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import { Tag } from "../../common/Tag";
+import { Tag } from "@/components/Tag";
 
 interface IOwnProps {
 	name: string;

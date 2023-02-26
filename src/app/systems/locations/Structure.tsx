@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 
+import { ActionButtons } from "@/components/ActionButtons";
 import { LinkButton } from "@/components/buttons/LinkButton";
 import { Table } from "@/components/table/Table";
 import { ITableColumnHeader } from "@/components/table/types";
@@ -11,8 +12,6 @@ import { boolToHumanDisplay } from "@/utils/boolToHumanDisplay";
 import { createNumberFormatter } from "@/utils/numberFormat";
 import { titleCase } from "@/utils/titleCase";
 import { t } from "@/utils/translate";
-
-import { ActionButtons } from "../../common/ActionButtons";
 
 import { DepositGoods } from "./DepositGoods";
 

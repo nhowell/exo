@@ -1,15 +1,14 @@
 import { sortBy } from "lodash";
 
+import { Tile } from "@/components/tiles/Tile";
+import { TileContainer } from "@/components/tiles/TileContainer";
+import { TransformedQueryResultHandler } from "@/components/TransformedQueryResultHandler";
 import {
 	IAvailableShip,
 	ISystemAvailableShipsResponse,
 } from "@/spacetraders-api/api/systems/types";
 import { useAvailableShipsInSystem } from "@/spacetraders-api/hooks/systems/useAvailableShipsInSystem";
 import { t } from "@/utils/translate";
-
-import { Tile } from "../common/tiles/Tile";
-import { TileContainer } from "../common/tiles/TileContainer";
-import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";
 
 import { AvailableShip } from "./AvailableShip";
 

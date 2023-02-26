@@ -1,11 +1,10 @@
 import { CountUp } from "use-count-up";
 
+import { QueryResultHandler } from "@/components/QueryResultHandler";
 import { usePrevious } from "@/hooks/usePrevious";
 import { useMyAccountInfo } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
 import { creditFormat } from "@/utils/creditFormat";
 import { t } from "@/utils/translate";
-
-import { QueryResultHandler } from "../../../common/QueryResultHandler";
 
 import styles from "./UserCredits.module.css";
 

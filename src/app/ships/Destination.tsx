@@ -1,14 +1,13 @@
 import { Field } from "formik";
 import { ReactElement } from "react";
 
+import { Tag } from "@/components/Tag";
 import { ILocation } from "@/spacetraders-api/api/locations/types";
 import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
 import { calculateFlightSecondsForFlightPlan } from "@/utils/calculateFlightSecondsForFlightPlan";
 import { calculateFuelCostForFlightPlan } from "@/utils/calculateFuelCostForFlightPlan";
 import { durationFormat } from "@/utils/durationFormat";
 import { t } from "@/utils/translate";
-
-import { Tag } from "../common/Tag";
 
 interface IOwnProps {
 	ship: IMyDockedShip;

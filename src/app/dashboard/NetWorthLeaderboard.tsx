@@ -3,15 +3,14 @@ import { ReactElement, useCallback } from "react";
 import { LinkButton } from "@/components/buttons/LinkButton";
 import { Table } from "@/components/table/Table";
 import { ITableColumnHeader } from "@/components/table/types";
+import { TimeSince } from "@/components/TimeSince";
+import { TransformedQueryResultHandler } from "@/components/TransformedQueryResultHandler";
 import {
 	INetWorthLeaderboardResponse,
 	IUserNetWorth,
 } from "@/spacetraders-api/api/game/types";
 import { useNetWorthLeaderboard } from "@/spacetraders-api/hooks/game/useNetWorthLeaderboard";
 import { t } from "@/utils/translate";
-
-import { TimeSince } from "../common/TimeSince";
-import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";
 
 import styles from "./NetWorthLeaderboard.module.css";
 

@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 
+import { QueryResultHandler } from "@/components/QueryResultHandler";
+import { Tile } from "@/components/tiles/Tile";
+import { TileContainer } from "@/components/tiles/TileContainer";
 import { useLocationsInSystem } from "@/spacetraders-api/hooks/systems/useLocationsInSystem";
 import { t } from "@/utils/translate";
 
-import { QueryResultHandler } from "../common/QueryResultHandler";
-import { Tile } from "../common/tiles/Tile";
-import { TileContainer } from "../common/tiles/TileContainer";
 import { generateViewLocationPath } from "../routes";
 
 import { SystemLocation } from "./SystemLocation";

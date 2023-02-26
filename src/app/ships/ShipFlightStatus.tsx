@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 
+import commonStyles from "@/components/common.module.css";
+import { QueryResultHandler } from "@/components/QueryResultHandler";
+import { TimeRemaining } from "@/components/TimeRemaining";
 import { useMyFlightPlan } from "@/spacetraders-api/hooks/my/flight-plans/useMyFlightPlan";
 import { t } from "@/utils/translate";
 
-import commonStyles from "../common/common.module.css";
-import { QueryResultHandler } from "../common/QueryResultHandler";
-import { TimeRemaining } from "../common/TimeRemaining";
 import { LocationSymbol } from "../systems/locations/LocationSymbol";
 
 interface IOwnProps {

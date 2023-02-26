@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 
 import { Table } from "@/components/table/Table";
 import { ITableColumnHeader } from "@/components/table/types";
+import { TransformedQueryResultHandler } from "@/components/TransformedQueryResultHandler";
 import {
 	IGetMarketplaceAtLocationResponse,
 	IMarketplaceListing,
@@ -10,8 +11,6 @@ import {
 import { useMarketplaceAtLocation } from "@/spacetraders-api/hooks/locations/useMarketplaceAtLocation";
 import { titleCase } from "@/utils/titleCase";
 import { t } from "@/utils/translate";
-
-import { TransformedQueryResultHandler } from "../../common/TransformedQueryResultHandler";
 
 interface IOwnProps {
 	locationSymbol: string;

@@ -1,14 +1,13 @@
 import { ReactElement } from "react";
 import { useLocation, useParams } from "react-router-dom";
 
+import { QueryResultHandler } from "@/components/QueryResultHandler";
 import { Tabs } from "@/components/tabs/Tabs";
 import { AtLeastOneTabPane } from "@/components/tabs/types";
+import { Tag } from "@/components/Tag";
 import { IMyShip, isDocked } from "@/spacetraders-api/api/my/ships/types";
 import { useMyShip } from "@/spacetraders-api/hooks/my/ships/useMyShip";
 import { t } from "@/utils/translate";
-
-import { QueryResultHandler } from "../common/QueryResultHandler";
-import { Tag } from "../common/Tag";
 
 import { BuyGoods } from "./BuyGoods";
 import { SellGoods } from "./SellGoods";
