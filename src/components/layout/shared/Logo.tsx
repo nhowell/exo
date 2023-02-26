@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-import { APP_NAME } from "../../constants";
+import { APP_NAME } from "@/constants";
 
 import styles from "./Logo.module.css";
 

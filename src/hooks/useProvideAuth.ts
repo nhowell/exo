@@ -1,10 +1,10 @@
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
+import { ILoginForm } from "@/components/layout/login/LoginForm";
 import { checkToken } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
 import { spaceTradersQueryClient } from "@/spacetraders-api/hooks/spaceTradersQueryClient";
 
-import { ILoginForm } from "../app/layout/login/LoginForm";
 import { dashboardPath, loginPath } from "../app/routes";
 
 import { LocalStorageKey, useLocalStorage } from "./useLocalStorage";

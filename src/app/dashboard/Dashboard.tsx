@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 
 import { Tile } from "@/components/tiles/Tile";
 import { TileContainer } from "@/components/tiles/TileContainer";
+import { APP_NAME } from "@/constants";
 import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
 import { useMyAccountInfo } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
 
-import { APP_NAME } from "../constants";
 import { generateViewSystemPath, loansPath } from "../routes";
 import { STARTER_SYSTEM } from "../systems/useVisitedSystems";
 import { SystemTabKey } from "../systems/ViewSystem";

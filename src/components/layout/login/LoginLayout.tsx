@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { Tile } from "@/components/tiles/Tile";
 import { TileContainer } from "@/components/tiles/TileContainer";
+import { APP_NAME } from "@/constants";
 import { t } from "@/utils/translate";
 
-import { APP_NAME } from "../../constants";
 import { GameStatus } from "../shared/GameStatus";
 import { Logo } from "../shared/Logo";
 
