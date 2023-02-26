@@ -1,12 +1,13 @@
 import { sortBy } from "lodash";
 
-import { LoanStatus } from "../../spacetraders-api/api/enums";
+import { LoanStatus } from "@/spacetraders-api/api/enums";
 import {
 	IGetMyLoansResponse,
 	IMyLoan,
-} from "../../spacetraders-api/api/my/loans/types";
-import { useMyLoans } from "../../spacetraders-api/hooks/my/loans/useMyLoans";
-import { t } from "../../utils/translate";
+} from "@/spacetraders-api/api/my/loans/types";
+import { useMyLoans } from "@/spacetraders-api/hooks/my/loans/useMyLoans";
+import { t } from "@/utils/translate";
+
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";

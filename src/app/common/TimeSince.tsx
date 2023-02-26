@@ -1,7 +1,8 @@
 import { DateTime } from "luxon";
 import { ReactElement, useMemo } from "react";
 
-import { durationFormat } from "../../utils/durationFormat";
+import { durationFormat } from "@/utils/durationFormat";
+
 import commonStyles from "../common/common.module.css";
 import { useDurationFromNow } from "../hooks/useDurationFromNow";
 

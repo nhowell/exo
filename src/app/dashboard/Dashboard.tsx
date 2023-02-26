@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
-import { useMyAccountInfo } from "../../spacetraders-api/hooks/my/useMyAccountInfo";
+import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
+import { useMyAccountInfo } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
+
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { APP_NAME } from "../constants";

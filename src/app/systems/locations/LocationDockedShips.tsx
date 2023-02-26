@@ -1,14 +1,15 @@
 import { sortBy } from "lodash";
 import { ReactElement } from "react";
 
-import { Table } from "../../../core/table/Table";
-import { ITableColumnHeader } from "../../../core/table/types";
+import { Table } from "@/core/table/Table";
+import { ITableColumnHeader } from "@/core/table/types";
 import {
 	IDockedShip,
 	IGetDockedShipsAtLocationResponse,
-} from "../../../spacetraders-api/api/locations/types";
-import { useDockedShipsAtLocation } from "../../../spacetraders-api/hooks/locations/useDockedShipsAtLocation";
-import { t } from "../../../utils/translate";
+} from "@/spacetraders-api/api/locations/types";
+import { useDockedShipsAtLocation } from "@/spacetraders-api/hooks/locations/useDockedShipsAtLocation";
+import { t } from "@/utils/translate";
+
 import { TransformedQueryResultHandler } from "../../common/TransformedQueryResultHandler";
 
 interface IOwnProps {

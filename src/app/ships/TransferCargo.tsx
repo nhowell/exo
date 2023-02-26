@@ -1,15 +1,15 @@
 import { FormikHelpers, Formik, Form, Field, ErrorMessage } from "formik";
 import { ReactElement } from "react";
 
-import { LinkButton } from "../../core/buttons/LinkButton";
+import { LinkButton } from "@/core/buttons/LinkButton";
 import {
 	IMyDockedShip,
 	isDocked,
 	IShipCargo,
-} from "../../spacetraders-api/api/my/ships/types";
-import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
-import { useTransferShipCargo } from "../../spacetraders-api/hooks/my/ships/useTransferShipCargo";
-import { t } from "../../utils/translate";
+} from "@/spacetraders-api/api/my/ships/types";
+import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
+import { useTransferShipCargo } from "@/spacetraders-api/hooks/my/ships/useTransferShipCargo";
+import { t } from "@/utils/translate";
 
 import { useShipName } from "./useShipName";
 

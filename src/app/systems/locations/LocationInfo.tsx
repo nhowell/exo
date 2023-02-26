@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import { ILocation } from "../../../spacetraders-api/api/locations/types";
+import { ILocation } from "@/spacetraders-api/api/locations/types";
 
 import { LocationAttributes } from "./LocationAttributes";
 import styles from "./LocationInfo.module.css";

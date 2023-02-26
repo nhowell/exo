@@ -2,7 +2,8 @@ import { ReactElement } from "react";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 
-import { useSystemInfo } from "../../spacetraders-api/hooks/systems/useSystemInfo";
+import { useSystemInfo } from "@/spacetraders-api/hooks/systems/useSystemInfo";
+
 import { generateViewSystemMapPath } from "../routes";
 
 import { SystemMap } from "./map/SystemMap";

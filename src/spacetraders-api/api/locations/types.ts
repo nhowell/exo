@@ -1,4 +1,5 @@
-import { IAllStringKeyProps } from "../../../types";
+import { IAllStringKeyProps } from "@/types";
+
 import { LocationType, LocationTrait, Good } from "../enums";
 import { IStructure } from "../structures/types";
 

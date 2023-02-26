@@ -3,9 +3,10 @@ import { sortBy } from "lodash";
 import {
 	IAvailableShip,
 	ISystemAvailableShipsResponse,
-} from "../../spacetraders-api/api/systems/types";
-import { useAvailableShipsInSystem } from "../../spacetraders-api/hooks/systems/useAvailableShipsInSystem";
-import { t } from "../../utils/translate";
+} from "@/spacetraders-api/api/systems/types";
+import { useAvailableShipsInSystem } from "@/spacetraders-api/hooks/systems/useAvailableShipsInSystem";
+import { t } from "@/utils/translate";
+
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";
 import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";

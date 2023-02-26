@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { t } from "../../../utils/translate";
+import { t } from "@/utils/translate";
+
 import { Tile } from "../../common/tiles/Tile";
 import { TileContainer } from "../../common/tiles/TileContainer";
 import { APP_NAME } from "../../constants";

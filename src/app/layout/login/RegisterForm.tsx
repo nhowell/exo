@@ -1,9 +1,10 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { useState } from "react";
 
-import { HttpStatusCode } from "../../../spacetraders-api/api/types";
-import { useClaimUsernameAndGetToken } from "../../../spacetraders-api/hooks/users/useClaimUsernameAndGetToken";
-import { t } from "../../../utils/translate";
+import { HttpStatusCode } from "@/spacetraders-api/api/types";
+import { useClaimUsernameAndGetToken } from "@/spacetraders-api/hooks/users/useClaimUsernameAndGetToken";
+import { t } from "@/utils/translate";
+
 import { APP_NAME } from "../../constants";
 import { useAuth } from "../../hooks/useAuth";
 

@@ -1,4 +1,5 @@
-import { t } from "../../../../utils/translate";
+import { t } from "@/utils/translate";
+
 import { useAuth } from "../../../hooks/useAuth";
 
 export function Logout() {

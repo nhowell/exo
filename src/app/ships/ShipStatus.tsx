@@ -4,8 +4,9 @@ import {
 	IMyShip,
 	isDocked,
 	isInFlight,
-} from "../../spacetraders-api/api/my/ships/types";
-import { t } from "../../utils/translate";
+} from "@/spacetraders-api/api/my/ships/types";
+import { t } from "@/utils/translate";
+
 import { LocationSymbol } from "../systems/locations/LocationSymbol";
 
 import { ShipFlightStatus } from "./ShipFlightStatus";

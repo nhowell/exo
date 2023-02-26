@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react";
 
-import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
-import { notUndefined } from "../../utils/notUndefined";
-import { splitSymbol } from "../../utils/splitSymbol";
+import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
+import { notUndefined } from "@/utils/notUndefined";
+import { splitSymbol } from "@/utils/splitSymbol";
 
 import { useVisitedSystems } from "./useVisitedSystems";
 

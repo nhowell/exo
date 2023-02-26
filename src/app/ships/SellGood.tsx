@@ -1,13 +1,14 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement } from "react";
 
-import { LinkButton } from "../../core/buttons/LinkButton";
-import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
-import { usePlaceSellOrder } from "../../spacetraders-api/hooks/my/orders/usePlaceSellOrder";
-import { creditFormat } from "../../utils/creditFormat";
-import { numberFormat } from "../../utils/numberFormat";
-import { titleCase } from "../../utils/titleCase";
-import { t } from "../../utils/translate";
+import { LinkButton } from "@/core/buttons/LinkButton";
+import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
+import { usePlaceSellOrder } from "@/spacetraders-api/hooks/my/orders/usePlaceSellOrder";
+import { creditFormat } from "@/utils/creditFormat";
+import { numberFormat } from "@/utils/numberFormat";
+import { titleCase } from "@/utils/titleCase";
+import { t } from "@/utils/translate";
+
 import { Tile } from "../common/tiles/Tile";
 
 import { IMarketplaceListingForShip } from "./BuyGoods";

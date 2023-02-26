@@ -1,4 +1,5 @@
-import { IAllStringKeyProps } from "../../../types";
+import { IAllStringKeyProps } from "@/types";
+
 import { LocationType, ShipClass } from "../enums";
 import { IDockedShip, ILocation } from "../locations/types";
 import { IFlightPlanBase } from "../my/flight-plans/types";

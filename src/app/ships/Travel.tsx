@@ -1,15 +1,16 @@
 import { ErrorMessage, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement, useCallback } from "react";
 
-import { LocationType } from "../../spacetraders-api/api/enums";
-import { ILocation } from "../../spacetraders-api/api/locations/types";
-import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
-import { ISystemLocationsResponse } from "../../spacetraders-api/api/systems/types";
-import { useSubmitFlightPlan } from "../../spacetraders-api/hooks/my/flight-plans/useSubmitFlightPlan";
-import { useAttemptWarpJump } from "../../spacetraders-api/hooks/my/warp-jumps/useAttemptWarpJump";
-import { useLocationsInSystem } from "../../spacetraders-api/hooks/systems/useLocationsInSystem";
-import { splitSymbol } from "../../utils/splitSymbol";
-import { t } from "../../utils/translate";
+import { LocationType } from "@/spacetraders-api/api/enums";
+import { ILocation } from "@/spacetraders-api/api/locations/types";
+import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
+import { ISystemLocationsResponse } from "@/spacetraders-api/api/systems/types";
+import { useSubmitFlightPlan } from "@/spacetraders-api/hooks/my/flight-plans/useSubmitFlightPlan";
+import { useAttemptWarpJump } from "@/spacetraders-api/hooks/my/warp-jumps/useAttemptWarpJump";
+import { useLocationsInSystem } from "@/spacetraders-api/hooks/systems/useLocationsInSystem";
+import { splitSymbol } from "@/utils/splitSymbol";
+import { t } from "@/utils/translate";
+
 import { TransformedQueryResultHandler } from "../common/TransformedQueryResultHandler";
 import { LocationMessages } from "../systems/locations/LocationMessages";
 

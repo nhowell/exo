@@ -1,10 +1,11 @@
 import { Key, ReactElement, ReactNode, useMemo } from "react";
 
+import { IAllStringKeyProps, typedMemo } from "@/types";
+import { creditFormat } from "@/utils/creditFormat";
+import { numberFormat } from "@/utils/numberFormat";
+import { t } from "@/utils/translate";
+
 import { LoadingSpinner } from "../../app/common/loading/LoadingSpinner";
-import { IAllStringKeyProps, typedMemo } from "../../types";
-import { creditFormat } from "../../utils/creditFormat";
-import { numberFormat } from "../../utils/numberFormat";
-import { t } from "../../utils/translate";
 
 import styles from "./Table.module.css";
 import { TableBody } from "./TableBody";

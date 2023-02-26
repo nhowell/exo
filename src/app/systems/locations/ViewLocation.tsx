@@ -1,12 +1,13 @@
 import { ReactElement } from "react";
 import { useLocation as useBrowserLocation, useParams } from "react-router-dom";
 
-import { Tabs } from "../../../core/tabs/Tabs";
-import { AtLeastOneTabPane } from "../../../core/tabs/types";
-import { ILocation } from "../../../spacetraders-api/api/locations/types";
-import { useLocation } from "../../../spacetraders-api/hooks/locations/useLocation";
-import { mergeSymbols } from "../../../utils/mergeSymbols";
-import { t } from "../../../utils/translate";
+import { Tabs } from "@/core/tabs/Tabs";
+import { AtLeastOneTabPane } from "@/core/tabs/types";
+import { ILocation } from "@/spacetraders-api/api/locations/types";
+import { useLocation } from "@/spacetraders-api/hooks/locations/useLocation";
+import { mergeSymbols } from "@/utils/mergeSymbols";
+import { t } from "@/utils/translate";
+
 import { QueryResultHandler } from "../../common/QueryResultHandler";
 
 import { LocationBreadcrumb } from "./LocationBreadcrumb";

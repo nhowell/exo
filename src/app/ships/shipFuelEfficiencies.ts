@@ -1,4 +1,4 @@
-import { ShipType } from "../../spacetraders-api/api/enums";
+import { ShipType } from "@/spacetraders-api/api/enums";
 
 // See: https://discord.com/channels/792864705139048469/1016976560085024860/1017895369604071557
 export const shipFuelEfficiencies = new Map<ShipType, number>([

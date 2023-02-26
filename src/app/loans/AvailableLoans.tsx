@@ -1,5 +1,6 @@
-import { useAvailableLoanTypes } from "../../spacetraders-api/hooks/types/useAvailableLoanTypes";
-import { t } from "../../utils/translate";
+import { useAvailableLoanTypes } from "@/spacetraders-api/hooks/types/useAvailableLoanTypes";
+import { t } from "@/utils/translate";
+
 import { QueryResultHandler } from "../common/QueryResultHandler";
 import { Tile } from "../common/tiles/Tile";
 import { TileContainer } from "../common/tiles/TileContainer";

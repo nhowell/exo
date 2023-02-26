@@ -2,9 +2,9 @@ import { MapControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { ReactElement } from "react";
 
-import { LocationType } from "../../../spacetraders-api/api/enums";
-import { ILocation } from "../../../spacetraders-api/api/locations/types";
-import { useLocationsInSystem } from "../../../spacetraders-api/hooks/systems/useLocationsInSystem";
+import { LocationType } from "@/spacetraders-api/api/enums";
+import { ILocation } from "@/spacetraders-api/api/locations/types";
+import { useLocationsInSystem } from "@/spacetraders-api/hooks/systems/useLocationsInSystem";
 
 import { Asteroid } from "./locations/Asteroid";
 import { GasGiant } from "./locations/GasGiant";

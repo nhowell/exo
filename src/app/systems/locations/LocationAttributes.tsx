@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 
-import { ILocation } from "../../../spacetraders-api/api/locations/types";
-import { boolToHumanDisplay } from "../../../utils/boolToHumanDisplay";
-import { titleCase } from "../../../utils/titleCase";
-import { t } from "../../../utils/translate";
+import { ILocation } from "@/spacetraders-api/api/locations/types";
+import { boolToHumanDisplay } from "@/utils/boolToHumanDisplay";
+import { titleCase } from "@/utils/titleCase";
+import { t } from "@/utils/translate";
 
 interface IOwnProps {
 	location: ILocation;

@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 
-import { useStructuresAtLocation } from "../../../spacetraders-api/hooks/locations/useStructuresAtLocation";
-import { t } from "../../../utils/translate";
+import { useStructuresAtLocation } from "@/spacetraders-api/hooks/locations/useStructuresAtLocation";
+import { t } from "@/utils/translate";
+
 import { QueryResultHandler } from "../../common/QueryResultHandler";
 import { Tile } from "../../common/tiles/Tile";
 import { TileContainer } from "../../common/tiles/TileContainer";

@@ -2,7 +2,7 @@ import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { spaceTradersQueryClient } from "../spacetraders-api/hooks/spaceTradersQueryClient";
+import { spaceTradersQueryClient } from "@/spacetraders-api/hooks/spaceTradersQueryClient";
 
 import { AuthProvider } from "./AuthProvider";
 import { CurrentDateTimeProvider } from "./CurrentDateTimeProvider";

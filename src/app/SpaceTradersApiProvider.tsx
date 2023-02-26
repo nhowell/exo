@@ -1,6 +1,6 @@
 import { createContext, ReactElement, useMemo } from "react";
 
-import { SpaceTradersApi } from "../spacetraders-api/api";
+import { SpaceTradersApi } from "@/spacetraders-api/api";
 
 import { useCurrentUser } from "./hooks/useCurrentUser";
 

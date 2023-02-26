@@ -1,7 +1,7 @@
 import { ComponentType } from "react";
 import { generatePath } from "react-router-dom";
 
-import { splitSymbol } from "../utils/splitSymbol";
+import { splitSymbol } from "@/utils/splitSymbol";
 
 import { Dashboard } from "./dashboard/Dashboard";
 import { Loans } from "./loans/Loans";

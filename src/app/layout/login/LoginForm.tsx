@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 
-import { t } from "../../../utils/translate";
+import { t } from "@/utils/translate";
+
 import { useAuth } from "../../hooks/useAuth";
 
 export interface ILoginForm {

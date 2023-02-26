@@ -1,6 +1,7 @@
 import { ReactElement, useMemo } from "react";
 
-import { ILocation } from "../../../spacetraders-api/api/locations/types";
+import { ILocation } from "@/spacetraders-api/api/locations/types";
+
 import commonStyles from "../../common/common.module.css";
 
 interface IOwnProps {

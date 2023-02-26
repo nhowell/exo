@@ -1,7 +1,8 @@
-import { LinkButton } from "../../core/buttons/LinkButton";
-import { useMyShips } from "../../spacetraders-api/hooks/my/ships/useMyShips";
-import { pluralize } from "../../utils/pluralize";
-import { t } from "../../utils/translate";
+import { LinkButton } from "@/core/buttons/LinkButton";
+import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
+import { pluralize } from "@/utils/pluralize";
+import { t } from "@/utils/translate";
+
 import { QueryResultHandler } from "../common/QueryResultHandler";
 
 import { YourShip } from "./YourShip";

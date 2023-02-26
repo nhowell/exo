@@ -3,9 +3,10 @@ import { sum } from "lodash";
 import { memo, ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 
-import { Good } from "../../spacetraders-api/api/enums";
-import { IShipCargo, IMyShip } from "../../spacetraders-api/api/my/ships/types";
-import { t } from "../../utils/translate";
+import { Good } from "@/spacetraders-api/api/enums";
+import { IShipCargo, IMyShip } from "@/spacetraders-api/api/my/ships/types";
+import { t } from "@/utils/translate";
+
 import commonStyles from "../common/common.module.css";
 import { generateViewShipPath } from "../routes";
 

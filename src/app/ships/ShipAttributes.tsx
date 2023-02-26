@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 
-import { IShipType } from "../../spacetraders-api/api/types/types";
-import { numberFormat } from "../../utils/numberFormat";
-import { titleCase } from "../../utils/titleCase";
-import { t } from "../../utils/translate";
+import { IShipType } from "@/spacetraders-api/api/types/types";
+import { numberFormat } from "@/utils/numberFormat";
+import { titleCase } from "@/utils/titleCase";
+import { t } from "@/utils/translate";
 
 interface IOwnProps {
 	ship: IShipType;

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
-import { IMyShip, isDocked } from "../../spacetraders-api/api/my/ships/types";
-import { t } from "../../utils/translate";
+import { IMyShip, isDocked } from "@/spacetraders-api/api/my/ships/types";
+import { t } from "@/utils/translate";
 
 import { ScrapShip } from "./ScrapShip";
 import { ShipAttributes } from "./ShipAttributes";

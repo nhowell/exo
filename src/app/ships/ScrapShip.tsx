@@ -1,10 +1,11 @@
 import { ReactElement, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { LinkButton } from "../../core/buttons/LinkButton";
-import { IMyDockedShip } from "../../spacetraders-api/api/my/ships/types";
-import { useScrapShip } from "../../spacetraders-api/hooks/my/ships/useScrapShip";
-import { t } from "../../utils/translate";
+import { LinkButton } from "@/core/buttons/LinkButton";
+import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
+import { useScrapShip } from "@/spacetraders-api/hooks/my/ships/useScrapShip";
+import { t } from "@/utils/translate";
+
 import { dashboardPath } from "../routes";
 
 interface IOwnProps {

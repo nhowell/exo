@@ -1,9 +1,10 @@
 import { Formik, Form, FormikHelpers, ErrorMessage, Field } from "formik";
 
-import { IAvailableShip } from "../../spacetraders-api/api/systems/types";
-import { usePurchaseShip } from "../../spacetraders-api/hooks/my/ships/usePurchaseShip";
-import { creditFormat } from "../../utils/creditFormat";
-import { t } from "../../utils/translate";
+import { IAvailableShip } from "@/spacetraders-api/api/systems/types";
+import { usePurchaseShip } from "@/spacetraders-api/hooks/my/ships/usePurchaseShip";
+import { creditFormat } from "@/utils/creditFormat";
+import { t } from "@/utils/translate";
+
 import { Tag } from "../common/Tag";
 import { ShipAttributes } from "../ships/ShipAttributes";
 

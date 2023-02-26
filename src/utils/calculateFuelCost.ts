@@ -1,4 +1,4 @@
-import { LocationType } from "../spacetraders-api/api/enums";
+import { LocationType } from "@/spacetraders-api/api/enums";
 
 // See: https://discord.com/channels/792864705139048469/1016976560085024860/1016977739498127421
 export function calculateFuelCost(
