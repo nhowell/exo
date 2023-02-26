@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 import { createContext, ReactElement, useState } from "react";
 
-import { useInterval } from "./hooks/useInterval";
+import { useInterval } from "@/hooks/useInterval";
 
 interface IOwnProps {
 	children: ReactElement;

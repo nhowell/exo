@@ -1,8 +1,7 @@
 import { createContext, ReactElement, useMemo } from "react";
 
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { SpaceTradersApi } from "@/spacetraders-api/api";
-
-import { useCurrentUser } from "./hooks/useCurrentUser";
 
 interface IOwnProps {
 	children: ReactElement;

@@ -1,6 +1,5 @@
+import { useAuth } from "@/hooks/useAuth";
 import { t } from "@/utils/translate";
-
-import { useAuth } from "../../../hooks/useAuth";
 
 export function Logout() {
 	const auth = useAuth();
