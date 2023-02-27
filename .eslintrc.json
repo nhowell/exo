@@ -34,8 +34,13 @@
 	"rules": {
 		// Add your own rules here to override ones from the extended configs.
 
-		// Don't like this one because it causes extended interfaces that only use Pick<>, for example, to be reported as a problem.
-		"@typescript-eslint/no-empty-interface": "off",
+		"@typescript-eslint/no-empty-interface": [
+			"error",
+			{
+				// Allow interfaces that only use Pick<> or Omit<>, for example.
+				"allowSingleExtends": true
+			}
+		],
 
 		// Doesn't work correctly with deeply nested exports, like FormikHelpers.
 		"import/named": "off",
