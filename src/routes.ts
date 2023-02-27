@@ -1,14 +1,24 @@
 import { ComponentType } from "react";
 import { generatePath } from "react-router-dom";
 
+import { lazyImport } from "@/utils/lazyImport";
 import { splitSymbol } from "@/utils/splitSymbol";
 
-import { Dashboard } from "./app/dashboard/Dashboard";
-import { Loans } from "./app/loans/Loans";
-import { ViewShip } from "./app/ships/ViewShip";
-import { ViewLocation } from "./app/systems/locations/ViewLocation";
-import { Systems } from "./app/systems/Systems";
-import { ViewSystem } from "./app/systems/ViewSystem";
+const { Dashboard } = lazyImport(
+	() => import("@/features/dashboard"),
+	"Dashboard",
+);
+const { Loans } = lazyImport(() => import("@/features/loans"), "Loans");
+const { ViewShip } = lazyImport(() => import("@/features/ships"), "ViewShip");
+const { ViewLocation } = lazyImport(
+	() => import("@/features/systems"),
+	"ViewLocation",
+);
+const { Systems } = lazyImport(() => import("@/features/systems"), "Systems");
+const { ViewSystem } = lazyImport(
+	() => import("@/features/systems"),
+	"ViewSystem",
+);
 
 interface IRoute {
 	path: string;

@@ -2,13 +2,15 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 
+import { lazyImport } from "@/utils/lazyImport";
 import { t } from "@/utils/translate";
 
-import { YourShips } from "../../../app/ships/YourShips";
 import { dashboardPath, loansPath, systemsPath } from "../../../routes";
 
 import styles from "./Content.module.css";
 import mainLayoutStyles from "./MainLayout.module.css";
+
+const { YourShips } = lazyImport(() => import("@/features/ships"), "YourShips");
 
 interface IOwnProps {
 	children: ReactNode;
