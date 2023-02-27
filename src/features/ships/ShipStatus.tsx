@@ -1,13 +1,12 @@
 import { ReactElement } from "react";
 
+import { LocationSymbol } from "@/components/LocationSymbol";
 import {
 	IMyShip,
 	isDocked,
 	isInFlight,
 } from "@/spacetraders-api/api/my/ships/types";
 import { t } from "@/utils/translate";
-
-import { LocationSymbol } from "../systems/locations/LocationSymbol";
 
 import { ShipFlightStatus } from "./ShipFlightStatus";
 
