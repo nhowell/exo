@@ -5,6 +5,7 @@ import { TileContainer } from "@/components/tiles/TileContainer";
 import { APP_NAME } from "@/constants";
 import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
 import { useMyAccountInfo } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
+import { t } from "@/utils/translate";
 
 import { generateViewSystemPath, loansPath } from "../../routes";
 import { STARTER_SYSTEM } from "../systems/useVisitedSystems";
@@ -18,19 +19,22 @@ export function Dashboard() {
 	const { isLoading: isMyShipsLoading, data: shipsResponse } = useMyShips();
 
 	if (isMyAccountInfoLoading || isMyShipsLoading) {
-		return <p>Loading...</p>;
+		return <p>{t("Loading...")}</p>;
 	}
 
 	return (
 		<>
 			{shipsResponse?.ships.length === 0 ? (
 				<>
-					<p>Welcome to {APP_NAME}!</p>
 					<p>
-						To get started{" "}
+						{t("Welcome to")} {APP_NAME}!
+					</p>
+					<p>
+						{t("To get started")}{" "}
 						{myAccountInfoResponse?.user.credits === 0 ? (
 							<>
-								<NavLink to={loansPath}>take out a loan</NavLink>, then
+								<NavLink to={loansPath}>{t("take out a loan")}</NavLink>
+								{t(", then")}
 							</>
 						) : null}{" "}
 						<NavLink
@@ -38,14 +42,14 @@ export function Dashboard() {
 								SystemTabKey.AvailableShips
 							}`}
 						>
-							purchase a ship
+							{t("purchase a ship")}
 						</NavLink>
 						.
 					</p>
 					<p>
-						Next, fuel up your ship and explore. Buy and sell goods to earn more
-						credits. Soon, you&apos;ll be expanding your fleet and paying off
-						your loan.
+						{t(
+							"Next, fuel up your ship and explore. Buy and sell goods to earn more credits. Soon, you'll be expanding your fleet and paying off your loan.",
+						)}
 					</p>
 				</>
 			) : (
