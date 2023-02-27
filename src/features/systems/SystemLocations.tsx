@@ -3,10 +3,9 @@ import { ReactElement } from "react";
 import { QueryResultHandler } from "@/components/QueryResultHandler";
 import { Tile } from "@/components/tiles/Tile";
 import { TileContainer } from "@/components/tiles/TileContainer";
+import { generateViewLocationPath } from "@/routes";
 import { useLocationsInSystem } from "@/spacetraders-api/hooks/systems/useLocationsInSystem";
 import { t } from "@/utils/translate";
-
-import { generateViewLocationPath } from "../../routes";
 
 import { SystemLocation } from "./SystemLocation";
 

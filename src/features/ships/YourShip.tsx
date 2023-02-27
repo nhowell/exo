@@ -4,11 +4,10 @@ import { memo, ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 
 import commonStyles from "@/components/common.module.css";
+import { generateViewShipPath } from "@/routes";
 import { Good } from "@/spacetraders-api/api/enums";
 import { IShipCargo, IMyShip } from "@/spacetraders-api/api/my/ships/types";
 import { t } from "@/utils/translate";
-
-import { generateViewShipPath } from "../../routes";
 
 import { ShipStatus } from "./ShipStatus";
 import { useShipName } from "./useShipName";

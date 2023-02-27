@@ -6,10 +6,9 @@ import { QueryResultHandler } from "@/components/QueryResultHandler";
 import { Tabs } from "@/components/tabs/Tabs";
 import { AtLeastOneTabPane } from "@/components/tabs/types";
 import { Tag } from "@/components/Tag";
+import { generateViewSystemMapPath } from "@/routes";
 import { useSystemInfo } from "@/spacetraders-api/hooks/systems/useSystemInfo";
 import { t } from "@/utils/translate";
-
-import { generateViewSystemMapPath } from "../../routes";
 
 import { AvailableShips } from "./AvailableShips";
 import { SystemMap } from "./map/SystemMap";
