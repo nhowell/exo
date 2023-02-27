@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import commonStyles from "@/components/common.module.css";
 
-import { generateViewLocationPath } from "../../routes";
+import { generateViewLocationPath } from "../../../routes";
 
 interface IOwnProps {
 	locationSymbol: string;

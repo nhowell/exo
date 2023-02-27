@@ -6,7 +6,7 @@ import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
 import { useScrapShip } from "@/spacetraders-api/hooks/my/ships/useScrapShip";
 import { t } from "@/utils/translate";
 
-import { dashboardPath } from "../routes";
+import { dashboardPath } from "../../routes";
 
 interface IOwnProps {
 	ship: IMyDockedShip;

@@ -6,7 +6,7 @@ import { APP_NAME } from "@/constants";
 import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
 import { useMyAccountInfo } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
 
-import { generateViewSystemPath, loansPath } from "../routes";
+import { generateViewSystemPath, loansPath } from "../../routes";
 import { STARTER_SYSTEM } from "../systems/useVisitedSystems";
 import { SystemTabKey } from "../systems/ViewSystem";
 

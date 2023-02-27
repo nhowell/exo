@@ -6,7 +6,7 @@ import { TileContainer } from "@/components/tiles/TileContainer";
 import { useLocationsInSystem } from "@/spacetraders-api/hooks/systems/useLocationsInSystem";
 import { t } from "@/utils/translate";
 
-import { generateViewLocationPath } from "../routes";
+import { generateViewLocationPath } from "../../routes";
 
 import { SystemLocation } from "./SystemLocation";
 

@@ -9,10 +9,10 @@ import { CurrentDateTimeProvider } from "@/providers/CurrentDateTimeProvider";
 import { SpaceTradersApiProvider } from "@/providers/SpaceTradersApiProvider";
 import { spaceTradersQueryClient } from "@/spacetraders-api/hooks/spaceTradersQueryClient";
 
+import { ViewSystemMap } from "./app/systems/ViewSystemMap";
 import { NotFound } from "./NotFound";
 import { RequireAuth } from "./RequireAuth";
 import { loginPath, routes, viewSystemMapPath } from "./routes";
-import { ViewSystemMap } from "./systems/ViewSystemMap";
 
 export function App() {
 	return (

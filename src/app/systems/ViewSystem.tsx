@@ -9,7 +9,7 @@ import { Tag } from "@/components/Tag";
 import { useSystemInfo } from "@/spacetraders-api/hooks/systems/useSystemInfo";
 import { t } from "@/utils/translate";
 
-import { generateViewSystemMapPath } from "../routes";
+import { generateViewSystemMapPath } from "../../routes";
 
 import { AvailableShips } from "./AvailableShips";
 import { SystemMap } from "./map/SystemMap";

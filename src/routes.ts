@@ -3,12 +3,12 @@ import { generatePath } from "react-router-dom";
 
 import { splitSymbol } from "@/utils/splitSymbol";
 
-import { Dashboard } from "./dashboard/Dashboard";
-import { Loans } from "./loans/Loans";
-import { ViewShip } from "./ships/ViewShip";
-import { ViewLocation } from "./systems/locations/ViewLocation";
-import { Systems } from "./systems/Systems";
-import { ViewSystem } from "./systems/ViewSystem";
+import { Dashboard } from "./app/dashboard/Dashboard";
+import { Loans } from "./app/loans/Loans";
+import { ViewShip } from "./app/ships/ViewShip";
+import { ViewLocation } from "./app/systems/locations/ViewLocation";
+import { Systems } from "./app/systems/Systems";
+import { ViewSystem } from "./app/systems/ViewSystem";
 
 interface IRoute {
 	path: string;

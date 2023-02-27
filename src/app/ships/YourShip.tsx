@@ -8,7 +8,7 @@ import { Good } from "@/spacetraders-api/api/enums";
 import { IShipCargo, IMyShip } from "@/spacetraders-api/api/my/ships/types";
 import { t } from "@/utils/translate";
 
-import { generateViewShipPath } from "../routes";
+import { generateViewShipPath } from "../../routes";
 
 import { ShipStatus } from "./ShipStatus";
 import { useShipName } from "./useShipName";

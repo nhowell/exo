@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { t } from "@/utils/translate";
 
-import { systemsPath } from "../routes";
+import { systemsPath } from "../../routes";
 
 interface IOwnProps {
 	systemName: string;

@@ -2,7 +2,7 @@ import { Tile } from "@/components/tiles/Tile";
 import { TileContainer } from "@/components/tiles/TileContainer";
 import { t } from "@/utils/translate";
 
-import { generateViewSystemPath } from "../routes";
+import { generateViewSystemPath } from "../../routes";
 
 import { System } from "./System";
 import { useKnownSystems } from "./useKnownSystems";
