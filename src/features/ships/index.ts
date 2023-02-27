@@ -1,2 +1,4 @@
-export * from "./ViewShip";
-export * from "./YourShips";
+export { ShipAttributes } from "./ShipAttributes";
+export { useShipName } from "./useShipName";
+export { ViewShip } from "./ViewShip";
+export { YourShips } from "./YourShips";

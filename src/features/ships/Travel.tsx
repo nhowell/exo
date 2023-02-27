@@ -2,6 +2,7 @@ import { ErrorMessage, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement, useCallback } from "react";
 
 import { TransformedQueryResultHandler } from "@/components/TransformedQueryResultHandler";
+import { LocationMessages } from "@/features/systems";
 import { LocationType } from "@/spacetraders-api/api/enums";
 import { ILocation } from "@/spacetraders-api/api/locations/types";
 import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
@@ -11,8 +12,6 @@ import { useAttemptWarpJump } from "@/spacetraders-api/hooks/my/warp-jumps/useAt
 import { useLocationsInSystem } from "@/spacetraders-api/hooks/systems/useLocationsInSystem";
 import { splitSymbol } from "@/utils/splitSymbol";
 import { t } from "@/utils/translate";
-
-import { LocationMessages } from "../systems/locations/LocationMessages";
 
 import { Destination } from "./Destination";
 

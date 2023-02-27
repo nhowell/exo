@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 import { ReactElement } from "react";
 
 import { LinkButton } from "@/components/buttons/LinkButton";
+import { useShipName } from "@/features/ships";
 import { Good } from "@/spacetraders-api/api/enums";
 import { IMyDockedShip, isDocked } from "@/spacetraders-api/api/my/ships/types";
 import { IStructure } from "@/spacetraders-api/api/structures/types";
@@ -9,8 +10,6 @@ import { useMyShips } from "@/spacetraders-api/hooks/my/ships/useMyShips";
 import { useDepositGoodsToStructure } from "@/spacetraders-api/hooks/structures/useDepositGoodsToStructure";
 import { titleCase } from "@/utils/titleCase";
 import { t } from "@/utils/translate";
-
-import { useShipName } from "../../ships/useShipName";
 
 interface IOwnProps {
 	structure: IStructure;
