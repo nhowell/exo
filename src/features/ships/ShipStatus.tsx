@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import { LocationSymbol } from "@/components/LocationSymbol";
+import { LocationSymbol } from "@/features/systems";
 import {
 	IMyShip,
 	isDocked,
