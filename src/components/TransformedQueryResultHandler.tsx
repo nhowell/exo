@@ -28,7 +28,7 @@ export function TransformedQueryResultHandler<TData, TTransformedData>({
 	);
 }
 
-interface QueryResultSuccessHandlerProps<TData, TTransformedData>
+interface IQueryResultSuccessHandlerProps<TData, TTransformedData>
 	extends Pick<
 		ITransformedQueryResultHandlerProps<TData, TTransformedData>,
 		"children" | "transformData"
@@ -40,7 +40,7 @@ function QueryResultSuccessHandler<TData, TTransformedData>({
 	data,
 	children,
 	transformData,
-}: QueryResultSuccessHandlerProps<TData, TTransformedData>): ReactElement {
+}: IQueryResultSuccessHandlerProps<TData, TTransformedData>): ReactElement {
 	const transformedData = useMemo(
 		() => transformData(data),
 		[data, transformData],

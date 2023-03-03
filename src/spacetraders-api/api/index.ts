@@ -16,7 +16,7 @@ import {
 } from "./types";
 import { TypesApiModule } from "./types/TypesApiModule";
 
-interface ApiOptions {
+interface IApiOptions {
 	/**
 	 * Max number of automatic retries when the server replies with a
 	 * 429 "Too Many Requests". Defaults to `3`.
@@ -24,7 +24,7 @@ interface ApiOptions {
 	maxRetries?: number;
 }
 
-interface LimiterOptions {
+interface ILimiterOptions {
 	/**
 	 * Initial reservoir value. How many jobs can be executed before the limiter
 	 * stops executing jobs. If reservoir reaches 0, no jobs will be executed
@@ -78,7 +78,7 @@ interface LimiterOptions {
 // The SpaceTraders API allows 2 request per second, plus an extra allowance
 // of 8 requests per 10 seconds to allow for some bursting.
 // See: https://github.com/SpaceTradersAPI/issues-and-suggestions/issues/52#issuecomment-792448211
-const defaultLimiterOptions: LimiterOptions = {
+const defaultLimiterOptions: ILimiterOptions = {
 	reservoir: 8,
 	reservoirRefreshInterval: 10_000,
 	reservoirRefreshAmount: 8,
@@ -90,17 +90,17 @@ const defaultLimiterOptions: LimiterOptions = {
 	minTime: 100,
 };
 
-interface RequestOptions<T> {
+interface IRequestOptions<T> {
 	params?:
 		| {
 				[key: string]: unknown;
 		  }
 		| URLSearchParams;
 	data?: T;
-	headers?: Headers;
+	headers?: IHeaders;
 }
 
-interface Headers {
+interface IHeaders {
 	[key: string]: string;
 }
 
@@ -128,13 +128,13 @@ export class SpaceTradersApi {
 		 * The user's "Bearer" token.
 		 */
 		private token: string,
-		options?: ApiOptions,
+		options?: IApiOptions,
 		/**
 		 * If `limiterOptions` are provided, this client instance will *not* use
 		 * the shared rate limiter. If you want to set the options of the shared
 		 * rate limiter, use `setSharedLimiterOptions`.
 		 */
-		limiterOptions?: LimiterOptions,
+		limiterOptions?: ILimiterOptions,
 	) {
 		if (options) {
 			if (options.maxRetries !== undefined) {
@@ -165,7 +165,7 @@ export class SpaceTradersApi {
 	/**
 	 * Set the options of the shared rate limiter.
 	 */
-	static setSharedLimiterOptions(limiterOptions: LimiterOptions) {
+	static setSharedLimiterOptions(limiterOptions: ILimiterOptions) {
 		if (this.sharedLimiter) {
 			// Reservoir Intervals prevent a limiter from being garbage collected.
 			// Calling .disconnect() to clear the interval and allow the memory to be freed.
@@ -205,7 +205,7 @@ export class SpaceTradersApi {
 		method: "get" | "post" | "put" | "delete",
 		path: string,
 		limiter: Bottleneck,
-		options?: RequestOptions<TData>,
+		options?: IRequestOptions<TData>,
 		maxRetries = 0,
 		retry = 0,
 	): Promise<TResponse> {
@@ -289,7 +289,7 @@ export class SpaceTradersApi {
 
 	get<TResponse>(
 		path: string,
-		params?: RequestOptions<void>["params"],
+		params?: IRequestOptions<void>["params"],
 	): Promise<TResponse> {
 		return SpaceTradersApi.request(
 			"get",
@@ -345,7 +345,7 @@ export class SpaceTradersApi {
 		return this.limiter ?? SpaceTradersApi.sharedLimiter;
 	}
 
-	private getAuthorizationHeader(): Headers {
+	private getAuthorizationHeader(): IHeaders {
 		return { Authorization: `Bearer ${this.token}` };
 	}
 }
