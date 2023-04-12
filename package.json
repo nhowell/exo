@@ -29,7 +29,7 @@
     "react-dom": "^18.2.0",
     "react-query": "^3.33.4",
     "react-router-dom": "^6.0.2",
-    "three": "^0.150.0",
+    "three": "^0.151.3",
     "unique-names-generator": "^4.7.1",
     "use-count-up": "^3.0.1"
   },
@@ -47,8 +47,8 @@
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-react-swc": "^3.1.0",
-    "@vitest/coverage-c8": "^0.29.1",
-    "@vitest/ui": "^0.29.1",
+    "@vitest/coverage-c8": "^0.30.1",
+    "@vitest/ui": "^0.30.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -59,7 +59,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-testing-library": "^5.10.2",
-    "eslint-plugin-vitest": "^0.0.57",
+    "eslint-plugin-vitest": "^0.1.4",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
     "jsdom": "^21.1.0",
@@ -69,6 +69,6 @@
     "vite": "^4.1.1",
     "vite-plugin-checker": "^0.5.5",
     "vite-tsconfig-paths": "^4.0.5",
-    "vitest": "^0.29.1"
+    "vitest": "^0.30.1"
   }
 }
