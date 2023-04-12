@@ -105,7 +105,7 @@ interface IHeaders {
 }
 
 const axiosInstance = axios.create({
-	baseURL: "https://api.spacetraders.io",
+	baseURL: "https://api.spacetraders.io/v1",
 });
 
 export class SpaceTradersApi {
