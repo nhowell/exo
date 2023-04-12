@@ -24,7 +24,7 @@ export function TimeSince(props: IOwnProps): ReactElement {
 	);
 
 	return (
-		<time dateTime={dateTime} className={commonStyles.noWrap}>
+		<time dateTime={dateTime ?? undefined} className={commonStyles.noWrap}>
 			{durationFormat(elapsedSeconds)}
 		</time>
 	);
