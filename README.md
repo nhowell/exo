@@ -1,6 +1,6 @@
 # Exo
 
-A React UI for the [SpaceTraders v1](https://spacetraders.io).
+A React UI for [SpaceTraders v1](https://spacetraders.io).
 
 The goal of this project was to build a user interface for the [SpaceTraders v1 API](https://api.spacetraders.io/v1) while also exploring some technologies that I've wanted to try out, such as `react-query` and `react-three-fiber`.
 
