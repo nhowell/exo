@@ -21,10 +21,10 @@ export function LoginLayout() {
 				<Logo size="large" />
 				<p>
 					{APP_NAME} is a user interface for{" "}
-					<a href="https://spacetraders.io/">SpaceTraders</a> &mdash; an MMO
+					<a href="https://spacetraders.io/">SpaceTraders v1</a> &mdash; an MMO
 					backed entirely by a{" "}
-					<a href="https://api.spacetraders.io/">RESTful API</a>. Manage a fleet
-					of ships, automate trade routes, discover hidden secrets in the
+					<a href="https://api.spacetraders.io/v1">RESTful API</a>. Manage a
+					fleet of ships, automate trade routes, discover hidden secrets in the
 					universe and more. Play/Build now!
 				</p>
 			</header>
