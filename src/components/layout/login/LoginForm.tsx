@@ -1,5 +1,6 @@
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from "formik";
 
+import { APP_NAME } from "@/constants";
 import { useAuth } from "@/hooks/useAuth";
 import { t } from "@/utils/translate";
 
@@ -55,9 +56,9 @@ export function LoginForm() {
 
 						{isVersion2Token(values.token) && (
 							<p>
-								That looks like a SpaceTraders v2 token. Exo is designed for{" "}
-								<a href="https://api.spacetraders.io/v1">SpaceTraders v1</a>, so
-								that token will not work here.
+								That looks like a SpaceTraders v2 token. {APP_NAME} is designed
+								for <a href="https://api.spacetraders.io/v1">SpaceTraders v1</a>
+								, so that token will not work here.
 							</p>
 						)}
 
