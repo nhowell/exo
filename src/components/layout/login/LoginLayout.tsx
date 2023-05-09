@@ -43,9 +43,13 @@ export function LoginLayout() {
 			</main>
 
 			<footer>
-				<p>
+				<div>
 					{t("Server Status")}: <GameStatus />
-				</p>
+				</div>
+				<div className={styles.credits}>
+					<a href="https://github.com/nhowell/exo">{APP_NAME}</a> is made by{" "}
+					<a href="https://github.com/nhowell">Nick Howell</a>
+				</div>
 			</footer>
 		</div>
 	);
