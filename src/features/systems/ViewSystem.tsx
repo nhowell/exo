@@ -14,13 +14,8 @@ import { AvailableShips } from "./AvailableShips";
 import { SystemMap } from "./map/SystemMap";
 import { SystemBreadcrumb } from "./SystemBreadcrumb";
 import { SystemLocations } from "./SystemLocations";
+import { SystemTabKey } from "./SystemTabKey";
 import { useAddVisitedSystem } from "./useAddVisitedSystem";
-
-export enum SystemTabKey {
-	Locations = "locations",
-	AvailableShips = "available-ships",
-	Map = "map",
-}
 
 export function ViewSystem(): ReactElement {
 	const { systemSymbol } = useParams();
