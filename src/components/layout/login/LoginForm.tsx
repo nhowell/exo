@@ -34,7 +34,7 @@ export function LoginForm() {
 			<h1>{t("Login")}</h1>
 
 			<Formik<ILoginForm> initialValues={initialValues} onSubmit={handleLogin}>
-				{({ status, isSubmitting }) => (
+				{({ status, isSubmitting, values }) => (
 					<Form>
 						<div>
 							<label htmlFor="token">{t("Access Token")}</label>
@@ -53,6 +53,14 @@ export function LoginForm() {
 
 						{status ? <div>{t(status)}</div> : undefined}
 
+						{isVersion2Token(values.token) && (
+							<p>
+								That looks like a SpaceTraders v2 token. Exo is designed for{" "}
+								<a href="https://api.spacetraders.io/v1">SpaceTraders v1</a>, so
+								that token will not work here.
+							</p>
+						)}
+
 						<div>
 							<button type="submit" disabled={isSubmitting}>
 								{t("Login")}
@@ -63,4 +71,8 @@ export function LoginForm() {
 			</Formik>
 		</>
 	);
+}
+
+function isVersion2Token(token: string): boolean {
+	return token.includes(".");
 }
