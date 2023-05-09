@@ -36,3 +36,7 @@ interface IUser {
 	username: string;
 	credits: number;
 }
+
+export enum SpaceTradersErrorCode {
+	InvalidToken = 40101,
+}

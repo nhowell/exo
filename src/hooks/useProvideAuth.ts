@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router";
 
 import { ILoginForm } from "@/components/layout/login/LoginForm";
 import { dashboardPath, loginPath } from "@/routes";
+import { SpaceTradersErrorCode } from "@/spacetraders-api/api/types";
 import { checkToken } from "@/spacetraders-api/hooks/my/useMyAccountInfo";
 import { spaceTradersQueryClient } from "@/spacetraders-api/hooks/spaceTradersQueryClient";
 
@@ -97,14 +98,18 @@ export function useProvideAuth(): IAuth {
 
 				navigate(dashboardPath, { replace: true });
 			} catch (error: unknown) {
-				// Return the error message to be displayed on the login form.
-				if (
-					typeof error === "object" &&
-					error !== null &&
-					"message" in error &&
-					typeof error.message === "string"
-				) {
-					return error.message;
+				// Return an error message to be displayed on the login form.
+				if (typeof error === "object" && error !== null) {
+					if (
+						"code" in error &&
+						typeof error.code === "number" &&
+						error.code === SpaceTradersErrorCode.InvalidToken
+					) {
+						return "Token was invalid.";
+					}
+					if ("message" in error && typeof error.message === "string") {
+						return error.message;
+					}
 				}
 				return "Something went wrong.";
 			}
