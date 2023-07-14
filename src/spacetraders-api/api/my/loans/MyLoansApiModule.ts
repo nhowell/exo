@@ -8,7 +8,10 @@ import {
 } from "./types";
 
 export class MyLoansApiModule {
-	constructor(private api: SpaceTradersApi, private basePath: string) {
+	constructor(
+		private api: SpaceTradersApi,
+		private basePath: string,
+	) {
 		this.acceptLoan = this.acceptLoan.bind(this);
 		this.getLoans = this.getLoans.bind(this);
 		this.payOffLoan = this.payOffLoan.bind(this);

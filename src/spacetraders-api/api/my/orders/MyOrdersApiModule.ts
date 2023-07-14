@@ -3,7 +3,10 @@ import { SpaceTradersApi } from "../..";
 import { IPlaceOrderRequest, IPlaceOrderResponse } from "./types";
 
 export class MyOrdersApiModule {
-	constructor(private api: SpaceTradersApi, private basePath: string) {
+	constructor(
+		private api: SpaceTradersApi,
+		private basePath: string,
+	) {
 		this.placePurchaseOrder = this.placePurchaseOrder.bind(this);
 		this.placeSellOrder = this.placeSellOrder.bind(this);
 	}

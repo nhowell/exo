@@ -7,7 +7,10 @@ import {
 } from "./types";
 
 export class MyFlightPlansApiModule {
-	constructor(private api: SpaceTradersApi, private basePath: string) {
+	constructor(
+		private api: SpaceTradersApi,
+		private basePath: string,
+	) {
 		this.getFlightPlan = this.getFlightPlan.bind(this);
 		this.submitFlightPlan = this.submitFlightPlan.bind(this);
 	}
