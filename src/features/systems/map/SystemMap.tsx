@@ -30,8 +30,8 @@ export function SystemMap(props: IOwnProps): ReactElement {
 			/>
 			<color attach="background" args={["black"]} />
 			<polarGridHelper args={[120, 8, 12, 64, 0x101f48, 0x101f48]} />
-			<ambientLight intensity={0.1} />
-			<pointLight position={[0, 0, 0]} />
+			<ambientLight intensity={0.3} />
+			<pointLight position={[0, 0, 0]} intensity={3} decay={0} />
 			<Stars
 				radius={10000}
 				depth={5000}

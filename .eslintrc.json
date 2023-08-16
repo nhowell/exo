@@ -89,7 +89,7 @@
 		// Doesn't work correctly with some react-three-fiber properties.
 		"react/no-unknown-property": [
 			"error",
-			{ "ignore": ["args", "attach", "intensity", "position"] }
+			{ "ignore": ["args", "attach", "decay", "intensity", "position"] }
 		]
 	}
 }
