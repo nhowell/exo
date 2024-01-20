@@ -1,20 +1,17 @@
-import { sortBy } from "lodash";
 import { ReactElement, useCallback } from "react";
 
 import { TileContainer } from "@/components/tiles/TileContainer";
 import { TransformedQueryResultHandler } from "@/components/TransformedQueryResultHandler";
-import {
-	IGetMarketplaceAtLocationResponse,
-	IMarketplaceListing,
-} from "@/spacetraders-api/api/locations/types";
-import {
-	IMyDockedShip,
-	IShipCargo,
-} from "@/spacetraders-api/api/my/ships/types";
+import { IGetMarketplaceAtLocationResponse } from "@/spacetraders-api/api/locations/types";
+import { IMyDockedShip } from "@/spacetraders-api/api/my/ships/types";
 import { useMarketplaceAtLocation } from "@/spacetraders-api/hooks/locations/useMarketplaceAtLocation";
 import { t } from "@/utils/translate";
 
 import { BuyGood } from "./BuyGood";
+import {
+	IMarketplaceListingForShip,
+	mapToMarketplaceListingForShip,
+} from "./mapToMarketplaceListingForShip";
 
 interface IOwnProps {
 	ship: IMyDockedShip;
@@ -51,30 +48,4 @@ export function BuyGoods(props: IOwnProps): ReactElement {
 			}
 		</TransformedQueryResultHandler>
 	);
-}
-
-export interface IMarketplaceListingForShip extends IMarketplaceListing {
-	quantityOwned: number;
-}
-
-export function mapToMarketplaceListingForShip(
-	cargo: IShipCargo[],
-	marketplaceListings: IMarketplaceListing[],
-): IMarketplaceListingForShip[] {
-	const listings = marketplaceListings.map<IMarketplaceListingForShip>((x) => {
-		return {
-			...x,
-			quantityOwned: 0,
-		};
-	});
-
-	for (const cargoItem of cargo) {
-		const existingRow = listings.find((x) => x.symbol === cargoItem.good);
-
-		if (existingRow !== undefined) {
-			existingRow.quantityOwned = cargoItem.quantity;
-		}
-	}
-
-	return sortBy(listings, [(x) => x.symbol]);
 }

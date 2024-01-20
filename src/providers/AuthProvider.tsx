@@ -7,7 +7,7 @@ interface IOwnProps {
 	children: ReactElement;
 }
 
-export const authContext = createContext<IAuth>({
+export const AuthContext = createContext<IAuth>({
 	isAutoLoginLoading: false,
 	login: () => {
 		return Promise.resolve(undefined);
@@ -26,6 +26,6 @@ export function AuthProvider(props: IOwnProps) {
 	}
 
 	return (
-		<authContext.Provider value={auth}>{props.children}</authContext.Provider>
+		<AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
 	);
 }

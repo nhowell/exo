@@ -10,7 +10,7 @@ import { t } from "@/utils/translate";
 import {
 	IMarketplaceListingForShip,
 	mapToMarketplaceListingForShip,
-} from "./BuyGoods";
+} from "./mapToMarketplaceListingForShip";
 import { SellGood } from "./SellGood";
 
 interface IOwnProps {

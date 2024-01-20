@@ -10,7 +10,7 @@ import { numberFormat } from "@/utils/numberFormat";
 import { titleCase } from "@/utils/titleCase";
 import { t } from "@/utils/translate";
 
-import { IMarketplaceListingForShip } from "./BuyGoods";
+import { IMarketplaceListingForShip } from "./mapToMarketplaceListingForShip";
 
 interface IOwnProps {
 	ship: IMyDockedShip;
