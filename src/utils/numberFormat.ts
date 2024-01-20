@@ -17,7 +17,7 @@ export function createNumberFormatter(options?: INumberFormatOptions) {
 					style: options.style,
 					minimumFractionDigits: options.decimalPlaces,
 					maximumFractionDigits: options.decimalPlaces,
-			  }
+				}
 			: undefined,
 	).format;
 }

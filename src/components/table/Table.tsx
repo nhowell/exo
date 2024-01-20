@@ -104,10 +104,10 @@ const StandardRow = typedMemo(function StandardRow<
 						{column.customElementFormat
 							? column.customElementFormat(props.rowData)
 							: column.customFormat
-							? column.customFormat(props.rowData)
-							: column.format !== undefined
-							? formatValue(column.format, props.rowData[column.keyName])
-							: (props.rowData[column.keyName] as ReactNode)}
+								? column.customFormat(props.rowData)
+								: column.format !== undefined
+									? formatValue(column.format, props.rowData[column.keyName])
+									: (props.rowData[column.keyName] as ReactNode)}
 					</TableCell>
 				);
 			})}
