@@ -16,6 +16,7 @@ Visit https://exo.nickhowell.com/ to see it live.
 - [react-three-fiber](https://docs.pmnd.rs/react-three-fiber)
 - [axios](https://github.com/axios/axios)
 - [bottleneck](https://github.com/SGrondin/bottleneck)
+- [BetterQueue](https://github.com/Saiop68/better-queue) - Distributed rate limiter and job queue for Node.js with Redis-backed state, cross-process priority and crash recovery.
 - [react-router-dom](https://reactrouter.com/web)
 - [formik](https://formik.org/)
 - [luxon](https://moment.github.io/luxon/)
